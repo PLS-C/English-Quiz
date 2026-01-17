@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TOEFL ITP Structure Practice</title>
+    <!-- ใช้ Tailwind CSS สำหรับตกแต่งหน้าตา -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Noto Sans Thai -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Noto Sans Thai', sans-serif; }
+        .option-btn { transition: all 0.2s; }
+        .fade-in { animation: fadeIn 0.5s ease-in; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    </style>
+</head>
+<body class="bg-gray-100 min-h-screen flex items-center justify-center p-4">
+
+    <div class="bg-white rounded-xl shadow-lg w-full max-w-2xl overflow-hidden" id="quiz-container">
+        <!-- Header -->
+        <div class="bg-blue-600 p-6 text-white">
+            <h1 class="text-2xl font-bold">TOEFL ITP: Structure & Written Expression</h1>
+            <p class="text-blue-100 text-sm mt-1">Practice Set: Sentence Structure Basics</p>
+        </div>
+
+        <!-- Progress Bar -->
+        <div class="w-full bg-gray-200 h-2">
+            <div class="bg-blue-400 h-2 transition-all duration-300" style="width: 0%" id="progress-bar"></div>
+        </div>
+
+        <!-- Question Section -->
+        <div class="p-6">
+            <div class="flex justify-between items-center mb-4 text-sm text-gray-500">
+                <span id="question-count">Question 1 of 10</span>
+                <span id="score-display" class="font-bold text-blue-600">Score: 0</span>
+            </div>
+
+            <div id="question-area" class="fade-in">
+                <h2 class="text-lg font-medium text-gray-800 mb-6 leading-relaxed" id="question-text">
+                    Loading question...
+                </h2>
+
+                <div class="space-y-3" id="options-container">
+                    <!-- Options will be injected here -->
+                </div>
+
+                <!-- Feedback Area (Hidden initially) -->
+                <div id="feedback-area" class="hidden mt-6 p-4 rounded-lg border-l-4">
+                    <p class="font-bold mb-1" id="feedback-title"></p>
+                    <p class="text-gray-700 text-sm" id="feedback-rationale"></p>
+                </div>
+            </div>
+
+            <!-- Result Section (Hidden initially) -->
+            <div id="result-area" class="hidden text-center py-8 fade-in">
+                <div class="text-6xl mb-4">🏆</div>
+                <h2 class="text-2xl font-bold text-gray-800 mb-2">Quiz Completed!</h2>
+                <p class="text-gray-600 mb-6">Your final score is: <span id="final-score" class="text-3xl font-bold text-blue-600"></span> / 10</p>
+                <div id="message-result" class="text-lg mb-8 font-medium"></div>
+                <button onclick="restartQuiz()" class="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 font-semibold transition shadow-md">
+                    Try Again
+                </button>
+            </div>
+        </div>
+
+        <!-- Footer / Navigation -->
+        <div class="bg-gray-50 p-4 border-t flex justify-end" id="footer-controls">
+            <button id="next-btn" onclick="nextQuestion()" class="hidden bg-gray-800 text-white px-6 py-2 rounded hover:bg-gray-900 transition">
+                Next Question &rarr;
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // ข้อมูลโจทย์จากแบบฝึกหัดก่อนหน้านี้
+        const quizData = [
+            {
+                question: "She bought a __________ yesterday.",
+                options: [
+                    { text: "red new car", correct: false, rationale: "ลำดับ Adjective ไม่ถูกต้อง ปกติอายุ (new) จะมาก่อนสี (red)" },
+                    { text: "car new red", correct: false, rationale: "Adjective ต้องวางหน้า Noun เเสมอ" },
+                    { text: "new red car", correct: true, rationale: "ถูกต้อง! ตามหลักการเรียง Adjective: Opinion/Age มาก่อน Color + Noun" },
+                    { text: "new car red", correct: false, rationale: "Adjective (red) วางผิดตำแหน่ง ต้องอยู่หน้า Noun" }
+                ]
+            },
+            {
+                question: "Identify the missing part:<br>__________ is waiting for the bus.",
+                options: [
+                    { text: "The tall man", correct: true, rationale: "ถูกต้อง! ประโยคขาด Subject (ประธาน) ที่เป็นเอกพจน์" },
+                    { text: "He are", correct: false, rationale: "Verb 'are' ไม่สอดคล้องกับ 'is' ในโจทย์ และซ้ำซ้อน" },
+                    { text: "In the morning", correct: false, rationale: "นี่คือ Prepositional Phrase ไม่ใช่ประธานของประโยค" },
+                    { text: "Wait", correct: false, rationale: "Wait เป็น Verb ไม่สามารถเป็นประธานได้ในรูปนี้" }
+                ]
+            },
+            {
+                question: "Which word order is correct?",
+                options: [
+                    { text: "A rain heavy storm", correct: false, rationale: "เรียงผิด Adjective (heavy) ควรขยาย Noun (rain storm) หรือ rain" },
+                    { text: "A heavy rain storm", correct: true, rationale: "ถูกต้อง! Adjective (heavy) + Noun phrase (rain storm)" },
+                    { text: "Storm a heavy rain", correct: false, rationale: "Article 'A' ต้องนำหน้าวลี" },
+                    { text: "Rain heavy a storm", correct: false, rationale: "ลำดับคำผิดอย่างสิ้นเชิง" }
+                ]
+            },
+            {
+                question: "Complete the sentence:<br>This is a __________ problem.",
+                options: [
+                    { text: "real serious", correct: false, rationale: "real เป็น Adj ขยาย serious (Adj) ไม่ได้ ต้องใช้ Adverb" },
+                    { text: "really serious", correct: true, rationale: "ถูกต้อง! Adverb (really) ขยาย Adjective (serious) ขยาย Noun (problem)" },
+                    { text: "serious really", correct: false, rationale: "Adverb ต้องวางหน้า Adjective ที่มันขยาย" },
+                    { text: "very seriously", correct: false, rationale: "หลัง verb to be ต้องการ Adjective เพื่อขยาย Noun (problem) ไม่ใช่ Adverb (seriously)" }
+                ]
+            },
+            {
+                question: "My brother plays __________.",
+                options: [
+                    { text: "tennis table", correct: false, rationale: "ลำดับ Noun + Noun ผิด (ปกติคือ table tennis)" },
+                    { text: "game tennis", correct: false, rationale: "เรียงลำดับคำนามผิด" },
+                    { text: "table tennis", correct: true, rationale: "ถูกต้อง! เป็น Compound Noun (กีฬาปิงปอง)" },
+                    { text: "the tennis of table", correct: false, rationale: "ใช้โครงสร้างฟุ่มเฟือยและไม่เป็นธรรมชาติ" }
+                ]
+            },
+            {
+                question: "__________ on the study of ancient civilizations, the museum attracts many visitors.",
+                options: [
+                    { text: "Focusing", correct: true, rationale: "ถูกต้อง! เป็น Present Participle Phrase ขยายประธาน the museum (พิพิธภัณฑ์เป็นผู้เน้น)" },
+                    { text: "The focus", correct: false, rationale: "ถ้าใส่ The focus จะทำให้ประโยคมีประธาน 2 ตัวโดยไม่มีคำเชื่อม" },
+                    { text: "It focuses", correct: false, rationale: "ทำให้เกิด Run-on sentence (ประโยค 2 ประโยคชนกันโดยไม่มีคำเชื่อม)" },
+                    { text: "To focusing", correct: false, rationale: "ผิดไวยากรณ์ To ไม่ตามด้วย V-ing ในบริบทนี้" }
+                ]
+            },
+            {
+                question: "The development of effective vaccines __________ a significant milestone in modern medicine.",
+                options: [
+                    { text: "remains", correct: true, rationale: "ถูกต้อง! ประโยคขาด Main Verb และ remains ผันตามประธานเอกพจน์ (development)" },
+                    { text: "remaining", correct: false, rationale: "remaining ไม่ใช่ Finite Verb (กริยาแท้)" },
+                    { text: "are remaining", correct: false, rationale: "ใช้ are ไม่ได้ เพราะประธานหลักคือ 'development' (เอกพจน์) ไม่ใช่ 'vaccines'" },
+                    { text: "which remains", correct: false, rationale: "ถ้าใส่ which จะกลายเป็น Relative Clause ทำให้ประโยคหลักไม่มี Verb" }
+                ]
+            },
+            {
+                question: "Unlike most other planets, __________ a retrograde rotation.",
+                options: [
+                    { text: "Venus has", correct: true, rationale: "ถูกต้อง! หลังส่วนเกริ่นนำ Unlike... ต้องตามด้วย Subject + Verb หลัก" },
+                    { text: "Venus having", correct: false, rationale: "ขาดกริยาแท้ (Main Verb)" },
+                    { text: "which Venus has", correct: false, rationale: "ทำให้กลายเป็น Clause ลอยๆ ไม่มี Main Clause" },
+                    { text: "that has", correct: false, rationale: "ขาดประธาน (Subject) ของประโยค" }
+                ]
+            },
+            {
+                question: "Genetic engineers are now capable of rearranging genes __________ specific bacteria.",
+                options: [
+                    { text: "medical", correct: false, rationale: "medical (adj) ไม่สามารถวางหน้า specific (adj) ได้ในบริบทนี้ และความหมายไม่เข้ากัน" },
+                    { text: "within", correct: true, rationale: "ถูกต้อง! เป็น Preposition เชื่อมระหว่าง genes และ specific bacteria" },
+                    { text: "are", correct: false, rationale: "มี Verb 'are capable' แล้ว ห้ามใส่ Verb ซ้อนอีก" },
+                    { text: "that", correct: false, rationale: "ถ้าใช้ that ต้องตามด้วย Clause (S+V) หรือ Verb แต่ข้างหลังเป็นแค่นามวลี" }
+                ]
+            },
+            {
+                question: "__________ distinct types of communication skills is essential for a successful career.",
+                options: [
+                    { text: "Master", correct: false, rationale: "Master เป็น Verb ช่อง 1 ทำหน้าที่เป็นประธานไม่ได้" },
+                    { text: "Mastering", correct: true, rationale: "ถูกต้อง! Gerund (V-ing) ทำหน้าที่เป็นประธานเอกพจน์ สอดคล้องกับกริยา 'is'" },
+                    { text: "The master", correct: false, rationale: "ความหมายไม่ได้ (เจ้านายของทักษะการสื่อสาร?)" },
+                    { text: "To mastering", correct: false, rationale: "ผิดไวยากรณ์ To ต้องตามด้วย Infinitive (V.1 ไม่ผัน)" }
+                ]
+            }
+        ];
+
+        let currentQuestion = 0;
+        let score = 0;
+        let answered = false;
+
+        function initQuiz() {
+            currentQuestion = 0;
+            score = 0;
+            document.getElementById('result-area').classList.add('hidden');
+            document.getElementById('question-area').classList.remove('hidden');
+            document.getElementById('footer-controls').classList.remove('hidden');
+            loadQuestion();
+        }
+
+        function loadQuestion() {
+            answered = false;
+            const data = quizData[currentQuestion];
+            
+            // Update Text
+            document.getElementById('question-count').innerText = `Question ${currentQuestion + 1} of ${quizData.length}`;
+            document.getElementById('score-display').innerText = `Score: ${score}`;
+            document.getElementById('question-text').innerHTML = data.question;
+            
+            // Update Progress Bar
+            const progress = ((currentQuestion) / quizData.length) * 100;
+            document.getElementById('progress-bar').style.width = `${progress}%`;
+
+            // Clear & Generate Options
+            const optionsContainer = document.getElementById('options-container');
+            optionsContainer.innerHTML = '';
+            
+            data.options.forEach((option, index) => {
+                const btn = document.createElement('button');
+                btn.className = `option-btn w-full text-left p-4 rounded-lg border border-gray-200 hover:bg-blue-50 hover:border-blue-300 focus:outline-none mb-2 bg-white text-gray-700`;
+                btn.innerHTML = `<span class="font-bold mr-2 text-gray-400">${String.fromCharCode(65 + index)}.</span> ${option.text}`;
+                btn.onclick = () => checkAnswer(index, btn);
+                optionsContainer.appendChild(btn);
+            });
+
+            // Reset UI
+            document.getElementById('feedback-area').classList.add('hidden');
+            document.getElementById('next-btn').classList.add('hidden');
+        }
+
+        function checkAnswer(selectedIndex, selectedBtn) {
+            if (answered) return;
+            answered = true;
+
+            const data = quizData[currentQuestion];
+            const isCorrect = data.options[selectedIndex].correct;
+            const feedbackArea = document.getElementById('feedback-area');
+            const feedbackTitle = document.getElementById('feedback-title');
+            const feedbackRationale = document.getElementById('feedback-rationale');
+            const allBtns = document.querySelectorAll('.option-btn');
+
+            // Disable all buttons and show correct answer
+            allBtns.forEach((btn, index) => {
+                btn.disabled = true;
+                btn.classList.remove('hover:bg-blue-50', 'hover:border-blue-300'); // Remove hover effects
+                
+                if (data.options[index].correct) {
+                    btn.classList.add('bg-green-100', 'border-green-500', 'text-green-800');
+                } else if (index === selectedIndex && !isCorrect) {
+                    btn.classList.add('bg-red-100', 'border-red-500', 'text-red-800');
+                } else {
+                    btn.classList.add('opacity-50');
+                }
+            });
+
+            // Update Logic
+            if (isCorrect) {
+                score++;
+                feedbackArea.className = "mt-6 p-4 rounded-lg border-l-4 bg-green-50 border-green-500 block fade-in";
+                feedbackTitle.innerText = "Correct! ✅";
+                feedbackTitle.className = "font-bold mb-1 text-green-700";
+            } else {
+                feedbackArea.className = "mt-6 p-4 rounded-lg border-l-4 bg-red-50 border-red-500 block fade-in";
+                feedbackTitle.innerText = "Incorrect ❌";
+                feedbackTitle.className = "font-bold mb-1 text-red-700";
+            }
+
+            // Show Rationale
+            feedbackRationale.innerText = data.options[selectedIndex].rationale;
+            
+            // Show Next Button
+            document.getElementById('score-display').innerText = `Score: ${score}`;
+            document.getElementById('next-btn').classList.remove('hidden');
+        }
+
+        function nextQuestion() {
+            currentQuestion++;
+            if (currentQuestion < quizData.length) {
+                loadQuestion();
+            } else {
+                showResult();
+            }
+        }
+
+        function showResult() {
+            document.getElementById('question-area').classList.add('hidden');
+            document.getElementById('footer-controls').classList.add('hidden');
+            document.getElementById('result-area').classList.remove('hidden');
+            
+            document.getElementById('final-score').innerText = score;
+            document.getElementById('progress-bar').style.width = `100%`;
+
+            const msgDiv = document.getElementById('message-result');
+            if (score === 10) {
+                msgDiv.innerText = "Excellent! You mastered it! 🎉";
+                msgDiv.className = "text-lg mb-8 font-bold text-green-600";
+            } else if (score >= 7) {
+                msgDiv.innerText = "Great job! Almost perfect! 👍";
+                msgDiv.className = "text-lg mb-8 font-bold text-blue-600";
+            } else {
+                msgDiv.innerText = "Keep practicing. You can do it! 💪";
+                msgDiv.className = "text-lg mb-8 font-bold text-orange-600";
+            }
+        }
+
+        function restartQuiz() {
+            initQuiz();
+        }
+
+        // Start App
+        initQuiz();
+
+    </script>
+</body>
+</html>

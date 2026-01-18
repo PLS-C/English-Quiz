@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TOEFL ITP Structure Quizzes</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f6f8fa;
+            color: #24292f;
+        }
+        h1 {
+            border-bottom: 1px solid #d0d7de;
+            padding-bottom: 10px;
+            color: #0969da;
+        }
+        .loading {
+            color: #666;
+            font-style: italic;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            background: white;
+            margin-bottom: 8px;
+            border: 1px solid #d0d7de;
+            border-radius: 6px;
+            transition: 0.2s;
+        }
+        li:hover {
+            border-color: #0969da;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        a {
+            display: block;
+            padding: 15px 20px;
+            text-decoration: none;
+            color: #24292f;
+            font-weight: 500;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        a:hover {
+            color: #0969da;
+        }
+        .file-icon {
+            margin-right: 10px;
+            color: #6e7781;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>รายการแบบทดสอบ (Structure)</h1>
+    
+    <ul id="quiz-list">
+        <li class="loading">กำลังโหลดรายชื่อแบบทดสอบ...</li>
+    </ul>
+
+    <script>
+        // --- ส่วนการตั้งค่า (แก้ไขตรงนี้) ---
+        const username = 'PLS-C';  // ใส่ชื่อ GitHub User ของคุณ (จากในรูปน่าจะเป็น PLS-C)
+        const repo = 'English-Quiz'; // ชื่อ Repository
+        const folderPath = 'TOEFL_ITP_Section2-Structure'; // ชื่อโฟลเดอร์ที่เก็บไฟล์
+        // --------------------------------
+
+        const apiUrl = `https://api.github.com/repos/${username}/${repo}/contents/${folderPath}`;
+        const listContainer = document.getElementById('quiz-list');
+
+        async function fetchQuizzes() {
+            try {
+                const response = await fetch(apiUrl);
+                if (!response.ok) throw new Error('ไม่สามารถดึงข้อมูลได้ หรือหาโฟลเดอร์ไม่เจอ');
+                
+                const files = await response.json();
+                
+                // กรองเอาเฉพาะไฟล์ .html และไม่เอาไฟล์ index.html ตัวเอง
+                const quizFiles = files.filter(file => 
+                    file.name.endsWith('.html') && 
+                    file.name.toLowerCase() !== 'index.html'
+                );
+
+                listContainer.innerHTML = ''; // ล้างข้อความ Loading
+
+                if (quizFiles.length === 0) {
+                    listContainer.innerHTML = '<li style="padding:15px;">ไม่พบไฟล์แบบทดสอบ</li>';
+                    return;
+                }
+
+                // วนลูปสร้าง Link
+                quizFiles.forEach(file => {
+                    const listItem = document.createElement('li');
+                    const link = document.createElement('a');
+                    
+                    // ลิงก์ไปยังไฟล์โดยตรง (Relative path)
+                    link.href = file.name; 
+                    
+                    // จัดรูปแบบชื่อไฟล์ให้สวยงาม (ตัด .html ออก และเปลี่ยน - เป็นวรรค)
+                    const displayName = file.name.replace('.html', '').replace(/-/g, ' ');
+                    
+                    link.innerHTML = `
+                        <span>📄 ${displayName}</span>
+                        <span style="font-size:0.8em; color:#666;">🔗 คลิกเพื่อทำข้อสอบ</span>
+                    `;
+                    
+                    listItem.appendChild(link);
+                    listContainer.appendChild(listItem);
+                });
+
+            } catch (error) {
+                console.error(error);
+                listContainer.innerHTML = `<li style="padding:15px; color:red;">เกิดข้อผิดพลาด: ${error.message}<br>โปรดตรวจสอบชื่อ User/Repo ในโค้ด</li>`;
+            }
+        }
+
+        fetchQuizzes();
+    </script>
+</body>
+</html>

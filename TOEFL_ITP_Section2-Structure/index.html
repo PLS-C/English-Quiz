@@ -18,6 +18,13 @@
             padding-bottom: 10px;
             color: #0969da;
         }
+        h2 {
+            margin-top: 30px;
+            font-size: 1.2em;
+            color: #57606a;
+            border-left: 5px solid #0969da;
+            padding-left: 10px;
+        }
         .loading {
             color: #666;
             font-style: italic;
@@ -54,73 +61,122 @@
             margin-right: 10px;
             color: #6e7781;
         }
+        .empty-msg {
+            padding: 10px;
+            color: #666;
+            font-size: 0.9em;
+        }
     </style>
 </head>
 <body>
 
-    <h1>รายการแบบทดสอบ (Structure)</h1>
-    
-    <ul id="quiz-list">
-        <li class="loading">กำลังโหลดรายชื่อแบบทดสอบ...</li>
-    </ul>
+    <h1>แบบทดสอบ TOEFL ITP (Structure)</h1>
+    <div id="content-area">
+        <p class="loading">กำลังสแกนโฟลเดอร์และไฟล์...</p>
+    </div>
 
     <script>
-        // --- ส่วนการตั้งค่า (แก้ไขตรงนี้) ---
-        const username = 'PLS-C';  // ใส่ชื่อ GitHub User ของคุณ (จากในรูปน่าจะเป็น PLS-C)
-        const repo = 'English-Quiz'; // ชื่อ Repository
-        const folderPath = 'TOEFL_ITP_Section2-Structure'; // ชื่อโฟลเดอร์ที่เก็บไฟล์
-        // --------------------------------
+        // --- ส่วนการตั้งค่า ---
+        const username = 'PLS-C'; 
+        const repo = 'English-Quiz'; 
+        const rootFolder = 'TOEFL_ITP_Section2-Structure'; 
+        // -------------------
 
-        const apiUrl = `https://api.github.com/repos/${username}/${repo}/contents/${folderPath}`;
-        const listContainer = document.getElementById('quiz-list');
+        const contentArea = document.getElementById('content-area');
 
-        async function fetchQuizzes() {
+        async function main() {
             try {
-                const response = await fetch(apiUrl);
-                if (!response.ok) throw new Error('ไม่สามารถดึงข้อมูลได้ หรือหาโฟลเดอร์ไม่เจอ');
+                // 1. ดึงข้อมูลใน Root Folder ก่อน
+                const rootUrl = `https://api.github.com/repos/${username}/${repo}/contents/${rootFolder}`;
+                const response = await fetch(rootUrl);
+                if (!response.ok) throw new Error('ไม่สามารถเข้าถึงโฟลเดอร์หลักได้');
                 
-                const files = await response.json();
+                const items = await response.json();
                 
-                // กรองเอาเฉพาะไฟล์ .html และไม่เอาไฟล์ index.html ตัวเอง
-                const quizFiles = files.filter(file => 
-                    file.name.endsWith('.html') && 
-                    file.name.toLowerCase() !== 'index.html'
-                );
+                contentArea.innerHTML = ''; // ล้างข้อความ Loading
 
-                listContainer.innerHTML = ''; // ล้างข้อความ Loading
+                // แยกรายการเป็น 2 กลุ่ม: ไฟล์ และ โฟลเดอร์
+                const files = items.filter(i => i.type === 'file' && i.name.endsWith('.html') && i.name !== 'index.html');
+                const folders = items.filter(i => i.type === 'dir');
 
-                if (quizFiles.length === 0) {
-                    listContainer.innerHTML = '<li style="padding:15px;">ไม่พบไฟล์แบบทดสอบ</li>';
-                    return;
+                // 2. แสดงไฟล์ที่อยู่นอกสุด (ถ้ามี)
+                if (files.length > 0) {
+                    createSection('รายการทั่วไป', files);
                 }
 
-                // วนลูปสร้าง Link
-                quizFiles.forEach(file => {
-                    const listItem = document.createElement('li');
-                    const link = document.createElement('a');
-                    
-                    // ลิงก์ไปยังไฟล์โดยตรง (Relative path)
-                    link.href = file.name; 
-                    
-                    // จัดรูปแบบชื่อไฟล์ให้สวยงาม (ตัด .html ออก และเปลี่ยน - เป็นวรรค)
-                    const displayName = file.name.replace('.html', '').replace(/-/g, ' ');
-                    
-                    link.innerHTML = `
-                        <span>📄 ${displayName}</span>
-                        <span style="font-size:0.8em; color:#666;">🔗 คลิกเพื่อทำข้อสอบ</span>
-                    `;
-                    
-                    listItem.appendChild(link);
-                    listContainer.appendChild(listItem);
-                });
+                // 3. วนลูปเพื่อดึงข้อมูลในแต่ละโฟลเดอร์ย่อย (เช่น 1-Sentence Structure Basics)
+                for (const folder of folders) {
+                    await fetchFolderContent(folder);
+                }
+
+                if (files.length === 0 && folders.length === 0) {
+                    contentArea.innerHTML = '<p>ไม่พบไฟล์แบบทดสอบ</p>';
+                }
 
             } catch (error) {
                 console.error(error);
-                listContainer.innerHTML = `<li style="padding:15px; color:red;">เกิดข้อผิดพลาด: ${error.message}<br>โปรดตรวจสอบชื่อ User/Repo ในโค้ด</li>`;
+                contentArea.innerHTML = `<p style="color:red">เกิดข้อผิดพลาด: ${error.message}</p>`;
             }
         }
 
-        fetchQuizzes();
+        // ฟังก์ชันสำหรับดึงไฟล์ในโฟลเดอร์ย่อย
+        async function fetchFolderContent(folder) {
+            try {
+                const url = `https://api.github.com/repos/${username}/${repo}/contents/${folder.path}`;
+                const res = await fetch(url);
+                if (!res.ok) return;
+
+                const items = await res.json();
+                // เอาเฉพาะไฟล์ .html
+                const quizFiles = items.filter(i => i.type === 'file' && i.name.endsWith('.html'));
+
+                if (quizFiles.length > 0) {
+                    // ชื่อหัวข้อ (เอาชื่อโฟลเดอร์มาแสดง)
+                    createSection(folder.name, quizFiles, folder.name);
+                }
+            } catch (err) {
+                console.error('Error fetching folder:', folder.name, err);
+            }
+        }
+
+        // ฟังก์ชันสร้าง UI (หัวข้อ + รายการลิงก์)
+        function createSection(title, files, parentFolder = '') {
+            // สร้างหัวข้อ (Header)
+            const header = document.createElement('h2');
+            header.textContent = title.replace(/-/g, ' '); // เปลี่ยนขีดเป็นวรรคให้อ่านง่าย
+            contentArea.appendChild(header);
+
+            // สร้างรายการ (List)
+            const ul = document.createElement('ul');
+            
+            files.forEach(file => {
+                const li = document.createElement('li');
+                const a = document.createElement('a');
+
+                // สร้างลิงก์: ถ้าอยู่ในโฟลเดอร์ ต้องมีชื่อโฟลเดอร์นำหน้า
+                // ใช้ encodeURIComponent เพื่อรองรับชื่อที่มีเว้นวรรค
+                const hrefPath = parentFolder 
+                    ? `${encodeURIComponent(parentFolder)}/${encodeURIComponent(file.name)}`
+                    : file.name;
+
+                a.href = hrefPath;
+
+                // ตกแต่งชื่อไฟล์ให้สวยงาม
+                const displayName = file.name.replace('.html', '').replace(/-/g, ' ');
+
+                a.innerHTML = `
+                    <span>📄 ${displayName}</span>
+                    <span style="font-size:0.8em; color:#666;">🔗 คลิกเพื่อทำข้อสอบ</span>
+                `;
+                
+                li.appendChild(a);
+                ul.appendChild(li);
+            });
+
+            contentArea.appendChild(ul);
+        }
+
+        main();
     </script>
 </body>
 </html>

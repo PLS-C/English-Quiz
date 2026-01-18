@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TOEFL ITP Basics: Level 1 (Vocab Booster Set 5)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@300;400;600&family=Sarabun:wght@400;600&display=swap" rel="stylesheet">
+    <!-- Phosphor Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <style>
+        body { font-family: 'Sarabun', 'Noto Sans Thai', sans-serif; }
+        .option-btn { transition: all 0.2s; }
+        .fade-in { animation: fadeIn 0.3s ease-out; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
+        
+        .rationale-scroll::-webkit-scrollbar { width: 6px; }
+        .rationale-scroll::-webkit-scrollbar-track { background: #f1f1f1; }
+        .rationale-scroll::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 3px; }
+    </style>
+</head>
+<body class="bg-slate-100 min-h-screen flex items-center justify-center p-4">
+
+    <div class="bg-white rounded-2xl shadow-xl w-full max-w-2xl overflow-hidden border border-slate-200 flex flex-col max-h-[95vh]" id="app-container">
+        
+        <!-- Header -->
+        <div class="bg-violet-700 p-5 text-white flex-none relative overflow-hidden">
+            <div class="relative z-10 flex justify-between items-center">
+                <div>
+                    <h1 class="text-xl font-bold flex items-center gap-2">
+                        <i class="ph ph-book-open-text text-2xl"></i> TOEFL Structure & Vocab
+                    </h1>
+                    <p class="text-violet-200 text-xs mt-1">Set 4: Basic Noun/Verb Homonyms</p>
+                </div>
+                <div class="text-right">
+                    <div class="text-xs text-violet-200 uppercase tracking-wide">Score</div>
+                    <div class="text-2xl font-bold" id="score-display">0</div>
+                </div>
+            </div>
+            <div class="absolute -bottom-8 -right-8 w-32 h-32 bg-violet-500 rounded-full opacity-30 blur-xl"></div>
+        </div>
+
+        <!-- Progress Bar -->
+        <div class="w-full bg-gray-100 h-1.5 flex-none">
+            <div class="bg-violet-400 h-1.5 transition-all duration-300 ease-out" style="width: 0%" id="progress-bar"></div>
+        </div>
+
+        <!-- Scrollable Content Area -->
+        <div class="p-6 overflow-y-auto flex-grow rationale-scroll" id="content-area">
+            
+            <!-- Question View -->
+            <div id="question-view" class="fade-in">
+                <div class="flex justify-between items-center mb-4">
+                    <span class="px-3 py-1 bg-gray-100 text-gray-600 rounded-full text-xs font-bold tracking-wide" id="question-count">QUESTION 1/10</span>
+                </div>
+
+                <!-- Question Text -->
+                <div class="mb-6">
+                    <h2 class="text-xl text-gray-900 font-semibold leading-relaxed mb-2" id="question-text">
+                        Loading...
+                    </h2>
+                    <!-- Thai Translation (Hidden by default) -->
+                    <p class="hidden text-violet-700 text-sm italic font-medium bg-violet-50 inline-block px-3 py-1 rounded-lg border border-violet-100 fade-in" id="question-translation">
+                        Loading...
+                    </p>
+                </div>
+
+                <div class="space-y-3" id="options-container">
+                    <!-- Options injected via JS -->
+                </div>
+
+                <!-- Feedback Area -->
+                <div id="feedback-area" class="hidden mt-6 rounded-xl border overflow-hidden fade-in shadow-sm">
+                    <div class="p-4" id="feedback-header">
+                        <div class="flex items-center gap-2 font-bold text-lg" id="feedback-title"></div>
+                    </div>
+                    
+                    <div class="p-5 bg-gray-50 border-t border-gray-100 text-gray-700 text-sm leading-relaxed space-y-4" id="feedback-content">
+                        <!-- Rationale injected via JS -->
+                    </div>
+
+                    <!-- Vocabulary Section -->
+                    <div class="bg-yellow-50 p-4 border-t border-yellow-100 text-sm text-gray-800">
+                        <div class="font-bold text-yellow-800 flex items-center gap-2 mb-2">
+                            <i class="ph-fill ph-lightbulb"></i> คำศัพท์น่ารู้ (Vocabulary Boost)
+                        </div>
+                        <div id="vocab-content" class="space-y-2 pl-6">
+                            <!-- Vocab injected via JS -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Result View -->
+            <div id="result-view" class="hidden text-center py-8 fade-in h-full flex flex-col justify-center">
+                <div class="mb-6 inline-block p-4 rounded-full bg-violet-50 text-violet-600">
+                    <i class="ph ph-medal text-6xl"></i>
+                </div>
+                <h2 class="text-2xl font-bold text-gray-800 mb-2">Quiz Completed!</h2>
+                <p class="text-gray-500 mb-8">คะแนนรวมของคุณ</p>
+                
+                <div class="flex justify-center items-center mb-8">
+                    <div class="bg-white px-10 py-6 rounded-2xl border border-gray-200 shadow-sm">
+                        <span class="block text-gray-400 text-xs uppercase tracking-wider font-bold mb-1">Total Score</span>
+                        <div class="flex items-baseline gap-1">
+                            <span id="final-score" class="text-5xl font-bold text-violet-600"></span>
+                            <span class="text-gray-400 text-2xl font-medium">/ 10</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="flex gap-3 justify-center">
+                    <button onclick="reviewAnswers()" class="px-6 py-2.5 rounded-lg border border-gray-300 text-gray-700 hover:bg-gray-50 font-medium transition flex items-center gap-2">
+                        <i class="ph ph-eye"></i> Review Answers
+                    </button>
+                    <button onclick="restartQuiz()" class="px-6 py-2.5 rounded-lg bg-violet-600 text-white hover:bg-violet-700 font-medium transition shadow-md hover:shadow-lg flex items-center gap-2">
+                        <i class="ph ph-arrow-counter-clockwise"></i> Try Again
+                    </button>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Footer / Navigation Controls -->
+        <div class="bg-gray-50 p-4 border-t border-gray-200 flex justify-between items-center flex-none" id="footer-controls">
+            <button id="prev-btn" onclick="prevQuestion()" class="hidden px-4 py-2 rounded-lg text-gray-600 hover:bg-gray-200 hover:text-gray-800 transition font-medium text-sm flex items-center gap-2 disabled:opacity-50">
+                <i class="ph ph-arrow-left"></i> Back
+            </button>
+            <div id="spacer" class="hidden"></div>
+            <button id="next-btn" onclick="nextQuestion()" class="hidden bg-gray-800 text-white px-6 py-2.5 rounded-lg hover:bg-gray-900 transition font-medium text-sm flex items-center gap-2 shadow-sm">
+                Next <i class="ph ph-arrow-right"></i>
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // Data Set: Level 1 (Set 4) with Noun/Verb Focus
+        const quizData = [
+            {
+                question: "Product quality __________ to our customers.",
+                translation: "คุณภาพของสินค้า ______ สำหรับลูกค้าของเรา",
+                vocab: [
+                    "<b>Matter</b> (V): มีความสำคัญ (It matters.)",
+                    "<b>Matter</b> (N): เรื่องราว, สสาร"
+                ],
+                options: [
+                    { text: "matters", correct: true, rationale: "ประโยคขาด <b>กริยา (Verb)</b> ครับ<br>• ประธาน <b>Product quality</b> (คุณภาพ) เป็นนามนับไม่ได้ (เอกพจน์)<br>• กริยาจึงเติม s เป็น <b>matters</b> (มีความสำคัญ)" },
+                    { text: "matter", correct: false, rationale: "<b>ผิดพจน์:</b> ใช้กับประธานพหูพจน์ครับ" },
+                    { text: "mattering", correct: false, rationale: "<b>กริยาไม่แท้:</b> V-ing ลอยๆ เป็นกริยาหลักไม่ได้ครับ" },
+                    { text: "to matter", correct: false, rationale: "<b>กริยาไม่แท้:</b> Infinitive เป็นกริยาหลักไม่ได้ครับ" }
+                ]
+            },
+            {
+                question: "The secretary __________ the meeting room yesterday.",
+                translation: "เลขาฯ ______ ห้องประชุมเมื่อวานนี้",
+                vocab: [
+                    "<b>Book</b> (V): จอง (book a ticket)",
+                    "<b>Book</b> (N): หนังสือ"
+                ],
+                options: [
+                    { text: "booked", correct: true, rationale: "ประโยคมีคำบอกเวลา <b>yesterday</b> (อดีต)<br>• ต้องใช้กริยาช่อง 2 (Past Tense) คือ <b>booked</b> (ได้จอง)" },
+                    { text: "books", correct: false, rationale: "<b>ผิด Tense:</b> เป็น Present Tense (ทำเป็นประจำ) ไม่เข้ากับ yesterday ครับ" },
+                    { text: "book", correct: false, rationale: "<b>ผิด Tense/พจน์:</b> ผิดทั้งรูปกริยาและเวลาครับ" },
+                    { text: "booking", correct: false, rationale: "<b>กริยาไม่แท้:</b> V-ing ต้องมี Was/Were นำหน้าครับ" }
+                ]
+            },
+            {
+                question: "Please __________ the envelope clearly.",
+                translation: "กรุณา ______ ซองจดหมายให้ชัดเจน",
+                vocab: [
+                    "<b>Address</b> (V): จ่าหน้าซอง, กล่าวปราศรัย",
+                    "<b>Address</b> (N): ที่อยู่"
+                ],
+                options: [
+                    { text: "address", correct: true, rationale: "หลังคำว่า Please เป็นประโยคคำสั่ง/ขอร้อง<br>• ต้องตามด้วย <b>V.1 (Infinitive)</b> คือ <b>address</b> (จ่าหน้าซอง)" },
+                    { text: "addresses", correct: false, rationale: "<b>ผิดรูปกริยา:</b> หลัง Please ไม่เติม s/es ครับ" },
+                    { text: "addressing", correct: false, rationale: "<b>ผิดรูปกริยา:</b> หลัง Please ไม่ใช้ V-ing ครับ" },
+                    { text: "to address", correct: false, rationale: "<b>ผิดรูปกริยา:</b> หลัง Please ไม่ใช้ to ครับ" }
+                ]
+            },
+            {
+                question: "You must __________ work and family life.",
+                translation: "คุณต้อง ______ การงานและชีวิตครอบครัว",
+                vocab: [
+                    "<b>Balance</b> (V): ทำให้สมดุล, เลี้ยงตัว",
+                    "<b>Balance</b> (N): ความสมดุล"
+                ],
+                options: [
+                    { text: "balance", correct: true, rationale: "หลัง Modal Verb 'must' (ต้อง)<br>• ต้องตามด้วย <b>V.1 (Infinitive)</b> คือ <b>balance</b>" },
+                    { text: "balances", correct: false, rationale: "<b>ผิดรูปกริยา:</b> หลัง must ห้ามเติม s ครับ" },
+                    { text: "balancing", correct: false, rationale: "<b>กริยาไม่แท้:</b> ใช้หลัง must ไม่ได้ครับ" },
+                    { text: "balanced", correct: false, rationale: "<b>ผิดรูปกริยา:</b> หลัง must ไม่ใช้ V.2/V.3 ครับ" }
+                ]
+            },
+            {
+                question: "The __________ shows a decrease in sales.",
+                translation: "______ แสดงให้เห็นถึงยอดขายที่ลดลง",
+                vocab: [
+                    "<b>Record</b> (N): บันทึก, สถิติ",
+                    "<b>Record</b> (V): บันทึกข้อมูล"
+                ],
+                options: [
+                    { text: "record", correct: true, rationale: "หลัง Article 'The' ต้องการ <b>คำนาม (Noun)</b> เป็นประธาน<br>• <b>record</b> (บันทึก/รายงาน) เป็นคำนามที่เหมาะสม" },
+                    { text: "records", correct: false, rationale: "<b>ผิดพจน์:</b> กริยาหลักคือ shows (เติม s) แสดงว่าประธานต้องเป็นเอกพจน์ครับ" },
+                    { text: "recording", correct: false, rationale: "<b>ไม่นิยม:</b> แม้จะเป็น Gerund ได้ แต่บริบทนี้ 'รายงาน/บันทึก' เหมาะสมกว่า 'การอัดเสียง' ครับ" },
+                    { text: "recorded", correct: false, rationale: "<b>ผิดหน้าที่คำ:</b> เป็น V.2/V.3 หรือ Adjective ครับ" }
+                ]
+            },
+            {
+                question: "They entered a highly __________.",
+                translation: "พวกเขาเข้าสู่ ______ ที่มีการแข่งขันสูง",
+                vocab: [
+                    "<b>Market</b> (N): ตลาด",
+                    "<b>Market</b> (V): ทำการตลาด"
+                ],
+                options: [
+                    { text: "competitive market", correct: true, rationale: "ต้องการคำนามและส่วนขยาย<br>• เรียงลำดับ: <b>Adjective + Noun</b><br>• <b>competitive</b> (Adj) + <b>market</b> (N)" },
+                    { text: "market competitive", correct: false, rationale: "<b>สลับตำแหน่ง:</b> Adjective ต้องวางหน้า Noun ครับ" },
+                    { text: "compete market", correct: false, rationale: "<b>ผิดหน้าที่คำ:</b> Compete เป็น Verb ครับ (ต้องใช้ Adjective ขยาย Noun)" },
+                    { text: "market competition", correct: false, rationale: "<b>ผิดความหมาย:</b> Competition แปลว่า การแข่งขัน (ไม่ใช่ ตลาดที่มีการแข่งขัน)" }
+                ]
+            },
+            {
+                question: "New employees __________ for two weeks.",
+                translation: "พนักงานใหม่ ______ เป็นเวลาสองสัปดาห์",
+                vocab: [
+                    "<b>Train</b> (V): ฝึกฝน, อบรม",
+                    "<b>Train</b> (N): รถไฟ"
+                ],
+                options: [
+                    { text: "train", correct: true, rationale: "ประโยคขาด <b>กริยา (Verb)</b><br>• ประธาน <b>New employees</b> (พหูพจน์)<br>• กริยาจึงไม่ต้องเติม s คือ <b>train</b> (ฝึกงาน)" },
+                    { text: "trains", correct: false, rationale: "<b>ผิดพจน์:</b> ใช้กับประธานเอกพจน์ครับ" },
+                    { text: "training", correct: false, rationale: "<b>กริยาไม่แท้:</b> V-ing ต้องมี Are/Were นำหน้าครับ" },
+                    { text: "trainer", correct: false, rationale: "<b>ผิดหน้าที่คำ:</b> Trainer เป็นคำนาม (ครูฝึก) ครับ" }
+                ]
+            },
+            {
+                question: "She raised an interesting __________ during the discussion.",
+                translation: "เธอหยิบยก ______ ที่น่าสนใจขึ้นมาในระหว่างการอภิปราย",
+                vocab: [
+                    "<b>Point</b> (N): ประเด็น, จุด",
+                    "<b>Point</b> (V): ชี้"
+                ],
+                options: [
+                    { text: "point", correct: true, rationale: "หลัง Article 'an' และ Adjective 'interesting'<br>• ต้องการ <b>คำนามเอกพจน์</b> คือ <b>point</b> (ประเด็น)" },
+                    { text: "points", correct: false, rationale: "<b>ผิดพจน์:</b> an ใช้กับนามเอกพจน์เท่านั้นครับ" },
+                    { text: "pointed", correct: false, rationale: "<b>ผิดหน้าที่คำ:</b> เป็น V.2/V.3 หรือ Adjective ครับ" },
+                    { text: "pointing", correct: false, rationale: "<b>ผิดหน้าที่คำ:</b> เป็น V-ing ครับ" }
+                ]
+            },
+            {
+                question: "Lawyers __________ legal documents every day.",
+                translation: "ทนายความ ______ เอกสารทางกฎหมายทุกวัน",
+                vocab: [
+                    "<b>File</b> (V): ยื่นเรื่อง, จัดเก็บเอกสาร",
+                    "<b>File</b> (N): แฟ้ม, ตะไบ"
+                ],
+                options: [
+                    { text: "file", correct: true, rationale: "ประโยคขาด <b>กริยา (Verb)</b><br>• ประธาน <b>Lawyers</b> (พหูพจน์)<br>• กริยา Present Simple จึงไม่เติม s คือ <b>file</b>" },
+                    { text: "files", correct: false, rationale: "<b>ผิดพจน์:</b> ใช้กับประธานเอกพจน์ครับ" },
+                    { text: "filing", correct: false, rationale: "<b>กริยาไม่แท้:</b> V-ing ลอยๆ เป็นกริยาหลักไม่ได้ครับ" },
+                    { text: "filed", correct: false, rationale: "<b>ผิด Tense:</b> มีคำว่า 'every day' ควรใช้ Present Tense ครับ" }
+                ]
+            },
+            {
+                question: "The ship __________ towards the harbor.",
+                translation: "เรือ ______ มุ่งหน้าไปยังท่าเรือ",
+                vocab: [
+                    "<b>Head</b> (V): มุ่งหน้าไป",
+                    "<b>Head</b> (N): ศีรษะ, หัวหน้า"
+                ],
+                options: [
+                    { text: "headed", correct: true, rationale: "ประโยคขาด <b>กริยา (Verb)</b><br>• <b>headed</b> (V.2) แปลว่า 'ได้มุ่งหน้าไป' (เป็นรูปอดีตที่สมบูรณ์ในตัวเอง)" },
+                    { text: "heads", correct: false, rationale: "<b>เป็นไปได้แต่น้อยกว่า:</b> ถ้าใช้ Present (heads) มักใช้เล่าเรื่องทั่วไป แต่ในบริบทนี้การเล่าเหตุการณ์ (Past) จะพบบ่อยกว่าครับ" },
+                    { text: "heading", correct: false, rationale: "<b>กริยาไม่แท้:</b> V-ing ต้องมี is/was นำหน้าครับ (The ship is heading...)" },
+                    { text: "head", correct: false, rationale: "<b>ผิดพจน์:</b> ประธานเอกพจน์ กริยาต้องเติม s (ถ้าเป็น Present) ครับ" }
+                ]
+            }
+        ];
+
+        let currentQuestion = 0;
+        let userAnswers = new Array(quizData.length).fill(null);
+        let isAnswered = new Array(quizData.length).fill(false);
+
+        function initQuiz() {
+            currentQuestion = 0;
+            userAnswers.fill(null);
+            isAnswered.fill(false);
+            
+            document.getElementById('result-view').classList.add('hidden');
+            document.getElementById('question-view').classList.remove('hidden');
+            document.getElementById('footer-controls').classList.remove('hidden');
+            document.getElementById('question-view').classList.add('fade-in');
+            
+            loadQuestion(0);
+        }
+
+        function loadQuestion(index) {
+            currentQuestion = index;
+            const data = quizData[currentQuestion];
+            const answered = isAnswered[currentQuestion];
+            const userChoice = userAnswers[currentQuestion];
+
+            document.getElementById('question-count').innerText = `QUESTION ${currentQuestion + 1}/${quizData.length}`;
+            
+            const currentScore = userAnswers.reduce((acc, ans, idx) => {
+                if (ans !== null && quizData[idx].options[ans].correct) return acc + 1;
+                return acc;
+            }, 0);
+            document.getElementById('score-display').innerText = currentScore;
+
+            // Render Text
+            document.getElementById('question-text').innerHTML = data.question;
+            
+            // Handle Translation Visibility
+            const translationEl = document.getElementById('question-translation');
+            translationEl.innerHTML = `<i class="ph-bold ph-translate"></i> ` + data.translation;
+            
+            if (answered) {
+                translationEl.classList.remove('hidden');
+            } else {
+                translationEl.classList.add('hidden');
+            }
+            
+            const progress = ((currentQuestion) / quizData.length) * 100;
+            document.getElementById('progress-bar').style.width = `${progress}%`;
+
+            const optionsContainer = document.getElementById('options-container');
+            optionsContainer.innerHTML = '';
+            
+            data.options.forEach((option, idx) => {
+                const btn = document.createElement('button');
+                btn.className = `option-btn w-full text-left p-4 rounded-xl border border-gray-200 focus:outline-none mb-1 bg-white text-gray-700 font-medium flex items-start gap-3`;
+                
+                const marker = `<span class="inline-flex items-center justify-center w-6 h-6 rounded-full bg-violet-50 text-violet-600 text-xs font-bold flex-shrink-0 mt-0.5">${String.fromCharCode(65 + idx)}</span>`;
+                btn.innerHTML = `${marker} <span class="leading-relaxed">${option.text}</span>`;
+                btn.onclick = () => handleAnswer(idx);
+
+                if (answered) {
+                    btn.disabled = true;
+                    if (option.correct) {
+                        btn.className = `w-full text-left p-4 rounded-xl border-2 border-green-500 bg-green-50 text-green-800 font-medium flex items-start gap-3 shadow-sm`;
+                        btn.innerHTML = `<i class="ph-fill ph-check-circle text-2xl text-green-500 flex-shrink-0"></i> <span class="leading-relaxed">${option.text}</span>`;
+                    } else if (idx === userChoice && !option.correct) {
+                        btn.className = `w-full text-left p-4 rounded-xl border-2 border-red-400 bg-red-50 text-red-800 font-medium flex items-start gap-3 opacity-90`;
+                        btn.innerHTML = `<i class="ph-fill ph-x-circle text-2xl text-red-500 flex-shrink-0"></i> <span class="leading-relaxed">${option.text}</span>`;
+                    } else {
+                        btn.className += ' opacity-50 grayscale';
+                    }
+                } else {
+                    btn.classList.add('hover:bg-violet-50', 'hover:border-violet-300');
+                }
+                optionsContainer.appendChild(btn);
+            });
+
+            // Feedback Logic
+            const feedbackArea = document.getElementById('feedback-area');
+            const feedbackTitle = document.getElementById('feedback-title');
+            const feedbackContent = document.getElementById('feedback-content');
+            const feedbackHeader = document.getElementById('feedback-header');
+            const vocabContent = document.getElementById('vocab-content');
+
+            if (answered) {
+                feedbackArea.classList.remove('hidden');
+                feedbackArea.classList.add('fade-in');
+                
+                const isCorrect = quizData[currentQuestion].options[userChoice].correct;
+                
+                // Vocab Section
+                vocabContent.innerHTML = data.vocab.map(v => `<div class="flex items-start gap-2"><i class="ph-bold ph-dot text-yellow-600 mt-1"></i><span>${v}</span></div>`).join('');
+
+                if (isCorrect) {
+                    feedbackHeader.className = "p-4 bg-green-100 text-green-800 border-b border-green-200";
+                    feedbackTitle.innerHTML = '<i class="ph-fill ph-check-circle"></i> ถูกต้อง! (Correct)';
+                    feedbackContent.innerHTML = quizData[currentQuestion].options[userChoice].rationale;
+                } else {
+                    feedbackHeader.className = "p-4 bg-red-100 text-red-800 border-b border-red-200";
+                    feedbackTitle.innerHTML = '<i class="ph-fill ph-warning-circle"></i> ไม่ถูกต้อง (Incorrect)';
+                    
+                    const correctOptionIndex = quizData[currentQuestion].options.findIndex(o => o.correct);
+                    const correctRationale = quizData[currentQuestion].options[correctOptionIndex].rationale;
+                    
+                    feedbackContent.innerHTML = `
+                        <div>
+                            <span class="font-bold text-green-700">คำตอบที่ถูกคือข้อ ${String.fromCharCode(65+correctOptionIndex)}</span> เพราะ ${correctRationale}
+                        </div>
+                    `;
+                }
+            } else {
+                feedbackArea.classList.add('hidden');
+            }
+
+            const prevBtn = document.getElementById('prev-btn');
+            const nextBtn = document.getElementById('next-btn');
+
+            if (currentQuestion > 0) {
+                prevBtn.classList.remove('hidden');
+                prevBtn.disabled = false;
+            } else {
+                prevBtn.classList.add('hidden');
+            }
+
+            if (answered) {
+                nextBtn.classList.remove('hidden');
+                if (currentQuestion === quizData.length - 1) {
+                    nextBtn.innerHTML = 'See Results <i class="ph-bold ph-chart-bar"></i>';
+                } else {
+                    nextBtn.innerHTML = 'Next <i class="ph-bold ph-arrow-right"></i>';
+                }
+            } else {
+                nextBtn.classList.add('hidden');
+            }
+            document.getElementById('content-area').scrollTop = 0;
+        }
+
+        function handleAnswer(selectedIndex) {
+            userAnswers[currentQuestion] = selectedIndex;
+            isAnswered[currentQuestion] = true;
+            loadQuestion(currentQuestion);
+            setTimeout(() => {
+                 document.getElementById('content-area').scrollTo({
+                    top: document.getElementById('content-area').scrollHeight,
+                    behavior: 'smooth'
+                });
+            }, 100);
+        }
+
+        function prevQuestion() {
+            if (currentQuestion > 0) {
+                currentQuestion--;
+                loadQuestion(currentQuestion);
+            }
+        }
+
+        function nextQuestion() {
+            if (currentQuestion < quizData.length - 1) {
+                currentQuestion++;
+                loadQuestion(currentQuestion);
+            } else {
+                showResult();
+            }
+        }
+
+        function showResult() {
+            document.getElementById('question-view').classList.add('hidden');
+            document.getElementById('footer-controls').classList.add('hidden');
+            document.getElementById('result-view').classList.remove('hidden');
+            
+            const finalScore = userAnswers.reduce((acc, ans, idx) => {
+                if (ans !== null && quizData[idx].options[ans].correct) return acc + 1;
+                return acc;
+            }, 0);
+
+            document.getElementById('final-score').innerText = finalScore;
+            document.getElementById('progress-bar').style.width = `100%`;
+        }
+
+        function reviewAnswers() {
+            document.getElementById('result-view').classList.add('hidden');
+            document.getElementById('question-view').classList.remove('hidden');
+            document.getElementById('footer-controls').classList.remove('hidden');
+            loadQuestion(0);
+        }
+
+        function restartQuiz() {
+            initQuiz();
+        }
+
+        initQuiz();
+    </script>
+</body>
+</html>

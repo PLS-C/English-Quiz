@@ -379,7 +379,7 @@
                     
                     const correctOptionIndex = quizData[currentQuestion].options.findIndex(o => o.correct);
                     const correctRationale = quizData[currentQuestion].options[correctOptionIndex].rationale;
-                    const wrongRationale = quizData[currentQuestion].options[userChoice].rationale; // Get reason for wrong answer
+                    const wrongRationale = quizData[currentQuestion].options[userChoice].rationale;
                     
                     feedbackContent.innerHTML = `
                         <div class="mb-3 pb-3 border-b border-gray-200">

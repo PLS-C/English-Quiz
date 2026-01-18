@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TOEFL ITP Basics: Level 1</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Noto Sans Thai', sans-serif; }
+        .option-btn { transition: all 0.2s; }
+        .fade-in { animation: fadeIn 0.4s ease-out; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    </style>
+</head>
+<body class="bg-teal-50 min-h-screen flex items-center justify-center p-4">
+
+    <div class="bg-white rounded-2xl shadow-xl w-full max-w-2xl overflow-hidden border border-teal-100" id="quiz-container">
+        <!-- Header -->
+        <div class="bg-teal-600 p-6 text-white relative overflow-hidden">
+            <div class="relative z-10">
+                <h1 class="text-2xl font-bold">TOEFL ITP Practice: Level 1</h1>
+                <p class="text-teal-100 text-sm mt-1">Sentence Structure Basics & Word Order</p>
+            </div>
+            <div class="absolute top-0 right-0 -mt-4 -mr-4 w-24 h-24 bg-teal-500 rounded-full opacity-50"></div>
+        </div>
+
+        <!-- Progress Bar -->
+        <div class="w-full bg-gray-100 h-1.5">
+            <div class="bg-teal-400 h-1.5 transition-all duration-500 ease-out" style="width: 0%" id="progress-bar"></div>
+        </div>
+
+        <!-- Question Section -->
+        <div class="p-6 md:p-8">
+            <div class="flex justify-between items-center mb-6 text-sm text-gray-500 font-medium">
+                <span id="question-count">Question 1 / 10</span>
+                <span id="score-display" class="text-teal-600">Score: 0</span>
+            </div>
+
+            <div id="question-area" class="fade-in">
+                <h2 class="text-xl text-gray-800 mb-8 leading-relaxed font-medium" id="question-text">
+                    Loading...
+                </h2>
+
+                <div class="space-y-3" id="options-container"></div>
+
+                <!-- Feedback Area -->
+                <div id="feedback-area" class="hidden mt-6 p-5 rounded-xl border-l-4 shadow-sm transition-all">
+                    <div class="flex items-start">
+                        <div class="flex-shrink-0 mr-3" id="feedback-icon"></div>
+                        <div>
+                            <p class="font-bold text-lg mb-1" id="feedback-title"></p>
+                            <p class="text-gray-600 text-sm leading-relaxed" id="feedback-rationale"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Result Section -->
+            <div id="result-area" class="hidden text-center py-10 fade-in">
+                <div class="text-7xl mb-6">🎯</div>
+                <h2 class="text-3xl font-bold text-gray-800 mb-2">Practice Complete!</h2>
+                <div class="text-gray-500 mb-8">You have finished Level 1</div>
+                
+                <div class="flex justify-center items-center mb-8">
+                    <div class="bg-teal-50 px-8 py-4 rounded-2xl border border-teal-100">
+                        <span class="block text-gray-500 text-sm uppercase tracking-wide font-semibold">Your Score</span>
+                        <span id="final-score" class="text-5xl font-bold text-teal-600"></span>
+                        <span class="text-gray-400 text-2xl">/ 10</span>
+                    </div>
+                </div>
+
+                <div id="message-result" class="text-lg mb-8 font-medium text-gray-700"></div>
+                
+                <button onclick="restartQuiz()" class="bg-teal-600 text-white px-8 py-3 rounded-xl hover:bg-teal-700 font-semibold transition shadow-lg hover:shadow-xl transform hover:-translate-y-0.5">
+                    Try Again
+                </button>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="bg-gray-50 p-4 border-t border-gray-100 flex justify-end" id="footer-controls">
+            <button id="next-btn" onclick="nextQuestion()" class="hidden bg-gray-800 text-white px-6 py-2.5 rounded-lg hover:bg-gray-900 transition font-medium flex items-center">
+                Next Question 
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                </svg>
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // Data Set: Level 1 (Basics & Word Order)
+        const quizData = [
+            {
+                question: "The library contains a __________ of historical documents.",
+                options: [
+                    { text: "collection large rare", correct: false, rationale: "Incorrect order. Size (large) usually comes before Opinion/Type." },
+                    { text: "large rare collection", correct: true, rationale: "Correct! Adjective order: Size (large) + Quality (rare) + Noun." },
+                    { text: "rare large collection", correct: false, rationale: "Incorrect. Size should come first." },
+                    { text: "collection of large rare", correct: false, rationale: "Incorrect noun phrase structure." }
+                ]
+            },
+            {
+                question: "__________ is a primary component of the Earth's atmosphere.",
+                options: [
+                    { text: "Nitrogen", correct: true, rationale: "Correct! The sentence needs a simple subject (Noun)." },
+                    { text: "That nitrogen", correct: false, rationale: "Incorrect. Creates a noun clause, not a main subject." },
+                    { text: "Nitrogen gas it", correct: false, rationale: "Incorrect. Double subject ('gas' + 'it')." },
+                    { text: "Although nitrogen", correct: false, rationale: "Incorrect. 'Although' is a connector." }
+                ]
+            },
+            {
+                question: "The new software program __________ extremely efficient.",
+                options: [
+                    { text: "is", correct: true, rationale: "Correct! Singular verb 'is' agrees with subject 'program'." },
+                    { text: "are", correct: false, rationale: "Incorrect. Subject is singular." },
+                    { text: "being", correct: false, rationale: "Incorrect. Not a finite main verb." },
+                    { text: "to be", correct: false, rationale: "Incorrect. Infinitive cannot be main verb." }
+                ]
+            },
+            {
+                question: "Biologists often use __________ to observe cells.",
+                options: [
+                    { text: "electronic microscopes powerful", correct: false, rationale: "Incorrect. Adjectives must precede the noun." },
+                    { text: "microscopes powerful electronic", correct: false, rationale: "Incorrect. Noun is placed before adjectives." },
+                    { text: "powerful electronic microscopes", correct: true, rationale: "Correct! Order: Opinion (powerful) + Type (electronic) + Noun." },
+                    { text: "electronic powerful microscopes", correct: false, rationale: "Incorrect. Opinion usually precedes Type." }
+                ]
+            },
+            {
+                question: "The rapid growth of the city __________ traffic congestion.",
+                options: [
+                    { text: "causing", correct: false, rationale: "Incorrect. Participle is not a main verb." },
+                    { text: "causes", correct: true, rationale: "Correct! Main verb 'causes' (singular) agrees with 'growth'." },
+                    { text: "cause", correct: false, rationale: "Incorrect. Subject 'growth' is singular." },
+                    { text: "which causes", correct: false, rationale: "Incorrect. Creates a relative clause fragment." }
+                ]
+            },
+            {
+                question: "A __________ requires precise measurements.",
+                options: [
+                    { text: "chemist experiment", correct: false, rationale: "Incorrect word choice (chemist = person)." },
+                    { text: "chemistry experiment", correct: true, rationale: "Correct! Compound noun (Noun + Noun)." },
+                    { text: "experiment chemistry", correct: false, rationale: "Incorrect word order for compound noun." },
+                    { text: "chemical experiment of", correct: false, rationale: "Incorrect structure with extra preposition." }
+                ]
+            },
+            {
+                question: "The director submitted a __________ report to the board.",
+                options: [
+                    { text: "complete usually", correct: false, rationale: "Incorrect order." },
+                    { text: "usually complete", correct: true, rationale: "Correct! Adverb (usually) modifies Adjective (complete)." },
+                    { text: "usual complete", correct: false, rationale: "Incorrect. Use Adverb to modify Adjective." },
+                    { text: "complete usual", correct: false, rationale: "Incorrect order." }
+                ]
+            },
+            {
+                question: "__________, the professor explained the theory clearly.",
+                options: [
+                    { text: "During the lecture", correct: true, rationale: "Correct! Prepositional phrase introducing the sentence." },
+                    { text: "The lecture", correct: false, rationale: "Incorrect. Creates double subject with 'professor'." },
+                    { text: "Was the lecture", correct: false, rationale: "Incorrect. Question format." },
+                    { text: "The lecture was", correct: false, rationale: "Incorrect. Creates a run-on sentence." }
+                ]
+            },
+            {
+                question: "Solar panels convert sunlight into __________.",
+                options: [
+                    { text: "energy useful", correct: false, rationale: "Incorrect. Adjective follows noun." },
+                    { text: "useful energy", correct: true, rationale: "Correct! Adjective + Noun acting as object of preposition." },
+                    { text: "usefully energy", correct: false, rationale: "Incorrect. Adverb cannot modify noun directly." },
+                    { text: "energy usefully", correct: false, rationale: "Incorrect word order." }
+                ]
+            },
+            {
+                question: "Many species of birds __________ south for the winter.",
+                options: [
+                    { text: "migration", correct: false, rationale: "Incorrect. This is a Noun." },
+                    { text: "migrating", correct: false, rationale: "Incorrect. This is a Participle." },
+                    { text: "migrate", correct: true, rationale: "Correct! Plural verb 'migrate' matches 'birds'." },
+                    { text: "to migrate", correct: false, rationale: "Incorrect. This is an Infinitive." }
+                ]
+            }
+        ];
+
+        let currentQuestion = 0;
+        let score = 0;
+        let answered = false;
+
+        function initQuiz() {
+            currentQuestion = 0;
+            score = 0;
+            document.getElementById('result-area').classList.add('hidden');
+            document.getElementById('question-area').classList.remove('hidden');
+            document.getElementById('footer-controls').classList.remove('hidden');
+            loadQuestion();
+        }
+
+        function loadQuestion() {
+            answered = false;
+            const data = quizData[currentQuestion];
+            
+            document.getElementById('question-count').innerText = `Question ${currentQuestion + 1} / ${quizData.length}`;
+            document.getElementById('score-display').innerText = `Score: ${score}`;
+            document.getElementById('question-text').innerHTML = data.question;
+            
+            const progress = ((currentQuestion) / quizData.length) * 100;
+            document.getElementById('progress-bar').style.width = `${progress}%`;
+
+            const optionsContainer = document.getElementById('options-container');
+            optionsContainer.innerHTML = '';
+            
+            data.options.forEach((option, index) => {
+                const btn = document.createElement('button');
+                btn.className = `option-btn w-full text-left p-4 rounded-xl border border-gray-200 hover:bg-teal-50 hover:border-teal-300 focus:outline-none mb-2 bg-white text-gray-700 font-medium`;
+                btn.innerHTML = `<span class="inline-block w-8 font-bold text-teal-400">${String.fromCharCode(65 + index)}.</span> ${option.text}`;
+                btn.onclick = () => checkAnswer(index, btn);
+                optionsContainer.appendChild(btn);
+            });
+
+            document.getElementById('feedback-area').classList.add('hidden');
+            document.getElementById('next-btn').classList.add('hidden');
+        }
+
+        function checkAnswer(selectedIndex, selectedBtn) {
+            if (answered) return;
+            answered = true;
+
+            const data = quizData[currentQuestion];
+            const isCorrect = data.options[selectedIndex].correct;
+            const feedbackArea = document.getElementById('feedback-area');
+            const feedbackTitle = document.getElementById('feedback-title');
+            const feedbackRationale = document.getElementById('feedback-rationale');
+            const feedbackIcon = document.getElementById('feedback-icon');
+            const allBtns = document.querySelectorAll('.option-btn');
+
+            allBtns.forEach((btn, index) => {
+                btn.disabled = true;
+                if (data.options[index].correct) {
+                    btn.classList.add('bg-green-100', 'border-green-500', 'text-green-800');
+                } else if (index === selectedIndex && !isCorrect) {
+                    btn.classList.add('bg-red-100', 'border-red-500', 'text-red-800');
+                } else {
+                    btn.classList.add('opacity-50', 'bg-gray-50');
+                }
+            });
+
+            feedbackArea.classList.remove('hidden');
+            if (isCorrect) {
+                score++;
+                feedbackArea.className = "mt-6 p-5 rounded-xl border-l-4 shadow-sm bg-green-50 border-green-500 block fade-in";
+                feedbackTitle.innerText = "Excellent!";
+                feedbackTitle.className = "font-bold text-lg mb-1 text-green-700";
+                feedbackIcon.innerHTML = '<span class="text-2xl">✅</span>';
+            } else {
+                feedbackArea.className = "mt-6 p-5 rounded-xl border-l-4 shadow-sm bg-red-50 border-red-500 block fade-in";
+                feedbackTitle.innerText = "Needs Improvement";
+                feedbackTitle.className = "font-bold text-lg mb-1 text-red-700";
+                feedbackIcon.innerHTML = '<span class="text-2xl">❌</span>';
+            }
+
+            feedbackRationale.innerText = data.options[selectedIndex].rationale;
+            document.getElementById('score-display').innerText = `Score: ${score}`;
+            document.getElementById('next-btn').classList.remove('hidden');
+        }
+
+        function nextQuestion() {
+            currentQuestion++;
+            if (currentQuestion < quizData.length) {
+                loadQuestion();
+            } else {
+                showResult();
+            }
+        }
+
+        function showResult() {
+            document.getElementById('question-area').classList.add('hidden');
+            document.getElementById('footer-controls').classList.add('hidden');
+            document.getElementById('result-area').classList.remove('hidden');
+            
+            document.getElementById('final-score').innerText = score;
+            document.getElementById('progress-bar').style.width = `100%`;
+
+            const msgDiv = document.getElementById('message-result');
+            if (score === 10) {
+                msgDiv.innerText = "Perfect! Your foundation is solid.";
+            } else if (score >= 7) {
+                msgDiv.innerText = "Great job! You understand the basics well.";
+            } else {
+                msgDiv.innerText = "Keep reviewing basic sentence structures.";
+            }
+        }
+
+        function restartQuiz() {
+            initQuiz();
+        }
+
+        initQuiz();
+    </script>
+</body>
+</html>

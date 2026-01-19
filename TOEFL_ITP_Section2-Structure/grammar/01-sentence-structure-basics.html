@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sentence Structure Basics | TOEFL ITP</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f6f8fa;
+            color: #24292f;
+            line-height: 1.6;
+        }
+
+        /* --- Header & Navigation --- */
+        .header {
+            border-bottom: 1px solid #d0d7de;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+        .back-btn {
+            display: inline-block;
+            margin-bottom: 15px;
+            text-decoration: none;
+            color: #0969da;
+            font-weight: 500;
+        }
+        .back-btn:hover { text-decoration: underline; }
+        
+        h1 { color: #0969da; margin: 0; }
+        h2 { border-left: 5px solid #0969da; padding-left: 15px; margin-top: 40px; color: #1f2328; }
+
+        /* --- Content Box --- */
+        .rule-box {
+            background: white;
+            border: 1px solid #d0d7de;
+            border-radius: 6px;
+            padding: 25px;
+            margin-bottom: 20px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+        }
+
+        /* --- Patterns & Examples --- */
+        .pattern-box {
+            background-color: #f6f8fa;
+            border: 1px dashed #0969da;
+            padding: 15px;
+            border-radius: 6px;
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: bold;
+            color: #0969da;
+            margin: 10px 0;
+            text-align: center;
+        }
+
+        .example {
+            background-color: #f1f8ff;
+            padding: 15px;
+            border-radius: 6px;
+            margin: 10px 0;
+            border-left: 4px solid #0969da;
+        }
+        .correct { color: #1a7f37; font-weight: bold; } 
+        .wrong { color: #cf222e; text-decoration: line-through; margin-right: 5px; } 
+        .highlight { background-color: #fff8c5; padding: 2px 5px; border-radius: 3px; font-weight: bold; }
+
+        /* --- Warning Box --- */
+        .trap-box {
+            background-color: #ffebe9;
+            border: 1px solid #ff818266;
+            padding: 15px;
+            margin-top: 15px;
+            border-radius: 6px;
+        }
+        .trap-title { color: #cf222e; font-weight: bold; display: block; margin-bottom: 5px; }
+
+        /* --- Word Order Visual --- */
+        .word-order-container {
+            display: flex;
+            gap: 5px;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin: 15px 0;
+        }
+        .wo-box {
+            padding: 8px 12px;
+            border-radius: 4px;
+            font-size: 0.9em;
+            text-align: center;
+            color: white;
+        }
+        .wo-det { background-color: #6e7781; }
+        .wo-adv { background-color: #d2a8ff; color: #24292f; }
+        .wo-adj { background-color: #ff7b72; color: #fff; }
+        .wo-noun { background-color: #0969da; }
+
+        /* --- Quiz --- */
+        .quiz-container { margin-top: 40px; }
+        .question-card {
+            background: white;
+            padding: 20px;
+            border-radius: 6px;
+            border: 1px solid #d0d7de;
+            margin-bottom: 20px;
+        }
+        .q-text { font-weight: bold; margin-bottom: 15px; font-size: 1.1em; }
+        .options { display: flex; flex-direction: column; gap: 8px; }
+        .option-btn {
+            text-align: left;
+            padding: 10px 15px;
+            border: 1px solid #d0d7de;
+            border-radius: 6px;
+            background: white;
+            cursor: pointer;
+            transition: 0.2s;
+            font-size: 1em;
+        }
+        .option-btn:hover { background-color: #f6f8fa; border-color: #0969da; }
+        
+        .option-btn.correct-ans {
+            background-color: #dafbe1;
+            border-color: #1a7f37;
+            color: #1a7f37;
+            font-weight: bold;
+        }
+        .option-btn.wrong-ans {
+            background-color: #ffebe9;
+            border-color: #cf222e;
+            color: #cf222e;
+        }
+
+        .rationale {
+            margin-top: 15px;
+            padding: 15px;
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            font-size: 0.95em;
+            display: none; /* ซ่อนไว้ก่อน */
+        }
+        .rationale.show { display: block; animation: fadeIn 0.3s; }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-5px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* --- Footer --- */
+        .footer {
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 1px solid #e1e4e8;
+            text-align: center;
+            font-size: 0.85em;
+            color: #6e7781;
+        }
+        .ai-badge {
+            display: inline-flex;
+            align-items: center;
+            background-color: #f3f4f6;
+            padding: 5px 10px;
+            border-radius: 20px;
+            border: 1px solid #d0d7de;
+            margin-bottom: 10px;
+            font-weight: 500;
+            color: #57606a;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <a href="../index.html" class="back-btn">← กลับไปหน้าหลัก</a>
+        <h1>Sentence Structure Basics</h1>
+        <p>ปูพื้นฐานโครงสร้างประโยค: Subject, Verb และลำดับคำที่ถูกต้อง</p>
+    </div>
+
+    <div class="rule-box">
+        <h2>1. Subject + Verb Agreement</h2>
+        <p>กฎเหล็กข้อแรก: ประธานกับกริยาต้องเข้าคู่กันเสมอ (Singular/Plural)</p>
+        
+        <div class="pattern-box">
+            Subject เอกพจน์ → Verb เติม s/es<br>
+            Subject พหูพจน์ → Verb ไม่เติม s
+        </div>
+
+        <div class="trap-box">
+            <span class="trap-title">⚠️ TOEFL TRAP: Prepositional Phrase</span>
+            ระวัง! ส่วนขยายที่มีบุพบทนำหน้า (in, on, at, of, with) ที่มาคั่นกลาง <strong>"ไม่ใช่ประธาน"</strong> อย่าให้มันหลอก
+            
+            <div class="example">
+                <span class="wrong">The list of books <strong>are</strong> on the table.</span><br>
+                <span class="correct">✅ The <span class="highlight">list</span> of books <strong>is</strong> on the table.</span>
+                <br><small>(ประธานคือ list ซึ่งเป็นเอกพจน์ คำว่า books เป็นแค่ส่วนขยาย)</small>
+            </div>
+        </div>
+    </div>
+
+    <div class="rule-box">
+        <h2>2. Missing Main Part</h2>
+        <p>ทุกประโยคที่สมบูรณ์ในภาษาอังกฤษ ต้องมีองค์ประกอบหลักอย่างน้อย 1 คู่ คือ:</p>
+        <div class="pattern-box">
+            1 Main Subject + 1 Main Verb
+        </div>
+        <p>โจทย์ Part Structure มักจะตัด S หรือ V ตัวใดตัวหนึ่งออกไป หน้าที่ของเราคือหาชิ้นส่วนที่หายไปมาเติมให้ครบ</p>
+
+        <div class="trap-box">
+            <span class="trap-title">⚠️ ระวัง: กริยาแท้ซ้อนกัน (Double Verbs)</span>
+            ใน 1 ประโยค (1 Clause) ห้ามมี Verb แท้ 2 ตัวโดยไม่มีคำเชื่อม (Conjunction)<br><br>
+            ❌ The boy <strong>playing</strong> in the park. (ขาด Verb แท้: playing เป็นแค่ส่วนขยาย)<br>
+            ✅ The boy <span class="highlight">is playing</span> in the park. (is playing = V.แท้)
+        </div>
+    </div>
+
+    <div class="rule-box">
+        <h2>3. Appositive (ส่วนขยายประธาน)</h2>
+        <p>คือกลุ่มคำนามที่วางอยู่ระหว่างคอมม่า <code>, ... ,</code> เพื่อขยายความประธานข้างหน้า</p>
+        
+        <div class="pattern-box">
+            Subject, [Appositive], Verb
+        </div>
+
+        <div class="example">
+            George Washington, <span class="highlight">the first president</span>, was a great leader.
+        </div>
+
+        <p>💡 <strong>ทริค:</strong> ถ้าเห็นช่องว่างอยู่หน้า Verb แท้ และมีเครื่องหมายคอมม่าคั่นอยู่ ให้มองหา Subject ที่อยู่นอกคอมม่าทันที (อย่าเผลอไปกา Verb ซ้อนในช่องว่าง)</p>
+    </div>
+
+    <div class="rule-box">
+        <h2>4. Word Order (การเรียงคำ)</h2>
+        <p>ลำดับการเรียงคำขยายคำนามที่ถูกต้อง คือ:</p>
+        
+        <div class="word-order-container">
+            <div class="wo-box wo-det">Determiner</div>
+            <div class="wo-box wo-adv">Adverb</div>
+            <div class="wo-box wo-adj">Adjective</div>
+            <div class="wo-box wo-noun">Noun + Noun</div>
+        </div>
+        <p><small>(Determiner: a, an, the, this, my, some...)</small></p>
+
+        <div class="example">
+            <span class="correct">✅ <span style="color:#6e7781">A</span> <span style="color:#d2a8ff">really</span> <span style="color:#ff7b72">good</span> <span style="color:#0969da">web page</span>.</span>
+        </div>
+    </div>
+
+    <div class="quiz-container">
+        <h2>📝 Practice Quiz: ทดสอบความเข้าใจ (10 ข้อ)</h2>
+        <div id="quiz-area">
+            </div>
+    </div>
+
+    <script>
+        // --- ข้อมูลโจทย์ (Data Source) ---
+        const quizData = [
+            {
+                question: "1. She bought a __________ yesterday.",
+                options: [
+                    { text: "red new car", correct: false, rationale: "ลำดับ Adjective ไม่ถูกต้อง ปกติอายุ (new) จะมาก่อนสี (red)" },
+                    { text: "car new red", correct: false, rationale: "Adjective ต้องวางหน้า Noun เเสมอ" },
+                    { text: "new red car", correct: true, rationale: "ถูกต้อง! ตามหลักการเรียง Adjective: Opinion/Age มาก่อน Color + Noun" },
+                    { text: "new car red", correct: false, rationale: "Adjective (red) วางผิดตำแหน่ง ต้องอยู่หน้า Noun" }
+                ]
+            },
+            {
+                question: "2. Identify the missing part:<br>__________ is waiting for the bus.",
+                options: [
+                    { text: "The tall man", correct: true, rationale: "ถูกต้อง! ประโยคขาด Subject (ประธาน) ที่เป็นเอกพจน์" },
+                    { text: "He are", correct: false, rationale: "Verb 'are' ไม่สอดคล้องกับ 'is' ในโจทย์ และซ้ำซ้อน" },
+                    { text: "In the morning", correct: false, rationale: "นี่คือ Prepositional Phrase ไม่ใช่ประธานของประโยค" },
+                    { text: "Wait", correct: false, rationale: "Wait เป็น Verb ไม่สามารถเป็นประธานได้ในรูปนี้" }
+                ]
+            },
+            {
+                question: "3. Which word order is correct?",
+                options: [
+                    { text: "A rain heavy storm", correct: false, rationale: "เรียงผิด Adjective (heavy) ควรขยาย Noun (rain storm) หรือ rain" },
+                    { text: "A heavy rain storm", correct: true, rationale: "ถูกต้อง! Adjective (heavy) + Noun phrase (rain storm)" },
+                    { text: "Storm a heavy rain", correct: false, rationale: "Article 'A' ต้องนำหน้าวลี" },
+                    { text: "Rain heavy a storm", correct: false, rationale: "ลำดับคำผิดอย่างสิ้นเชิง" }
+                ]
+            },
+            {
+                question: "4. Complete the sentence:<br>This is a __________ problem.",
+                options: [
+                    { text: "real serious", correct: false, rationale: "real เป็น Adj ขยาย serious (Adj) ไม่ได้ ต้องใช้ Adverb" },
+                    { text: "really serious", correct: true, rationale: "ถูกต้อง! Adverb (really) ขยาย Adjective (serious) ขยาย Noun (problem)" },
+                    { text: "serious really", correct: false, rationale: "Adverb ต้องวางหน้า Adjective ที่มันขยาย" },
+                    { text: "very seriously", correct: false, rationale: "หลัง verb to be ต้องการ Adjective เพื่อขยาย Noun (problem) ไม่ใช่ Adverb (seriously)" }
+                ]
+            },
+            {
+                question: "5. My brother plays __________.",
+                options: [
+                    { text: "tennis table", correct: false, rationale: "ลำดับ Noun + Noun ผิด (ปกติคือ table tennis)" },
+                    { text: "game tennis", correct: false, rationale: "เรียงลำดับคำนามผิด" },
+                    { text: "table tennis", correct: true, rationale: "ถูกต้อง! เป็น Compound Noun (กีฬาปิงปอง)" },
+                    { text: "the tennis of table", correct: false, rationale: "ใช้โครงสร้างฟุ่มเฟือยและไม่เป็นธรรมชาติ" }
+                ]
+            },
+            {
+                question: "6. __________ on the study of ancient civilizations, the museum attracts many visitors.",
+                options: [
+                    { text: "Focusing", correct: true, rationale: "ถูกต้อง! เป็น Present Participle Phrase ขยายประธาน the museum (พิพิธภัณฑ์เป็นผู้เน้น)" },
+                    { text: "The focus", correct: false, rationale: "ถ้าใส่ The focus จะทำให้ประโยคมีประธาน 2 ตัวโดยไม่มีคำเชื่อม" },
+                    { text: "It focuses", correct: false, rationale: "ทำให้เกิด Run-on sentence (ประโยค 2 ประโยคชนกันโดยไม่มีคำเชื่อม)" },
+                    { text: "To focusing", correct: false, rationale: "ผิดไวยากรณ์ To ไม่ตามด้วย V-ing ในบริบทนี้" }
+                ]
+            },
+            {
+                question: "7. The development of effective vaccines __________ a significant milestone in modern medicine.",
+                options: [
+                    { text: "remains", correct: true, rationale: "ถูกต้อง! ประโยคขาด Main Verb และ remains ผันตามประธานเอกพจน์ (development)" },
+                    { text: "remaining", correct: false, rationale: "remaining ไม่ใช่ Finite Verb (กริยาแท้)" },
+                    { text: "are remaining", correct: false, rationale: "ใช้ are ไม่ได้ เพราะประธานหลักคือ 'development' (เอกพจน์) ไม่ใช่ 'vaccines'" },
+                    { text: "which remains", correct: false, rationale: "ถ้าใส่ which จะกลายเป็น Relative Clause ทำให้ประโยคหลักไม่มี Verb" }
+                ]
+            },
+            {
+                question: "8. Unlike most other planets, __________ a retrograde rotation.",
+                options: [
+                    { text: "Venus has", correct: true, rationale: "ถูกต้อง! หลังส่วนเกริ่นนำ Unlike... ต้องตามด้วย Subject + Verb หลัก" },
+                    { text: "Venus having", correct: false, rationale: "ขาดกริยาแท้ (Main Verb)" },
+                    { text: "which Venus has", correct: false, rationale: "ทำให้กลายเป็น Clause ลอยๆ ไม่มี Main Clause" },
+                    { text: "that has", correct: false, rationale: "ขาดประธาน (Subject) ของประโยค" }
+                ]
+            },
+            {
+                question: "9. Genetic engineers are now capable of rearranging genes __________ specific bacteria.",
+                options: [
+                    { text: "medical", correct: false, rationale: "medical (adj) ไม่สามารถวางหน้า specific (adj) ได้ในบริบทนี้ และความหมายไม่เข้ากัน" },
+                    { text: "within", correct: true, rationale: "ถูกต้อง! เป็น Preposition เชื่อมระหว่าง genes และ specific bacteria" },
+                    { text: "are", correct: false, rationale: "มี Verb 'are capable' แล้ว ห้ามใส่ Verb ซ้อนอีก" },
+                    { text: "that", correct: false, rationale: "ถ้าใช้ that ต้องตามด้วย Clause (S+V) หรือ Verb แต่ข้างหลังเป็นแค่นามวลี" }
+                ]
+            },
+            {
+                question: "10. __________ distinct types of communication skills is essential for a successful career.",
+                options: [
+                    { text: "Master", correct: false, rationale: "Master เป็น Verb ช่อง 1 ทำหน้าที่เป็นประธานไม่ได้" },
+                    { text: "Mastering", correct: true, rationale: "ถูกต้อง! Gerund (V-ing) ทำหน้าที่เป็นประธานเอกพจน์ สอดคล้องกับกริยา 'is'" },
+                    { text: "The master", correct: false, rationale: "ความหมายไม่ได้ (เจ้านายของทักษะการสื่อสาร?)" },
+                    { text: "To mastering", correct: false, rationale: "ผิดไวยากรณ์ To ต้องตามด้วย Infinitive (V.1 ไม่ผัน)" }
+                ]
+            }
+        ];
+
+        // --- Render Quiz Function ---
+        const quizArea = document.getElementById('quiz-area');
+
+        quizData.forEach((item, index) => {
+            // สร้าง Card
+            const card = document.createElement('div');
+            card.className = 'question-card';
+
+            // ใส่โจทย์
+            const qText = document.createElement('div');
+            qText.className = 'q-text';
+            qText.innerHTML = item.question;
+            card.appendChild(qText);
+
+            // ใส่ Options
+            const optionsDiv = document.createElement('div');
+            optionsDiv.className = 'options';
+
+            // สร้าง Feedback Div ไว้รอ (แต่ยังไม่โชว์)
+            const feedbackDiv = document.createElement('div');
+            feedbackDiv.className = 'rationale';
+            
+            // วนลูปสร้างปุ่มตัวเลือก
+            item.options.forEach(opt => {
+                const btn = document.createElement('button');
+                btn.className = 'option-btn';
+                btn.textContent = opt.text;
+                
+                // Event เมื่อกดเลือก
+                btn.onclick = function() {
+                    // ป้องกันการกดซ้ำ (Disable all buttons in this question)
+                    const allBtns = optionsDiv.querySelectorAll('.option-btn');
+                    allBtns.forEach(b => b.disabled = true);
+
+                    // แสดงผล ถูก/ผิด
+                    if (opt.correct) {
+                        btn.classList.add('correct-ans');
+                        feedbackDiv.innerHTML = `<strong>✅ ถูกต้อง!</strong><br>${opt.rationale}`;
+                        feedbackDiv.style.borderLeft = "4px solid #1a7f37";
+                    } else {
+                        btn.classList.add('wrong-ans');
+                        feedbackDiv.innerHTML = `<strong>❌ ยังไม่ถูก</strong><br>${opt.rationale}`;
+                        feedbackDiv.style.borderLeft = "4px solid #cf222e";
+                        
+                        // เฉลยตัวที่ถูกให้เห็นด้วย
+                        allBtns.forEach(b => {
+                            if (b.textContent === item.options.find(o => o.correct).text) {
+                                b.classList.add('correct-ans');
+                            }
+                        });
+                    }
+                    
+                    // แสดง Feedback
+                    feedbackDiv.classList.add('show');
+                };
+                optionsDiv.appendChild(btn);
+            });
+
+            card.appendChild(optionsDiv);
+            card.appendChild(feedbackDiv);
+            quizArea.appendChild(card);
+        });
+
+    </script>
+
+    <div class="footer">
+        <div class="ai-badge">
+            <span class="ai-icon">✨</span> เนื้อหาเรียบเรียงโดย Gemini AI & ตรวจสอบโดย PLS-C
+        </div>
+        <p>
+            <strong>Disclaimer:</strong> เนื้อหาในเว็บไซต์นี้จัดทำขึ้นเพื่อวัตถุประสงค์ทางการศึกษา (Educational Purpose Only) <br>
+            ผู้จัดทำพยายามตรวจสอบความถูกต้องอย่างดีที่สุด แต่อาจมีข้อจำกัดทางเทคนิคของ AI ผู้เรียนควรตรวจสอบกับตำราหลักเพื่อการอ้างอิงทางวิชาการ
+        </p>
+        <p style="margin-top: 10px; font-size: 0.9em; opacity: 0.7;">
+            &copy; 2026 PLS-C English Quiz. All rights reserved.
+        </p>
+    </div>
+
+</body>
+</html>

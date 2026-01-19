@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sentence Structure Basics | TOEFL ITP</title>
+    <title>Subject-Verb Agreement | TOEFL ITP</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -25,7 +25,7 @@
             background-color: #f8f9fa;
         }
 
-        /* Main Card */
+        /* Custom Card Styling to match previous design */
         .main-card {
             border: none;
             border-radius: 16px;
@@ -35,7 +35,6 @@
             margin: 40px auto;
         }
 
-        /* Header */
         .header-bg {
             background-color: var(--theme-primary);
             color: white;
@@ -43,6 +42,7 @@
             position: relative;
             overflow: hidden;
         }
+
         .header-decoration {
             position: absolute;
             bottom: -50px;
@@ -54,14 +54,12 @@
             filter: blur(40px);
         }
 
-        /* Typography & Content */
         .section-title {
             color: #115e59;
             border-left: 5px solid #14b8a6;
             padding-left: 15px;
             font-weight: bold;
             margin-bottom: 20px;
-            margin-top: 30px;
         }
 
         .example-box {
@@ -69,22 +67,8 @@
             border: 1px solid #e9ecef;
             border-radius: 12px;
             padding: 20px;
-            margin-bottom: 20px;
-        }
-        
-        .pattern-box {
-            background-color: #e0f2fe; /* Light Blue */
-            border: 1px dashed #0284c7;
-            padding: 15px;
-            border-radius: 8px;
-            font-family: 'Courier New', Courier, monospace;
-            font-weight: bold;
-            color: #0369a1;
-            margin-bottom: 15px;
-            text-align: center;
         }
 
-        /* Quiz Buttons */
         .btn-quiz-option {
             text-align: left;
             border: 1px solid #dee2e6;
@@ -104,9 +88,9 @@
             border-color: #99f6e4;
             color: var(--theme-primary);
         }
-        .btn-quiz-option:disabled { opacity: 0.8; }
+        .btn-quiz-option:disabled { opacity: 0.7; }
 
-        /* Quiz States */
+        /* Custom Success/Error States */
         .btn-success-custom {
             background-color: #d1fae5 !important;
             border-color: #10b981 !important;
@@ -127,6 +111,9 @@
             margin-bottom: 10px;
         }
         .back-link:hover { color: white; }
+
+        .correct { color: #198754; font-weight: bold; }
+        .wrong { color: #dc3545; text-decoration: line-through; margin-right: 5px; }
     </style>
 </head>
 <body>
@@ -139,94 +126,90 @@
                     <i class="ph-bold ph-arrow-left me-1"></i> กลับหน้าหลัก
                 </a>
                 <h1 class="h2 fw-bold d-flex align-items-center gap-2">
-                    <i class="ph-duotone ph-columns"></i> Sentence Structure
+                    <i class="ph-duotone ph-check-square-offset"></i> Subject-Verb Agreement
                 </h1>
-                <p class="mb-0 opacity-75">ปูพื้นฐานโครงสร้างประโยค: Subject, Verb และลำดับคำที่ถูกต้อง</p>
+                <p class="mb-0 opacity-75">กฎความสอดคล้องระหว่างประธานและกริยา - หัวใจสำคัญของ Part Structure</p>
                 <div class="header-decoration"></div>
             </div>
 
             <div class="card-body p-4 p-md-5">
 
-                <section>
-                    <h2 class="section-title">1. Subject + Verb Agreement</h2>
-                    <p>กฎเหล็กข้อแรก: ประธานกับกริยาต้องเข้าคู่กันเสมอ (Singular/Plural)</p>
+                <section class="mb-5">
+                    <h2 class="section-title">1. กฎพื้นฐาน (The Golden Rule)</h2>
+                    <p class="mb-3">
+                        หลักการง่ายๆ คือ <span class="badge bg-warning text-dark fw-normal fs-6">ประธานเอกพจน์ กริยาต้องเติม s/es</span> (หรือใช้ is/has/does) แต่ถ้าประธานพหูพจน์ กริยาไม่ต้องเติมอะไรเลย
+                    </p>
                     
-                    <div class="pattern-box">
-                        Subject เอกพจน์ → Verb เติม s/es<br>
-                        Subject พหูพจน์ → Verb ไม่เติม s
-                    </div>
-
-                    <div class="alert alert-warning d-flex align-items-start gap-3 mt-3" role="alert">
-                        <i class="ph-fill ph-warning fs-4 mt-1"></i>
-                        <div>
-                            <strong>⚠️ TOEFL TRAP: Prepositional Phrase</strong>
-                            <div class="small mt-1">
-                                ระวัง! ส่วนขยายที่มีบุพบทนำหน้า (in, on, at, of, with) ที่มาคั่นกลาง <strong>"ไม่ใช่ประธาน"</strong> อย่าให้มันหลอก
-                            </div>
-                            <div class="mt-2 p-2 bg-white rounded border border-warning-subtle text-dark">
-                                <span class="text-decoration-line-through text-danger me-2">The list of books <strong>are</strong> on the table.</span><br>
-                                <span class="text-success fw-bold">✅ The <span class="bg-warning-subtle px-1 rounded">list</span> of books <strong>is</strong> on the table.</span>
-                                <div class="small text-muted fst-italic mt-1">(ประธานคือ list ซึ่งเป็นเอกพจน์ คำว่า books เป็นแค่ส่วนขยาย)</div>
-                            </div>
+                    <div class="example-box">
+                        <div class="d-flex align-items-start gap-2 mb-2">
+                            <i class="ph-fill ph-x-circle text-danger mt-1"></i>
+                            <span class="text-muted text-decoration-line-through">The student study hard.</span>
+                        </div>
+                        <div class="d-flex align-items-start gap-2 mb-3">
+                            <i class="ph-fill ph-check-circle text-success mt-1"></i>
+                            <span>The student <span class="text-success fw-bold text-decoration-underline">studies</span> hard. <small class="text-muted ms-1">(คนเดียว)</small></span>
+                        </div>
+                        <hr class="text-muted">
+                        <div class="d-flex align-items-start gap-2 mt-3">
+                            <i class="ph-fill ph-check-circle text-success mt-1"></i>
+                            <span>The students <span class="text-success fw-bold text-decoration-underline">study</span> hard. <small class="text-muted ms-1">(หลายคน)</small></span>
                         </div>
                     </div>
                 </section>
 
-                <section>
-                    <h2 class="section-title">2. Missing Main Part</h2>
-                    <p>ทุกประโยคที่สมบูรณ์ในภาษาอังกฤษ ต้องมีองค์ประกอบหลักอย่างน้อย 1 คู่ คือ:</p>
-                    <div class="pattern-box">
-                        1 Main Subject + 1 Main Verb
-                    </div>
-                    <p class="text-muted small">โจทย์ Part Structure มักจะตัด S หรือ V ตัวใดตัวหนึ่งออกไป หน้าที่ของเราคือหาชิ้นส่วนที่หายไปมาเติมให้ครบ</p>
-
-                    <div class="alert alert-danger d-flex align-items-start gap-3 mt-3" role="alert">
-                        <i class="ph-fill ph-x-circle fs-4 mt-1"></i>
+                <section class="mb-5">
+                    <h2 class="section-title">2. ส่วนขยายที่มาคั่น (The Interrupters)</h2>
+                    
+                    <div class="alert alert-warning d-flex align-items-start gap-3" role="alert">
+                        <i class="ph-fill ph-warning fs-4"></i>
                         <div>
-                            <strong>⚠️ ระวัง: กริยาแท้ซ้อนกัน (Double Verbs)</strong>
-                            <div class="small mt-1">
-                                ใน 1 ประโยค (1 Clause) ห้ามมี Verb แท้ 2 ตัวโดยไม่มีคำเชื่อม (Conjunction)
-                            </div>
-                            <ul class="mb-0 mt-2 small list-unstyled">
-                                <li>❌ The boy <strong>playing</strong> in the park. <span class="text-muted">(ขาด Verb แท้)</span></li>
-                                <li>✅ The boy <span class="badge bg-success">is playing</span> in the park. <span class="text-muted">(is playing = V.แท้)</span></li>
-                            </ul>
+                            <strong>TOEFL TRAP:</strong>
+                            <div class="small">อย่าสนใจคำในวลีบุพบท (Prepositional Phrase) ที่มาคั่นกลาง ให้มองหา <strong>ประธานตัวจริง</strong> ข้างหน้าสุดเสมอ!</div>
                         </div>
+                    </div>
+
+                    <p>คำเหล่านี้ <strong>ไม่มีผล</strong> ต่อการผันกริยา: <em>together with, along with, as well as, including</em></p>
+
+                    <div class="example-box">
+                        <p class="mb-2">
+                            The teacher, <em class="text-muted">along with his students</em>, <span class="text-success fw-bold border-bottom border-success border-2">is</span> in the room.
+                        </p>
+                        <small class="text-muted">*(ประธานคือ Teacher คนเดียว ส่วน along with... ตัดทิ้งได้เลย)</small>
                     </div>
                 </section>
 
-                <section>
-                    <h2 class="section-title">3. Appositive (ส่วนขยายประธาน)</h2>
-                    <p>คือกลุ่มคำนามที่วางอยู่ระหว่างคอมม่า <code>, ... ,</code> เพื่อขยายความประธานข้างหน้า</p>
+                <section class="mb-5">
+                    <h2 class="section-title">3. คำสรรพนามไม่ชี้เฉพาะ (Indefinite Pronouns)</h2>
+                    <p>คำกลุ่มนี้ถือเป็น <strong>"เอกพจน์ (Singular)"</strong> เสมอครับ:</p>
                     
-                    <div class="pattern-box">
-                        Subject, [Appositive], Verb
+                    <div class="row g-2 mb-4">
+                        <div class="col-6"><div class="p-2 border rounded text-center bg-white small">Everyone / Everybody</div></div>
+                        <div class="col-6"><div class="p-2 border rounded text-center bg-white small">Someone / Somebody</div></div>
+                        <div class="col-6"><div class="p-2 border rounded text-center bg-white small">Each / Every</div></div>
+                        <div class="col-6"><div class="p-2 border rounded text-center bg-white small">No one / Nobody</div></div>
                     </div>
 
                     <div class="example-box">
-                        George Washington, <span class="text-primary fw-bold">the first president</span>, was a great leader.
-                    </div>
-
-                    <div class="d-flex align-items-center gap-2 text-muted small">
-                        <i class="ph-fill ph-lightbulb text-warning fs-5"></i>
-                        <strong>ทริค:</strong> ถ้าเห็นช่องว่างอยู่หน้า Verb แท้ และมีเครื่องหมายคอมม่าคั่นอยู่ ให้มองหา Subject ที่อยู่นอกคอมม่าทันที
+                        <div class="d-flex align-items-center gap-2">
+                            <i class="ph-fill ph-check-circle text-success"></i>
+                            <span>Everyone <strong class="text-success">has</strong> a book.</span>
+                        </div>
                     </div>
                 </section>
 
-                <section>
-                    <h2 class="section-title">4. Word Order (การเรียงคำ)</h2>
-                    <p>ลำดับการเรียงคำขยายคำนามที่ถูกต้อง คือ:</p>
-                    
-                    <div class="d-flex flex-wrap gap-2 justify-content-center mb-3">
-                        <span class="badge bg-secondary p-2">Determiner</span>
-                        <span class="badge p-2" style="background-color: #d2a8ff; color: #24292f;">Adverb</span>
-                        <span class="badge p-2" style="background-color: #ff7b72;">Adjective</span>
-                        <span class="badge bg-primary p-2">Noun + Noun</span>
-                    </div>
-                    <p class="text-center small text-muted">(Determiner: a, an, the, this, my, some...)</p>
+                 <section class="mb-3">
+                    <h2 class="section-title">4. โครงสร้าง There is / There are</h2>
+                    <p>ในประโยคที่ขึ้นต้นด้วย There... ประธานตัวจริงจะอยู่ <strong>"หลังกริยา"</strong> ครับ</p>
 
-                    <div class="example-box text-center">
-                        <span class="fw-bold text-success">✅ <span class="text-secondary">A</span> <span style="color:#a855f7">really</span> <span class="text-danger">good</span> <span class="text-primary">web page</span>.</span>
+                    <div class="example-box">
+                        <div class="d-flex align-items-start gap-2 mb-2">
+                            <i class="ph-fill ph-check-circle text-success mt-1"></i>
+                            <span>There <strong class="text-success">is</strong> a <strong>cat</strong> on the roof. <small class="text-muted">(cat ตัวเดียว)</small></span>
+                        </div>
+                        <div class="d-flex align-items-start gap-2">
+                            <i class="ph-fill ph-check-circle text-success mt-1"></i>
+                            <span>There <strong class="text-success">are</strong> many <strong>cats</strong> on the roof. <small class="text-muted">(cats หลายตัว)</small></span>
+                        </div>
                     </div>
                 </section>
 
@@ -234,7 +217,7 @@
 
             <div class="card-footer bg-light p-4 p-md-5 border-top">
                 <h3 class="h4 fw-bold text-dark mb-4 d-flex align-items-center gap-2">
-                    <i class="ph-duotone ph-pencil-simple text-primary"></i> Practice Quiz: ทดสอบความเข้าใจ (10 ข้อ)
+                    <i class="ph-duotone ph-pencil-simple text-primary"></i> Mini Quiz: ทดสอบความเข้าใจ
                 </h3>
                 
                 <div id="quiz-area" class="d-flex flex-column gap-4">
@@ -246,10 +229,7 @@
                     <i class="ph-fill ph-sparkle text-warning"></i>
                     เรียบเรียงโดย Gemini AI & ตรวจสอบโดย PLS-C
                 </div>
-                <div class="text-muted small opacity-75">
-                    Disclaimer: เนื้อหาจัดทำขึ้นเพื่อการศึกษา (Educational Purpose Only)
-                </div>
-                <div class="text-muted small mt-1">
+                <div class="text-muted small" style="font-size: 0.8rem;">
                     &copy; 2026 PLS-C English Quiz. All rights reserved.
                 </div>
             </div>
@@ -260,132 +240,63 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
     <script>
-        // --- Data Source ---
-        const quizData = [
+        // Quiz Data
+        const questions = [
             {
-                question: "1. She bought a __________ yesterday.",
+                id: 1,
+                text: "The box of apples ______ on the table.",
                 options: [
-                    { text: "red new car", correct: false, rationale: "ลำดับ Adjective ไม่ถูกต้อง ปกติอายุ (new) จะมาก่อนสี (red)" },
-                    { text: "car new red", correct: false, rationale: "Adjective ต้องวางหน้า Noun เเสมอ" },
-                    { text: "new red car", correct: true, rationale: "ถูกต้อง! ตามหลักการเรียง Adjective: Opinion/Age มาก่อน Color + Noun" },
-                    { text: "new car red", correct: false, rationale: "Adjective (red) วางผิดตำแหน่ง ต้องอยู่หน้า Noun" }
+                    { label: "A) are", isCorrect: false, feedback: "ผิดครับ! ประธานคือ 'The box' (กล่องเดียว) ไม่ใช่ apples" },
+                    { label: "B) is", isCorrect: true, feedback: "ถูกต้อง! ประธานหลักคือ 'The box' เป็นเอกพจน์" }
                 ]
             },
             {
-                question: "2. Identify the missing part:<br>__________ is waiting for the bus.",
+                id: 2,
+                text: "Everyone in the class ______ to pass the exam.",
                 options: [
-                    { text: "The tall man", correct: true, rationale: "ถูกต้อง! ประโยคขาด Subject (ประธาน) ที่เป็นเอกพจน์" },
-                    { text: "He are", correct: false, rationale: "Verb 'are' ไม่สอดคล้องกับ 'is' ในโจทย์ และซ้ำซ้อน" },
-                    { text: "In the morning", correct: false, rationale: "นี่คือ Prepositional Phrase ไม่ใช่ประธานของประโยค" },
-                    { text: "Wait", correct: false, rationale: "Wait เป็น Verb ไม่สามารถเป็นประธานได้ในรูปนี้" }
+                    { label: "A) want", isCorrect: false, feedback: "ผิดครับ! Everyone ถือเป็นเอกพจน์ กริยาต้องเติม s" },
+                    { label: "B) wants", isCorrect: true, feedback: "ถูกต้อง! Everyone เป็นเอกพจน์เสมอ (Singular)" }
                 ]
             },
             {
-                question: "3. Which word order is correct?",
+                id: 3,
+                text: "The manager, as well as his assistants, ______ attending.",
                 options: [
-                    { text: "A rain heavy storm", correct: false, rationale: "เรียงผิด Adjective (heavy) ควรขยาย Noun (rain storm) หรือ rain" },
-                    { text: "A heavy rain storm", correct: true, rationale: "ถูกต้อง! Adjective (heavy) + Noun phrase (rain storm)" },
-                    { text: "Storm a heavy rain", correct: false, rationale: "Article 'A' ต้องนำหน้าวลี" },
-                    { text: "Rain heavy a storm", correct: false, rationale: "ลำดับคำผิดอย่างสิ้นเชิง" }
-                ]
-            },
-            {
-                question: "4. Complete the sentence:<br>This is a __________ problem.",
-                options: [
-                    { text: "real serious", correct: false, rationale: "real เป็น Adj ขยาย serious (Adj) ไม่ได้ ต้องใช้ Adverb" },
-                    { text: "really serious", correct: true, rationale: "ถูกต้อง! Adverb (really) ขยาย Adjective (serious) ขยาย Noun (problem)" },
-                    { text: "serious really", correct: false, rationale: "Adverb ต้องวางหน้า Adjective ที่มันขยาย" },
-                    { text: "very seriously", correct: false, rationale: "หลัง verb to be ต้องการ Adjective เพื่อขยาย Noun (problem) ไม่ใช่ Adverb (seriously)" }
-                ]
-            },
-            {
-                question: "5. My brother plays __________.",
-                options: [
-                    { text: "tennis table", correct: false, rationale: "ลำดับ Noun + Noun ผิด (ปกติคือ table tennis)" },
-                    { text: "game tennis", correct: false, rationale: "เรียงลำดับคำนามผิด" },
-                    { text: "table tennis", correct: true, rationale: "ถูกต้อง! เป็น Compound Noun (กีฬาปิงปอง)" },
-                    { text: "the tennis of table", correct: false, rationale: "ใช้โครงสร้างฟุ่มเฟือยและไม่เป็นธรรมชาติ" }
-                ]
-            },
-            {
-                question: "6. __________ on the study of ancient civilizations, the museum attracts many visitors.",
-                options: [
-                    { text: "Focusing", correct: true, rationale: "ถูกต้อง! เป็น Present Participle Phrase ขยายประธาน the museum (พิพิธภัณฑ์เป็นผู้เน้น)" },
-                    { text: "The focus", correct: false, rationale: "ถ้าใส่ The focus จะทำให้ประโยคมีประธาน 2 ตัวโดยไม่มีคำเชื่อม" },
-                    { text: "It focuses", correct: false, rationale: "ทำให้เกิด Run-on sentence (ประโยค 2 ประโยคชนกันโดยไม่มีคำเชื่อม)" },
-                    { text: "To focusing", correct: false, rationale: "ผิดไวยากรณ์ To ไม่ตามด้วย V-ing ในบริบทนี้" }
-                ]
-            },
-            {
-                question: "7. The development of effective vaccines __________ a significant milestone in modern medicine.",
-                options: [
-                    { text: "remains", correct: true, rationale: "ถูกต้อง! ประโยคขาด Main Verb และ remains ผันตามประธานเอกพจน์ (development)" },
-                    { text: "remaining", correct: false, rationale: "remaining ไม่ใช่ Finite Verb (กริยาแท้)" },
-                    { text: "are remaining", correct: false, rationale: "ใช้ are ไม่ได้ เพราะประธานหลักคือ 'development' (เอกพจน์) ไม่ใช่ 'vaccines'" },
-                    { text: "which remains", correct: false, rationale: "ถ้าใส่ which จะกลายเป็น Relative Clause ทำให้ประโยคหลักไม่มี Verb" }
-                ]
-            },
-            {
-                question: "8. Unlike most other planets, __________ a retrograde rotation.",
-                options: [
-                    { text: "Venus has", correct: true, rationale: "ถูกต้อง! หลังส่วนเกริ่นนำ Unlike... ต้องตามด้วย Subject + Verb หลัก" },
-                    { text: "Venus having", correct: false, rationale: "ขาดกริยาแท้ (Main Verb)" },
-                    { text: "which Venus has", correct: false, rationale: "ทำให้กลายเป็น Clause ลอยๆ ไม่มี Main Clause" },
-                    { text: "that has", correct: false, rationale: "ขาดประธาน (Subject) ของประโยค" }
-                ]
-            },
-            {
-                question: "9. Genetic engineers are now capable of rearranging genes __________ specific bacteria.",
-                options: [
-                    { text: "medical", correct: false, rationale: "medical (adj) ไม่สามารถวางหน้า specific (adj) ได้ในบริบทนี้ และความหมายไม่เข้ากัน" },
-                    { text: "within", correct: true, rationale: "ถูกต้อง! เป็น Preposition เชื่อมระหว่าง genes และ specific bacteria" },
-                    { text: "are", correct: false, rationale: "มี Verb 'are capable' แล้ว ห้ามใส่ Verb ซ้อนอีก" },
-                    { text: "that", correct: false, rationale: "ถ้าใช้ that ต้องตามด้วย Clause (S+V) หรือ Verb แต่ข้างหลังเป็นแค่นามวลี" }
-                ]
-            },
-            {
-                question: "10. __________ distinct types of communication skills is essential for a successful career.",
-                options: [
-                    { text: "Master", correct: false, rationale: "Master เป็น Verb ช่อง 1 ทำหน้าที่เป็นประธานไม่ได้" },
-                    { text: "Mastering", correct: true, rationale: "ถูกต้อง! Gerund (V-ing) ทำหน้าที่เป็นประธานเอกพจน์ สอดคล้องกับกริยา 'is'" },
-                    { text: "The master", correct: false, rationale: "ความหมายไม่ได้ (เจ้านายของทักษะการสื่อสาร?)" },
-                    { text: "To mastering", correct: false, rationale: "ผิดไวยากรณ์ To ต้องตามด้วย Infinitive (V.1 ไม่ผัน)" }
+                    { label: "A) is", isCorrect: true, feedback: "ถูกต้อง! ประธานคือ The manager คนเดียว (ส่วนหลัง as well as ให้ตัดทิ้ง)" },
+                    { label: "B) are", isCorrect: false, feedback: "ผิดครับ! อย่าโดน assistants หลอก ประธานตัวจริงอยู่หน้าสุด" }
                 ]
             }
         ];
 
-        // --- Render Quiz Function ---
+        // Render Quiz
         const quizArea = document.getElementById('quiz-area');
-
-        quizData.forEach((item, index) => {
-            // Create Card
+        
+        questions.forEach((q, index) => {
             const qDiv = document.createElement('div');
             qDiv.className = "bg-white p-4 rounded-3 border shadow-sm";
-
-            // Create Options HTML
+            
             let optionsHtml = "";
-            item.options.forEach((opt, optIndex) => {
+            q.options.forEach((opt, optIndex) => {
                 optionsHtml += `
                     <button onclick="checkAnswer(${index}, ${optIndex}, this)" 
                             class="btn btn-quiz-option">
-                        <span>${opt.text}</span>
+                        <span>${opt.label}</span>
                         <i class="ph-bold ph-circle text-secondary"></i>
                     </button>
                 `;
             });
 
-            // Assemble HTML
             qDiv.innerHTML = `
-                <p class="fw-bold text-dark mb-3">${item.question}</p>
+                <p class="fw-bold text-dark mb-3">${index + 1}. ${q.text}</p>
                 <div>${optionsHtml}</div>
                 <div id="feedback-${index}" class="mt-3 p-3 rounded-3 small fw-bold d-none"></div>
             `;
             quizArea.appendChild(qDiv);
         });
 
-        // --- Check Answer Function ---
+        // Check Answer Function
         window.checkAnswer = function(qIndex, optIndex, btnElement) {
-            const question = quizData[qIndex];
+            const question = questions[qIndex];
             const option = question.options[optIndex];
             const feedbackEl = document.getElementById(`feedback-${qIndex}`);
             
@@ -393,35 +304,29 @@
             const allBtns = btnElement.parentElement.querySelectorAll('button');
             allBtns.forEach(btn => {
                 btn.disabled = true;
-                // Highlight the correct answer even if wrong one was clicked
-                const btnText = btn.querySelector('span').textContent;
-                const correctOpt = question.options.find(o => o.correct);
-                if (btnText === correctOpt.text) {
-                     // Optionally highlight correct answer immediately for visual cue
-                     // btn.classList.add('btn-success-custom'); 
-                }
             });
 
             // Show Feedback & Change Styles
             feedbackEl.classList.remove('d-none');
             
-            if (option.correct) {
-                // Correct Style
+            if (option.isCorrect) {
+                // Style for Correct Button
                 btnElement.classList.add('btn-success-custom');
                 btnElement.querySelector('i').className = "ph-fill ph-check-circle text-success fs-5";
                 
+                // Style for Feedback Box
                 feedbackEl.className = "mt-3 p-3 rounded-3 small fw-bold alert alert-success border-success";
-                feedbackEl.innerHTML = `<i class="ph-bold ph-check me-2"></i> ${option.rationale}`;
+                feedbackEl.innerHTML = `<i class="ph-bold ph-check me-2"></i> ${option.feedback}`;
             } else {
-                // Wrong Style
+                // Style for Wrong Button
                 btnElement.classList.add('btn-danger-custom');
                 btnElement.querySelector('i').className = "ph-fill ph-x-circle text-danger fs-5";
 
+                // Style for Feedback Box
                 feedbackEl.className = "mt-3 p-3 rounded-3 small fw-bold alert alert-danger border-danger";
-                feedbackEl.innerHTML = `<i class="ph-bold ph-x me-2"></i> ${option.rationale}`;
+                feedbackEl.innerHTML = `<i class="ph-bold ph-x me-2"></i> ${option.feedback}`;
             }
         };
     </script>
-
 </body>
 </html>

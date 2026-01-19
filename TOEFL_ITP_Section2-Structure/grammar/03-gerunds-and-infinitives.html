@@ -15,7 +15,7 @@
             line-height: 1.6;
         }
 
-        /* --- Header & Navigation --- */
+        /* --- Header --- */
         .header {
             border-bottom: 1px solid #d0d7de;
             padding-bottom: 20px;
@@ -31,7 +31,17 @@
         .back-btn:hover { text-decoration: underline; }
         
         h1 { color: #0969da; margin: 0; }
-        
+
+        /* --- Intro Box (New) --- */
+        .intro-box {
+            background: linear-gradient(to right, #f0f9ff, #e6fffa);
+            border: 1px solid #bde0fe;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 30px;
+        }
+        .intro-title { font-weight: bold; color: #0969da; font-size: 1.1em; margin-bottom: 10px; display: block; }
+
         /* --- Content Box --- */
         .rule-box {
             background: white;
@@ -46,7 +56,6 @@
         /* --- Lists & Examples --- */
         ul { margin-top: 10px; padding-left: 20px; }
         li { margin-bottom: 5px; color: #57606a; }
-        strong { color: #24292f; }
 
         .example {
             background-color: #f6f8fa;
@@ -59,14 +68,13 @@
         .correct { color: #1a7f37; font-weight: bold; }
         .wrong { color: #cf222e; text-decoration: line-through; margin-right: 5px; }
 
-        /* --- Link Button --- */
-        .cta-box {
-            background-color: #ddf4ff;
-            border: 1px solid #0969da;
+        /* --- Trap Box & Link --- */
+        .trap-box {
+            background-color: #fff8c5;
+            border: 1px solid #d4a72c;
             border-radius: 6px;
             padding: 20px;
-            text-align: center;
-            margin: 20px 0;
+            margin-top: 20px;
         }
         .read-more-btn {
             display: inline-block;
@@ -76,7 +84,7 @@
             border-radius: 20px;
             text-decoration: none;
             font-weight: bold;
-            margin-top: 10px;
+            margin-top: 15px;
             transition: 0.2s;
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
@@ -123,88 +131,123 @@
     <div class="header">
         <a href="../index.html" class="back-btn">← กลับไปหน้าหลัก</a>
         <h1>Gerunds & Infinitives Overview</h1>
-        <p>สรุปหลักการใช้ V.ing และ to V.1 ฉบับรวบรัด</p>
+        <p>คู่มือแยกแยะการใช้ V.ing และ to V.1</p>
+    </div>
+
+    <div class="intro-box">
+        <span class="intro-title">🎓 มันคืออะไร? และใช้ทำอะไร?</span>
+        <p>ทั้ง Gerunds และ Infinitives คือคำกริยาที่แปลงร่างมาทำหน้าที่เป็น <strong>"คำนาม (Noun)"</strong> ครับ</p>
+        <ul>
+            <li><strong>Gerund (V.ing):</strong> การกระทำที่มองเป็นภาพรวม (เช่น <em>Running is fun.</em> - การวิ่งเป็นเรื่องสนุก)</li>
+            <li><strong>Infinitive (to V.1):</strong> การกระทำที่มองเป็นจุดประสงค์หรืออนาคต (เช่น <em>I want to run.</em> - ฉันอยากที่จะวิ่ง)</li>
+        </ul>
+        <p><strong>หน้าที่หลัก:</strong> ใช้เป็นประธาน (Subject) หรือกรรม (Object) ของประโยค</p>
     </div>
 
     <div class="rule-box">
-        <h2>1. ระวัง! "To" ไม่ได้ตามด้วย V.1 เสมอไป</h2>
-        <p>นี่คือจุดที่คนสอบตกม้าตายบ่อยที่สุด เรามักท่องจำว่า <code>To + V.1</code> (Infinitive) ซึ่งถูกต้องเป็นส่วนใหญ่ <strong>แต่...</strong></p>
-        <p>ในภาษาอังกฤษ มีคำกลุ่มหนึ่งที่ "To" ทำหน้าที่เป็น <strong>Preposition (บุพบท)</strong> ซึ่งกฎเหล็กของบุพบทคือต้องตามด้วย <strong>V.ing (Gerund)</strong> เท่านั้น</p>
-        
-        <div class="example">
-            <span class="wrong">I look forward to <em>see</em> you.</span><br>
-            <span class="correct">✅ I look forward to <strong>seeing</strong> you.</span>
-            <br><small>(ในที่นี้ to เป็น preposition เหมือน in/on/at)</small>
-        </div>
-
-        <div class="cta-box">
-            <h3 style="margin-top:0; color:#0969da;">🤔 แล้วจะรู้ได้ไงว่า To ตัวไหนตามด้วยอะไร?</h3>
-            <p>เรื่องนี้สำคัญและมีรายละเอียดเยอะ (ทั้งกฎ Infinitive of Purpose และข้อยกเว้นต่างๆ)</p>
-            <a href="usage-of-to.html" class="read-more-btn">👉 คลิกอ่านเจาะลึกเรื่องการใช้ "To" ที่หน้านี้</a>
-        </div>
-    </div>
-
-    <div class="rule-box">
-        <h2>2. กริยาที่ต้องตามด้วย V.ing (Gerund)</h2>
-        <p>หากเจอคำเหล่านี้ กริยาตัวถัดไปต้องเติม ing เสมอ:</p>
+        <h2>1. กริยาที่ต้องตามด้วย V.ing (Gerund)</h2>
+        <p>หากเจอคำกริยาเหล่านี้ คำที่ตามหลังมาต้องเป็น V.ing เสมอ:</p>
         <ul>
             <li><strong>enjoy</strong> (enjoy playing)</li>
             <li><strong>avoid</strong> (avoid eating)</li>
-            <li><strong>mind</strong> (mind opening the door?)</li>
+            <li><strong>mind</strong> (mind opening...?)</li>
             <li><strong>suggest</strong> (suggest going)</li>
-            <li><strong>stop*</strong> (stop smoking - เลิกสูบ)</li>
-            <li><strong>finish, quit, give up, keep</strong></li>
+            <li><strong>keep, finish, quit, give up</strong></li>
         </ul>
+        <div class="example">
+            <span class="correct">✅ He <strong>avoids talking</strong> to strangers.</span>
+        </div>
     </div>
 
     <div class="rule-box">
-        <h2>3. กริยาที่ต้องตามด้วย to V.1 (Infinitive)</h2>
-        <p>กลุ่มนี้มักเกี่ยวกับ "แผนการ, ความต้องการ, อนาคต":</p>
+        <h2>2. กริยาที่ต้องตามด้วย to V.1 (Infinitive)</h2>
+        <p>กลุ่มนี้มักเกี่ยวกับความตั้งใจ แผนการ หรืออนาคต:</p>
         <ul>
             <li><strong>want</strong> (want to go)</li>
             <li><strong>decide</strong> (decide to stay)</li>
             <li><strong>hope</strong> (hope to see)</li>
             <li><strong>plan, promise, agree, refuse</strong></li>
         </ul>
+        <div class="example">
+            <span class="correct">✅ She <strong>decided to buy</strong> a new house.</span>
+        </div>
     </div>
 
     <div class="rule-box">
-        <h2>4. หลัง Preposition ต้องเป็น V.ing เสมอ</h2>
-        <p>คำบุพบททุกตัว (in, on, at, of, with, about, without) ถ้ามีกริยาตามหลัง ต้องเปลี่ยนเป็น Gerund</p>
+        <h2>3. กฎเหล็กของ Preposition</h2>
+        <p>คำบุพบททุกตัว (in, on, at, of, with, about, without) ถ้ามีกริยาตามหลัง ต้องเปลี่ยนเป็น <strong>V.ing</strong> เสมอ ห้ามใช้ V.1</p>
         <div class="example">
-            <span class="correct">✅ She is interested <strong>in learning</strong> English.</span><br>
-            <span class="correct">✅ He left <strong>without saying</strong> goodbye.</span>
+            <span class="wrong">She is good at <em>dance</em>.</span><br>
+            <span class="correct">✅ She is good at <strong>dancing</strong>.</span>
+        </div>
+    </div>
+
+    <div class="rule-box" style="border-left: 5px solid #d4a72c;">
+        <h2>4. ข้อควรระวัง: "To" ไม่ได้ตามด้วย V.1 เสมอไป!</h2>
+        <p>ปกติเราท่องว่า <code>to + V.1</code> แต่มีบางสำนวนที่ "To" ทำหน้าที่เป็น Preposition ซึ่งต้องตามด้วย <strong>V.ing</strong></p>
+        
+        <div class="trap-box">
+            <strong>🔥 คำที่เจอบ่อยในข้อสอบ (ตามด้วย V.ing):</strong>
+            <ul>
+                <li>look forward to (ตั้งตารอ)</li>
+                <li>object to (คัดค้าน)</li>
+                <li>be used to (เคยชิน)</li>
+                <li>stick to (ยึดติด/ทำต่อ)</li>
+                <li>confess/admit to (สารภาพ)</li>
+            </ul>
+        </div>
+
+        <div style="text-align: center;">
+            <a href="usage-of-to.html" class="read-more-btn">👉 อ่านเจาะลึกเรื่องการใช้ "To" และข้อยกเว้นต่างๆ คลิกที่นี่</a>
         </div>
     </div>
 
     <div class="quiz-container">
-        <h2>📝 Mini Quiz: ทดสอบความจำ</h2>
+        <h2>📝 Mini Quiz: ทดสอบความเข้าใจ (5 ข้อ)</h2>
         
         <div class="question">
-            <p><strong>1. We enjoy ______ movies on weekends.</strong></p>
+            <p><strong>1. We plan ______ to Japan next year.</strong></p>
             <div class="options">
-                <label><input type="radio" name="q1" value="wrong" onclick="checkAns(1, false)"> A) to watch</label>
-                <label><input type="radio" name="q1" value="correct" onclick="checkAns(1, true)"> B) watching</label>
+                <label><input type="radio" name="q1" value="wrong" onclick="checkAns(1, false)"> A) going</label>
+                <label><input type="radio" name="q1" value="correct" onclick="checkAns(1, true)"> B) to go</label>
             </div>
             <div id="feedback-1" class="feedback"></div>
         </div>
 
         <div class="question">
-            <p><strong>2. He decided ______ a new car.</strong></p>
+            <p><strong>2. Would you mind ______ the window?</strong></p>
             <div class="options">
-                <label><input type="radio" name="q2" value="wrong" onclick="checkAns(2, false)"> A) buying</label>
-                <label><input type="radio" name="q2" value="correct" onclick="checkAns(2, true)"> B) to buy</label>
+                <label><input type="radio" name="q2" value="correct" onclick="checkAns(2, true)"> A) closing</label>
+                <label><input type="radio" name="q2" value="wrong" onclick="checkAns(2, false)"> B) to close</label>
             </div>
             <div id="feedback-2" class="feedback"></div>
         </div>
 
         <div class="question">
-            <p><strong>3. She is afraid of ______ alone.</strong></p>
+            <p><strong>3. He left the room without ______ anything.</strong></p>
             <div class="options">
-                <label><input type="radio" name="q3" value="correct" onclick="checkAns(3, true)"> A) staying</label>
-                <label><input type="radio" name="q3" value="wrong" onclick="checkAns(3, false)"> B) to stay</label>
+                <label><input type="radio" name="q3" value="wrong" onclick="checkAns(3, false)"> A) say</label>
+                <label><input type="radio" name="q3" value="correct" onclick="checkAns(3, true)"> B) saying</label>
             </div>
             <div id="feedback-3" class="feedback"></div>
+        </div>
+
+        <div class="question">
+            <p><strong>4. I look forward to ______ you again.</strong> <small>(ระวังกับดัก!)</small></p>
+            <div class="options">
+                <label><input type="radio" name="q4" value="correct" onclick="checkAns(4, true)"> A) seeing</label>
+                <label><input type="radio" name="q4" value="wrong" onclick="checkAns(4, false)"> B) see</label>
+            </div>
+            <div id="feedback-4" class="feedback"></div>
+        </div>
+
+        <div class="question">
+            <p><strong>5. She objects to ______ late on Fridays.</strong> <small>(ระวังกับดัก!)</small></p>
+            <div class="options">
+                <label><input type="radio" name="q5" value="wrong" onclick="checkAns(5, false)"> A) work</label>
+                <label><input type="radio" name="q5" value="correct" onclick="checkAns(5, true)"> B) working</label>
+            </div>
+            <div id="feedback-5" class="feedback"></div>
         </div>
     </div>
 
@@ -215,7 +258,13 @@
                 feedbackEl.textContent = "✅ ถูกต้อง!";
                 feedbackEl.className = "feedback show-correct";
             } else {
-                feedbackEl.textContent = "❌ ยังไม่ถูก ลองดูรายชื่อคำศัพท์ด้านบนอีกทีนะ";
+                let msg = "❌ ยังไม่ถูก ";
+                if(qId === 1) msg += "หลัง plan ต้องใช้ to go ครับ";
+                if(qId === 2) msg += "หลัง mind ต้องใช้ V.ing ครับ";
+                if(qId === 3) msg += "หลัง without (Preposition) ต้องใช้ V.ing ครับ";
+                if(qId === 4 || qId === 5) msg += "ข้อนี้เป็นข้อยกเว้น! To ตัวนี้เป็น Preposition ต้องตามด้วย V.ing ครับ";
+                
+                feedbackEl.textContent = msg;
                 feedbackEl.className = "feedback show-wrong";
             }
         }

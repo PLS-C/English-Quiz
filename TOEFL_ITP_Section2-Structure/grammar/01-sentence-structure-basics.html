@@ -4,256 +4,263 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sentence Structure Basics | TOEFL ITP</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@300;400;600&family=Sarabun:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
     <style>
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-            background-color: #f6f8fa;
-            color: #24292f;
-            line-height: 1.6;
+        :root {
+            --theme-primary: #0f766e; /* Teal-700 */
+            --theme-light: #f0fdfa;   /* Teal-50 */
+            --theme-border: #ccfbf1;  /* Teal-200 */
         }
-
-        /* --- Header & Navigation --- */
-        .header {
-            border-bottom: 1px solid #d0d7de;
-            padding-bottom: 20px;
-            margin-bottom: 30px;
-        }
-        .back-btn {
-            display: inline-block;
-            margin-bottom: 15px;
-            text-decoration: none;
-            color: #0969da;
-            font-weight: 500;
-        }
-        .back-btn:hover { text-decoration: underline; }
         
-        h1 { color: #0969da; margin: 0; }
-        h2 { border-left: 5px solid #0969da; padding-left: 15px; margin-top: 40px; color: #1f2328; }
-
-        /* --- Content Box --- */
-        .rule-box {
-            background: white;
-            border: 1px solid #d0d7de;
-            border-radius: 6px;
-            padding: 25px;
-            margin-bottom: 20px;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+        body { 
+            font-family: 'Sarabun', 'Noto Sans Thai', sans-serif; 
+            background-color: #f8f9fa;
         }
 
-        /* --- Patterns & Examples --- */
+        /* Main Card */
+        .main-card {
+            border: none;
+            border-radius: 16px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            overflow: hidden;
+            max-width: 800px;
+            margin: 40px auto;
+        }
+
+        /* Header */
+        .header-bg {
+            background-color: var(--theme-primary);
+            color: white;
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+        .header-decoration {
+            position: absolute;
+            bottom: -50px;
+            right: -50px;
+            width: 150px;
+            height: 150px;
+            background-color: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            filter: blur(40px);
+        }
+
+        /* Typography & Content */
+        .section-title {
+            color: #115e59;
+            border-left: 5px solid #14b8a6;
+            padding-left: 15px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            margin-top: 30px;
+        }
+
+        .example-box {
+            background-color: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        
         .pattern-box {
-            background-color: #f6f8fa;
-            border: 1px dashed #0969da;
+            background-color: #e0f2fe; /* Light Blue */
+            border: 1px dashed #0284c7;
             padding: 15px;
-            border-radius: 6px;
+            border-radius: 8px;
             font-family: 'Courier New', Courier, monospace;
             font-weight: bold;
-            color: #0969da;
-            margin: 10px 0;
+            color: #0369a1;
+            margin-bottom: 15px;
             text-align: center;
         }
 
-        .example {
-            background-color: #f1f8ff;
-            padding: 15px;
-            border-radius: 6px;
-            margin: 10px 0;
-            border-left: 4px solid #0969da;
-        }
-        .correct { color: #1a7f37; font-weight: bold; } 
-        .wrong { color: #cf222e; text-decoration: line-through; margin-right: 5px; } 
-        .highlight { background-color: #fff8c5; padding: 2px 5px; border-radius: 3px; font-weight: bold; }
-
-        /* --- Warning Box --- */
-        .trap-box {
-            background-color: #ffebe9;
-            border: 1px solid #ff818266;
-            padding: 15px;
-            margin-top: 15px;
-            border-radius: 6px;
-        }
-        .trap-title { color: #cf222e; font-weight: bold; display: block; margin-bottom: 5px; }
-
-        /* --- Word Order Visual --- */
-        .word-order-container {
-            display: flex;
-            gap: 5px;
-            flex-wrap: wrap;
-            justify-content: center;
-            margin: 15px 0;
-        }
-        .wo-box {
-            padding: 8px 12px;
-            border-radius: 4px;
-            font-size: 0.9em;
-            text-align: center;
-            color: white;
-        }
-        .wo-det { background-color: #6e7781; }
-        .wo-adv { background-color: #d2a8ff; color: #24292f; }
-        .wo-adj { background-color: #ff7b72; color: #fff; }
-        .wo-noun { background-color: #0969da; }
-
-        /* --- Quiz --- */
-        .quiz-container { margin-top: 40px; }
-        .question-card {
-            background: white;
-            padding: 20px;
-            border-radius: 6px;
-            border: 1px solid #d0d7de;
-            margin-bottom: 20px;
-        }
-        .q-text { font-weight: bold; margin-bottom: 15px; font-size: 1.1em; }
-        .options { display: flex; flex-direction: column; gap: 8px; }
-        .option-btn {
+        /* Quiz Buttons */
+        .btn-quiz-option {
             text-align: left;
-            padding: 10px 15px;
-            border: 1px solid #d0d7de;
-            border-radius: 6px;
-            background: white;
-            cursor: pointer;
-            transition: 0.2s;
-            font-size: 1em;
-        }
-        .option-btn:hover { background-color: #f6f8fa; border-color: #0969da; }
-        
-        .option-btn.correct-ans {
-            background-color: #dafbe1;
-            border-color: #1a7f37;
-            color: #1a7f37;
-            font-weight: bold;
-        }
-        .option-btn.wrong-ans {
-            background-color: #ffebe9;
-            border-color: #cf222e;
-            color: #cf222e;
-        }
-
-        .rationale {
-            margin-top: 15px;
+            border: 1px solid #dee2e6;
+            background-color: white;
+            color: #495057;
+            border-radius: 10px;
             padding: 15px;
-            background-color: #f6f8fa;
-            border-radius: 6px;
-            font-size: 0.95em;
-            display: none; /* ซ่อนไว้ก่อน */
+            width: 100%;
+            margin-bottom: 10px;
+            transition: all 0.2s;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
-        .rationale.show { display: block; animation: fadeIn 0.3s; }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(-5px); }
-            to { opacity: 1; transform: translateY(0); }
+        .btn-quiz-option:hover:not(:disabled) {
+            background-color: var(--theme-light);
+            border-color: #99f6e4;
+            color: var(--theme-primary);
+        }
+        .btn-quiz-option:disabled { opacity: 0.8; }
+
+        /* Quiz States */
+        .btn-success-custom {
+            background-color: #d1fae5 !important;
+            border-color: #10b981 !important;
+            color: #065f46 !important;
+        }
+        .btn-danger-custom {
+            background-color: #fee2e2 !important;
+            border-color: #ef4444 !important;
+            color: #991b1b !important;
         }
 
-        /* --- Footer --- */
-        .footer {
-            margin-top: 50px;
-            padding-top: 20px;
-            border-top: 1px solid #e1e4e8;
-            text-align: center;
-            font-size: 0.85em;
-            color: #6e7781;
-        }
-        .ai-badge {
+        .back-link {
+            color: #ccfbf1;
+            text-decoration: none;
+            font-size: 0.9em;
             display: inline-flex;
             align-items: center;
-            background-color: #f3f4f6;
-            padding: 5px 10px;
-            border-radius: 20px;
-            border: 1px solid #d0d7de;
             margin-bottom: 10px;
-            font-weight: 500;
-            color: #57606a;
         }
+        .back-link:hover { color: white; }
     </style>
 </head>
 <body>
 
-    <div class="header">
-        <a href="../index.html" class="back-btn">← กลับไปหน้าหลัก</a>
-        <h1>Sentence Structure Basics</h1>
-        <p>ปูพื้นฐานโครงสร้างประโยค: Subject, Verb และลำดับคำที่ถูกต้อง</p>
-    </div>
-
-    <div class="rule-box">
-        <h2>1. Subject + Verb Agreement</h2>
-        <p>กฎเหล็กข้อแรก: ประธานกับกริยาต้องเข้าคู่กันเสมอ (Singular/Plural)</p>
-        
-        <div class="pattern-box">
-            Subject เอกพจน์ → Verb เติม s/es<br>
-            Subject พหูพจน์ → Verb ไม่เติม s
-        </div>
-
-        <div class="trap-box">
-            <span class="trap-title">⚠️ TOEFL TRAP: Prepositional Phrase</span>
-            ระวัง! ส่วนขยายที่มีบุพบทนำหน้า (in, on, at, of, with) ที่มาคั่นกลาง <strong>"ไม่ใช่ประธาน"</strong> อย่าให้มันหลอก
+    <div class="container">
+        <div class="card main-card">
             
-            <div class="example">
-                <span class="wrong">The list of books <strong>are</strong> on the table.</span><br>
-                <span class="correct">✅ The <span class="highlight">list</span> of books <strong>is</strong> on the table.</span>
-                <br><small>(ประธานคือ list ซึ่งเป็นเอกพจน์ คำว่า books เป็นแค่ส่วนขยาย)</small>
+            <div class="header-bg">
+                <a href="../index.html" class="back-link">
+                    <i class="ph-bold ph-arrow-left me-1"></i> กลับหน้าหลัก
+                </a>
+                <h1 class="h2 fw-bold d-flex align-items-center gap-2">
+                    <i class="ph-duotone ph-columns"></i> Sentence Structure
+                </h1>
+                <p class="mb-0 opacity-75">ปูพื้นฐานโครงสร้างประโยค: Subject, Verb และลำดับคำที่ถูกต้อง</p>
+                <div class="header-decoration"></div>
             </div>
-        </div>
-    </div>
 
-    <div class="rule-box">
-        <h2>2. Missing Main Part</h2>
-        <p>ทุกประโยคที่สมบูรณ์ในภาษาอังกฤษ ต้องมีองค์ประกอบหลักอย่างน้อย 1 คู่ คือ:</p>
-        <div class="pattern-box">
-            1 Main Subject + 1 Main Verb
-        </div>
-        <p>โจทย์ Part Structure มักจะตัด S หรือ V ตัวใดตัวหนึ่งออกไป หน้าที่ของเราคือหาชิ้นส่วนที่หายไปมาเติมให้ครบ</p>
+            <div class="card-body p-4 p-md-5">
 
-        <div class="trap-box">
-            <span class="trap-title">⚠️ ระวัง: กริยาแท้ซ้อนกัน (Double Verbs)</span>
-            ใน 1 ประโยค (1 Clause) ห้ามมี Verb แท้ 2 ตัวโดยไม่มีคำเชื่อม (Conjunction)<br><br>
-            ❌ The boy <strong>playing</strong> in the park. (ขาด Verb แท้: playing เป็นแค่ส่วนขยาย)<br>
-            ✅ The boy <span class="highlight">is playing</span> in the park. (is playing = V.แท้)
-        </div>
-    </div>
+                <section>
+                    <h2 class="section-title">1. Subject + Verb Agreement</h2>
+                    <p>กฎเหล็กข้อแรก: ประธานกับกริยาต้องเข้าคู่กันเสมอ (Singular/Plural)</p>
+                    
+                    <div class="pattern-box">
+                        Subject เอกพจน์ → Verb เติม s/es<br>
+                        Subject พหูพจน์ → Verb ไม่เติม s
+                    </div>
 
-    <div class="rule-box">
-        <h2>3. Appositive (ส่วนขยายประธาน)</h2>
-        <p>คือกลุ่มคำนามที่วางอยู่ระหว่างคอมม่า <code>, ... ,</code> เพื่อขยายความประธานข้างหน้า</p>
-        
-        <div class="pattern-box">
-            Subject, [Appositive], Verb
-        </div>
+                    <div class="alert alert-warning d-flex align-items-start gap-3 mt-3" role="alert">
+                        <i class="ph-fill ph-warning fs-4 mt-1"></i>
+                        <div>
+                            <strong>⚠️ TOEFL TRAP: Prepositional Phrase</strong>
+                            <div class="small mt-1">
+                                ระวัง! ส่วนขยายที่มีบุพบทนำหน้า (in, on, at, of, with) ที่มาคั่นกลาง <strong>"ไม่ใช่ประธาน"</strong> อย่าให้มันหลอก
+                            </div>
+                            <div class="mt-2 p-2 bg-white rounded border border-warning-subtle text-dark">
+                                <span class="text-decoration-line-through text-danger me-2">The list of books <strong>are</strong> on the table.</span><br>
+                                <span class="text-success fw-bold">✅ The <span class="bg-warning-subtle px-1 rounded">list</span> of books <strong>is</strong> on the table.</span>
+                                <div class="small text-muted fst-italic mt-1">(ประธานคือ list ซึ่งเป็นเอกพจน์ คำว่า books เป็นแค่ส่วนขยาย)</div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
 
-        <div class="example">
-            George Washington, <span class="highlight">the first president</span>, was a great leader.
-        </div>
+                <section>
+                    <h2 class="section-title">2. Missing Main Part</h2>
+                    <p>ทุกประโยคที่สมบูรณ์ในภาษาอังกฤษ ต้องมีองค์ประกอบหลักอย่างน้อย 1 คู่ คือ:</p>
+                    <div class="pattern-box">
+                        1 Main Subject + 1 Main Verb
+                    </div>
+                    <p class="text-muted small">โจทย์ Part Structure มักจะตัด S หรือ V ตัวใดตัวหนึ่งออกไป หน้าที่ของเราคือหาชิ้นส่วนที่หายไปมาเติมให้ครบ</p>
 
-        <p>💡 <strong>ทริค:</strong> ถ้าเห็นช่องว่างอยู่หน้า Verb แท้ และมีเครื่องหมายคอมม่าคั่นอยู่ ให้มองหา Subject ที่อยู่นอกคอมม่าทันที (อย่าเผลอไปกา Verb ซ้อนในช่องว่าง)</p>
-    </div>
+                    <div class="alert alert-danger d-flex align-items-start gap-3 mt-3" role="alert">
+                        <i class="ph-fill ph-x-circle fs-4 mt-1"></i>
+                        <div>
+                            <strong>⚠️ ระวัง: กริยาแท้ซ้อนกัน (Double Verbs)</strong>
+                            <div class="small mt-1">
+                                ใน 1 ประโยค (1 Clause) ห้ามมี Verb แท้ 2 ตัวโดยไม่มีคำเชื่อม (Conjunction)
+                            </div>
+                            <ul class="mb-0 mt-2 small list-unstyled">
+                                <li>❌ The boy <strong>playing</strong> in the park. <span class="text-muted">(ขาด Verb แท้)</span></li>
+                                <li>✅ The boy <span class="badge bg-success">is playing</span> in the park. <span class="text-muted">(is playing = V.แท้)</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
 
-    <div class="rule-box">
-        <h2>4. Word Order (การเรียงคำ)</h2>
-        <p>ลำดับการเรียงคำขยายคำนามที่ถูกต้อง คือ:</p>
-        
-        <div class="word-order-container">
-            <div class="wo-box wo-det">Determiner</div>
-            <div class="wo-box wo-adv">Adverb</div>
-            <div class="wo-box wo-adj">Adjective</div>
-            <div class="wo-box wo-noun">Noun + Noun</div>
-        </div>
-        <p><small>(Determiner: a, an, the, this, my, some...)</small></p>
+                <section>
+                    <h2 class="section-title">3. Appositive (ส่วนขยายประธาน)</h2>
+                    <p>คือกลุ่มคำนามที่วางอยู่ระหว่างคอมม่า <code>, ... ,</code> เพื่อขยายความประธานข้างหน้า</p>
+                    
+                    <div class="pattern-box">
+                        Subject, [Appositive], Verb
+                    </div>
 
-        <div class="example">
-            <span class="correct">✅ <span style="color:#6e7781">A</span> <span style="color:#d2a8ff">really</span> <span style="color:#ff7b72">good</span> <span style="color:#0969da">web page</span>.</span>
-        </div>
-    </div>
+                    <div class="example-box">
+                        George Washington, <span class="text-primary fw-bold">the first president</span>, was a great leader.
+                    </div>
 
-    <div class="quiz-container">
-        <h2>📝 Practice Quiz: ทดสอบความเข้าใจ (10 ข้อ)</h2>
-        <div id="quiz-area">
+                    <div class="d-flex align-items-center gap-2 text-muted small">
+                        <i class="ph-fill ph-lightbulb text-warning fs-5"></i>
+                        <strong>ทริค:</strong> ถ้าเห็นช่องว่างอยู่หน้า Verb แท้ และมีเครื่องหมายคอมม่าคั่นอยู่ ให้มองหา Subject ที่อยู่นอกคอมม่าทันที
+                    </div>
+                </section>
+
+                <section>
+                    <h2 class="section-title">4. Word Order (การเรียงคำ)</h2>
+                    <p>ลำดับการเรียงคำขยายคำนามที่ถูกต้อง คือ:</p>
+                    
+                    <div class="d-flex flex-wrap gap-2 justify-content-center mb-3">
+                        <span class="badge bg-secondary p-2">Determiner</span>
+                        <span class="badge p-2" style="background-color: #d2a8ff; color: #24292f;">Adverb</span>
+                        <span class="badge p-2" style="background-color: #ff7b72;">Adjective</span>
+                        <span class="badge bg-primary p-2">Noun + Noun</span>
+                    </div>
+                    <p class="text-center small text-muted">(Determiner: a, an, the, this, my, some...)</p>
+
+                    <div class="example-box text-center">
+                        <span class="fw-bold text-success">✅ <span class="text-secondary">A</span> <span style="color:#a855f7">really</span> <span class="text-danger">good</span> <span class="text-primary">web page</span>.</span>
+                    </div>
+                </section>
+
             </div>
+
+            <div class="card-footer bg-light p-4 p-md-5 border-top">
+                <h3 class="h4 fw-bold text-dark mb-4 d-flex align-items-center gap-2">
+                    <i class="ph-duotone ph-pencil-simple text-primary"></i> Practice Quiz: ทดสอบความเข้าใจ (10 ข้อ)
+                </h3>
+                
+                <div id="quiz-area" class="d-flex flex-column gap-4">
+                    </div>
+            </div>
+
+            <div class="p-4 text-center border-top">
+                <div class="d-inline-flex align-items-center gap-2 bg-white px-3 py-1 rounded-pill border shadow-sm small text-muted mb-2">
+                    <i class="ph-fill ph-sparkle text-warning"></i>
+                    เรียบเรียงโดย Gemini AI & ตรวจสอบโดย PLS-C
+                </div>
+                <div class="text-muted small opacity-75">
+                    Disclaimer: เนื้อหาจัดทำขึ้นเพื่อการศึกษา (Educational Purpose Only)
+                </div>
+                <div class="text-muted small mt-1">
+                    &copy; 2026 PLS-C English Quiz. All rights reserved.
+                </div>
+            </div>
+
+        </div>
     </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
     <script>
-        // --- ข้อมูลโจทย์ (Data Source) ---
+        // --- Data Source ---
         const quizData = [
             {
                 question: "1. She bought a __________ yesterday.",
@@ -351,79 +358,70 @@
         const quizArea = document.getElementById('quiz-area');
 
         quizData.forEach((item, index) => {
-            // สร้าง Card
-            const card = document.createElement('div');
-            card.className = 'question-card';
+            // Create Card
+            const qDiv = document.createElement('div');
+            qDiv.className = "bg-white p-4 rounded-3 border shadow-sm";
 
-            // ใส่โจทย์
-            const qText = document.createElement('div');
-            qText.className = 'q-text';
-            qText.innerHTML = item.question;
-            card.appendChild(qText);
-
-            // ใส่ Options
-            const optionsDiv = document.createElement('div');
-            optionsDiv.className = 'options';
-
-            // สร้าง Feedback Div ไว้รอ (แต่ยังไม่โชว์)
-            const feedbackDiv = document.createElement('div');
-            feedbackDiv.className = 'rationale';
-            
-            // วนลูปสร้างปุ่มตัวเลือก
-            item.options.forEach(opt => {
-                const btn = document.createElement('button');
-                btn.className = 'option-btn';
-                btn.textContent = opt.text;
-                
-                // Event เมื่อกดเลือก
-                btn.onclick = function() {
-                    // ป้องกันการกดซ้ำ (Disable all buttons in this question)
-                    const allBtns = optionsDiv.querySelectorAll('.option-btn');
-                    allBtns.forEach(b => b.disabled = true);
-
-                    // แสดงผล ถูก/ผิด
-                    if (opt.correct) {
-                        btn.classList.add('correct-ans');
-                        feedbackDiv.innerHTML = `<strong>✅ ถูกต้อง!</strong><br>${opt.rationale}`;
-                        feedbackDiv.style.borderLeft = "4px solid #1a7f37";
-                    } else {
-                        btn.classList.add('wrong-ans');
-                        feedbackDiv.innerHTML = `<strong>❌ ยังไม่ถูก</strong><br>${opt.rationale}`;
-                        feedbackDiv.style.borderLeft = "4px solid #cf222e";
-                        
-                        // เฉลยตัวที่ถูกให้เห็นด้วย
-                        allBtns.forEach(b => {
-                            if (b.textContent === item.options.find(o => o.correct).text) {
-                                b.classList.add('correct-ans');
-                            }
-                        });
-                    }
-                    
-                    // แสดง Feedback
-                    feedbackDiv.classList.add('show');
-                };
-                optionsDiv.appendChild(btn);
+            // Create Options HTML
+            let optionsHtml = "";
+            item.options.forEach((opt, optIndex) => {
+                optionsHtml += `
+                    <button onclick="checkAnswer(${index}, ${optIndex}, this)" 
+                            class="btn btn-quiz-option">
+                        <span>${opt.text}</span>
+                        <i class="ph-bold ph-circle text-secondary"></i>
+                    </button>
+                `;
             });
 
-            card.appendChild(optionsDiv);
-            card.appendChild(feedbackDiv);
-            quizArea.appendChild(card);
+            // Assemble HTML
+            qDiv.innerHTML = `
+                <p class="fw-bold text-dark mb-3">${item.question}</p>
+                <div>${optionsHtml}</div>
+                <div id="feedback-${index}" class="mt-3 p-3 rounded-3 small fw-bold d-none"></div>
+            `;
+            quizArea.appendChild(qDiv);
         });
 
-    </script>
+        // --- Check Answer Function ---
+        window.checkAnswer = function(qIndex, optIndex, btnElement) {
+            const question = quizData[qIndex];
+            const option = question.options[optIndex];
+            const feedbackEl = document.getElementById(`feedback-${qIndex}`);
+            
+            // Disable all buttons in this question
+            const allBtns = btnElement.parentElement.querySelectorAll('button');
+            allBtns.forEach(btn => {
+                btn.disabled = true;
+                // Highlight the correct answer even if wrong one was clicked
+                const btnText = btn.querySelector('span').textContent;
+                const correctOpt = question.options.find(o => o.correct);
+                if (btnText === correctOpt.text) {
+                     // Optionally highlight correct answer immediately for visual cue
+                     // btn.classList.add('btn-success-custom'); 
+                }
+            });
 
-    <div class="footer">
-        <div class="ai-badge">
-            <span class="ai-icon">✨</span> เนื้อหาเรียบเรียงโดย Gemini AI & ตรวจสอบโดย PLS-C
-        </div>
-        <p>
-            <strong>Disclaimer:</strong> เนื้อหาในเว็บไซต์นี้จัดทำขึ้นเพื่อวัตถุประสงค์ทางการศึกษา (Educational Purpose Only) <br>
-            ผู้จัดทำพยายามตรวจสอบความถูกต้องอย่างดีที่สุด แต่อาจมีข้อจำกัดทางเทคนิคของ AI ผู้เรียนควรตรวจสอบกับตำราหลักเพื่อการอ้างอิงทางวิชาการ
-        </p>
-        <p style="margin-top: 10px; font-size: 0.9em; opacity: 0.7;">
-            &copy; 2026 PLS-C English Quiz. All rights reserved.
-        </p>
-    </div>
+            // Show Feedback & Change Styles
+            feedbackEl.classList.remove('d-none');
+            
+            if (option.correct) {
+                // Correct Style
+                btnElement.classList.add('btn-success-custom');
+                btnElement.querySelector('i').className = "ph-fill ph-check-circle text-success fs-5";
+                
+                feedbackEl.className = "mt-3 p-3 rounded-3 small fw-bold alert alert-success border-success";
+                feedbackEl.innerHTML = `<i class="ph-bold ph-check me-2"></i> ${option.rationale}`;
+            } else {
+                // Wrong Style
+                btnElement.classList.add('btn-danger-custom');
+                btnElement.querySelector('i').className = "ph-fill ph-x-circle text-danger fs-5";
+
+                feedbackEl.className = "mt-3 p-3 rounded-3 small fw-bold alert alert-danger border-danger";
+                feedbackEl.innerHTML = `<i class="ph-bold ph-x me-2"></i> ${option.rationale}`;
+            }
+        };
+    </script>
 
 </body>
 </html>

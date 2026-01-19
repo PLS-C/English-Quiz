@@ -9,60 +9,166 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@300;400;600&family=Sarabun:wght@400;600;700&display=swap" rel="stylesheet">
     
-    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
 
     <style>
-        body { font-family: 'Sarabun', 'Noto Sans Thai', sans-serif; }
-        /* Custom Animation for Loading */
-        @keyframes spin { to { transform: rotate(360deg); } }
-        .animate-spin-slow { animation: spin 3s linear infinite; }
+        :root {
+            --theme-primary: #0f766e; /* Teal-700 */
+            --theme-light: #f0fdfa;   /* Teal-50 */
+            --theme-border: #ccfbf1;  /* Teal-200 */
+        }
+        
+        body { 
+            font-family: 'Sarabun', 'Noto Sans Thai', sans-serif; 
+            background-color: #f8f9fa;
+        }
+
+        /* Main Card Container */
+        .main-card {
+            border: none;
+            border-radius: 16px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            overflow: hidden;
+            max-width: 800px;
+            margin: 40px auto;
+            min-height: 80vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Header Styling */
+        .header-bg {
+            background-color: var(--theme-primary);
+            color: white;
+            padding: 2.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+        .header-decoration {
+            position: absolute;
+            bottom: -50px;
+            right: -50px;
+            width: 150px;
+            height: 150px;
+            background-color: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            filter: blur(40px);
+        }
+
+        /* Section Title */
+        .section-title {
+            color: #115e59;
+            border-left: 5px solid #14b8a6;
+            padding-left: 15px;
+            font-weight: bold;
+            margin-top: 1.5rem;
+            margin-bottom: 1rem;
+            font-size: 1.25rem;
+        }
+
+        /* File Item Styling (Matches Quiz Option Button) */
+        .file-link-item {
+            text-decoration: none;
+            text-align: left;
+            border: 1px solid #dee2e6;
+            background-color: white;
+            color: #495057;
+            border-radius: 12px;
+            padding: 18px;
+            width: 100%;
+            margin-bottom: 12px;
+            transition: all 0.2s;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .file-link-item:hover {
+            background-color: var(--theme-light);
+            border-color: #99f6e4;
+            color: var(--theme-primary);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+        
+        /* Navigation Tabs */
+        .nav-pills-custom {
+            background-color: #f8f9fa;
+            padding: 0.5rem;
+            border-radius: 12px;
+            display: flex;
+            gap: 0.5rem;
+        }
+        .nav-btn {
+            flex: 1;
+            border: none;
+            border-radius: 8px;
+            padding: 12px;
+            font-weight: bold;
+            font-size: 0.95rem;
+            background: transparent;
+            color: #6c757d;
+            transition: all 0.2s;
+        }
+        .nav-btn.active {
+            background-color: white;
+            color: var(--theme-primary);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        .nav-btn:hover:not(.active) {
+            background-color: #e9ecef;
+            color: #495057;
+        }
     </style>
 </head>
-<body class="bg-slate-100 min-h-screen py-8 px-4 flex justify-center items-start">
+<body>
 
-    <div class="bg-white w-full max-w-3xl rounded-2xl shadow-xl overflow-hidden border border-slate-200 min-h-[80vh] flex flex-col">
-        
-        <div class="bg-teal-700 p-8 text-white relative overflow-hidden flex-none">
-            <div class="relative z-10">
-                <h1 class="text-3xl font-bold mb-2 flex items-center gap-3">
-                    <i class="ph-duotone ph-student"></i> TOEFL ITP Center
-                </h1>
-                <p class="text-teal-100 opacity-90 text-lg">ศูนย์รวมแบบฝึกหัดและสรุปไวยากรณ์ (Structure & Written Expression)</p>
-            </div>
+    <div class="container">
+        <div class="card main-card">
             
-            <div class="absolute -bottom-12 -right-12 w-48 h-48 bg-teal-500 rounded-full opacity-20 blur-3xl"></div>
-            <div class="absolute top-0 right-0 p-4 opacity-10">
-                <i class="ph-fill ph-books text-9xl"></i>
-            </div>
-        </div>
-
-        <div class="px-6 pt-6 flex-none">
-            <div class="bg-slate-100 p-1.5 rounded-xl flex gap-1 shadow-inner">
-                <button onclick="switchTab('quiz')" id="btn-quiz" class="flex-1 py-3 px-4 rounded-lg text-sm font-bold transition-all duration-200 flex items-center justify-center gap-2 bg-white text-teal-700 shadow-sm ring-1 ring-slate-200">
-                    <i class="ph-bold ph-pencil-simple"></i> แบบทดสอบ (Quizzes)
-                </button>
-                <button onclick="switchTab('grammar')" id="btn-grammar" class="flex-1 py-3 px-4 rounded-lg text-sm font-bold text-slate-500 hover:text-slate-700 hover:bg-slate-200/50 transition-all duration-200 flex items-center justify-center gap-2">
-                    <i class="ph-bold ph-book-bookmark"></i> บทเรียน (Grammar)
-                </button>
-            </div>
-        </div>
-        
-        <div id="content-area" class="p-6 flex-grow space-y-6">
+            <div class="header-bg">
+                <div class="position-relative z-1">
+                    <h1 class="h2 fw-bold d-flex align-items-center gap-2 mb-2">
+                        <i class="ph-duotone ph-student"></i> TOEFL ITP Center
+                    </h1>
+                    <p class="mb-0 opacity-75 fs-5">ศูนย์รวมแบบฝึกหัดและสรุปไวยากรณ์</p>
+                    <p class="mb-0 opacity-50 small">(Structure & Written Expression)</p>
+                </div>
+                <div class="header-decoration"></div>
+                <div class="position-absolute top-0 end-0 p-3 opacity-10">
+                    <i class="ph-fill ph-books display-1 text-white"></i>
+                </div>
             </div>
 
-        <div class="bg-slate-50 p-6 text-center border-t border-slate-200 flex-none mt-auto">
-            <div class="inline-flex items-center gap-2 bg-white px-4 py-1.5 rounded-full border border-slate-200 shadow-sm text-xs text-slate-500 mb-2">
-                <i class="ph-fill ph-sparkle text-yellow-500"></i>
-                Engineered by PLS-C & Gemini AI
+            <div class="px-4 pt-4">
+                <div class="nav-pills-custom">
+                    <button onclick="switchTab('quiz')" id="btn-quiz" class="nav-btn active">
+                        <i class="ph-bold ph-pencil-simple me-1"></i> แบบทดสอบ
+                    </button>
+                    <button onclick="switchTab('grammar')" id="btn-grammar" class="nav-btn">
+                        <i class="ph-bold ph-book-bookmark me-1"></i> บทเรียน
+                    </button>
+                </div>
             </div>
-            <p class="text-xs text-slate-400">
-                &copy; 2026 PLS-C English Quiz. All rights reserved.
-            </p>
-        </div>
 
+            <div id="content-area" class="card-body p-4 flex-grow-1">
+                </div>
+
+            <div class="p-4 text-center border-top mt-auto bg-light">
+                <div class="d-inline-flex align-items-center gap-2 bg-white px-3 py-1 rounded-pill border shadow-sm small text-muted mb-2">
+                    <i class="ph-fill ph-sparkle text-warning"></i>
+                    Engineered by PLS-C & Gemini AI
+                </div>
+                <div class="text-muted small">
+                    &copy; 2026 PLS-C English Quiz. All rights reserved.
+                </div>
+            </div>
+
+        </div>
     </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
     <script>
         // --- ส่วนการตั้งค่า ---
@@ -80,25 +186,13 @@
         window.onload = () => loadQuizzes();
 
         function switchTab(tab) {
-            // Tailwind Classes for Active/Inactive States
-            const activeClasses = ['bg-white', 'text-teal-700', 'shadow-sm', 'ring-1', 'ring-slate-200'];
-            const inactiveClasses = ['text-slate-500', 'hover:text-slate-700', 'hover:bg-slate-200/50', 'shadow-none', 'ring-0', 'bg-transparent'];
-
             if (tab === 'quiz') {
-                btnQuiz.classList.add(...activeClasses);
-                btnQuiz.classList.remove(...inactiveClasses);
-                
-                btnGrammar.classList.remove(...activeClasses);
-                btnGrammar.classList.add(...inactiveClasses);
-                
+                btnQuiz.classList.add('active');
+                btnGrammar.classList.remove('active');
                 loadQuizzes();
             } else {
-                btnGrammar.classList.add(...activeClasses);
-                btnGrammar.classList.remove(...inactiveClasses);
-                
-                btnQuiz.classList.remove(...activeClasses);
-                btnQuiz.classList.add(...inactiveClasses);
-                
+                btnGrammar.classList.add('active');
+                btnQuiz.classList.remove('active');
                 loadGrammar();
             }
         }
@@ -198,16 +292,17 @@
             }
         }
 
+        // --- Render Functions (Bootstrap Style) ---
+
         function createSection(title, files, parentFolder = '', iconType = 'file-text') {
-            // Header Section
+            // Title
             const header = document.createElement('h2');
-            header.className = "text-xl font-bold text-teal-800 border-l-4 border-teal-500 pl-3 mb-4 mt-6 flex items-center gap-2";
+            header.className = "section-title d-flex align-items-center gap-2";
             header.innerHTML = `${title.replace(/-/g, ' ')}`;
             contentArea.appendChild(header);
 
-            // Grid Container
-            const gridDiv = document.createElement('div');
-            gridDiv.className = "grid grid-cols-1 gap-3";
+            // Container
+            const div = document.createElement('div');
             
             files.forEach(file => {
                 const hrefPath = parentFolder 
@@ -216,43 +311,45 @@
 
                 const displayName = file.name.replace('.html', '').replace(/-/g, ' ');
 
-                // Card Item
+                // Link Item
                 const link = document.createElement('a');
                 link.href = hrefPath;
-                link.className = "group block w-full bg-white border border-slate-200 rounded-xl p-4 hover:border-teal-400 hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 flex items-center justify-between";
+                link.className = "file-link-item group";
                 
                 link.innerHTML = `
-                    <div class="flex items-center gap-3">
-                        <div class="w-10 h-10 rounded-full bg-teal-50 text-teal-600 flex items-center justify-center group-hover:bg-teal-500 group-hover:text-white transition-colors duration-200">
-                            <i class="ph-bold ph-${iconType} text-xl"></i>
+                    <div class="d-flex align-items-center gap-3">
+                        <div class="bg-light text-secondary rounded-circle d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">
+                            <i class="ph-bold ph-${iconType} fs-5"></i>
                         </div>
-                        <span class="font-semibold text-slate-700 group-hover:text-teal-700 transition-colors capitalize">${displayName}</span>
+                        <span class="fw-semibold text-dark text-capitalize">${displayName}</span>
                     </div>
-                    <div class="text-slate-300 group-hover:text-teal-400 transition-colors">
+                    <div class="text-secondary opacity-50">
                         <i class="ph-bold ph-caret-right"></i>
                     </div>
                 `;
                 
-                gridDiv.appendChild(link);
+                div.appendChild(link);
             });
 
-            contentArea.appendChild(gridDiv);
+            contentArea.appendChild(div);
         }
 
         function renderLoading() {
             contentArea.innerHTML = `
-                <div class="flex flex-col items-center justify-center py-12 text-slate-400">
-                    <i class="ph-duotone ph-spinner animate-spin text-4xl text-teal-500 mb-3"></i>
-                    <p class="font-medium animate-pulse">กำลังโหลดข้อมูล...</p>
+                <div class="d-flex flex-column align-items-center justify-content-center py-5 text-muted">
+                    <div class="spinner-border text-primary mb-3" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
+                    <p class="fw-medium animate-pulse">กำลังโหลดข้อมูล...</p>
                 </div>
             `;
         }
 
         function renderEmpty(msg) {
             contentArea.innerHTML = `
-                <div class="flex flex-col items-center justify-center py-12 text-slate-400 border-2 border-dashed border-slate-200 rounded-2xl bg-slate-50">
-                    <i class="ph-duotone ph-folder-open text-4xl mb-2"></i>
-                    <p>${msg}</p>
+                <div class="d-flex flex-column align-items-center justify-content-center py-5 text-muted border border-dashed rounded-4 bg-light">
+                    <i class="ph-duotone ph-folder-open display-4 mb-2 opacity-50"></i>
+                    <p class="mb-0">${msg}</p>
                 </div>
             `;
         }
@@ -260,11 +357,11 @@
         function renderError(error) {
             console.error(error);
             contentArea.innerHTML = `
-                <div class="bg-red-50 border border-red-200 rounded-xl p-6 text-center text-red-600">
-                    <i class="ph-fill ph-warning-circle text-3xl mb-2"></i>
-                    <p class="font-bold">เกิดข้อผิดพลาดในการโหลดข้อมูล</p>
-                    <p class="text-sm opacity-80 mt-1">${error.message}</p>
-                    <button onclick="location.reload()" class="mt-4 px-4 py-2 bg-white border border-red-200 rounded-lg text-sm font-bold hover:bg-red-100 transition">
+                <div class="alert alert-danger text-center p-4 rounded-4 border-danger">
+                    <i class="ph-fill ph-warning-circle display-4 mb-2"></i>
+                    <p class="fw-bold mb-1">เกิดข้อผิดพลาดในการโหลดข้อมูล</p>
+                    <p class="small opacity-75 mb-3">${error.message}</p>
+                    <button onclick="location.reload()" class="btn btn-outline-danger btn-sm fw-bold bg-white">
                         ลองใหม่
                     </button>
                 </div>

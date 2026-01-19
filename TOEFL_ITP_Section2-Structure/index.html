@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TOEFL ITP Structure Quizzes</title>
+    <title>TOEFL ITP Structure Center</title>
     <style>
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
@@ -13,10 +13,41 @@
             background-color: #f6f8fa;
             color: #24292f;
         }
+        /* --- Style สำหรับ Navigator --- */
+        .nav-container {
+            display: flex;
+            background-color: white;
+            border: 1px solid #d0d7de;
+            border-radius: 6px;
+            margin-bottom: 20px;
+            overflow: hidden;
+        }
+        .nav-btn {
+            flex: 1;
+            padding: 15px;
+            border: none;
+            background: none;
+            cursor: pointer;
+            font-size: 1em;
+            font-weight: bold;
+            color: #57606a;
+            transition: 0.2s;
+            text-align: center;
+        }
+        .nav-btn:hover {
+            background-color: #f3f4f6;
+        }
+        .nav-btn.active {
+            background-color: #0969da;
+            color: white;
+        }
+        /* --------------------------- */
+
         h1 {
             border-bottom: 1px solid #d0d7de;
             padding-bottom: 10px;
             color: #0969da;
+            font-size: 1.5em;
         }
         h2 {
             margin-top: 30px;
@@ -28,6 +59,8 @@
         .loading {
             color: #666;
             font-style: italic;
+            text-align: center;
+            padding: 20px;
         }
         ul {
             list-style-type: none;
@@ -58,70 +91,143 @@
             color: #0969da;
         }
         .empty-msg {
-            padding: 10px;
+            padding: 20px;
             color: #666;
+            text-align: center;
+            background: #fff;
+            border-radius: 6px;
+            border: 1px dashed #ccc;
         }
+        .icon { margin-right: 8px; }
     </style>
 </head>
 <body>
 
-    <h1>รายการแบบทดสอบ (Structure)</h1>
+    <h1>TOEFL ITP Practice Center</h1>
+
+    <div class="nav-container">
+        <button class="nav-btn active" onclick="switchTab('quiz')" id="btn-quiz">
+            📝 แบบทดสอบ (Quizzes)
+        </button>
+        <button class="nav-btn" onclick="switchTab('grammar')" id="btn-grammar">
+            📚 บทเรียน (Grammar)
+        </button>
+    </div>
     
     <div id="content-area">
-        <p class="loading">กำลังสแกนโฟลเดอร์และไฟล์...</p>
-    </div>
+        </div>
 
     <script>
         // --- ส่วนการตั้งค่า ---
         const username = 'PLS-C'; 
         const repo = 'English-Quiz'; 
         const rootFolder = 'TOEFL_ITP_Section2-Structure'; 
+        const grammarFolderName = 'grammar'; // ชื่อโฟลเดอร์ที่เก็บเนื้อหา Grammar
         // -------------------
 
         const contentArea = document.getElementById('content-area');
+        const btnQuiz = document.getElementById('btn-quiz');
+        const btnGrammar = document.getElementById('btn-grammar');
 
-        async function main() {
+        // โหลดหน้าแรกเป็น Quiz ทันที
+        window.onload = () => loadQuizzes();
+
+        function switchTab(tab) {
+            // เปลี่ยนสีปุ่ม
+            if (tab === 'quiz') {
+                btnQuiz.classList.add('active');
+                btnGrammar.classList.remove('active');
+                loadQuizzes();
+            } else {
+                btnGrammar.classList.add('active');
+                btnQuiz.classList.remove('active');
+                loadGrammar();
+            }
+        }
+
+        // ==========================================
+        // 1. ฟังก์ชันโหลดหน้ารวมแบบทดสอบ (Quizzes)
+        // ==========================================
+        async function loadQuizzes() {
+            contentArea.innerHTML = '<p class="loading">กำลังโหลดรายชื่อแบบทดสอบ...</p>';
+            
             try {
-                // 1. ดึงข้อมูลใน Root Folder
                 const rootUrl = `https://api.github.com/repos/${username}/${repo}/contents/${rootFolder}`;
                 const response = await fetch(rootUrl);
                 
-                if (!response.ok) {
-                    if(response.status === 404) throw new Error('ไม่พบโฟลเดอร์นี้ใน GitHub (ตรวจสอบชื่อ Folder/Repo)');
-                    throw new Error('การเชื่อมต่อขัดข้อง');
-                }
+                if (!response.ok) throw new Error('เชื่อมต่อ GitHub ไม่ได้');
                 
                 const items = await response.json();
-                contentArea.innerHTML = ''; // ล้างข้อความ Loading
+                contentArea.innerHTML = ''; 
 
-                // แยกรายการเป็น 2 กลุ่ม: ไฟล์ และ โฟลเดอร์
+                // กรองเฉพาะไฟล์ .html และโฟลเดอร์ (แต่ไม่เอาโฟลเดอร์ grammar)
                 const files = items.filter(i => i.type === 'file' && i.name.endsWith('.html') && i.name !== 'index.html');
-                const folders = items.filter(i => i.type === 'dir');
+                // *** จุดสำคัญ: กรองโฟลเดอร์ grammar ออกจากหน้านี้ ***
+                const folders = items.filter(i => i.type === 'dir' && i.name.toLowerCase() !== grammarFolderName.toLowerCase());
 
                 let hasContent = false;
 
-                // 2. แสดงไฟล์ที่อยู่นอกสุด (ถ้ามี)
+                // แสดงไฟล์ที่อยู่นอกสุด
                 if (files.length > 0) {
                     createSection('แบบทดสอบทั่วไป', files);
                     hasContent = true;
                 }
 
-                // 3. วนลูปเพื่อดึงข้อมูลในแต่ละโฟลเดอร์ย่อย
+                // วนลูปดึงข้อมูลในโฟลเดอร์ย่อย (Set 1, Set 2, ...)
                 for (const folder of folders) {
                     const found = await fetchFolderContent(folder);
                     if (found) hasContent = true;
                 }
 
-                // ถ้าไม่เจออะไรเลยทั้งข้างนอกและข้างใน
                 if (!hasContent && folders.length === 0) {
-                    contentArea.innerHTML = '<div class="empty-msg">ไม่พบไฟล์แบบทดสอบ (กรุณาเช็คว่าอัปโหลดไฟล์ .html ขึ้น GitHub หรือยัง)</div>';
+                    contentArea.innerHTML = '<div class="empty-msg">ไม่พบแบบทดสอบ</div>';
                 }
 
             } catch (error) {
-                console.error(error);
-                contentArea.innerHTML = `<p style="color:red">เกิดข้อผิดพลาด: ${error.message}</p>`;
+                showError(error);
             }
         }
+
+        // ==========================================
+        // 2. ฟังก์ชันโหลดหน้าบทเรียน (Grammar)
+        // ==========================================
+        async function loadGrammar() {
+            contentArea.innerHTML = '<p class="loading">กำลังโหลดเนื้อหา Grammar...</p>';
+
+            try {
+                // เจาะจงไปที่โฟลเดอร์ grammar เลย
+                const grammarUrl = `https://api.github.com/repos/${username}/${repo}/contents/${rootFolder}/${grammarFolderName}`;
+                const response = await fetch(grammarUrl);
+
+                if (!response.ok) {
+                    if(response.status === 404) {
+                        contentArea.innerHTML = `<div class="empty-msg">
+                            ยังไม่มีเนื้อหาในส่วนนี้ <br>
+                            (กรุณาสร้างโฟลเดอร์ชื่อ <b>${grammarFolderName}</b> และใส่ไฟล์ .html ลงไป)
+                        </div>`;
+                        return;
+                    }
+                    throw new Error('เชื่อมต่อ GitHub ไม่ได้');
+                }
+
+                const items = await response.json();
+                contentArea.innerHTML = '';
+
+                // เอาเฉพาะไฟล์ .html ในโฟลเดอร์ grammar
+                const lessonFiles = items.filter(i => i.type === 'file' && i.name.endsWith('.html'));
+
+                if (lessonFiles.length > 0) {
+                    createSection('หัวข้อ Grammar ที่ต้องรู้', lessonFiles, grammarFolderName, '📖');
+                } else {
+                    contentArea.innerHTML = '<div class="empty-msg">พบโฟลเดอร์ แต่ยังไม่มีไฟล์เนื้อหาข้างใน</div>';
+                }
+
+            } catch (error) {
+                showError(error);
+            }
+        }
+
+        // --- Helper Functions ---
 
         async function fetchFolderContent(folder) {
             try {
@@ -138,12 +244,12 @@
                 }
                 return false;
             } catch (err) {
-                console.error('Error fetching folder:', folder.name, err);
+                console.error(err);
                 return false;
             }
         }
 
-        function createSection(title, files, parentFolder = '') {
+        function createSection(title, files, parentFolder = '', icon = '📄') {
             const header = document.createElement('h2');
             header.textContent = title.replace(/-/g, ' '); 
             contentArea.appendChild(header);
@@ -154,17 +260,17 @@
                 const li = document.createElement('li');
                 const a = document.createElement('a');
 
-                // สร้างลิงก์ให้ถูกต้อง (รองรับโฟลเดอร์ย่อย)
                 const hrefPath = parentFolder 
                     ? `${encodeURIComponent(parentFolder)}/${encodeURIComponent(file.name)}`
                     : file.name;
 
                 a.href = hrefPath;
+                // ตัดนามสกุลไฟล์ออก และเปลี่ยนขีดเป็นเว้นวรรคให้สวยงาม
                 const displayName = file.name.replace('.html', '').replace(/-/g, ' ');
 
                 a.innerHTML = `
-                    <span>📄 ${displayName}</span>
-                    <span style="font-size:0.8em; color:#666;">🔗 คลิกทำข้อสอบ</span>
+                    <span><span class="icon">${icon}</span> ${displayName}</span>
+                    <span style="font-size:0.8em; color:#666;">🔗 คลิกเพื่อเปิด</span>
                 `;
                 
                 li.appendChild(a);
@@ -174,7 +280,10 @@
             contentArea.appendChild(ul);
         }
 
-        main();
+        function showError(error) {
+            console.error(error);
+            contentArea.innerHTML = `<p style="color:red; text-align:center;">เกิดข้อผิดพลาด: ${error.message}</p>`;
+        }
     </script>
 </body>
 </html>

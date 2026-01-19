@@ -3,126 +3,73 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TOEFL ITP Structure Center</title>
-    <style>
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-            background-color: #f6f8fa;
-            color: #24292f;
-        }
-        /* --- Style สำหรับ Navigator --- */
-        .nav-container {
-            display: flex;
-            background-color: white;
-            border: 1px solid #d0d7de;
-            border-radius: 6px;
-            margin-bottom: 20px;
-            overflow: hidden;
-        }
-        .nav-btn {
-            flex: 1;
-            padding: 15px;
-            border: none;
-            background: none;
-            cursor: pointer;
-            font-size: 1em;
-            font-weight: bold;
-            color: #57606a;
-            transition: 0.2s;
-            text-align: center;
-        }
-        .nav-btn:hover {
-            background-color: #f3f4f6;
-        }
-        .nav-btn.active {
-            background-color: #0969da;
-            color: white;
-        }
-        /* --------------------------- */
+    <title>TOEFL ITP Practice Center</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@300;400;600&family=Sarabun:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
 
-        h1 {
-            border-bottom: 1px solid #d0d7de;
-            padding-bottom: 10px;
-            color: #0969da;
-            font-size: 1.5em;
-        }
-        h2 {
-            margin-top: 30px;
-            font-size: 1.2em;
-            color: #57606a;
-            border-left: 5px solid #0969da;
-            padding-left: 10px;
-        }
-        .loading {
-            color: #666;
-            font-style: italic;
-            text-align: center;
-            padding: 20px;
-        }
-        ul {
-            list-style-type: none;
-            padding: 0;
-        }
-        li {
-            background: white;
-            margin-bottom: 8px;
-            border: 1px solid #d0d7de;
-            border-radius: 6px;
-            transition: 0.2s;
-        }
-        li:hover {
-            border-color: #0969da;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-        }
-        a {
-            display: block;
-            padding: 15px 20px;
-            text-decoration: none;
-            color: #24292f;
-            font-weight: 500;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        a:hover {
-            color: #0969da;
-        }
-        .empty-msg {
-            padding: 20px;
-            color: #666;
-            text-align: center;
-            background: #fff;
-            border-radius: 6px;
-            border: 1px dashed #ccc;
-        }
-        .icon { margin-right: 8px; }
+    <style>
+        body { font-family: 'Sarabun', 'Noto Sans Thai', sans-serif; }
+        /* Custom Animation for Loading */
+        @keyframes spin { to { transform: rotate(360deg); } }
+        .animate-spin-slow { animation: spin 3s linear infinite; }
     </style>
 </head>
-<body>
+<body class="bg-slate-100 min-h-screen py-8 px-4 flex justify-center items-start">
 
-    <h1>TOEFL ITP Practice Center</h1>
-
-    <div class="nav-container">
-        <button class="nav-btn active" onclick="switchTab('quiz')" id="btn-quiz">
-            📝 แบบทดสอบ (Quizzes)
-        </button>
-        <button class="nav-btn" onclick="switchTab('grammar')" id="btn-grammar">
-            📚 บทเรียน (Grammar)
-        </button>
-    </div>
-    
-    <div id="content-area">
+    <div class="bg-white w-full max-w-3xl rounded-2xl shadow-xl overflow-hidden border border-slate-200 min-h-[80vh] flex flex-col">
+        
+        <div class="bg-teal-700 p-8 text-white relative overflow-hidden flex-none">
+            <div class="relative z-10">
+                <h1 class="text-3xl font-bold mb-2 flex items-center gap-3">
+                    <i class="ph-duotone ph-student"></i> TOEFL ITP Center
+                </h1>
+                <p class="text-teal-100 opacity-90 text-lg">ศูนย์รวมแบบฝึกหัดและสรุปไวยากรณ์ (Structure & Written Expression)</p>
+            </div>
+            
+            <div class="absolute -bottom-12 -right-12 w-48 h-48 bg-teal-500 rounded-full opacity-20 blur-3xl"></div>
+            <div class="absolute top-0 right-0 p-4 opacity-10">
+                <i class="ph-fill ph-books text-9xl"></i>
+            </div>
         </div>
+
+        <div class="px-6 pt-6 flex-none">
+            <div class="bg-slate-100 p-1.5 rounded-xl flex gap-1 shadow-inner">
+                <button onclick="switchTab('quiz')" id="btn-quiz" class="flex-1 py-3 px-4 rounded-lg text-sm font-bold transition-all duration-200 flex items-center justify-center gap-2 bg-white text-teal-700 shadow-sm ring-1 ring-slate-200">
+                    <i class="ph-bold ph-pencil-simple"></i> แบบทดสอบ (Quizzes)
+                </button>
+                <button onclick="switchTab('grammar')" id="btn-grammar" class="flex-1 py-3 px-4 rounded-lg text-sm font-bold text-slate-500 hover:text-slate-700 hover:bg-slate-200/50 transition-all duration-200 flex items-center justify-center gap-2">
+                    <i class="ph-bold ph-book-bookmark"></i> บทเรียน (Grammar)
+                </button>
+            </div>
+        </div>
+        
+        <div id="content-area" class="p-6 flex-grow space-y-6">
+            </div>
+
+        <div class="bg-slate-50 p-6 text-center border-t border-slate-200 flex-none mt-auto">
+            <div class="inline-flex items-center gap-2 bg-white px-4 py-1.5 rounded-full border border-slate-200 shadow-sm text-xs text-slate-500 mb-2">
+                <i class="ph-fill ph-sparkle text-yellow-500"></i>
+                Engineered by PLS-C & Gemini AI
+            </div>
+            <p class="text-xs text-slate-400">
+                &copy; 2026 PLS-C English Quiz. All rights reserved.
+            </p>
+        </div>
+
+    </div>
 
     <script>
         // --- ส่วนการตั้งค่า ---
         const username = 'PLS-C'; 
         const repo = 'English-Quiz'; 
         const rootFolder = 'TOEFL_ITP_Section2-Structure'; 
-        const grammarFolderName = 'grammar'; // ชื่อโฟลเดอร์ที่เก็บเนื้อหา Grammar
+        const grammarFolderName = 'grammar'; 
         // -------------------
 
         const contentArea = document.getElementById('content-area');
@@ -133,14 +80,25 @@
         window.onload = () => loadQuizzes();
 
         function switchTab(tab) {
-            // เปลี่ยนสีปุ่ม
+            // Tailwind Classes for Active/Inactive States
+            const activeClasses = ['bg-white', 'text-teal-700', 'shadow-sm', 'ring-1', 'ring-slate-200'];
+            const inactiveClasses = ['text-slate-500', 'hover:text-slate-700', 'hover:bg-slate-200/50', 'shadow-none', 'ring-0', 'bg-transparent'];
+
             if (tab === 'quiz') {
-                btnQuiz.classList.add('active');
-                btnGrammar.classList.remove('active');
+                btnQuiz.classList.add(...activeClasses);
+                btnQuiz.classList.remove(...inactiveClasses);
+                
+                btnGrammar.classList.remove(...activeClasses);
+                btnGrammar.classList.add(...inactiveClasses);
+                
                 loadQuizzes();
             } else {
-                btnGrammar.classList.add('active');
-                btnQuiz.classList.remove('active');
+                btnGrammar.classList.add(...activeClasses);
+                btnGrammar.classList.remove(...inactiveClasses);
+                
+                btnQuiz.classList.remove(...activeClasses);
+                btnQuiz.classList.add(...inactiveClasses);
+                
                 loadGrammar();
             }
         }
@@ -149,7 +107,7 @@
         // 1. ฟังก์ชันโหลดหน้ารวมแบบทดสอบ (Quizzes)
         // ==========================================
         async function loadQuizzes() {
-            contentArea.innerHTML = '<p class="loading">กำลังโหลดรายชื่อแบบทดสอบ...</p>';
+            renderLoading();
             
             try {
                 const rootUrl = `https://api.github.com/repos/${username}/${repo}/contents/${rootFolder}`;
@@ -160,31 +118,27 @@
                 const items = await response.json();
                 contentArea.innerHTML = ''; 
 
-                // กรองเฉพาะไฟล์ .html และโฟลเดอร์ (แต่ไม่เอาโฟลเดอร์ grammar)
                 const files = items.filter(i => i.type === 'file' && i.name.endsWith('.html') && i.name !== 'index.html');
-                // *** จุดสำคัญ: กรองโฟลเดอร์ grammar ออกจากหน้านี้ ***
                 const folders = items.filter(i => i.type === 'dir' && i.name.toLowerCase() !== grammarFolderName.toLowerCase());
 
                 let hasContent = false;
 
-                // แสดงไฟล์ที่อยู่นอกสุด
                 if (files.length > 0) {
                     createSection('แบบทดสอบทั่วไป', files);
                     hasContent = true;
                 }
 
-                // วนลูปดึงข้อมูลในโฟลเดอร์ย่อย (Set 1, Set 2, ...)
                 for (const folder of folders) {
                     const found = await fetchFolderContent(folder);
                     if (found) hasContent = true;
                 }
 
                 if (!hasContent && folders.length === 0) {
-                    contentArea.innerHTML = '<div class="empty-msg">ไม่พบแบบทดสอบ</div>';
+                    renderEmpty('ไม่พบแบบทดสอบ');
                 }
 
             } catch (error) {
-                showError(error);
+                renderError(error);
             }
         }
 
@@ -192,19 +146,15 @@
         // 2. ฟังก์ชันโหลดหน้าบทเรียน (Grammar)
         // ==========================================
         async function loadGrammar() {
-            contentArea.innerHTML = '<p class="loading">กำลังโหลดเนื้อหา Grammar...</p>';
+            renderLoading();
 
             try {
-                // เจาะจงไปที่โฟลเดอร์ grammar เลย
                 const grammarUrl = `https://api.github.com/repos/${username}/${repo}/contents/${rootFolder}/${grammarFolderName}`;
                 const response = await fetch(grammarUrl);
 
                 if (!response.ok) {
                     if(response.status === 404) {
-                        contentArea.innerHTML = `<div class="empty-msg">
-                            ยังไม่มีเนื้อหาในส่วนนี้ <br>
-                            (กรุณาสร้างโฟลเดอร์ชื่อ <b>${grammarFolderName}</b> และใส่ไฟล์ .html ลงไป)
-                        </div>`;
+                        renderEmpty(`ยังไม่มีเนื้อหาในส่วนนี้ (Folder: ${grammarFolderName})`);
                         return;
                     }
                     throw new Error('เชื่อมต่อ GitHub ไม่ได้');
@@ -213,17 +163,16 @@
                 const items = await response.json();
                 contentArea.innerHTML = '';
 
-                // เอาเฉพาะไฟล์ .html ในโฟลเดอร์ grammar
                 const lessonFiles = items.filter(i => i.type === 'file' && i.name.endsWith('.html'));
 
                 if (lessonFiles.length > 0) {
-                    createSection('หัวข้อ Grammar ที่ต้องรู้', lessonFiles, grammarFolderName, '📖');
+                    createSection('หัวข้อ Grammar ที่ต้องรู้', lessonFiles, grammarFolderName, 'book-open-text');
                 } else {
-                    contentArea.innerHTML = '<div class="empty-msg">พบโฟลเดอร์ แต่ยังไม่มีไฟล์เนื้อหาข้างใน</div>';
+                    renderEmpty('พบโฟลเดอร์ แต่ยังไม่มีไฟล์เนื้อหาข้างใน');
                 }
 
             } catch (error) {
-                showError(error);
+                renderError(error);
             }
         }
 
@@ -249,40 +198,77 @@
             }
         }
 
-        function createSection(title, files, parentFolder = '', icon = '📄') {
+        function createSection(title, files, parentFolder = '', iconType = 'file-text') {
+            // Header Section
             const header = document.createElement('h2');
-            header.textContent = title.replace(/-/g, ' '); 
+            header.className = "text-xl font-bold text-teal-800 border-l-4 border-teal-500 pl-3 mb-4 mt-6 flex items-center gap-2";
+            header.innerHTML = `${title.replace(/-/g, ' ')}`;
             contentArea.appendChild(header);
 
-            const ul = document.createElement('ul');
+            // Grid Container
+            const gridDiv = document.createElement('div');
+            gridDiv.className = "grid grid-cols-1 gap-3";
             
             files.forEach(file => {
-                const li = document.createElement('li');
-                const a = document.createElement('a');
-
                 const hrefPath = parentFolder 
                     ? `${encodeURIComponent(parentFolder)}/${encodeURIComponent(file.name)}`
                     : file.name;
 
-                a.href = hrefPath;
-                // ตัดนามสกุลไฟล์ออก และเปลี่ยนขีดเป็นเว้นวรรคให้สวยงาม
                 const displayName = file.name.replace('.html', '').replace(/-/g, ' ');
 
-                a.innerHTML = `
-                    <span><span class="icon">${icon}</span> ${displayName}</span>
-                    <span style="font-size:0.8em; color:#666;">🔗 คลิกเพื่อเปิด</span>
+                // Card Item
+                const link = document.createElement('a');
+                link.href = hrefPath;
+                link.className = "group block w-full bg-white border border-slate-200 rounded-xl p-4 hover:border-teal-400 hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 flex items-center justify-between";
+                
+                link.innerHTML = `
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-teal-50 text-teal-600 flex items-center justify-center group-hover:bg-teal-500 group-hover:text-white transition-colors duration-200">
+                            <i class="ph-bold ph-${iconType} text-xl"></i>
+                        </div>
+                        <span class="font-semibold text-slate-700 group-hover:text-teal-700 transition-colors capitalize">${displayName}</span>
+                    </div>
+                    <div class="text-slate-300 group-hover:text-teal-400 transition-colors">
+                        <i class="ph-bold ph-caret-right"></i>
+                    </div>
                 `;
                 
-                li.appendChild(a);
-                ul.appendChild(li);
+                gridDiv.appendChild(link);
             });
 
-            contentArea.appendChild(ul);
+            contentArea.appendChild(gridDiv);
         }
 
-        function showError(error) {
+        function renderLoading() {
+            contentArea.innerHTML = `
+                <div class="flex flex-col items-center justify-center py-12 text-slate-400">
+                    <i class="ph-duotone ph-spinner animate-spin text-4xl text-teal-500 mb-3"></i>
+                    <p class="font-medium animate-pulse">กำลังโหลดข้อมูล...</p>
+                </div>
+            `;
+        }
+
+        function renderEmpty(msg) {
+            contentArea.innerHTML = `
+                <div class="flex flex-col items-center justify-center py-12 text-slate-400 border-2 border-dashed border-slate-200 rounded-2xl bg-slate-50">
+                    <i class="ph-duotone ph-folder-open text-4xl mb-2"></i>
+                    <p>${msg}</p>
+                </div>
+            `;
+        }
+
+        function renderError(error) {
             console.error(error);
-            contentArea.innerHTML = `<p style="color:red; text-align:center;">เกิดข้อผิดพลาด: ${error.message}</p>`;
+            contentArea.innerHTML = `
+                <div class="bg-red-50 border border-red-200 rounded-xl p-6 text-center text-red-600">
+                    <i class="ph-fill ph-warning-circle text-3xl mb-2"></i>
+                    <p class="font-bold">เกิดข้อผิดพลาดในการโหลดข้อมูล</p>
+                    <p class="text-sm opacity-80 mt-1">${error.message}</p>
+                    <button onclick="location.reload()" class="mt-4 px-4 py-2 bg-white border border-red-200 rounded-lg text-sm font-bold hover:bg-red-100 transition">
+                        ลองใหม่
+                    </button>
+                </div>
+            `;
         }
     </script>
 </body>

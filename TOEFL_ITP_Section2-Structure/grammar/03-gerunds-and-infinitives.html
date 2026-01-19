@@ -43,7 +43,7 @@
         }
         h2 { border-left: 5px solid #0969da; padding-left: 15px; margin-top: 0; color: #1f2328; }
 
-        /* --- Examples from Listening --- */
+        /* --- Examples --- */
         .listening-example {
             background-color: #f1f8ff; /* สีฟ้าอ่อนให้รู้ว่ามาจาก Listening */
             border-left: 4px solid #0969da;
@@ -52,6 +52,13 @@
             margin: 15px 0;
             font-style: italic;
             color: #24292f;
+        }
+        .general-example {
+            background-color: #f6f8fa;
+            padding: 15px;
+            border-radius: 6px;
+            margin: 10px 0;
+            font-family: 'Courier New', Courier, monospace;
         }
         .listening-tag {
             display: inline-block;
@@ -66,6 +73,7 @@
         }
         .highlight { background-color: #fff8c5; padding: 2px 5px; border-radius: 3px; font-weight: bold; }
         .wrong { color: #cf222e; text-decoration: line-through; margin-right: 5px; }
+        .correct { color: #1a7f37; font-weight: bold; }
 
         /* --- Tip Box --- */
         .toefl-trap {
@@ -177,6 +185,23 @@
         </div>
     </div>
 
+    <div class="rule-box">
+        <h2>5. Infinitive of Purpose (To... เพื่อที่จะ...)</h2>
+        <p>เมื่อขึ้นต้นประโยคด้วย <strong>To + V.1 (Base Form)</strong> จะทำหน้าที่บอก <strong>"จุดประสงค์"</strong> (In order to...) โดยกริยาหลัง To ห้ามเติม s/es/ed เด็ดขาด</p>
+        
+        <div class="general-example">
+            <span class="correct">✅ <strong>To pass</strong> the TOEFL exam, you must practice listening everyday.</span>
+            <br><small>(แปล: เพื่อที่จะสอบผ่าน TOEFL คุณต้องฝึกฟังทุกวัน)</small>
+        </div>
+
+        <div class="toefl-trap">
+            🔥 <strong>TOEFL TRAP:</strong> ห้ามใช้ <strong>For + V.ing</strong> ขึ้นต้นประโยคเพื่อบอกจุดประสงค์
+            <br><br>
+            ❌ <em>For passing</em> the exam, you must...<br>
+            ✅ <strong>To pass</strong> the exam, you must...
+        </div>
+    </div>
+
     <div class="quiz-container">
         <h2>📝 Mini Quiz: ทดสอบจากบทเรียน</h2>
         
@@ -205,6 +230,15 @@
                 <label><input type="radio" name="q3" value="correct" onclick="checkAns(3, true)"> B) seeing</label>
             </div>
             <div id="feedback-3" class="feedback"></div>
+        </div>
+
+        <div class="question">
+            <p><strong>4. ______ a clearer sound, you should use headphones.</strong> <small>(Infinitive of Purpose)</small></p>
+            <div class="options">
+                <label><input type="radio" name="q4" value="correct" onclick="checkAns(4, true)"> A) To get</label>
+                <label><input type="radio" name="q4" value="wrong" onclick="checkAns(4, false)"> B) Getting</label>
+            </div>
+            <div id="feedback-4" class="feedback"></div>
         </div>
 
     </div>

@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deep Dive: Usage of 'To' | TOEFL ITP</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f6f8fa;
+            color: #24292f;
+            line-height: 1.6;
+        }
+
+        /* --- Header --- */
+        .header {
+            border-bottom: 1px solid #d0d7de;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+        .back-btn {
+            display: inline-block;
+            margin-bottom: 15px;
+            text-decoration: none;
+            color: #0969da;
+            font-weight: 500;
+        }
+        .back-btn:hover { text-decoration: underline; }
+        
+        h1 { color: #0969da; margin: 0; }
+        .subtitle { color: #57606a; margin-top: 5px; }
+
+        /* --- Comparison Table --- */
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: white;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        .comparison-table th, .comparison-table td {
+            border: 1px solid #d0d7de;
+            padding: 12px;
+            text-align: left;
+        }
+        .comparison-table th {
+            background-color: #f6f8fa;
+            color: #0969da;
+        }
+        
+        /* --- Content Box --- */
+        .rule-box {
+            background: white;
+            border: 1px solid #d0d7de;
+            border-radius: 6px;
+            padding: 25px;
+            margin-bottom: 20px;
+        }
+        h2 { border-left: 5px solid #0969da; padding-left: 15px; margin-top: 0; color: #1f2328; }
+
+        /* --- Examples --- */
+        .example {
+            background-color: #f1f8ff;
+            padding: 15px;
+            border-radius: 6px;
+            margin: 10px 0;
+            font-family: 'Courier New', Courier, monospace;
+        }
+        .correct { color: #1a7f37; font-weight: bold; }
+        .wrong { color: #cf222e; text-decoration: line-through; }
+        .highlight { background-color: #fff8c5; padding: 2px 5px; border-radius: 3px; font-weight: bold; }
+
+        /* --- Warning Box --- */
+        .trap-box {
+            background-color: #ffebe9;
+            border: 1px solid #ff818266;
+            padding: 15px;
+            margin-top: 15px;
+            border-radius: 6px;
+        }
+        .trap-title { color: #cf222e; font-weight: bold; display: block; margin-bottom: 5px; }
+
+        /* --- Quiz --- */
+        .quiz-container { margin-top: 40px; border-top: 2px dashed #d0d7de; padding-top: 20px; }
+        .question {
+            background: white;
+            padding: 20px;
+            border-radius: 6px;
+            border: 1px solid #d0d7de;
+            margin-bottom: 15px;
+        }
+        .options label { display: block; margin: 10px 0; cursor: pointer; }
+        .feedback { margin-top: 10px; font-weight: bold; display: none; }
+        .feedback.show-correct { display: block; color: #1a7f37; }
+        .feedback.show-wrong { display: block; color: #cf222e; }
+        
+        /* --- Footer --- */
+        .footer {
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 1px solid #e1e4e8;
+            text-align: center;
+            font-size: 0.85em;
+            color: #6e7781;
+        }
+        .ai-badge {
+            display: inline-flex;
+            align-items: center;
+            background-color: #f3f4f6;
+            padding: 5px 10px;
+            border-radius: 20px;
+            border: 1px solid #d0d7de;
+            margin-bottom: 10px;
+            font-weight: 500;
+            color: #57606a;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <a href="gerunds-and-infinitives.html" class="back-btn">← กลับไปหน้า Gerunds</a>
+        <h1>The Many Faces of "To"</h1>
+        <p class="subtitle">เจาะลึกการใช้ To: เมื่อไหร่ตามด้วย V.1 และเมื่อไหร่ตามด้วย V.ing?</p>
+    </div>
+
+    <div class="rule-box">
+        <h2>ภาพรวม: To มี 2 หน้าที่ (The Two Faces)</h2>
+        <p>ในภาษาอังกฤษ คำว่า "To" เป็นได้ 2 อย่าง ซึ่งส่งผลต่อคำที่ตามหลังมันอย่างสิ้นเชิง:</p>
+        
+        <table class="comparison-table">
+            <thead>
+                <tr>
+                    <th>หน้าที่ (Function)</th>
+                    <th>ตามด้วย (Followed by)</th>
+                    <th>ตัวอย่าง</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>1. To Infinitive</strong><br>(ตัวบอกกริยาไม่แท้)</td>
+                    <td><strong>V.1 (Base Form)</strong><br>ห้ามเติม s, es, ed, ing</td>
+                    <td>I want <strong>to go</strong>.<br>It is easy <strong>to learn</strong>.</td>
+                </tr>
+                <tr>
+                    <td><strong>2. To Preposition</strong><br>(คำบุพบท)</td>
+                    <td><strong>Noun</strong> หรือ <strong>V.ing</strong><br>ห้ามใช้ V.1 เด็ดขาด</td>
+                    <td>Go <strong>to school</strong>.<br>Look forward <strong>to seeing</strong> you.</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="rule-box">
+        <h2>1. To Infinitive (ตามด้วย V.1)</h2>
+        <p>ใช้ในกรณีต่อไปนี้:</p>
+        
+        <h3>A. บอกจุดประสงค์ (Infinitive of Purpose)</h3>
+        <p>วางไว้หน้าประโยค หรือหลังประโยค เพื่อบอกว่า "ทำไปเพื่ออะไร"</p>
+        <div class="example">
+            <span class="correct">✅ <strong>To pass</strong> the test, you must study.</span>
+            <br><small>(เพื่อที่จะสอบผ่าน...)</small>
+        </div>
+
+        <h3>B. ตามหลัง Adjective (It is... to...)</h3>
+        <div class="example">
+            It is important <strong>to practice</strong> every day.<br>
+            It is dangerous <strong>to swim</strong> here.
+        </div>
+
+        <h3>C. ตามหลังกริยาบางตัว (Verbs of Desire/Plan)</h3>
+        <p>เช่น: <em>want, hope, decide, plan, promise, agree</em></p>
+        <div class="example">
+            She decided <strong>to buy</strong> a new car.
+        </div>
+    </div>
+
+    <div class="rule-box">
+        <h2>2. To Preposition (ตามด้วย V.ing/Noun)</h2>
+        <p>อันนี้คือจุดที่ <strong>"ยากและออกสอบบ่อยที่สุด"</strong> เพราะเรามักชินปากว่า To ต้องตามด้วย V.1 เสมอ แต่มีข้อยกเว้นสำหรับสำนวนเหล่านี้:</p>
+
+        <div class="trap-box">
+            <span class="trap-title">🔥 ต้องจำ! (The Magic List)</span>
+            คำเหล่านี้ "To" เป็น Preposition ต้องตามด้วย <strong>V.ing</strong> เท่านั้น:
+            <ul>
+                <li><strong>look forward to</strong> (ตั้งตารอ) → <em>I look forward to <u>seeing</u> you.</em></li>
+                <li><strong>object to</strong> (คัดค้าน) → <em>He objects to <u>changing</u> the plan.</em></li>
+                <li><strong>be used to / get used to</strong> (เคยชิน) → <em>I am used to <u>waking</u> up early.</em></li>
+                <li><strong>dedicate to / devote to</strong> (อุทิศให้) → <em>She dedicated her life to <u>helping</u> others.</em></li>
+                <li><strong>stick to</strong> (ยึดมั่น/ทำต่อไป) → <em>Stick to <u>jogging</u>.</em></li>
+                <li><strong>admit to / confess to</strong> (สารภาพ) → <em>He admitted to <u>stealing</u> the money.</em></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="quiz-container">
+        <h2>📝 Mini Quiz: วัดความแม่นยำเรื่อง To</h2>
+
+        <div class="question">
+            <p><strong>1. We look forward to ______ from you soon.</strong></p>
+            <div class="options">
+                <label><input type="radio" name="q1" value="wrong" onclick="checkAns(1, false)"> A) hear</label>
+                <label><input type="radio" name="q1" value="correct" onclick="checkAns(1, true)"> B) hearing</label>
+            </div>
+            <div id="feedback-1" class="feedback"></div>
+        </div>
+
+        <div class="question">
+            <p><strong>2. ______ fit, you should exercise regularly.</strong></p>
+            <div class="options">
+                <label><input type="radio" name="q2" value="wrong" onclick="checkAns(2, false)"> A) Keeping</label>
+                <label><input type="radio" name="q2" value="correct" onclick="checkAns(2, true)"> B) To keep</label>
+            </div>
+            <div id="feedback-2" class="feedback"></div>
+        </div>
+
+        <div class="question">
+            <p><strong>3. She objects to ______ on weekends.</strong></p>
+            <div class="options">
+                <label><input type="radio" name="q3" value="correct" onclick="checkAns(3, true)"> A) working</label>
+                <label><input type="radio" name="q3" value="wrong" onclick="checkAns(3, false)"> B) work</label>
+            </div>
+            <div id="feedback-3" class="feedback"></div>
+        </div>
+    </div>
+
+    <script>
+        function checkAns(qId, isCorrect) {
+            const feedbackEl = document.getElementById(`feedback-${qId}`);
+            if (isCorrect) {
+                feedbackEl.textContent = "✅ ถูกต้อง! เก่งมาก";
+                feedbackEl.className = "feedback show-correct";
+            } else {
+                let msg = "";
+                if (qId === 1) msg = "Look forward to เป็นข้อยกเว้น ต้องตามด้วย V.ing ครับ";
+                if (qId === 2) msg = "ขึ้นต้นประโยคเพื่อบอกจุดประสงค์ ต้องใช้ To + V.1 ครับ";
+                if (qId === 3) msg = "Object to (คัดค้าน) เป็นข้อยกเว้น ต้องตามด้วย V.ing ครับ";
+                feedbackEl.textContent = "❌ " + msg;
+                feedbackEl.className = "feedback show-wrong";
+            }
+        }
+    </script>
+
+    <div class="footer">
+        <div class="ai-badge">
+            <span class="ai-icon">✨</span> เนื้อหาเรียบเรียงโดย Gemini AI & ตรวจสอบโดย PLS-C
+        </div>
+        <p>
+            <strong>Disclaimer:</strong> เนื้อหาในเว็บไซต์นี้จัดทำขึ้นเพื่อวัตถุประสงค์ทางการศึกษา (Educational Purpose Only) <br>
+            ผู้จัดทำพยายามตรวจสอบความถูกต้องอย่างดีที่สุด แต่อาจมีข้อจำกัดทางเทคนิคของ AI ผู้เรียนควรตรวจสอบกับตำราหลักเพื่อการอ้างอิงทางวิชาการ
+        </p>
+        <p style="margin-top: 10px; font-size: 0.9em; opacity: 0.7;">
+            &copy; 2026 PLS-C English Quiz. All rights reserved.
+        </p>
+    </div>
+
+</body>
+</html>

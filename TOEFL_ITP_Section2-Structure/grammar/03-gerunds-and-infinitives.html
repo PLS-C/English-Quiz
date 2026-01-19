@@ -42,7 +42,7 @@
         }
         .intro-title { font-weight: bold; color: #0969da; font-size: 1.1em; margin-bottom: 10px; display: block; }
 
-        /* --- Warning Box (Enhanced) --- */
+        /* --- Warning Box (General) --- */
         .warning-box {
             background-color: #fff8c5;
             border: 1px solid #d4a72c;
@@ -51,6 +51,16 @@
             margin-bottom: 30px;
             font-size: 0.95em;
         }
+        
+        /* --- Inner Warning Box (For Preposition Section) --- */
+        .inner-warning {
+            background-color: #fffbf0; /* สีอ่อนกว่าด้านบนนิดหน่อยเพื่อให้ซ้อนได้สวย */
+            border: 1px dashed #d4a72c;
+            border-radius: 6px;
+            padding: 15px;
+            margin-top: 20px;
+        }
+
         .warning-table {
             width: 100%;
             margin-top: 10px;
@@ -87,6 +97,23 @@
         ul { margin-top: 10px; padding-left: 20px; }
         li { margin-bottom: 5px; color: #57606a; }
 
+        /* --- Vocab Grid --- */
+        .vocab-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 10px;
+            margin-top: 15px;
+        }
+        .vocab-item {
+            background-color: #f6f8fa;
+            border: 1px solid #e1e4e8;
+            padding: 8px 12px;
+            border-radius: 4px;
+            font-size: 0.9em;
+            color: #24292f;
+        }
+        .vocab-item strong { color: #0969da; }
+
         .example {
             background-color: #f6f8fa;
             padding: 15px;
@@ -97,28 +124,6 @@
         }
         .correct { color: #1a7f37; font-weight: bold; }
         .wrong { color: #cf222e; text-decoration: line-through; margin-right: 5px; }
-
-        /* --- Trap Box & Link --- */
-        .trap-box {
-            background-color: #ffebe9;
-            border: 1px solid #ff818266;
-            border-radius: 6px;
-            padding: 20px;
-            margin-top: 20px;
-        }
-        .read-more-btn {
-            display: inline-block;
-            background-color: #0969da;
-            color: white;
-            padding: 10px 25px;
-            border-radius: 20px;
-            text-decoration: none;
-            font-weight: bold;
-            margin-top: 15px;
-            transition: 0.2s;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-        .read-more-btn:hover { background-color: #0756b3; transform: translateY(-1px); }
 
         /* --- Quiz --- */
         .quiz-container { margin-top: 40px; border-top: 2px dashed #d0d7de; padding-top: 20px; }
@@ -200,28 +205,59 @@
 
     <div class="rule-box">
         <h2>1. กริยาที่ต้องตามด้วย V.ing (Gerund)</h2>
-        <p>หากเจอคำกริยาเหล่านี้ คำที่ตามหลังมาต้องเป็น V.ing เสมอ:</p>
-        <ul>
-            <li><strong>enjoy</strong> (enjoy playing)</li>
-            <li><strong>avoid</strong> (avoid eating)</li>
-            <li><strong>mind</strong> (mind opening...?)</li>
-            <li><strong>suggest</strong> (suggest going)</li>
-            <li><strong>keep, finish, quit, give up</strong></li>
-        </ul>
+        <p>นี่คือรายการคำศัพท์ที่ออกสอบบ่อยที่สุด (Must Know) หากเจอคำเหล่านี้ คำถัดไปต้องเป็น V.ing เสมอ:</p>
+        
+        <h4 style="margin: 15px 0 5px 0; color:#57606a;">⛔ กลุ่มชะลอ / หยุด / เลี่ยง (Stop & Delay)</h4>
+        <div class="vocab-grid">
+            <div class="vocab-item"><strong>avoid</strong> (หลีกเลี่ยง)</div>
+            <div class="vocab-item"><strong>delay</strong> (ล่าช้า)</div>
+            <div class="vocab-item"><strong>postpone</strong> (เลื่อน)</div>
+            <div class="vocab-item"><strong>finish</strong> (เสร็จ)</div>
+            <div class="vocab-item"><strong>quit</strong> (เลิก)</div>
+            <div class="vocab-item"><strong>give up</strong> (ยอมแพ้/เลิก)</div>
+            <div class="vocab-item"><strong>stop</strong> (หยุด)</div>
+            <div class="vocab-item"><strong>keep</strong> (ทำต่อไป)</div>
+        </div>
+
+        <h4 style="margin: 15px 0 5px 0; color:#57606a;">❤️ กลุ่มความรู้สึก / ความคิด (Feeling & Mental)</h4>
+        <div class="vocab-grid">
+            <div class="vocab-item"><strong>enjoy</strong> (สนุก)</div>
+            <div class="vocab-item"><strong>mind</strong> (รังเกียจ)</div>
+            <div class="vocab-item"><strong>dislike</strong> (ไม่ชอบ)</div>
+            <div class="vocab-item"><strong>consider</strong> (พิจารณา)</div>
+            <div class="vocab-item"><strong>suggest</strong> (แนะนำ)</div>
+            <div class="vocab-item"><strong>recommend</strong> (แนะนำ)</div>
+            <div class="vocab-item"><strong>discuss</strong> (หารือ)</div>
+            <div class="vocab-item"><strong>admit</strong> (ยอมรับ)</div>
+            <div class="vocab-item"><strong>deny</strong> (ปฏิเสธ)</div>
+            <div class="vocab-item"><strong>miss</strong> (พลาด/คิดถึง)</div>
+            <div class="vocab-item"><strong>practice</strong> (ฝึกฝน)</div>
+            <div class="vocab-item"><strong>risk</strong> (เสี่ยง)</div>
+        </div>
+
         <div class="example">
-            <span class="correct">✅ He <strong>avoids talking</strong> to strangers.</span>
+            <span class="correct">✅ He <strong>avoids talking</strong> to strangers.</span><br>
+            <span class="correct">✅ Would you <strong>mind opening</strong> the window?</span>
         </div>
     </div>
 
     <div class="rule-box">
         <h2>2. กริยาที่ต้องตามด้วย to V.1 (Infinitive)</h2>
         <p>กลุ่มนี้มักเกี่ยวกับความตั้งใจ แผนการ หรืออนาคต:</p>
-        <ul>
-            <li><strong>want</strong> (want to go)</li>
-            <li><strong>decide</strong> (decide to stay)</li>
-            <li><strong>hope</strong> (hope to see)</li>
-            <li><strong>plan, promise, agree, refuse</strong></li>
-        </ul>
+        <div class="vocab-grid">
+            <div class="vocab-item"><strong>want</strong> (ต้องการ)</div>
+            <div class="vocab-item"><strong>hope</strong> (หวัง)</div>
+            <div class="vocab-item"><strong>wish</strong> (ปรารถนา)</div>
+            <div class="vocab-item"><strong>decide</strong> (ตัดสินใจ)</div>
+            <div class="vocab-item"><strong>plan</strong> (วางแผน)</div>
+            <div class="vocab-item"><strong>promise</strong> (สัญญา)</div>
+            <div class="vocab-item"><strong>agree</strong> (ตกลง)</div>
+            <div class="vocab-item"><strong>refuse</strong> (ปฏิเสธ)</div>
+            <div class="vocab-item"><strong>offer</strong> (เสนอ)</div>
+            <div class="vocab-item"><strong>need</strong> (จำเป็น)</div>
+            <div class="vocab-item"><strong>fail</strong> (ล้มเหลว)</div>
+            <div class="vocab-item"><strong>afford</strong> (จ่ายไหว)</div>
+        </div>
         <div class="example">
             <span class="correct">✅ She <strong>decided to buy</strong> a new house.</span>
         </div>
@@ -234,24 +270,19 @@
             <span class="wrong">She is good at <em>dance</em>.</span><br>
             <span class="correct">✅ She is good at <strong>dancing</strong>.</span>
         </div>
-    </div>
 
-    <div class="rule-box">
-        <h2>4. ข้อควรระวัง: "To" ไม่ได้ตามด้วย V.1 เสมอไป!</h2>
-        <p>มีบางสำนวนที่ "To" ทำหน้าที่เป็น Preposition ซึ่งต้องตามด้วย <strong>V.ing</strong></p>
-        
-        <div class="trap-box">
-            <strong>🔥 คำที่เจอบ่อย (ตามด้วย V.ing):</strong>
-            <ul>
-                <li>look forward to (ตั้งตารอ)</li>
-                <li>object to (คัดค้าน)</li>
-                <li>be used to (เคยชิน)</li>
-                <li>stick to (ยึดติด/ทำต่อ)</li>
+        <div class="inner-warning">
+            ⚠️ <strong>ระวัง! "To" ก็เป็น Preposition ได้เหมือนกัน</strong><br>
+            ปกติเราท่อง <code>to + V.1</code> แต่มีบางสำนวนที่ "To" ทำหน้าที่เป็น Preposition (แบบเดียวกับ in/on/at) ซึ่งต้องตามด้วย <strong>V.ing</strong> เสมอ
+            
+            <ul style="margin-top: 10px;">
+                <li><strong>look forward to</strong> (ตั้งตารอ)</li>
+                <li><strong>object to</strong> (คัดค้าน)</li>
+                <li><strong>be used to</strong> (เคยชิน)</li>
+                <li><strong>stick to</strong> (ยึดติด/ทำต่อ)</li>
             </ul>
-        </div>
 
-        <div style="text-align: center;">
-            <a href="usage-of-to.html" class="read-more-btn">👉 อ่านเจาะลึกเรื่องการใช้ "To" คลิกที่นี่</a>
+            <a href="usage-of-to.html" class="warning-link">👉 อ่านเจาะลึก: ทำไม To ถึงเป็นแบบนี้? คลิกที่นี่</a>
         </div>
     </div>
 
@@ -284,6 +315,24 @@
             </div>
             <div id="feedback-3" class="feedback"></div>
         </div>
+
+        <div class="question">
+            <p><strong>4. She suggested ______ to the beach.</strong></p>
+            <div class="options">
+                <label><input type="radio" name="q4" value="correct" onclick="checkAns(4, true)"> A) going</label>
+                <label><input type="radio" name="q4" value="wrong" onclick="checkAns(4, false)"> B) to go</label>
+            </div>
+            <div id="feedback-4" class="feedback"></div>
+        </div>
+
+        <div class="question">
+            <p><strong>5. He admitted ______ the money.</strong></p>
+            <div class="options">
+                <label><input type="radio" name="q5" value="correct" onclick="checkAns(5, true)"> A) stealing</label>
+                <label><input type="radio" name="q5" value="wrong" onclick="checkAns(5, false)"> B) to steal</label>
+            </div>
+            <div id="feedback-5" class="feedback"></div>
+        </div>
     </div>
 
     <script>
@@ -296,7 +345,9 @@
                 let msg = "❌ ยังไม่ถูก ";
                 if(qId === 1) msg += "หลัง plan ต้องใช้ to go ครับ";
                 if(qId === 2) msg += "หลัง mind ต้องใช้ V.ing ครับ";
-                if(qId === 3) msg += "หลัง look forward to ต้องใช้ V.ing ครับ";
+                if(qId === 3) msg += "หลัง look forward to (Preposition) ต้องใช้ V.ing ครับ";
+                if(qId === 4) msg += "หลัง suggest ต้องใช้ V.ing ครับ";
+                if(qId === 5) msg += "หลัง admit ต้องใช้ V.ing ครับ";
                 feedbackEl.textContent = msg;
                 feedbackEl.className = "feedback show-wrong";
             }

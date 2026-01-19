@@ -4,364 +4,437 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gerunds & Infinitives | TOEFL ITP</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@300;400;600&family=Sarabun:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
     <style>
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        :root {
+            --theme-primary: #0f766e; /* Teal-700 */
+            --theme-light: #f0fdfa;   /* Teal-50 */
+            --theme-border: #ccfbf1;  /* Teal-200 */
+        }
+        
+        body { 
+            font-family: 'Sarabun', 'Noto Sans Thai', sans-serif; 
+            background-color: #f8f9fa;
+        }
+
+        /* Main Card */
+        .main-card {
+            border: none;
+            border-radius: 16px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            overflow: hidden;
             max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-            background-color: #f6f8fa;
-            color: #24292f;
-            line-height: 1.6;
+            margin: 40px auto;
         }
 
-        /* --- Header --- */
-        .header {
-            border-bottom: 1px solid #d0d7de;
-            padding-bottom: 20px;
-            margin-bottom: 30px;
+        /* Header */
+        .header-bg {
+            background-color: var(--theme-primary);
+            color: white;
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
         }
-        .back-btn {
-            display: inline-block;
-            margin-bottom: 15px;
-            text-decoration: none;
-            color: #0969da;
-            font-weight: 500;
-        }
-        .back-btn:hover { text-decoration: underline; }
-        
-        h1 { color: #0969da; margin: 0; }
-
-        /* --- Intro Box --- */
-        .intro-box {
-            background: linear-gradient(to right, #f0f9ff, #e6fffa);
-            border: 1px solid #bde0fe;
-            border-radius: 8px;
-            padding: 20px;
-            margin-bottom: 20px;
-        }
-        .intro-title { font-weight: bold; color: #0969da; font-size: 1.1em; margin-bottom: 10px; display: block; }
-
-        /* --- Warning Box (General) --- */
-        .warning-box {
-            background-color: #fff8c5;
-            border: 1px solid #d4a72c;
-            border-radius: 8px;
-            padding: 20px;
-            margin-bottom: 30px;
-            font-size: 0.95em;
-        }
-        
-        /* --- Inner Warning Box (For Preposition Section) --- */
-        .inner-warning {
-            background-color: #fffbf0; /* สีอ่อนกว่าด้านบนนิดหน่อยเพื่อให้ซ้อนได้สวย */
-            border: 1px dashed #d4a72c;
-            border-radius: 6px;
-            padding: 15px;
-            margin-top: 20px;
+        .header-decoration {
+            position: absolute;
+            bottom: -50px;
+            right: -50px;
+            width: 150px;
+            height: 150px;
+            background-color: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            filter: blur(40px);
         }
 
-        .warning-table {
-            width: 100%;
-            margin-top: 10px;
-            background: white;
-            border-collapse: collapse;
-            font-size: 0.9em;
-        }
-        .warning-table th, .warning-table td {
-            border: 1px solid #e1e4e8;
-            padding: 8px;
-            text-align: left;
-        }
-        .warning-table th { background-color: #f6f8fa; }
-        .warning-link {
-            display: inline-block;
-            margin-top: 10px;
-            color: #0969da;
+        /* Content Styling */
+        .section-title {
+            color: #115e59;
+            border-left: 5px solid #14b8a6;
+            padding-left: 15px;
             font-weight: bold;
-            text-decoration: none;
-        }
-        .warning-link:hover { text-decoration: underline; }
-
-        /* --- Content Box --- */
-        .rule-box {
-            background: white;
-            border: 1px solid #d0d7de;
-            border-radius: 6px;
-            padding: 25px;
             margin-bottom: 20px;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+            margin-top: 30px;
         }
-        h2 { border-left: 5px solid #0969da; padding-left: 15px; margin-top: 0; color: #1f2328; }
 
-        ul { margin-top: 10px; padding-left: 20px; }
-        li { margin-bottom: 5px; color: #57606a; }
-
-        /* --- Vocab Grid --- */
-        .vocab-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 10px;
-            margin-top: 15px;
-        }
-        .vocab-item {
-            background-color: #f6f8fa;
-            border: 1px solid #e1e4e8;
-            padding: 8px 12px;
-            border-radius: 4px;
-            font-size: 0.9em;
-            color: #24292f;
-        }
-        .vocab-item strong { color: #0969da; }
-
-        .example {
-            background-color: #f6f8fa;
-            padding: 15px;
-            border-radius: 6px;
-            margin-top: 15px;
-            font-family: 'Courier New', Courier, monospace;
-            border-left: 4px solid #0969da;
-        }
-        .correct { color: #1a7f37; font-weight: bold; }
-        .wrong { color: #cf222e; text-decoration: line-through; margin-right: 5px; }
-
-        /* --- Quiz --- */
-        .quiz-container { margin-top: 40px; border-top: 2px dashed #d0d7de; padding-top: 20px; }
-        .question {
-            background: white;
+        .example-box {
+            background-color: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 12px;
             padding: 20px;
-            border-radius: 6px;
-            border: 1px solid #d0d7de;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
         }
-        .options label { display: block; margin: 10px 0; cursor: pointer; }
-        .feedback { margin-top: 10px; font-weight: bold; display: none; }
-        .feedback.show-correct { display: block; color: #1a7f37; }
-        .feedback.show-wrong { display: block; color: #cf222e; }
 
-        /* --- Footer --- */
-        .footer {
-            margin-top: 50px;
-            padding-top: 20px;
-            border-top: 1px solid #e1e4e8;
+        /* Vocab Items */
+        .vocab-item {
+            background-color: white;
+            border: 1px solid #e9ecef;
+            padding: 8px 12px;
+            border-radius: 8px;
+            font-size: 0.95em;
+            color: #495057;
+            display: block;
             text-align: center;
-            font-size: 0.85em;
-            color: #6e7781;
+            transition: all 0.2s;
         }
-        .ai-badge {
+        .vocab-item:hover {
+            border-color: #99f6e4;
+            background-color: var(--theme-light);
+            color: var(--theme-primary);
+        }
+        .vocab-item strong { color: var(--theme-primary); }
+
+        /* Quiz Buttons */
+        .btn-quiz-option {
+            text-align: left;
+            border: 1px solid #dee2e6;
+            background-color: white;
+            color: #495057;
+            border-radius: 10px;
+            padding: 15px;
+            width: 100%;
+            margin-bottom: 10px;
+            transition: all 0.2s;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .btn-quiz-option:hover:not(:disabled) {
+            background-color: var(--theme-light);
+            border-color: #99f6e4;
+            color: var(--theme-primary);
+        }
+        .btn-quiz-option:disabled { opacity: 0.7; }
+
+        /* Quiz States */
+        .btn-success-custom {
+            background-color: #d1fae5 !important;
+            border-color: #10b981 !important;
+            color: #065f46 !important;
+        }
+        .btn-danger-custom {
+            background-color: #fee2e2 !important;
+            border-color: #ef4444 !important;
+            color: #991b1b !important;
+        }
+
+        .back-link {
+            color: #ccfbf1;
+            text-decoration: none;
+            font-size: 0.9em;
             display: inline-flex;
             align-items: center;
-            background-color: #f3f4f6;
-            padding: 5px 10px;
-            border-radius: 20px;
-            border: 1px solid #d0d7de;
             margin-bottom: 10px;
-            font-weight: 500;
-            color: #57606a;
         }
+        .back-link:hover { color: white; }
     </style>
 </head>
 <body>
 
-    <div class="header">
-        <a href="../index.html" class="back-btn">← กลับไปหน้าหลัก</a>
-        <h1>Gerunds & Infinitives Overview</h1>
-        <p>คู่มือแยกแยะการใช้ V.ing และ to V.1 ในฐานะ "คำนาม"</p>
-    </div>
-
-    <div class="intro-box">
-        <span class="intro-title">🎓 มันคืออะไร?</span>
-        <p>Gerunds (V.ing) และ Infinitives (to V.1) คือคำกริยาที่แปลงร่างมาทำหน้าที่เป็น <strong>"คำนาม (Noun)"</strong> ครับ ใช้เป็นประธานหรือกรรมของประโยคได้</p>
-    </div>
-
-    <div class="warning-box">
-        ⚠️ <strong>ระวัง! V.ing ไม่ได้เป็น Gerund เสมอไป</strong><br>
-        V.ing มี "ฝาแฝด" ชื่อว่า <strong>Participle</strong> ซึ่งทำหน้าที่เป็น Adjective (ส่วนขยาย) ให้สังเกตง่ายๆ ดังนี้:
-        
-        <table class="warning-table">
-            <thead>
-                <tr>
-                    <th>ชนิด</th>
-                    <th>แปลไทยว่า...</th>
-                    <th>ตัวอย่าง</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td><strong>Gerund (นาม)</strong></td>
-                    <td><strong>"การ..."</strong></td>
-                    <td><strong>Running</strong> is fun. (<strong>การ</strong>วิ่งสนุก)</td>
-                </tr>
-                <tr>
-                    <td><strong>Participle (ขยาย)</strong></td>
-                    <td><strong>"ที่กำลัง..."</strong></td>
-                    <td>The <strong>running</strong> man. (คน<strong>ที่กำลัง</strong>วิ่ง)</td>
-                </tr>
-            </tbody>
-        </table>
-
-        <a href="04-participles.html.html" class="warning-link">👉 อ่านละเอียด: วิธีแยก V.ing แบบเจาะลึกที่หน้า Participles</a>
-    </div>
-
-    <div class="rule-box">
-        <h2>1. กริยาที่ต้องตามด้วย V.ing (Gerund)</h2>
-        <p>นี่คือรายการคำศัพท์ที่ออกสอบบ่อยที่สุด (Must Know) หากเจอคำเหล่านี้ คำถัดไปต้องเป็น V.ing เสมอ:</p>
-        
-        <h4 style="margin: 15px 0 5px 0; color:#57606a;">⛔ กลุ่มชะลอ / หยุด / เลี่ยง (Stop & Delay)</h4>
-        <div class="vocab-grid">
-            <div class="vocab-item"><strong>avoid</strong> (หลีกเลี่ยง)</div>
-            <div class="vocab-item"><strong>delay</strong> (ล่าช้า)</div>
-            <div class="vocab-item"><strong>postpone</strong> (เลื่อน)</div>
-            <div class="vocab-item"><strong>finish</strong> (เสร็จ)</div>
-            <div class="vocab-item"><strong>quit</strong> (เลิก)</div>
-            <div class="vocab-item"><strong>give up</strong> (ยอมแพ้/เลิก)</div>
-            <div class="vocab-item"><strong>stop</strong> (หยุด)</div>
-            <div class="vocab-item"><strong>keep</strong> (ทำต่อไป)</div>
-        </div>
-
-        <h4 style="margin: 15px 0 5px 0; color:#57606a;">❤️ กลุ่มความรู้สึก / ความคิด (Feeling & Mental)</h4>
-        <div class="vocab-grid">
-            <div class="vocab-item"><strong>enjoy</strong> (สนุก)</div>
-            <div class="vocab-item"><strong>mind</strong> (รังเกียจ)</div>
-            <div class="vocab-item"><strong>dislike</strong> (ไม่ชอบ)</div>
-            <div class="vocab-item"><strong>consider</strong> (พิจารณา)</div>
-            <div class="vocab-item"><strong>suggest</strong> (แนะนำ)</div>
-            <div class="vocab-item"><strong>recommend</strong> (แนะนำ)</div>
-            <div class="vocab-item"><strong>discuss</strong> (หารือ)</div>
-            <div class="vocab-item"><strong>admit</strong> (ยอมรับ)</div>
-            <div class="vocab-item"><strong>deny</strong> (ปฏิเสธ)</div>
-            <div class="vocab-item"><strong>miss</strong> (พลาด/คิดถึง)</div>
-            <div class="vocab-item"><strong>practice</strong> (ฝึกฝน)</div>
-            <div class="vocab-item"><strong>risk</strong> (เสี่ยง)</div>
-        </div>
-
-        <div class="example">
-            <span class="correct">✅ He <strong>avoids talking</strong> to strangers.</span><br>
-            <span class="correct">✅ Would you <strong>mind opening</strong> the window?</span>
-        </div>
-    </div>
-
-    <div class="rule-box">
-        <h2>2. กริยาที่ต้องตามด้วย to V.1 (Infinitive)</h2>
-        <p>กลุ่มนี้มักเกี่ยวกับความตั้งใจ แผนการ หรืออนาคต:</p>
-        <div class="vocab-grid">
-            <div class="vocab-item"><strong>want</strong> (ต้องการ)</div>
-            <div class="vocab-item"><strong>hope</strong> (หวัง)</div>
-            <div class="vocab-item"><strong>wish</strong> (ปรารถนา)</div>
-            <div class="vocab-item"><strong>decide</strong> (ตัดสินใจ)</div>
-            <div class="vocab-item"><strong>plan</strong> (วางแผน)</div>
-            <div class="vocab-item"><strong>promise</strong> (สัญญา)</div>
-            <div class="vocab-item"><strong>agree</strong> (ตกลง)</div>
-            <div class="vocab-item"><strong>refuse</strong> (ปฏิเสธ)</div>
-            <div class="vocab-item"><strong>offer</strong> (เสนอ)</div>
-            <div class="vocab-item"><strong>need</strong> (จำเป็น)</div>
-            <div class="vocab-item"><strong>fail</strong> (ล้มเหลว)</div>
-            <div class="vocab-item"><strong>afford</strong> (จ่ายไหว)</div>
-        </div>
-        <div class="example">
-            <span class="correct">✅ She <strong>decided to buy</strong> a new house.</span>
-        </div>
-    </div>
-
-    <div class="rule-box">
-        <h2>3. กฎเหล็กของ Preposition</h2>
-        <p>คำบุพบททุกตัว (in, on, at, of, with, about, without) ถ้ามีกริยาตามหลัง ต้องเปลี่ยนเป็น <strong>V.ing</strong> เสมอ ห้ามใช้ V.1</p>
-        <div class="example">
-            <span class="wrong">She is good at <em>dance</em>.</span><br>
-            <span class="correct">✅ She is good at <strong>dancing</strong>.</span>
-        </div>
-
-        <div class="inner-warning">
-            ⚠️ <strong>ระวัง! "To" ก็เป็น Preposition ได้เหมือนกัน</strong><br>
-            ปกติเราท่อง <code>to + V.1</code> แต่มีบางสำนวนที่ "To" ทำหน้าที่เป็น Preposition (แบบเดียวกับ in/on/at) ซึ่งต้องตามด้วย <strong>V.ing</strong> เสมอ
+    <div class="container">
+        <div class="card main-card">
             
-            <ul style="margin-top: 10px;">
-                <li><strong>look forward to</strong> (ตั้งตารอ)</li>
-                <li><strong>object to</strong> (คัดค้าน)</li>
-                <li><strong>be used to</strong> (เคยชิน)</li>
-                <li><strong>stick to</strong> (ยึดติด/ทำต่อ)</li>
-            </ul>
+            <div class="header-bg">
+                <a href="../index.html" class="back-link">
+                    <i class="ph-bold ph-arrow-left me-1"></i> กลับหน้าหลัก
+                </a>
+                <h1 class="h2 fw-bold d-flex align-items-center gap-2">
+                    <i class="ph-duotone ph-arrows-left-right"></i> Gerunds & Infinitives
+                </h1>
+                <p class="mb-0 opacity-75">คู่มือแยกแยะการใช้ V.ing และ to V.1 ในฐานะ "คำนาม"</p>
+                <div class="header-decoration"></div>
+            </div>
 
-            <a href="usage-of-to.html" class="warning-link">👉 อ่านเจาะลึก: ทำไม To ถึงเป็นแบบนี้? คลิกที่นี่</a>
+            <div class="card-body p-4 p-md-5">
+
+                <div class="alert alert-info border-info-subtle bg-info-subtle text-info-emphasis d-flex align-items-center gap-3">
+                    <i class="ph-fill ph-graduation-cap fs-3"></i>
+                    <div>
+                        <strong>มันคืออะไร?</strong>
+                        <div class="small">Gerunds (V.ing) และ Infinitives (to V.1) คือคำกริยาที่แปลงร่างมาทำหน้าที่เป็น <strong>"คำนาม (Noun)"</strong> ครับ ใช้เป็นประธานหรือกรรมของประโยคได้</div>
+                    </div>
+                </div>
+
+                <div class="alert alert-warning border-warning d-flex flex-column gap-3">
+                    <div class="d-flex align-items-start gap-3">
+                        <i class="ph-fill ph-warning fs-4 text-warning-emphasis"></i>
+                        <div>
+                            <strong>ระวัง! V.ing ไม่ได้เป็น Gerund เสมอไป</strong>
+                            <p class="small mb-2">V.ing มี "ฝาแฝด" ชื่อว่า <strong>Participle</strong> ซึ่งทำหน้าที่เป็น Adjective (ส่วนขยาย) ให้สังเกตง่ายๆ ดังนี้:</p>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white rounded-3 overflow-hidden border">
+                        <table class="table table-sm mb-0 small">
+                            <thead class="table-light">
+                                <tr>
+                                    <th>ชนิด</th>
+                                    <th>แปลไทยว่า...</th>
+                                    <th>ตัวอย่าง</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>Gerund (นาม)</strong></td>
+                                    <td>"การ..."</td>
+                                    <td><strong>Running</strong> is fun. (การวิ่งสนุก)</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Participle (ขยาย)</strong></td>
+                                    <td>"ที่กำลัง..."</td>
+                                    <td>The <strong>running</strong> man. (คนที่กำลังวิ่ง)</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <a href="participles.html" class="btn btn-sm btn-outline-warning text-dark fw-bold align-self-start">
+                        👉 อ่านละเอียด: วิธีแยก V.ing แบบเจาะลึก
+                    </a>
+                </div>
+
+                <section>
+                    <h2 class="section-title">1. กริยาที่ต้องตามด้วย V.ing (Gerund)</h2>
+                    <p class="text-muted small">หากเจอคำเหล่านี้ คำถัดไปต้องเป็น V.ing เสมอ:</p>
+                    
+                    <h6 class="text-secondary fw-bold mt-3 mb-2"><i class="ph-fill ph-stop-circle me-1"></i> กลุ่มชะลอ / หยุด / เลี่ยง (Stop & Delay)</h6>
+                    <div class="row row-cols-2 row-cols-md-4 g-2 mb-3">
+                        <div class="col"><span class="vocab-item"><strong>avoid</strong><br>หลีกเลี่ยง</span></div>
+                        <div class="col"><span class="vocab-item"><strong>delay</strong><br>ล่าช้า</span></div>
+                        <div class="col"><span class="vocab-item"><strong>postpone</strong><br>เลื่อน</span></div>
+                        <div class="col"><span class="vocab-item"><strong>finish</strong><br>เสร็จ</span></div>
+                        <div class="col"><span class="vocab-item"><strong>quit</strong><br>เลิก</span></div>
+                        <div class="col"><span class="vocab-item"><strong>give up</strong><br>ยอมแพ้</span></div>
+                        <div class="col"><span class="vocab-item"><strong>stop</strong><br>หยุด</span></div>
+                        <div class="col"><span class="vocab-item"><strong>keep</strong><br>ทำต่อไป</span></div>
+                    </div>
+
+                    <h6 class="text-secondary fw-bold mt-3 mb-2"><i class="ph-fill ph-heart me-1"></i> กลุ่มความรู้สึก / ความคิด (Feeling & Mental)</h6>
+                    <div class="row row-cols-2 row-cols-md-4 g-2 mb-3">
+                        <div class="col"><span class="vocab-item"><strong>enjoy</strong><br>สนุก</span></div>
+                        <div class="col"><span class="vocab-item"><strong>mind</strong><br>รังเกียจ</span></div>
+                        <div class="col"><span class="vocab-item"><strong>dislike</strong><br>ไม่ชอบ</span></div>
+                        <div class="col"><span class="vocab-item"><strong>consider</strong><br>พิจารณา</span></div>
+                        <div class="col"><span class="vocab-item"><strong>suggest</strong><br>แนะนำ</span></div>
+                        <div class="col"><span class="vocab-item"><strong>recommend</strong><br>แนะนำ</span></div>
+                        <div class="col"><span class="vocab-item"><strong>discuss</strong><br>หารือ</span></div>
+                        <div class="col"><span class="vocab-item"><strong>admit</strong><br>ยอมรับ</span></div>
+                        <div class="col"><span class="vocab-item"><strong>deny</strong><br>ปฏิเสธ</span></div>
+                        <div class="col"><span class="vocab-item"><strong>miss</strong><br>พลาด/คิดถึง</span></div>
+                        <div class="col"><span class="vocab-item"><strong>practice</strong><br>ฝึกฝน</span></div>
+                        <div class="col"><span class="vocab-item"><strong>risk</strong><br>เสี่ยง</span></div>
+                    </div>
+
+                    <div class="example-box">
+                        <div class="d-flex align-items-center gap-2 mb-2">
+                            <i class="ph-fill ph-check-circle text-success"></i>
+                            <span>He <strong>avoids talking</strong> to strangers.</span>
+                        </div>
+                        <div class="d-flex align-items-center gap-2">
+                            <i class="ph-fill ph-check-circle text-success"></i>
+                            <span>Would you <strong>mind opening</strong> the window?</span>
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <h2 class="section-title">2. กริยาที่ต้องตามด้วย to V.1 (Infinitive)</h2>
+                    <p class="text-muted small">กลุ่มนี้มักเกี่ยวกับความตั้งใจ แผนการ หรืออนาคต:</p>
+                    
+                    <div class="row row-cols-2 row-cols-md-4 g-2 mb-3">
+                        <div class="col"><span class="vocab-item"><strong>want</strong><br>ต้องการ</span></div>
+                        <div class="col"><span class="vocab-item"><strong>hope</strong><br>หวัง</span></div>
+                        <div class="col"><span class="vocab-item"><strong>wish</strong><br>ปรารถนา</span></div>
+                        <div class="col"><span class="vocab-item"><strong>decide</strong><br>ตัดสินใจ</span></div>
+                        <div class="col"><span class="vocab-item"><strong>plan</strong><br>วางแผน</span></div>
+                        <div class="col"><span class="vocab-item"><strong>promise</strong><br>สัญญา</span></div>
+                        <div class="col"><span class="vocab-item"><strong>agree</strong><br>ตกลง</span></div>
+                        <div class="col"><span class="vocab-item"><strong>refuse</strong><br>ปฏิเสธ</span></div>
+                        <div class="col"><span class="vocab-item"><strong>offer</strong><br>เสนอ</span></div>
+                        <div class="col"><span class="vocab-item"><strong>need</strong><br>จำเป็น</span></div>
+                        <div class="col"><span class="vocab-item"><strong>fail</strong><br>ล้มเหลว</span></div>
+                        <div class="col"><span class="vocab-item"><strong>afford</strong><br>จ่ายไหว</span></div>
+                    </div>
+
+                    <div class="example-box">
+                        <div class="d-flex align-items-center gap-2">
+                            <i class="ph-fill ph-check-circle text-success"></i>
+                            <span>She <strong>decided to buy</strong> a new house.</span>
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <h2 class="section-title">3. กฎเหล็กของ Preposition</h2>
+                    <p class="text-muted small">คำบุพบททุกตัว (in, on, at, of, with, about, without) ถ้ามีกริยาตามหลัง ต้องเปลี่ยนเป็น <strong>V.ing</strong> เสมอ ห้ามใช้ V.1</p>
+                    
+                    <div class="example-box">
+                        <div class="d-flex align-items-start gap-2 mb-2">
+                            <i class="ph-fill ph-x-circle text-danger mt-1"></i>
+                            <span class="text-decoration-line-through text-muted">She is good at dance.</span>
+                        </div>
+                        <div class="d-flex align-items-start gap-2">
+                            <i class="ph-fill ph-check-circle text-success mt-1"></i>
+                            <span>She is good at <strong>dancing</strong>.</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-warning-subtle border border-warning rounded-3 p-3 mt-3">
+                        <div class="d-flex gap-2">
+                            <i class="ph-fill ph-warning-circle text-warning-emphasis fs-5"></i>
+                            <strong class="text-warning-emphasis">ระวัง! "To" ก็เป็น Preposition ได้เหมือนกัน</strong>
+                        </div>
+                        <p class="small text-muted mt-2 mb-2">
+                            ปกติเราท่อง <code>to + V.1</code> แต่มีบางสำนวนที่ "To" ทำหน้าที่เป็น Preposition (แบบเดียวกับ in/on/at) ซึ่งต้องตามด้วย <strong>V.ing</strong> เสมอ
+                        </p>
+                        
+                        <div class="d-flex flex-wrap gap-2 mb-3">
+                            <span class="badge bg-white text-dark border">look forward to</span>
+                            <span class="badge bg-white text-dark border">object to</span>
+                            <span class="badge bg-white text-dark border">be used to</span>
+                            <span class="badge bg-white text-dark border">stick to</span>
+                        </div>
+
+                        <a href="usage-of-to.html" class="text-decoration-none fw-bold small text-primary">
+                            👉 อ่านเจาะลึก: ทำไม To ถึงเป็นแบบนี้? คลิกที่นี่
+                        </a>
+                    </div>
+                </section>
+
+            </div>
+
+            <div class="card-footer bg-light p-4 p-md-5 border-top">
+                <h3 class="h4 fw-bold text-dark mb-4 d-flex align-items-center gap-2">
+                    <i class="ph-duotone ph-pencil-simple text-primary"></i> Mini Quiz: ทดสอบความเข้าใจ
+                </h3>
+                
+                <div id="quiz-area" class="d-flex flex-column gap-4">
+                    </div>
+            </div>
+
+            <div class="p-4 text-center border-top">
+                <div class="d-inline-flex align-items-center gap-2 bg-white px-3 py-1 rounded-pill border shadow-sm small text-muted mb-2">
+                    <i class="ph-fill ph-sparkle text-warning"></i>
+                    เรียบเรียงโดย Gemini AI & ตรวจสอบโดย PLS-C
+                </div>
+                <div class="text-muted small" style="font-size: 0.8rem;">
+                    &copy; 2026 PLS-C English Quiz. All rights reserved.
+                </div>
+            </div>
+
         </div>
     </div>
 
-    <div class="quiz-container">
-        <h2>📝 Mini Quiz: ทดสอบความเข้าใจ</h2>
-        
-        <div class="question">
-            <p><strong>1. We plan ______ to Japan next year.</strong></p>
-            <div class="options">
-                <label><input type="radio" name="q1" value="wrong" onclick="checkAns(1, false)"> A) going</label>
-                <label><input type="radio" name="q1" value="correct" onclick="checkAns(1, true)"> B) to go</label>
-            </div>
-            <div id="feedback-1" class="feedback"></div>
-        </div>
-
-        <div class="question">
-            <p><strong>2. Would you mind ______ the window?</strong></p>
-            <div class="options">
-                <label><input type="radio" name="q2" value="correct" onclick="checkAns(2, true)"> A) closing</label>
-                <label><input type="radio" name="q2" value="wrong" onclick="checkAns(2, false)"> B) to close</label>
-            </div>
-            <div id="feedback-2" class="feedback"></div>
-        </div>
-
-        <div class="question">
-            <p><strong>3. I look forward to ______ you again.</strong></p>
-            <div class="options">
-                <label><input type="radio" name="q3" value="correct" onclick="checkAns(3, true)"> A) seeing</label>
-                <label><input type="radio" name="q3" value="wrong" onclick="checkAns(3, false)"> B) see</label>
-            </div>
-            <div id="feedback-3" class="feedback"></div>
-        </div>
-
-        <div class="question">
-            <p><strong>4. She suggested ______ to the beach.</strong></p>
-            <div class="options">
-                <label><input type="radio" name="q4" value="correct" onclick="checkAns(4, true)"> A) going</label>
-                <label><input type="radio" name="q4" value="wrong" onclick="checkAns(4, false)"> B) to go</label>
-            </div>
-            <div id="feedback-4" class="feedback"></div>
-        </div>
-
-        <div class="question">
-            <p><strong>5. He admitted ______ the money.</strong></p>
-            <div class="options">
-                <label><input type="radio" name="q5" value="correct" onclick="checkAns(5, true)"> A) stealing</label>
-                <label><input type="radio" name="q5" value="wrong" onclick="checkAns(5, false)"> B) to steal</label>
-            </div>
-            <div id="feedback-5" class="feedback"></div>
-        </div>
-    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
     <script>
-        function checkAns(qId, isCorrect) {
-            const feedbackEl = document.getElementById(`feedback-${qId}`);
-            if (isCorrect) {
-                feedbackEl.textContent = "✅ ถูกต้อง!";
-                feedbackEl.className = "feedback show-correct";
-            } else {
-                let msg = "❌ ยังไม่ถูก ";
-                if(qId === 1) msg += "หลัง plan ต้องใช้ to go ครับ";
-                if(qId === 2) msg += "หลัง mind ต้องใช้ V.ing ครับ";
-                if(qId === 3) msg += "หลัง look forward to (Preposition) ต้องใช้ V.ing ครับ";
-                if(qId === 4) msg += "หลัง suggest ต้องใช้ V.ing ครับ";
-                if(qId === 5) msg += "หลัง admit ต้องใช้ V.ing ครับ";
-                feedbackEl.textContent = msg;
-                feedbackEl.className = "feedback show-wrong";
+        // --- Data Source ---
+        const quizData = [
+            {
+                question: "1. We plan ______ to Japan next year.",
+                options: [
+                    { text: "A) going", correct: false, rationale: "หลัง plan ต้องใช้ to go (Infinitive) ครับ" },
+                    { text: "B) to go", correct: true, rationale: "ถูกต้อง! Plan + to V.1 ครับ" }
+                ]
+            },
+            {
+                question: "2. Would you mind ______ the window?",
+                options: [
+                    { text: "A) closing", correct: true, rationale: "ถูกต้อง! หลัง mind ต้องใช้ V.ing เสมอครับ" },
+                    { text: "B) to close", correct: false, rationale: "ผิดครับ Mind ห้ามตามด้วย to V.1" }
+                ]
+            },
+            {
+                question: "3. I look forward to ______ you again.",
+                options: [
+                    { text: "A) seeing", correct: true, rationale: "ถูกต้อง! นี่คือข้อยกเว้น To ตัวนี้เป็น Preposition ต้องตามด้วย V.ing" },
+                    { text: "B) see", correct: false, rationale: "ผิดครับ! Look forward to ต้องตามด้วย V.ing ห้ามใช้ V.1" }
+                ]
+            },
+            {
+                question: "4. She suggested ______ to the beach.",
+                options: [
+                    { text: "A) going", correct: true, rationale: "ถูกต้อง! หลัง suggest ต้องใช้ V.ing ครับ" },
+                    { text: "B) to go", correct: false, rationale: "ผิดครับ Suggest ไม่ตามด้วย to V.1" }
+                ]
+            },
+            {
+                question: "5. He admitted ______ the money.",
+                options: [
+                    { text: "A) stealing", correct: true, rationale: "ถูกต้อง! หลัง admit ต้องใช้ V.ing ครับ" },
+                    { text: "B) to steal", correct: false, rationale: "ผิดครับ Admit ไม่ตามด้วย to V.1 (ถ้าใช้ to จะเป็น to stealing ในบางบริบท แต่ admit + V.ing ปลอดภัยสุด)" }
+                ]
             }
-        }
-    </script>
+        ];
 
-    <div class="footer">
-        <div class="ai-badge">
-            <span class="ai-icon">✨</span> เนื้อหาเรียบเรียงโดย Gemini AI & ตรวจสอบโดย PLS-C
-        </div>
-        <p style="margin-top: 10px; font-size: 0.9em; opacity: 0.7;">
-            &copy; 2026 PLS-C English Quiz. All rights reserved.
-        </p>
-    </div>
+        // --- Render Quiz Function ---
+        const quizArea = document.getElementById('quiz-area');
+
+        quizData.forEach((item, index) => {
+            // Create Card
+            const qDiv = document.createElement('div');
+            qDiv.className = "bg-white p-4 rounded-3 border shadow-sm";
+
+            // Create Options HTML
+            let optionsHtml = "";
+            item.options.forEach((opt, optIndex) => {
+                optionsHtml += `
+                    <button onclick="checkAnswer(${index}, ${optIndex}, this)" 
+                            class="btn btn-quiz-option">
+                        <span>${opt.text}</span>
+                        <i class="ph-bold ph-circle text-secondary"></i>
+                    </button>
+                `;
+            });
+
+            // Assemble HTML
+            qDiv.innerHTML = `
+                <p class="fw-bold text-dark mb-3">${index + 1}. ${item.question}</p>
+                <div>${optionsHtml}</div>
+                <div id="feedback-${index}" class="mt-3 p-3 rounded-3 small fw-bold d-none"></div>
+            `;
+            quizArea.appendChild(qDiv);
+        });
+
+        // --- Check Answer Function ---
+        window.checkAnswer = function(qIndex, optIndex, btnElement) {
+            const question = quizData[qIndex];
+            const option = question.options[optIndex];
+            const feedbackEl = document.getElementById(`feedback-${qIndex}`);
+            
+            // Disable all buttons in this question
+            const allBtns = btnElement.parentElement.querySelectorAll('button');
+            allBtns.forEach(btn => {
+                btn.disabled = true;
+            });
+
+            // Show Feedback & Change Styles
+            feedbackEl.classList.remove('d-none');
+            
+            if (option.correct) {
+                // Correct Style
+                btnElement.classList.add('btn-success-custom');
+                btnElement.querySelector('i').className = "ph-fill ph-check-circle text-success fs-5";
+                
+                feedbackEl.className = "mt-3 p-3 rounded-3 small fw-bold alert alert-success border-success";
+                feedbackEl.innerHTML = `<i class="ph-bold ph-check me-2"></i> ${option.rationale}`;
+            } else {
+                // Wrong Style
+                btnElement.classList.add('btn-danger-custom');
+                btnElement.querySelector('i').className = "ph-fill ph-x-circle text-danger fs-5";
+
+                feedbackEl.className = "mt-3 p-3 rounded-3 small fw-bold alert alert-danger border-danger";
+                feedbackEl.innerHTML = `<i class="ph-bold ph-x me-2"></i> ${option.rationale}`;
+            }
+        };
+    </script>
 
 </body>
 </html>

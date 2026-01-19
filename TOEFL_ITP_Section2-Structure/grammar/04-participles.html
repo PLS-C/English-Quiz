@@ -4,215 +4,271 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Participles (V.ing vs V.ed) | TOEFL ITP</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@300;400;600&family=Sarabun:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
     <style>
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        :root {
+            --theme-primary: #0f766e; /* Teal-700 */
+            --theme-light: #f0fdfa;   /* Teal-50 */
+            --theme-border: #ccfbf1;  /* Teal-200 */
+        }
+        
+        body { 
+            font-family: 'Sarabun', 'Noto Sans Thai', sans-serif; 
+            background-color: #f8f9fa;
+        }
+
+        /* Main Card */
+        .main-card {
+            border: none;
+            border-radius: 16px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            overflow: hidden;
             max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-            background-color: #f6f8fa;
-            color: #24292f;
-            line-height: 1.6;
+            margin: 40px auto;
         }
 
-        /* --- Header --- */
-        .header {
-            border-bottom: 1px solid #d0d7de;
-            padding-bottom: 20px;
-            margin-bottom: 30px;
+        /* Header */
+        .header-bg {
+            background-color: var(--theme-primary);
+            color: white;
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
         }
-        .back-btn {
-            display: inline-block;
-            margin-bottom: 15px;
-            text-decoration: none;
-            color: #0969da;
-            font-weight: 500;
+        .header-decoration {
+            position: absolute;
+            bottom: -50px;
+            right: -50px;
+            width: 150px;
+            height: 150px;
+            background-color: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            filter: blur(40px);
         }
-        .back-btn:hover { text-decoration: underline; }
-        
-        h1 { color: #0969da; margin: 0; }
 
-        /* --- Boxes Styles --- */
-        .intro-box {
-            background: linear-gradient(to right, #fff5f5, #fff0f0);
-            border: 1px solid #ffc9c9;
-            border-radius: 8px;
-            padding: 20px;
-            margin-bottom: 30px;
-        }
-        .intro-title { font-weight: bold; color: #cf222e; font-size: 1.1em; margin-bottom: 10px; display: block; }
-
-        .tip-box {
-            background-color: #e6fffa;
-            border: 1px solid #38b2ac;
-            border-radius: 8px;
-            padding: 20px;
-            margin-bottom: 30px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-        }
-        .tip-title { font-weight: bold; color: #2c7a7b; display: block; margin-bottom: 10px; font-size: 1.1em; }
-
-        .rule-box {
-            background: white;
-            border: 1px solid #d0d7de;
-            border-radius: 6px;
-            padding: 25px;
+        /* Content Styling */
+        .section-title {
+            color: #115e59;
+            border-left: 5px solid #14b8a6;
+            padding-left: 15px;
+            font-weight: bold;
             margin-bottom: 20px;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+            margin-top: 30px;
         }
-        h2 { border-left: 5px solid #0969da; padding-left: 15px; margin-top: 0; color: #1f2328; }
 
-        /* --- Tables --- */
-        .compare-table { width: 100%; border-collapse: collapse; background: white; margin-top: 10px; }
-        .compare-table th, .compare-table td { border: 1px solid #cbd5e0; padding: 10px; text-align: left; font-size: 0.9em; }
-        .compare-table th { background-color: #f0fdfa; color: #234e52; }
+        .example-box {
+            background-color: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
 
-        /* --- Examples & Tags --- */
-        .example {
-            background-color: #f6f8fa;
+        /* Quiz Buttons */
+        .btn-quiz-option {
+            text-align: left;
+            border: 1px solid #dee2e6;
+            background-color: white;
+            color: #495057;
+            border-radius: 10px;
             padding: 15px;
-            border-radius: 6px;
-            margin-top: 15px;
-            font-family: 'Courier New', Courier, monospace;
-            border-left: 4px solid #0969da;
+            width: 100%;
+            margin-bottom: 10px;
+            transition: all 0.2s;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
-        .active-tag { background: #d1fae5; color: #065f46; padding: 2px 6px; border-radius: 4px; font-weight: bold; font-size: 0.8em; }
-        .passive-tag { background: #fee2e2; color: #991b1b; padding: 2px 6px; border-radius: 4px; font-weight: bold; font-size: 0.8em; }
+        .btn-quiz-option:hover:not(:disabled) {
+            background-color: var(--theme-light);
+            border-color: #99f6e4;
+            color: var(--theme-primary);
+        }
+        .btn-quiz-option:disabled { opacity: 0.7; }
 
-        /* --- Quiz --- */
-        .quiz-container { margin-top: 40px; border-top: 2px dashed #d0d7de; padding-top: 20px; }
-        .question-card {
-            background: white;
-            padding: 20px;
-            border-radius: 6px;
-            border: 1px solid #d0d7de;
-            margin-bottom: 20px;
+        /* Quiz States */
+        .btn-success-custom {
+            background-color: #d1fae5 !important;
+            border-color: #10b981 !important;
+            color: #065f46 !important;
         }
-        .q-text { font-weight: bold; margin-bottom: 10px; }
-        .options label { display: block; margin: 8px 0; cursor: pointer; padding: 8px; border-radius: 4px; border: 1px solid transparent; }
-        .options label:hover { background-color: #f1f8ff; }
-        
-        .feedback { margin-top: 10px; padding: 10px; border-radius: 4px; display: none; font-size: 0.9em; }
-        .feedback.correct { background-color: #d1fae5; color: #065f46; border: 1px solid #34d399; }
-        .feedback.wrong { background-color: #fee2e2; color: #991b1b; border: 1px solid #f87171; }
+        .btn-danger-custom {
+            background-color: #fee2e2 !important;
+            border-color: #ef4444 !important;
+            color: #991b1b !important;
+        }
 
-        /* --- Footer --- */
-        .footer {
-            margin-top: 50px;
-            padding-top: 20px;
-            border-top: 1px solid #e1e4e8;
-            text-align: center;
-            font-size: 0.85em;
-            color: #6e7781;
-        }
-        .ai-badge {
+        .back-link {
+            color: #ccfbf1;
+            text-decoration: none;
+            font-size: 0.9em;
             display: inline-flex;
             align-items: center;
-            background-color: #f3f4f6;
-            padding: 5px 10px;
-            border-radius: 20px;
-            border: 1px solid #d0d7de;
             margin-bottom: 10px;
-            font-weight: 500;
-            color: #57606a;
         }
+        .back-link:hover { color: white; }
     </style>
 </head>
 <body>
 
-    <div class="header">
-        <a href="../index.html" class="back-btn">← กลับไปหน้าหลัก</a>
-        <h1>Participles (V.ing vs V.ed)</h1>
-        <p>เจาะลึกการใช้กริยาเป็น "ส่วนขยาย" (Adjective) แบบมือโปร</p>
-    </div>
-
-    <div class="intro-box">
-        <span class="intro-title">🤔 Participle คืออะไร?</span>
-        <p>มันคือการเอากริยามาแปลงร่างเป็น <strong>Adjective (คำคุณศัพท์)</strong> เพื่อขยายคำนาม <br>
-        ไม่ได้ทำหน้าที่เป็นกริยาหลัก และไม่ได้เป็นคำนาม (Gerund) แต่มีหน้าที่บอกลักษณะของสิ่งนั้นๆ</p>
-    </div>
-
-    <div class="tip-box">
-        <span class="tip-title">🕵️‍♀️ เทคนิคลับ #1: แยก V.ing (นาม vs ขยาย) ยังไง?</span>
-        <p>หน้าตาเหมือนกันเป๊ะ แต่แยกได้ง่ายๆ ด้วย <strong>"สูตรการแปลไทย"</strong> ครับ:</p>
-        
-        <table class="compare-table">
-            <thead>
-                <tr>
-                    <th>ชนิด</th>
-                    <th>คำแปลที่ใช้เช็ก</th>
-                    <th>ตัวอย่าง & วิธีคิด</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td><strong>Gerund (N)</strong></td>
-                    <td><strong>"การ..."</strong></td>
-                    <td>Running is fun.<br>✅ <strong>การ</strong>วิ่ง เป็นเรื่องสนุก (ฟังรู้เรื่อง = Noun)</td>
-                </tr>
-                <tr>
-                    <td><strong>Participle (Adj)</strong></td>
-                    <td><strong>"ที่กำลัง..." / "น่า..."</strong></td>
-                    <td>The running man.<br>✅ ผู้ชาย <strong>ที่กำลัง</strong>วิ่ง (ฟังรู้เรื่อง = Adjective)</td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-
-    <div class="tip-box" style="background-color: #fff8e6; border-color: #d4a72c;">
-        <span class="tip-title" style="color: #b7791f;">⚡ เทคนิคลับ #2: เลือก V.ing หรือ V.ed ดี?</span>
-        <p>ให้ดูที่ <strong>"คำนามที่มันขยาย"</strong> แล้วถามว่า...</p>
-        
-        <div style="display: flex; gap: 20px; flex-wrap: wrap; margin-top: 15px;">
-            <div style="flex: 1; background: white; padding: 15px; border-radius: 6px; border-left: 5px solid #34d399;">
-                <strong>1. ทำเอง หรือ ถูกทำ? (Action)</strong>
-                <ul style="margin: 5px 0 0 20px; padding: 0;">
-                    <li>ถ้าทำเอง → <strong>V.ing</strong> (Active) <br><small>ex. The <em>crying</em> baby (ร้องเอง)</small></li>
-                    <li>ถ้าถูกทำ → <strong>V.ed</strong> (Passive) <br><small>ex. The <em>broken</em> window (ถูกทุบแตก)</small></li>
-                </ul>
+    <div class="container">
+        <div class="card main-card">
+            
+            <div class="header-bg">
+                <a href="../index.html" class="back-link">
+                    <i class="ph-bold ph-arrow-left me-1"></i> กลับหน้าหลัก
+                </a>
+                <h1 class="h2 fw-bold d-flex align-items-center gap-2">
+                    <i class="ph-duotone ph-puzzle-piece"></i> Participles (V.ing vs V.ed)
+                </h1>
+                <p class="mb-0 opacity-75">เจาะลึกการใช้กริยาเป็น "ส่วนขยาย" (Adjective) แบบมือโปร</p>
+                <div class="header-decoration"></div>
             </div>
-            <div style="flex: 1; background: white; padding: 15px; border-radius: 6px; border-left: 5px solid #f472b6;">
-                <strong>2. ความรู้สึก (Emotion)</strong>
-                <ul style="margin: 5px 0 0 20px; padding: 0;">
-                    <li>ถ้าเป็นต้นเหตุ (น่า...) → <strong>V.ing</strong> <br><small>ex. The movie is <em>boring</em> (หนังน่าเบื่อ)</small></li>
-                    <li>ถ้าเป็นคนรู้สึก (รู้สึก...) → <strong>V.ed</strong> <br><small>ex. I am <em>bored</em> (ฉันรู้สึกเบื่อ)</small></li>
-                </ul>
+
+            <div class="card-body p-4 p-md-5">
+
+                <div class="alert alert-primary border-primary-subtle bg-primary-subtle text-primary-emphasis d-flex align-items-center gap-3">
+                    <i class="ph-fill ph-info fs-3"></i>
+                    <div>
+                        <strong>Participle คืออะไร?</strong>
+                        <div class="small">มันคือการเอากริยามาแปลงร่างเป็น <strong>Adjective (คำคุณศัพท์)</strong> เพื่อขยายคำนาม ไม่ได้ทำหน้าที่เป็นกริยาหลัก และไม่ได้เป็นคำนาม (Gerund) แต่มีหน้าที่บอกลักษณะของสิ่งนั้นๆ</div>
+                    </div>
+                </div>
+
+                <section>
+                    <div class="card border-info mb-4">
+                        <div class="card-header bg-info-subtle border-info fw-bold text-info-emphasis">
+                            <i class="ph-fill ph-magnifying-glass me-1"></i> เทคนิคลับ #1: แยก V.ing (นาม vs ขยาย) ยังไง?
+                        </div>
+                        <div class="card-body">
+                            <p class="small text-muted mb-3">หน้าตาเหมือนกันเป๊ะ แต่แยกได้ง่ายๆ ด้วย <strong>"สูตรการแปลไทย"</strong> ครับ:</p>
+                            <div class="table-responsive">
+                                <table class="table table-bordered mb-0 small">
+                                    <thead class="table-light">
+                                        <tr>
+                                            <th>ชนิด</th>
+                                            <th>คำแปลที่ใช้เช็ก</th>
+                                            <th>ตัวอย่าง & วิธีคิด</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><strong>Gerund (N)</strong></td>
+                                            <td>"การ..."</td>
+                                            <td>Running is fun.<br><span class="text-success fw-bold">✅ การ</span>วิ่ง เป็นเรื่องสนุก (ฟังรู้เรื่อง = Noun)</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Participle (Adj)</strong></td>
+                                            <td>"ที่กำลัง..." / "น่า..."</td>
+                                            <td>The running man.<br><span class="text-success fw-bold">✅</span> ผู้ชาย <span class="text-success fw-bold">ที่กำลัง</span>วิ่ง (ฟังรู้เรื่อง = Adjective)</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <div class="card border-warning mb-4">
+                        <div class="card-header bg-warning-subtle border-warning fw-bold text-warning-emphasis">
+                            <i class="ph-fill ph-lightning me-1"></i> เทคนิคลับ #2: เลือก V.ing หรือ V.ed ดี?
+                        </div>
+                        <div class="card-body">
+                            <p class="small text-muted mb-3">ให้ดูที่ <strong>"คำนามที่มันขยาย"</strong> แล้วถามว่า...</p>
+                            
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <div class="p-3 bg-light rounded border border-start-0 border-end-0 border-top-0 border-bottom-0 border-3 border-success h-100">
+                                        <strong class="text-success d-block mb-2">1. ทำเอง หรือ ถูกทำ? (Action)</strong>
+                                        <ul class="mb-0 small ps-3">
+                                            <li>ถ้าทำเอง → <strong>V.ing</strong> (Active) <br><span class="text-muted fst-italic">ex. The crying baby (ร้องเอง)</span></li>
+                                            <li>ถ้าถูกทำ → <strong>V.ed</strong> (Passive) <br><span class="text-muted fst-italic">ex. The broken window (ถูกทุบแตก)</span></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="p-3 bg-light rounded border border-start-0 border-end-0 border-top-0 border-bottom-0 border-3 border-danger h-100">
+                                        <strong class="text-danger d-block mb-2">2. ความรู้สึก (Emotion)</strong>
+                                        <ul class="mb-0 small ps-3">
+                                            <li>ถ้าเป็นต้นเหตุ (น่า...) → <strong>V.ing</strong> <br><span class="text-muted fst-italic">ex. The movie is boring (หนังน่าเบื่อ)</span></li>
+                                            <li>ถ้าเป็นคนรู้สึก (รู้สึก...) → <strong>V.ed</strong> <br><span class="text-muted fst-italic">ex. I am bored (ฉันรู้สึกเบื่อ)</span></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <h2 class="section-title">1. Present Participle (V.ing) = Active / Cause</h2>
+                    <p class="text-muted small">ใช้เมื่อนามนั้น <strong>"ทำกริยาเอง"</strong> หรือเป็น <strong>"ต้นเหตุของความรู้สึก"</strong></p>
+                    
+                    <div class="example-box">
+                        <div class="d-flex align-items-center gap-2 mb-2">
+                            <i class="ph-fill ph-check-circle text-success"></i>
+                            <span>Look at that <strong class="text-success">flying</strong> bird. <span class="badge bg-success-subtle text-success-emphasis ms-1">Active (นกบินเอง)</span></span>
+                        </div>
+                        <div class="d-flex align-items-center gap-2">
+                            <i class="ph-fill ph-check-circle text-success"></i>
+                            <span>This game is <strong class="text-success">exciting</strong>. <span class="badge bg-success-subtle text-success-emphasis ms-1">Cause (เกมน่าตื่นเต้น)</span></span>
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <h2 class="section-title">2. Past Participle (V.ed / V.3) = Passive / Feeling</h2>
+                    <p class="text-muted small">ใช้เมื่อนามนั้น <strong>"ถูกกระทำ"</strong> หรือเป็น <strong>"ผู้รับความรู้สึก"</strong></p>
+                    
+                    <div class="example-box">
+                        <div class="d-flex align-items-center gap-2 mb-2">
+                            <i class="ph-fill ph-check-circle text-success"></i>
+                            <span>I need to fix the <strong class="text-danger">frozen</strong> computer. <span class="badge bg-danger-subtle text-danger-emphasis ms-1">Passive (ถูกแช่แข็ง)</span></span>
+                        </div>
+                        <div class="d-flex align-items-center gap-2">
+                            <i class="ph-fill ph-check-circle text-success"></i>
+                            <span>The students are <strong class="text-danger">confused</strong>. <span class="badge bg-danger-subtle text-danger-emphasis ms-1">Feeling (รู้สึกสับสน)</span></span>
+                        </div>
+                    </div>
+                </section>
+
             </div>
+
+            <div class="card-footer bg-light p-4 p-md-5 border-top">
+                <h3 class="h4 fw-bold text-dark mb-4 d-flex align-items-center gap-2">
+                    <i class="ph-duotone ph-pencil-simple text-primary"></i> Practice Quiz: 10 ข้อ วัดความแม่น
+                </h3>
+                
+                <div id="quiz-area" class="d-flex flex-column gap-4">
+                    </div>
+            </div>
+
+            <div class="p-4 text-center border-top">
+                <div class="d-inline-flex align-items-center gap-2 bg-white px-3 py-1 rounded-pill border shadow-sm small text-muted mb-2">
+                    <i class="ph-fill ph-sparkle text-warning"></i>
+                    เรียบเรียงโดย Gemini AI & ตรวจสอบโดย PLS-C
+                </div>
+                <div class="text-muted small" style="font-size: 0.8rem;">
+                    &copy; 2026 PLS-C English Quiz. All rights reserved.
+                </div>
+            </div>
+
         </div>
     </div>
 
-    <div class="rule-box">
-        <h2>1. Present Participle (V.ing) = Active / Cause</h2>
-        <p>ใช้เมื่อนามนั้น <strong>"ทำกริยาเอง"</strong> หรือเป็น <strong>"ต้นเหตุของความรู้สึก"</strong></p>
-        <div class="example">
-            Look at that <strong>flying</strong> bird. <span class="active-tag">Active</span>
-            <br><small>(นกบินเอง → ใช้ flying)</small>
-        </div>
-        <div class="example">
-            This game is <strong>exciting</strong>. <span class="active-tag">Cause</span>
-            <br><small>(เกมเป็นต้นเหตุที่ทำให้ตื่นเต้น = เกมน่าตื่นเต้น)</small>
-        </div>
-    </div>
-
-    <div class="rule-box">
-        <h2>2. Past Participle (V.ed / V.3) = Passive / Feeling</h2>
-        <p>ใช้เมื่อนามนั้น <strong>"ถูกกระทำ"</strong> หรือเป็น <strong>"ผู้รับความรู้สึก"</strong></p>
-        <div class="example">
-            I need to fix the <strong>frozen</strong> computer. <span class="passive-tag">Passive</span>
-            <br><small>(คอมพิวเตอร์ถูกทำให้ค้าง/แช่แข็ง ไม่ได้แช่ตัวเอง)</small>
-        </div>
-        <div class="example">
-            The students are <strong>confused</strong>. <span class="passive-tag">Feeling</span>
-            <br><small>(นักเรียน "รู้สึก" สับสน)</small>
-        </div>
-    </div>
-
-    <div class="quiz-container">
-        <h2>📝 Practice Quiz: 10 ข้อ วัดความแม่น</h2>
-        <div id="quiz-area"></div>
-    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
     <script>
+        // --- Data Source ---
         const quizData = [
             {
                 q: "1. Be careful! There is ______ glass on the floor.",
@@ -276,48 +332,67 @@
             }
         ];
 
+        // --- Render Quiz Function ---
         const quizArea = document.getElementById('quiz-area');
 
         quizData.forEach((item, index) => {
-            const card = document.createElement('div');
-            card.className = 'question-card';
-            
-            let optionsHtml = '';
+            // Create Card
+            const qDiv = document.createElement('div');
+            qDiv.className = "bg-white p-4 rounded-3 border shadow-sm";
+
+            // Create Options HTML
+            let optionsHtml = "";
             item.options.forEach((opt, optIndex) => {
-                optionsHtml += `<label><input type="radio" name="q${index}" value="${optIndex}" onchange="checkAnswer(${index}, ${optIndex})"> ${opt}</label>`;
+                optionsHtml += `
+                    <button onclick="checkAnswer(${index}, ${optIndex}, this)" 
+                            class="btn btn-quiz-option">
+                        <span>${opt}</span>
+                        <i class="ph-bold ph-circle text-secondary"></i>
+                    </button>
+                `;
             });
 
-            card.innerHTML = `
-                <div class="q-text">${item.q}</div>
-                <div class="options">${optionsHtml}</div>
-                <div id="feedback-${index}" class="feedback"></div>
+            // Assemble HTML
+            qDiv.innerHTML = `
+                <p class="fw-bold text-dark mb-3">${index + 1}. ${item.q}</p>
+                <div>${optionsHtml}</div>
+                <div id="feedback-${index}" class="mt-3 p-3 rounded-3 small fw-bold d-none"></div>
             `;
-            quizArea.appendChild(card);
+            quizArea.appendChild(qDiv);
         });
 
-        function checkAnswer(qIndex, selectedIndex) {
+        // --- Check Answer Function ---
+        window.checkAnswer = function(qIndex, selectedIndex, btnElement) {
+            const question = quizData[qIndex];
             const feedbackEl = document.getElementById(`feedback-${qIndex}`);
-            const correctIndex = quizData[qIndex].answer;
+            const correctIndex = question.answer;
+            
+            // Disable all buttons in this question
+            const allBtns = btnElement.parentElement.querySelectorAll('button');
+            allBtns.forEach(btn => {
+                btn.disabled = true;
+            });
+
+            // Show Feedback & Change Styles
+            feedbackEl.classList.remove('d-none');
             
             if (selectedIndex === correctIndex) {
-                feedbackEl.className = 'feedback correct';
-                feedbackEl.innerHTML = `✅ <strong>ถูกต้อง!</strong> ${quizData[qIndex].reason}`;
+                // Correct Style
+                btnElement.classList.add('btn-success-custom');
+                btnElement.querySelector('i').className = "ph-fill ph-check-circle text-success fs-5";
+                
+                feedbackEl.className = "mt-3 p-3 rounded-3 small fw-bold alert alert-success border-success";
+                feedbackEl.innerHTML = `<i class="ph-bold ph-check me-2"></i> ${question.reason}`;
             } else {
-                feedbackEl.className = 'feedback wrong';
-                feedbackEl.innerHTML = `❌ <strong>ผิดครับ</strong> ${quizData[qIndex].reason}`;
-            }
-            feedbackEl.style.display = 'block';
-        }
-    </script>
+                // Wrong Style
+                btnElement.classList.add('btn-danger-custom');
+                btnElement.querySelector('i').className = "ph-fill ph-x-circle text-danger fs-5";
 
-    <div class="footer">
-        <div class="ai-badge">
-            <span class="ai-icon">✨</span> เนื้อหาเรียบเรียงโดย Gemini AI & ตรวจสอบโดย PLS-C
-        </div>
-        <p style="margin-top: 10px; font-size: 0.9em; opacity: 0.7;">
-            &copy; 2026 PLS-C English Quiz. All rights reserved.
-        </p>
-    </div>
+                feedbackEl.className = "mt-3 p-3 rounded-3 small fw-bold alert alert-danger border-danger";
+                feedbackEl.innerHTML = `<i class="ph-bold ph-x me-2"></i> ${question.reason}`;
+            }
+        };
+    </script>
 
 </body>
 </html>

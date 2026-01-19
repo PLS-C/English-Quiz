@@ -269,7 +269,7 @@
 
             <div class="card-footer bg-light p-4 p-md-5 border-top">
                 <h3 class="h4 fw-bold text-dark mb-4 d-flex align-items-center gap-2">
-                    <i class="ph-duotone ph-pencil-simple text-primary"></i> Mini Quiz: ทดสอบความเข้าใจ
+                    <i class="ph-duotone ph-pencil-simple text-primary"></i> Mini Quiz: ทดสอบความเข้าใจ (10 ข้อ)
                 </h3>
                 
                 <div id="quiz-area" class="d-flex flex-column gap-4">
@@ -292,49 +292,105 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
     <script>
-        // Quiz Data
+        // Quiz Data (10 Questions)
         const questions = [
+            // --- Level 1: Basic (Easy) ---
             {
                 id: 1,
-                text: "The box of apples ______ on the table.",
+                text: "My sister usually ______ to music in the evening.",
                 options: [
-                    { label: "A) are", isCorrect: false, feedback: "ผิดครับ! โดนหลอกด้วยคำว่า apples แล้ว! หลัง 'of' คือส่วนขยาย ประธานจริงคือ The box (เอกพจน์)" },
-                    { label: "B) is", isCorrect: true, feedback: "ถูกต้อง! ประธานหลักคือ 'The box' (เอกพจน์) ส่วน 'of apples' เป็นแค่วลีขยายให้ตัดทิ้ง" }
+                    { label: "A) listen", isCorrect: false, feedback: "ผิดครับ! ประธาน My sister เป็นเอกพจน์ กริยาต้องเติม s" },
+                    { label: "B) listens", isCorrect: true, feedback: "ถูกต้อง! ประธานเอกพจน์ (คนเดียว) กริยาเติม s" }
                 ]
             },
             {
                 id: 2,
-                text: "Each of the students ______ to pass the exam.",
+                text: "The dogs ______ barking loudly outside.",
                 options: [
-                    { label: "A) want", isCorrect: false, feedback: "ผิดครับ! Each อยู่ในกลุ่มเอกพจน์เสมอ กริยาต้องเติม s" },
-                    { label: "B) wants", isCorrect: true, feedback: "ถูกต้อง! จำกฎได้แม่นมาก 'Each' เป็นเอกพจน์เสมอ ไม่สนคำว่า students ข้างหลัง" }
+                    { label: "A) are", isCorrect: true, feedback: "ถูกต้อง! The dogs เป็นพหูพจน์ (หลายตัว) ใช้ are" },
+                    { label: "B) is", isCorrect: false, feedback: "ผิดครับ! ประธานเติม s (dogs) กริยาห้ามเติม s (is)" }
                 ]
             },
             {
                 id: 3,
-                text: "There ______ many reasons for the delay.",
+                text: "Everyone in the room ______ happy.",
                 options: [
-                    { label: "A) is", isCorrect: false, feedback: "ผิดครับ! หลัง There ต้องดูประธานตัวหลัง คือ 'reasons' (พหูพจน์)" },
-                    { label: "B) are", isCorrect: true, feedback: "ถูกต้อง! ประโยค There... ให้ดูประธานหลัง Verb ซึ่งคือ 'many reasons' (พหูพจน์)" }
+                    { label: "A) look", isCorrect: false, feedback: "ผิดครับ! Everyone เป็นเอกพจน์เสมอ กริยาต้องเติม s" },
+                    { label: "B) looks", isCorrect: true, feedback: "ถูกต้อง! Everyone จัดอยู่ในกลุ่มเอกพจน์เสมอ" }
                 ]
             },
             {
                 id: 4,
-                text: "Some of the water ______ polluted.",
+                text: "Tom and Jerry ______ famous cartoon characters.",
                 options: [
-                    { label: "A) is", isCorrect: true, feedback: "ถูกต้อง! Some เป็นคำแปรผัน (SANAM) ต้องดูคำนามหลัง of คือ water (นับไม่ได้ = เอกพจน์)" },
-                    { label: "B) are", isCorrect: false, feedback: "ผิดครับ! Water เป็นคำนามนับไม่ได้ ต้องใช้ is" }
+                    { label: "A) is", isCorrect: false, feedback: "ผิดครับ! มี 'and' เชื่อม แสดงว่าเป็นพหูพจน์" },
+                    { label: "B) are", isCorrect: true, feedback: "ถูกต้อง! ประธาน 2 คนเชื่อมด้วย and ถือเป็นพหูพจน์" }
+                ]
+            },
+            {
+                id: 5,
+                text: "Your car ______ very expensive.",
+                options: [
+                    { label: "A) looks", isCorrect: true, feedback: "ถูกต้อง! Car คันเดียว เป็นเอกพจน์ กริยาเติม s" },
+                    { label: "B) look", isCorrect: false, feedback: "ผิดครับ! ประธานเอกพจน์ กริยาต้องเติม s" }
+                ]
+            },
+            
+            // --- Level 2: TOEFL Traps (Hard) ---
+            {
+                id: 6,
+                text: "The box of chocolates ______ on the table.",
+                options: [
+                    { label: "A) are", isCorrect: false, feedback: "โดนหลอกแล้ว! อย่าดูคำว่า chocolates ให้ดูคำหน้า of คือ 'The box' (กล่องเดียว)" },
+                    { label: "B) is", isCorrect: true, feedback: "ถูกต้อง! ประธานตัวจริงคือ 'The box' (เอกพจน์) ส่วน 'of chocolates' เป็นแค่ส่วนขยาย" }
+                ]
+            },
+            {
+                id: 7,
+                text: "The manager, along with his assistants, ______ attending the meeting.",
+                options: [
+                    { label: "A) is", isCorrect: true, feedback: "ถูกต้อง! ตัดส่วนขยาย 'along with...' ทิ้งไป ประธานคือ The manager คนเดียว" },
+                    { label: "B) are", isCorrect: false, feedback: "ผิดครับ! คำว่า 'along with' ไม่ใช่คำเชื่อมประธาน ให้ดูแค่ตัวหน้าสุด" }
+                ]
+            },
+            {
+                id: 8,
+                text: "One of the most interesting books ______ missing.",
+                options: [
+                    { label: "A) is", isCorrect: true, feedback: "ถูกต้อง! ประธานคือ 'One' (หนึ่งเล่ม) ไม่ใช่ books" },
+                    { label: "B) are", isCorrect: false, feedback: "ผิดครับ! อย่าเผลอไปดู books ประธานคือ 'One of...' (หนึ่งใน...) เป็นเอกพจน์" }
+                ]
+            },
+            {
+                id: 9,
+                text: "There ______ several reasons for the delay.",
+                options: [
+                    { label: "A) is", isCorrect: false, feedback: "ผิดครับ! ประโยค There... ให้ดูประธานหลัง Verb ซึ่งคือ 'reasons' (พหูพจน์)" },
+                    { label: "B) are", isCorrect: true, feedback: "ถูกต้อง! หลัง There ต้องผันตามคำนามข้างหลัง (reasons)" }
+                ]
+            },
+            {
+                id: 10,
+                text: "Behind the house ______ two large trees.",
+                options: [
+                    { label: "A) stand", isCorrect: true, feedback: "ถูกต้อง! นี่คือ Inversion (กลับหัว) ประธานคือ 'two large trees' (พหูพจน์) อยู่หลังกริยา" },
+                    { label: "B) stands", isCorrect: false, feedback: "ผิดครับ! 'Behind the house' เป็นสถานที่ ไม่ใช่ประธาน ประธานจริงคือ 'trees' (พหูพจน์)" }
                 ]
             }
         ];
 
-        // Render Quiz
+        // --- Render Quiz Function ---
         const quizArea = document.getElementById('quiz-area');
-        
+
         questions.forEach((q, index) => {
             const qDiv = document.createElement('div');
             qDiv.className = "bg-white p-4 rounded-3 border shadow-sm";
-            
+
+            // Header for sections (Optional: Add visual break between easy/hard)
+            let headerHtml = "";
+            if (index === 0) headerHtml = `<div class="mb-3 text-success fw-bold"><i class="ph-fill ph-smiley me-1"></i> Level 1: Basic Concept</div>`;
+            if (index === 5) headerHtml = `<div class="mb-3 mt-2 text-danger fw-bold border-top pt-3"><i class="ph-fill ph-skull me-1"></i> Level 2: TOEFL Traps</div>`;
+
             let optionsHtml = "";
             q.options.forEach((opt, optIndex) => {
                 optionsHtml += `
@@ -347,6 +403,7 @@
             });
 
             qDiv.innerHTML = `
+                ${headerHtml}
                 <p class="fw-bold text-dark mb-3">${index + 1}. ${q.text}</p>
                 <div>${optionsHtml}</div>
                 <div id="feedback-${index}" class="mt-3 p-3 rounded-3 small fw-bold d-none"></div>
@@ -354,7 +411,7 @@
             quizArea.appendChild(qDiv);
         });
 
-        // Check Answer Function
+        // --- Check Answer Function ---
         window.checkAnswer = function(qIndex, optIndex, btnElement) {
             const question = questions[qIndex];
             const option = question.options[optIndex];
@@ -364,29 +421,28 @@
             const allBtns = btnElement.parentElement.querySelectorAll('button');
             allBtns.forEach(btn => {
                 btn.disabled = true;
+                btn.classList.add('opacity-50');
             });
+            btnElement.classList.remove('opacity-50'); // Keep chosen one clear
 
             // Show Feedback & Change Styles
             feedbackEl.classList.remove('d-none');
             
             if (option.isCorrect) {
-                // Style for Correct Button
                 btnElement.classList.add('btn-success-custom');
                 btnElement.querySelector('i').className = "ph-fill ph-check-circle text-success fs-5";
                 
-                // Style for Feedback Box
                 feedbackEl.className = "mt-3 p-3 rounded-3 small fw-bold alert alert-success border-success";
                 feedbackEl.innerHTML = `<i class="ph-bold ph-check me-2"></i> ${option.feedback}`;
             } else {
-                // Style for Wrong Button
                 btnElement.classList.add('btn-danger-custom');
                 btnElement.querySelector('i').className = "ph-fill ph-x-circle text-danger fs-5";
 
-                // Style for Feedback Box
                 feedbackEl.className = "mt-3 p-3 rounded-3 small fw-bold alert alert-danger border-danger";
                 feedbackEl.innerHTML = `<i class="ph-bold ph-x me-2"></i> ${option.feedback}`;
             }
         };
     </script>
+
 </body>
 </html>

@@ -25,7 +25,7 @@
             background-color: #f8f9fa;
         }
 
-        /* Custom Card Styling to match previous design */
+        /* Main Card */
         .main-card {
             border: none;
             border-radius: 16px;
@@ -35,6 +35,7 @@
             margin: 40px auto;
         }
 
+        /* Header */
         .header-bg {
             background-color: var(--theme-primary);
             color: white;
@@ -42,7 +43,6 @@
             position: relative;
             overflow: hidden;
         }
-
         .header-decoration {
             position: absolute;
             bottom: -50px;
@@ -54,12 +54,14 @@
             filter: blur(40px);
         }
 
+        /* Content Styling */
         .section-title {
             color: #115e59;
             border-left: 5px solid #14b8a6;
             padding-left: 15px;
             font-weight: bold;
             margin-bottom: 20px;
+            margin-top: 30px;
         }
 
         .example-box {
@@ -67,8 +69,10 @@
             border: 1px solid #e9ecef;
             border-radius: 12px;
             padding: 20px;
+            margin-bottom: 20px;
         }
 
+        /* Quiz Buttons */
         .btn-quiz-option {
             text-align: left;
             border: 1px solid #dee2e6;
@@ -90,7 +94,7 @@
         }
         .btn-quiz-option:disabled { opacity: 0.7; }
 
-        /* Custom Success/Error States */
+        /* Quiz States */
         .btn-success-custom {
             background-color: #d1fae5 !important;
             border-color: #10b981 !important;
@@ -111,9 +115,6 @@
             margin-bottom: 10px;
         }
         .back-link:hover { color: white; }
-
-        .correct { color: #198754; font-weight: bold; }
-        .wrong { color: #dc3545; text-decoration: line-through; margin-right: 5px; }
     </style>
 </head>
 <body>
@@ -134,59 +135,58 @@
 
             <div class="card-body p-4 p-md-5">
 
-                <section class="mb-5">
+                <section>
                     <h2 class="section-title">1. กฎพื้นฐาน (The Golden Rule)</h2>
-                    <p class="mb-3">
-                        หลักการง่ายๆ คือ <span class="badge bg-warning text-dark fw-normal fs-6">ประธานเอกพจน์ กริยาต้องเติม s/es</span> (หรือใช้ is/has/does) แต่ถ้าประธานพหูพจน์ กริยาไม่ต้องเติมอะไรเลย
+                    <p class="text-muted small">
+                        หลักการง่ายๆ คือ <span class="badge bg-warning text-dark fw-normal border border-warning-subtle">ประธานเอกพจน์ กริยาต้องเติม s/es</span> (หรือใช้ is/has/does) แต่ถ้าประธานพหูพจน์ กริยาไม่ต้องเติมอะไรเลย
                     </p>
                     
                     <div class="example-box">
-                        <div class="d-flex align-items-start gap-2 mb-2">
-                            <i class="ph-fill ph-x-circle text-danger mt-1"></i>
-                            <span class="text-muted text-decoration-line-through">The student study hard.</span>
+                        <div class="d-flex align-items-center gap-2 mb-2 text-danger text-decoration-line-through">
+                            <i class="ph-fill ph-x-circle mt-1"></i> The student study hard.
                         </div>
-                        <div class="d-flex align-items-start gap-2 mb-3">
+                        <div class="d-flex align-items-center gap-2 mb-3">
                             <i class="ph-fill ph-check-circle text-success mt-1"></i>
-                            <span>The student <span class="text-success fw-bold text-decoration-underline">studies</span> hard. <small class="text-muted ms-1">(คนเดียว)</small></span>
+                            <span>The student <span class="text-success fw-bold text-decoration-underline">studies</span> hard. <span class="text-muted fst-italic small">(คนเดียว)</span></span>
                         </div>
-                        <hr class="text-muted">
-                        <div class="d-flex align-items-start gap-2 mt-3">
+                        <hr class="text-muted opacity-25">
+                        <div class="d-flex align-items-center gap-2 mt-3">
                             <i class="ph-fill ph-check-circle text-success mt-1"></i>
-                            <span>The students <span class="text-success fw-bold text-decoration-underline">study</span> hard. <small class="text-muted ms-1">(หลายคน)</small></span>
+                            <span>The students <span class="text-success fw-bold text-decoration-underline">study</span> hard. <span class="text-muted fst-italic small">(หลายคน)</span></span>
                         </div>
                     </div>
                 </section>
 
-                <section class="mb-5">
+                <section>
                     <h2 class="section-title">2. ส่วนขยายที่มาคั่น (The Interrupters)</h2>
                     
-                    <div class="alert alert-warning d-flex align-items-start gap-3" role="alert">
-                        <i class="ph-fill ph-warning fs-4"></i>
+                    <div class="alert alert-warning border-warning d-flex align-items-start gap-3" role="alert">
+                        <i class="ph-fill ph-warning fs-4 text-warning-emphasis"></i>
                         <div>
                             <strong>TOEFL TRAP:</strong>
-                            <div class="small">อย่าสนใจคำในวลีบุพบท (Prepositional Phrase) ที่มาคั่นกลาง ให้มองหา <strong>ประธานตัวจริง</strong> ข้างหน้าสุดเสมอ!</div>
+                            <div class="small mt-1">อย่าสนใจคำในวลีบุพบท (Prepositional Phrase) ที่มาคั่นกลาง ให้มองหา <strong>ประธานตัวจริง</strong> ข้างหน้าสุดเสมอ!</div>
                         </div>
                     </div>
 
-                    <p>คำเหล่านี้ <strong>ไม่มีผล</strong> ต่อการผันกริยา: <em>together with, along with, as well as, including</em></p>
+                    <p class="text-muted small mb-2">คำเหล่านี้ <strong>ไม่มีผล</strong> ต่อการผันกริยา: <em>together with, along with, as well as, including</em></p>
 
                     <div class="example-box">
-                        <p class="mb-2">
-                            The teacher, <em class="text-muted">along with his students</em>, <span class="text-success fw-bold border-bottom border-success border-2">is</span> in the room.
+                        <p class="mb-1">
+                            The teacher, <span class="text-muted fst-italic">along with his students</span>, <span class="text-success fw-bold border-bottom border-success border-2">is</span> in the room.
                         </p>
-                        <small class="text-muted">*(ประธานคือ Teacher คนเดียว ส่วน along with... ตัดทิ้งได้เลย)</small>
+                        <small class="text-muted fst-italic">*(ประธานคือ Teacher คนเดียว ส่วน along with... ตัดทิ้งได้เลย)</small>
                     </div>
                 </section>
 
-                <section class="mb-5">
+                <section>
                     <h2 class="section-title">3. คำสรรพนามไม่ชี้เฉพาะ (Indefinite Pronouns)</h2>
-                    <p>คำกลุ่มนี้ถือเป็น <strong>"เอกพจน์ (Singular)"</strong> เสมอครับ:</p>
+                    <p class="text-muted small mb-3">คำกลุ่มนี้ถือเป็น <strong>"เอกพจน์ (Singular)"</strong> เสมอครับ:</p>
                     
-                    <div class="row g-2 mb-4">
-                        <div class="col-6"><div class="p-2 border rounded text-center bg-white small">Everyone / Everybody</div></div>
-                        <div class="col-6"><div class="p-2 border rounded text-center bg-white small">Someone / Somebody</div></div>
-                        <div class="col-6"><div class="p-2 border rounded text-center bg-white small">Each / Every</div></div>
-                        <div class="col-6"><div class="p-2 border rounded text-center bg-white small">No one / Nobody</div></div>
+                    <div class="row g-2 mb-3">
+                        <div class="col-6"><div class="bg-white border rounded p-2 text-center small text-muted">Everyone / Everybody</div></div>
+                        <div class="col-6"><div class="bg-white border rounded p-2 text-center small text-muted">Someone / Somebody</div></div>
+                        <div class="col-6"><div class="bg-white border rounded p-2 text-center small text-muted">Each / Every</div></div>
+                        <div class="col-6"><div class="bg-white border rounded p-2 text-center small text-muted">No one / Nobody</div></div>
                     </div>
 
                     <div class="example-box">
@@ -197,18 +197,18 @@
                     </div>
                 </section>
 
-                 <section class="mb-3">
+                 <section>
                     <h2 class="section-title">4. โครงสร้าง There is / There are</h2>
-                    <p>ในประโยคที่ขึ้นต้นด้วย There... ประธานตัวจริงจะอยู่ <strong>"หลังกริยา"</strong> ครับ</p>
+                    <p class="text-muted small mb-2">ในประโยคที่ขึ้นต้นด้วย There... ประธานตัวจริงจะอยู่ <strong>"หลังกริยา"</strong> ครับ</p>
 
                     <div class="example-box">
-                        <div class="d-flex align-items-start gap-2 mb-2">
-                            <i class="ph-fill ph-check-circle text-success mt-1"></i>
-                            <span>There <strong class="text-success">is</strong> a <strong>cat</strong> on the roof. <small class="text-muted">(cat ตัวเดียว)</small></span>
+                        <div class="d-flex align-items-center gap-2 mb-2">
+                            <i class="ph-fill ph-check-circle text-success"></i>
+                            <span>There <strong class="text-success">is</strong> a <strong>cat</strong> on the roof. <span class="text-muted fst-italic small">(cat ตัวเดียว)</span></span>
                         </div>
-                        <div class="d-flex align-items-start gap-2">
-                            <i class="ph-fill ph-check-circle text-success mt-1"></i>
-                            <span>There <strong class="text-success">are</strong> many <strong>cats</strong> on the roof. <small class="text-muted">(cats หลายตัว)</small></span>
+                        <div class="d-flex align-items-center gap-2">
+                            <i class="ph-fill ph-check-circle text-success"></i>
+                            <span>There <strong class="text-success">are</strong> many <strong>cats</strong> on the roof. <span class="text-muted fst-italic small">(cats หลายตัว)</span></span>
                         </div>
                     </div>
                 </section>
@@ -240,8 +240,8 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
     <script>
-        // Quiz Data
-        const questions = [
+        // --- Data Source ---
+        const quizData = [
             {
                 id: 1,
                 text: "The box of apples ______ on the table.",
@@ -268,13 +268,15 @@
             }
         ];
 
-        // Render Quiz
+        // --- Render Quiz Function ---
         const quizArea = document.getElementById('quiz-area');
-        
-        questions.forEach((q, index) => {
+
+        quizData.forEach((q, index) => {
+            // Create Card
             const qDiv = document.createElement('div');
             qDiv.className = "bg-white p-4 rounded-3 border shadow-sm";
-            
+
+            // Create Options HTML
             let optionsHtml = "";
             q.options.forEach((opt, optIndex) => {
                 optionsHtml += `
@@ -286,6 +288,7 @@
                 `;
             });
 
+            // Assemble HTML
             qDiv.innerHTML = `
                 <p class="fw-bold text-dark mb-3">${index + 1}. ${q.text}</p>
                 <div>${optionsHtml}</div>
@@ -294,9 +297,9 @@
             quizArea.appendChild(qDiv);
         });
 
-        // Check Answer Function
+        // --- Check Answer Function ---
         window.checkAnswer = function(qIndex, optIndex, btnElement) {
-            const question = questions[qIndex];
+            const question = quizData[qIndex];
             const option = question.options[optIndex];
             const feedbackEl = document.getElementById(`feedback-${qIndex}`);
             
@@ -310,23 +313,22 @@
             feedbackEl.classList.remove('d-none');
             
             if (option.isCorrect) {
-                // Style for Correct Button
+                // Correct Style
                 btnElement.classList.add('btn-success-custom');
                 btnElement.querySelector('i').className = "ph-fill ph-check-circle text-success fs-5";
                 
-                // Style for Feedback Box
                 feedbackEl.className = "mt-3 p-3 rounded-3 small fw-bold alert alert-success border-success";
                 feedbackEl.innerHTML = `<i class="ph-bold ph-check me-2"></i> ${option.feedback}`;
             } else {
-                // Style for Wrong Button
+                // Wrong Style
                 btnElement.classList.add('btn-danger-custom');
                 btnElement.querySelector('i').className = "ph-fill ph-x-circle text-danger fs-5";
 
-                // Style for Feedback Box
                 feedbackEl.className = "mt-3 p-3 rounded-3 small fw-bold alert alert-danger border-danger";
                 feedbackEl.innerHTML = `<i class="ph-bold ph-x me-2"></i> ${option.feedback}`;
             }
         };
     </script>
+
 </body>
 </html>

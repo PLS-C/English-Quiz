@@ -32,7 +32,7 @@
         
         h1 { color: #0969da; margin: 0; }
 
-        /* --- Intro Box --- */
+        /* --- Boxes Styles --- */
         .intro-box {
             background: linear-gradient(to right, #fff5f5, #fff0f0);
             border: 1px solid #ffc9c9;
@@ -42,20 +42,16 @@
         }
         .intro-title { font-weight: bold; color: #cf222e; font-size: 1.1em; margin-bottom: 10px; display: block; }
 
-        /* --- Confusion Buster --- */
-        .confusion-box {
+        .tip-box {
             background-color: #e6fffa;
             border: 1px solid #38b2ac;
             border-radius: 8px;
             padding: 20px;
             margin-bottom: 30px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
         }
-        .confusion-title { font-weight: bold; color: #2c7a7b; display: block; margin-bottom: 10px; }
-        .compare-table { width: 100%; border-collapse: collapse; background: white; margin-top: 10px; }
-        .compare-table th, .compare-table td { border: 1px solid #cbd5e0; padding: 10px; text-align: left; font-size: 0.9em; }
-        .compare-table th { background-color: #f0fdfa; color: #234e52; }
+        .tip-title { font-weight: bold; color: #2c7a7b; display: block; margin-bottom: 10px; font-size: 1.1em; }
 
-        /* --- Rule Box --- */
         .rule-box {
             background: white;
             border: 1px solid #d0d7de;
@@ -66,6 +62,12 @@
         }
         h2 { border-left: 5px solid #0969da; padding-left: 15px; margin-top: 0; color: #1f2328; }
 
+        /* --- Tables --- */
+        .compare-table { width: 100%; border-collapse: collapse; background: white; margin-top: 10px; }
+        .compare-table th, .compare-table td { border: 1px solid #cbd5e0; padding: 10px; text-align: left; font-size: 0.9em; }
+        .compare-table th { background-color: #f0fdfa; color: #234e52; }
+
+        /* --- Examples & Tags --- */
         .example {
             background-color: #f6f8fa;
             padding: 15px;
@@ -79,17 +81,20 @@
 
         /* --- Quiz --- */
         .quiz-container { margin-top: 40px; border-top: 2px dashed #d0d7de; padding-top: 20px; }
-        .question {
+        .question-card {
             background: white;
             padding: 20px;
             border-radius: 6px;
             border: 1px solid #d0d7de;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
         }
-        .options label { display: block; margin: 10px 0; cursor: pointer; }
-        .feedback { margin-top: 10px; font-weight: bold; display: none; }
-        .feedback.show-correct { display: block; color: #1a7f37; }
-        .feedback.show-wrong { display: block; color: #cf222e; }
+        .q-text { font-weight: bold; margin-bottom: 10px; }
+        .options label { display: block; margin: 8px 0; cursor: pointer; padding: 8px; border-radius: 4px; border: 1px solid transparent; }
+        .options label:hover { background-color: #f1f8ff; }
+        
+        .feedback { margin-top: 10px; padding: 10px; border-radius: 4px; display: none; font-size: 0.9em; }
+        .feedback.correct { background-color: #d1fae5; color: #065f46; border: 1px solid #34d399; }
+        .feedback.wrong { background-color: #fee2e2; color: #991b1b; border: 1px solid #f87171; }
 
         /* --- Footer --- */
         .footer {
@@ -118,122 +123,190 @@
     <div class="header">
         <a href="../index.html" class="back-btn">← กลับไปหน้าหลัก</a>
         <h1>Participles (V.ing vs V.ed)</h1>
-        <p>การใช้กริยาเป็น "ส่วนขยาย" (Adjective): ทำเอง หรือ ถูกทำ?</p>
+        <p>เจาะลึกการใช้กริยาเป็น "ส่วนขยาย" (Adjective) แบบมือโปร</p>
     </div>
 
     <div class="intro-box">
         <span class="intro-title">🤔 Participle คืออะไร?</span>
-        <p>ในบทนี้ V.ing และ V.ed ไม่ได้ทำหน้าที่เป็นกริยาแท้ และไม่ได้เป็นคำนาม แต่ทำหน้าที่เป็น <strong>Adjective (คำคุณศัพท์)</strong> เพื่อขยายคำนามที่อยู่ใกล้ๆ มันครับ</p>
+        <p>มันคือการเอากริยามาแปลงร่างเป็น <strong>Adjective (คำคุณศัพท์)</strong> เพื่อขยายคำนาม <br>
+        ไม่ได้ทำหน้าที่เป็นกริยาหลัก และไม่ได้เป็นคำนาม (Gerund) แต่มีหน้าที่บอกลักษณะของสิ่งนั้นๆ</p>
     </div>
 
-    <div class="confusion-box">
-        <span class="confusion-title">💡 เคลียร์ปม: V.ing เหมือนกัน แต่ไม่เหมือนกัน!</span>
-        <p>อย่าสับสนกับ <strong>Gerund</strong> นะครับ! แม้หน้าตาจะเหมือนกัน (V.ing) แต่หน้าที่ต่างกันคนละขั้ว:</p>
+    <div class="tip-box">
+        <span class="tip-title">🕵️‍♀️ เทคนิคลับ #1: แยก V.ing (นาม vs ขยาย) ยังไง?</span>
+        <p>หน้าตาเหมือนกันเป๊ะ แต่แยกได้ง่ายๆ ด้วย <strong>"สูตรการแปลไทย"</strong> ครับ:</p>
+        
         <table class="compare-table">
             <thead>
                 <tr>
                     <th>ชนิด</th>
-                    <th>หน้าที่ (Job)</th>
-                    <th>ตัวอย่าง</th>
+                    <th>คำแปลที่ใช้เช็ก</th>
+                    <th>ตัวอย่าง & วิธีคิด</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <td><strong>Gerund</strong></td>
-                    <td><strong>คำนาม (Noun)</strong><br>แปลว่า "การ..." (ใช้เป็นประธาน/กรรม)</td>
-                    <td><strong>Smoking</strong> is bad.<br>*(การสูบบุหรี่ = ประธาน)*</td>
+                    <td><strong>Gerund (N)</strong></td>
+                    <td><strong>"การ..."</strong></td>
+                    <td>Running is fun.<br>✅ <strong>การ</strong>วิ่ง เป็นเรื่องสนุก (ฟังรู้เรื่อง = Noun)</td>
                 </tr>
                 <tr>
-                    <td><strong>Participle</strong><br>(บทนี้เรียนอันนี้)</td>
-                    <td><strong>ส่วนขยาย (Adjective)</strong><br>แปลว่า "ที่กำลัง..." (ขยายคำนาม)</td>
-                    <td>The <strong>smoking</strong> man.<br>*(ผู้ชายคนที่กำลังสูบบุหรี่ = ขยายคน)*</td>
+                    <td><strong>Participle (Adj)</strong></td>
+                    <td><strong>"ที่กำลัง..." / "น่า..."</strong></td>
+                    <td>The running man.<br>✅ ผู้ชาย <strong>ที่กำลัง</strong>วิ่ง (ฟังรู้เรื่อง = Adjective)</td>
                 </tr>
             </tbody>
         </table>
-        <p style="margin-top:10px; font-size:0.9em; color:#2c7a7b;">** Note: ส่วน V.ed (ถูกทำ) มีเฉพาะใน Participle เท่านั้น Gerund ไม่มี V.ed ครับ</p>
     </div>
 
-    <div class="rule-box">
-        <h2>1. Present Participle (V.ing) = ทำเอง</h2>
-        <p>ใช้ขยายคำนามเมื่อนามนั้น <strong>"เป็นผู้กระทำกริยานั้นเอง"</strong> (Active Voice)</p>
-        <div class="example">
-            The <strong>crying</strong> baby. <span class="active-tag">Active</span>
-            <br><small>(เด็กเป็นคนร้องไห้เอง)</small>
-        </div>
-        <div class="example">
-            The man <strong>standing</strong> there is my friend. <span class="active-tag">Active</span>
-            <br><small>(ผู้ชายคนนั้นยืนเอง)</small>
-        </div>
-    </div>
-
-    <div class="rule-box">
-        <h2>2. Past Participle (V.ed / V.3) = ถูกกระทำ</h2>
-        <p>ใช้ขยายคำนามเมื่อนามนั้น <strong>"ถูกกระทำ"</strong> (Passive Voice)</p>
-        <div class="example">
-            The <strong>broken</strong> window. <span class="passive-tag">Passive</span>
-            <br><small>(หน้าต่างถูกทำให้แตก ไม่ได้แตกเอง)</small>
-        </div>
-        <div class="example">
-            The email <strong>sent</strong> yesterday was important. <span class="passive-tag">Passive</span>
-            <br><small>(อีเมลถูกส่ง ไม่ได้เดินไปส่งเอง)</small>
+    <div class="tip-box" style="background-color: #fff8e6; border-color: #d4a72c;">
+        <span class="tip-title" style="color: #b7791f;">⚡ เทคนิคลับ #2: เลือก V.ing หรือ V.ed ดี?</span>
+        <p>ให้ดูที่ <strong>"คำนามที่มันขยาย"</strong> แล้วถามว่า...</p>
+        
+        <div style="display: flex; gap: 20px; flex-wrap: wrap; margin-top: 15px;">
+            <div style="flex: 1; background: white; padding: 15px; border-radius: 6px; border-left: 5px solid #34d399;">
+                <strong>1. ทำเอง หรือ ถูกทำ? (Action)</strong>
+                <ul style="margin: 5px 0 0 20px; padding: 0;">
+                    <li>ถ้าทำเอง → <strong>V.ing</strong> (Active) <br><small>ex. The <em>crying</em> baby (ร้องเอง)</small></li>
+                    <li>ถ้าถูกทำ → <strong>V.ed</strong> (Passive) <br><small>ex. The <em>broken</em> window (ถูกทุบแตก)</small></li>
+                </ul>
+            </div>
+            <div style="flex: 1; background: white; padding: 15px; border-radius: 6px; border-left: 5px solid #f472b6;">
+                <strong>2. ความรู้สึก (Emotion)</strong>
+                <ul style="margin: 5px 0 0 20px; padding: 0;">
+                    <li>ถ้าเป็นต้นเหตุ (น่า...) → <strong>V.ing</strong> <br><small>ex. The movie is <em>boring</em> (หนังน่าเบื่อ)</small></li>
+                    <li>ถ้าเป็นคนรู้สึก (รู้สึก...) → <strong>V.ed</strong> <br><small>ex. I am <em>bored</em> (ฉันรู้สึกเบื่อ)</small></li>
+                </ul>
+            </div>
         </div>
     </div>
 
     <div class="rule-box">
-        <h2>3. Adjectives บอกความรู้สึก (Feeling)</h2>
-        <p>กลุ่มคำแสดงอารมณ์ (Excite, Bore, Interest) ใช้กฎเดียวกัน:</p>
-        <ul>
-            <li><strong>V.ing (น่า...):</strong> บอกลักษณะของสิ่งของ/คน (Cause) → <em>The movie is boring. (หนังน่าเบื่อ)</em></li>
-            <li><strong>V.ed (รู้สึก...):</strong> บอกความรู้สึกของคน (Feeling) → <em>I am bored. (ฉันรู้สึกเบื่อ)</em></li>
-        </ul>
+        <h2>1. Present Participle (V.ing) = Active / Cause</h2>
+        <p>ใช้เมื่อนามนั้น <strong>"ทำกริยาเอง"</strong> หรือเป็น <strong>"ต้นเหตุของความรู้สึก"</strong></p>
+        <div class="example">
+            Look at that <strong>flying</strong> bird. <span class="active-tag">Active</span>
+            <br><small>(นกบินเอง → ใช้ flying)</small>
+        </div>
+        <div class="example">
+            This game is <strong>exciting</strong>. <span class="active-tag">Cause</span>
+            <br><small>(เกมเป็นต้นเหตุที่ทำให้ตื่นเต้น = เกมน่าตื่นเต้น)</small>
+        </div>
+    </div>
+
+    <div class="rule-box">
+        <h2>2. Past Participle (V.ed / V.3) = Passive / Feeling</h2>
+        <p>ใช้เมื่อนามนั้น <strong>"ถูกกระทำ"</strong> หรือเป็น <strong>"ผู้รับความรู้สึก"</strong></p>
+        <div class="example">
+            I need to fix the <strong>frozen</strong> computer. <span class="passive-tag">Passive</span>
+            <br><small>(คอมพิวเตอร์ถูกทำให้ค้าง/แช่แข็ง ไม่ได้แช่ตัวเอง)</small>
+        </div>
+        <div class="example">
+            The students are <strong>confused</strong>. <span class="passive-tag">Feeling</span>
+            <br><small>(นักเรียน "รู้สึก" สับสน)</small>
+        </div>
     </div>
 
     <div class="quiz-container">
-        <h2>📝 Mini Quiz: ทำเอง หรือ ถูกทำ?</h2>
-        
-        <div class="question">
-            <p><strong>1. Be careful! There is a ______ glass on the floor.</strong></p>
-            <div class="options">
-                <label><input type="radio" name="q1" value="wrong" onclick="checkAns(1, false)"> A) breaking</label>
-                <label><input type="radio" name="q1" value="correct" onclick="checkAns(1, true)"> B) broken</label>
-            </div>
-            <div id="feedback-1" class="feedback"></div>
-        </div>
-
-        <div class="question">
-            <p><strong>2. The boy ______ football over there is my brother.</strong></p>
-            <div class="options">
-                <label><input type="radio" name="q2" value="correct" onclick="checkAns(2, true)"> A) playing</label>
-                <label><input type="radio" name="q2" value="wrong" onclick="checkAns(2, false)"> B) played</label>
-            </div>
-            <div id="feedback-2" class="feedback"></div>
-        </div>
-
-        <div class="question">
-            <p><strong>3. I am ______ in history.</strong></p>
-            <div class="options">
-                <label><input type="radio" name="q3" value="wrong" onclick="checkAns(3, false)"> A) interesting</label>
-                <label><input type="radio" name="q3" value="correct" onclick="checkAns(3, true)"> B) interested</label>
-            </div>
-            <div id="feedback-3" class="feedback"></div>
-        </div>
+        <h2>📝 Practice Quiz: 10 ข้อ วัดความแม่น</h2>
+        <div id="quiz-area"></div>
     </div>
 
     <script>
-        function checkAns(qId, isCorrect) {
-            const feedbackEl = document.getElementById(`feedback-${qId}`);
-            if (isCorrect) {
-                feedbackEl.textContent = "✅ ถูกต้อง!";
-                feedbackEl.className = "feedback show-correct";
-            } else {
-                let msg = "❌ ยังไม่ถูก ";
-                if(qId === 1) msg += "แก้วมัน 'ถูกทำแตก' ต้องใช้ V.3 (Broken) ครับ";
-                if(qId === 2) msg += "เด็กผู้ชาย 'เล่น' บอลเอง ต้องใช้ V.ing (Playing) ครับ";
-                if(qId === 3) msg += "ฉัน 'รู้สึก' สนใจ ต้องใช้ V.ed (Interested) ครับ";
-                
-                feedbackEl.textContent = msg;
-                feedbackEl.className = "feedback show-wrong";
+        const quizData = [
+            {
+                q: "1. Be careful! There is ______ glass on the floor.",
+                options: ["breaking", "broken"],
+                answer: 1,
+                reason: "แก้วมัน 'ถูกทำแตก' (Passive) ต้องใช้ V.3 (Broken)"
+            },
+            {
+                q: "2. The ______ dog barked all night.",
+                options: ["annoying", "annoyed"],
+                answer: 0,
+                reason: "หมาตัวนี้เป็น 'ต้นเหตุ' ของความรำคาญ (Active/Cause) = หมาน่ารำคาญ (Annoying)"
+            },
+            {
+                q: "3. I received a ______ letter from the bank.",
+                options: ["writing", "written"],
+                answer: 1,
+                reason: "จดหมาย 'ถูกเขียน' ขึ้นมา (Passive) ต้องใช้ V.3 (Written)"
+            },
+            {
+                q: "4. The movie was so ______, I fell asleep.",
+                options: ["boring", "bored"],
+                answer: 0,
+                reason: "หนังเป็นสิ่งของ เป็น 'ต้นเหตุ' (น่าเบื่อ) ต้องใช้ V.ing (Boring)"
+            },
+            {
+                q: "5. The ______ water is very hot.",
+                options: ["boiling", "boiled"],
+                answer: 0,
+                reason: "น้ำกำลัง 'เดือดเอง' (Active Process) อยู่ในขณะนี้ ใช้ V.ing (Boiling)"
+            },
+            {
+                q: "6. She was ______ by the news.",
+                options: ["shocking", "shocked"],
+                answer: 1,
+                reason: "เธอเป็นคน 'รู้สึก' ตกใจ (Receiver) ต้องใช้ V.ed (Shocked)"
+            },
+            {
+                q: "7. Do you know the man ______ in the corner?",
+                options: ["standing", "stood"],
+                answer: 0,
+                reason: "ผู้ชายคนนั้น 'ยืนเอง' (Active) ต้องใช้ V.ing (Standing)"
+            },
+            {
+                q: "8. I bought a ______ car.",
+                options: ["using", "used"],
+                answer: 1,
+                reason: "รถยนต์ 'ถูกใช้' มาแล้ว (มือสอง) ต้องใช้ V.3 (Used)"
+            },
+            {
+                q: "9. The results were ______.",
+                options: ["disappointing", "disappointed"],
+                answer: 0,
+                reason: "ผลลัพธ์เป็นสิ่งของ เป็น 'ต้นเหตุ' (น่าผิดหวัง) ต้องใช้ V.ing (Disappointing)"
+            },
+            {
+                q: "10. Cars ______ in Japan are reliable.",
+                options: ["making", "made"],
+                answer: 1,
+                reason: "รถยนต์ 'ถูกผลิต' (Passive - ลดรูปมาจาก which are made) ต้องใช้ V.3 (Made)"
             }
+        ];
+
+        const quizArea = document.getElementById('quiz-area');
+
+        quizData.forEach((item, index) => {
+            const card = document.createElement('div');
+            card.className = 'question-card';
+            
+            let optionsHtml = '';
+            item.options.forEach((opt, optIndex) => {
+                optionsHtml += `<label><input type="radio" name="q${index}" value="${optIndex}" onchange="checkAnswer(${index}, ${optIndex})"> ${opt}</label>`;
+            });
+
+            card.innerHTML = `
+                <div class="q-text">${item.q}</div>
+                <div class="options">${optionsHtml}</div>
+                <div id="feedback-${index}" class="feedback"></div>
+            `;
+            quizArea.appendChild(card);
+        });
+
+        function checkAnswer(qIndex, selectedIndex) {
+            const feedbackEl = document.getElementById(`feedback-${qIndex}`);
+            const correctIndex = quizData[qIndex].answer;
+            
+            if (selectedIndex === correctIndex) {
+                feedbackEl.className = 'feedback correct';
+                feedbackEl.innerHTML = `✅ <strong>ถูกต้อง!</strong> ${quizData[qIndex].reason}`;
+            } else {
+                feedbackEl.className = 'feedback wrong';
+                feedbackEl.innerHTML = `❌ <strong>ผิดครับ</strong> ${quizData[qIndex].reason}`;
+            }
+            feedbackEl.style.display = 'block';
         }
     </script>
 

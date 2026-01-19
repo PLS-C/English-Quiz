@@ -4,237 +4,219 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Subject-Verb Agreement | TOEFL ITP</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@300;400;600&family=Sarabun:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
     <style>
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-            background-color: #f6f8fa;
-            color: #24292f;
-            line-height: 1.6;
-        }
-
-        /* --- Header & Navigation --- */
-        .header {
-            border-bottom: 1px solid #d0d7de;
-            padding-bottom: 20px;
-            margin-bottom: 30px;
-        }
-        .back-btn {
-            display: inline-block;
-            margin-bottom: 15px;
-            text-decoration: none;
-            color: #0969da;
-            font-weight: 500;
-        }
-        .back-btn:hover { text-decoration: underline; }
-        
-        h1 { color: #0969da; margin: 0; }
-        h2 { border-left: 5px solid #0969da; padding-left: 15px; margin-top: 40px; color: #1f2328; }
-        h3 { color: #57606a; margin-top: 25px; }
-
-        /* --- Content Box --- */
-        .rule-box {
-            background: white;
-            border: 1px solid #d0d7de;
-            border-radius: 6px;
-            padding: 25px;
-            margin-bottom: 20px;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.02);
-        }
-
-        /* --- Examples --- */
-        .example {
-            background-color: #f6f8fa;
-            padding: 15px;
-            border-radius: 6px;
-            margin: 10px 0;
-            font-family: 'Courier New', Courier, monospace;
-        }
-        .correct { color: #1a7f37; font-weight: bold; } /* สีเขียว */
-        .wrong { color: #cf222e; text-decoration: line-through; margin-right: 10px; } /* สีแดง */
-        .highlight { background-color: #fff8c5; padding: 2px 5px; border-radius: 3px; }
-
-        /* --- Tip Box --- */
-        .toefl-tip {
-            background-color: #ddf4ff;
-            border-left: 5px solid #0969da;
-            padding: 15px;
-            margin: 20px 0;
-            border-radius: 0 6px 6px 0;
-        }
-        .toefl-tip strong { color: #0969da; }
-
-        /* --- Quiz Section --- */
-        .quiz-container { margin-top: 40px; }
-        .question {
-            background: white;
-            padding: 20px;
-            border-radius: 6px;
-            border: 1px solid #d0d7de;
-            margin-bottom: 15px;
-        }
-        .options label {
-            display: block;
-            margin: 10px 0;
-            cursor: pointer;
-        }
-        .feedback {
-            margin-top: 10px;
-            font-weight: bold;
-            display: none;
-        }
-        .feedback.show-correct { display: block; color: #1a7f37; }
-        .feedback.show-wrong { display: block; color: #cf222e; }
-
-        /* --- Footer & Disclaimer --- */
-        .footer {
-            margin-top: 50px;
-            padding-top: 20px;
-            border-top: 1px solid #e1e4e8;
-            text-align: center;
-            font-size: 0.85em;
-            color: #6e7781;
-        }
-        .ai-badge {
-            display: inline-flex;
-            align-items: center;
-            background-color: #f3f4f6;
-            padding: 5px 10px;
-            border-radius: 20px;
-            border: 1px solid #d0d7de;
-            margin-bottom: 10px;
-            font-weight: 500;
-            color: #57606a;
-        }
-        .ai-icon { margin-right: 5px; }
-
+        body { font-family: 'Sarabun', 'Noto Sans Thai', sans-serif; }
+        .example-box { font-family: 'Sarabun', sans-serif; }
+        .correct { color: #059669; font-weight: 600; } /* emerald-600 */
+        .wrong { color: #dc2626; text-decoration: line-through; margin-right: 8px; } /* red-600 */
     </style>
 </head>
-<body>
+<body class="bg-slate-100 min-h-screen py-8 px-4 flex justify-center">
 
-    <div class="header">
-        <a href="../index.html" class="back-btn">← กลับไปหน้าหลัก</a>
-        <h1>Subject-Verb Agreement</h1>
-        <p>กฎความสอดคล้องระหว่างประธาน (Subject) และกริยา (Verb) - หัวใจสำคัญของ Part Structure</p>
-    </div>
-
-    <div class="rule-box">
-        <h2>1. กฎพื้นฐาน (The Golden Rule)</h2>
-        <p>หลักการง่ายๆ คือ <strong>ประธานเอกพจน์ กริยาต้องเติม s/es</strong> (หรือใช้ is/has/does) แต่ถ้าประธานพหูพจน์ กริยาไม่ต้องเติมอะไรเลย</p>
+    <div class="bg-white w-full max-w-3xl rounded-2xl shadow-xl overflow-hidden border border-slate-200">
         
-        <div class="example">
-            <span class="wrong">The student study hard.</span>
-            <span class="correct">✅ The student <span class="highlight">studies</span> hard.</span>
-            <br><small>(Student คนเดียว study ต้องเปลี่ยนเป็น studies)</small>
+        <div class="bg-teal-700 p-6 text-white relative overflow-hidden">
+            <a href="../index.html" class="inline-flex items-center text-teal-100 hover:text-white mb-4 text-sm font-medium transition">
+                <i class="ph-bold ph-arrow-left mr-1"></i> กลับหน้าหลัก
+            </a>
+            <h1 class="text-3xl font-bold mb-2 flex items-center gap-2">
+                <i class="ph-duotone ph-check-square-offset"></i> Subject-Verb Agreement
+            </h1>
+            <p class="text-teal-100 opacity-90">กฎความสอดคล้องระหว่างประธานและกริยา - หัวใจสำคัญของ Part Structure</p>
+            
+            <div class="absolute -bottom-10 -right-10 w-40 h-40 bg-teal-500 rounded-full opacity-20 blur-2xl"></div>
         </div>
-        <div class="example">
-            <span class="correct">✅ The students <span class="highlight">study</span> hard.</span>
-            <br><small>(Students หลายคน study ไม่ต้องเติม s)</small>
+
+        <div class="p-6 space-y-8">
+
+            <section>
+                <h2 class="text-xl font-bold text-teal-800 border-l-4 border-teal-500 pl-3 mb-4">
+                    1. กฎพื้นฐาน (The Golden Rule)
+                </h2>
+                <div class="text-gray-700 mb-4 leading-relaxed">
+                    หลักการง่ายๆ คือ <span class="bg-yellow-100 px-1 rounded">ประธานเอกพจน์ กริยาต้องเติม s/es</span> (หรือใช้ is/has/does) แต่ถ้าประธานพหูพจน์ กริยาไม่ต้องเติมอะไรเลย
+                </div>
+                
+                <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-3">
+                    <div class="flex items-start gap-3">
+                        <i class="ph-fill ph-x-circle text-red-500 mt-1"></i>
+                        <span class="text-gray-500 line-through">The student study hard.</span>
+                    </div>
+                    <div class="flex items-start gap-3">
+                        <i class="ph-fill ph-check-circle text-green-600 mt-1"></i>
+                        <span class="text-gray-800 font-medium">The student <span class="text-green-600 underline decoration-2">studies</span> hard.</span>
+                        <span class="text-xs text-gray-500 mt-1">(คนเดียว)</span>
+                    </div>
+                    <div class="border-t border-slate-200 my-2"></div>
+                    <div class="flex items-start gap-3">
+                        <i class="ph-fill ph-check-circle text-green-600 mt-1"></i>
+                        <span class="text-gray-800 font-medium">The students <span class="text-green-600 underline decoration-2">study</span> hard.</span>
+                        <span class="text-xs text-gray-500 mt-1">(หลายคน)</span>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2 class="text-xl font-bold text-teal-800 border-l-4 border-teal-500 pl-3 mb-4">
+                    2. ส่วนขยายที่มาคั่น (The Interrupters)
+                </h2>
+                
+                <div class="bg-orange-50 border border-orange-200 rounded-lg p-4 mb-4 flex gap-3">
+                    <i class="ph-fill ph-warning text-orange-500 text-xl flex-shrink-0"></i>
+                    <div>
+                        <strong class="text-orange-800 block mb-1">TOEFL TRAP:</strong>
+                        <p class="text-sm text-orange-900">อย่าสนใจคำในวลีบุพบท (Prepositional Phrase) ที่มาคั่นกลาง ให้มองหา <strong>ประธานตัวจริง</strong> ข้างหน้าสุดเสมอ!</p>
+                    </div>
+                </div>
+
+                <p class="text-gray-700 mb-2">คำเหล่านี้ <strong>ไม่มีผล</strong> ต่อการผันกริยา: <em>together with, along with, as well as, including</em></p>
+
+                <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                    <p class="text-gray-800">
+                        The teacher, <span class="text-gray-400 italic">along with his students</span>, <span class="text-green-600 font-bold border-b-2 border-green-500">is</span> in the room.
+                    </p>
+                    <p class="text-xs text-gray-500 mt-2">*(ประธานคือ Teacher คนเดียว ส่วน along with... ตัดทิ้งได้เลย)</p>
+                </div>
+            </section>
+
+            <section>
+                <h2 class="text-xl font-bold text-teal-800 border-l-4 border-teal-500 pl-3 mb-4">
+                    3. คำสรรพนามไม่ชี้เฉพาะ (Indefinite Pronouns)
+                </h2>
+                <p class="text-gray-700 mb-3">คำกลุ่มนี้ถือเป็น <strong>"เอกพจน์ (Singular)"</strong> เสมอครับ:</p>
+                <div class="grid grid-cols-2 gap-2 text-sm text-gray-600 mb-4">
+                    <div class="bg-white border p-2 rounded text-center">Everyone / Everybody</div>
+                    <div class="bg-white border p-2 rounded text-center">Someone / Somebody</div>
+                    <div class="bg-white border p-2 rounded text-center">Each / Every</div>
+                    <div class="bg-white border p-2 rounded text-center">No one / Nobody</div>
+                </div>
+
+                <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                    <div class="flex items-center gap-2">
+                        <i class="ph-fill ph-check-circle text-green-600"></i>
+                        <span>Everyone <strong class="text-green-600">has</strong> a book.</span>
+                    </div>
+                </div>
+            </section>
+
         </div>
-    </div>
 
-    <div class="rule-box">
-        <h2>2. ส่วนขยายที่มาคั่น (The Interrupters)</h2>
-        <div class="toefl-tip">
-            💡 <strong>TOEFL TRAP:</strong> ข้อสอบมักจะเอาวลียาวๆ มาคั่นกลางเพื่อให้เราสับสน จำไว้ว่า <strong>"อย่าสนใจคำในวลีบุพบท (Prepositional Phrase)"</strong> ให้มองหาประธานตัวจริงข้างหน้าสุดเสมอ!
+        <div class="bg-teal-50 border-t border-teal-100 p-8">
+            <h2 class="text-2xl font-bold text-teal-900 mb-6 flex items-center gap-2">
+                <i class="ph-duotone ph-pencil-simple"></i> Mini Quiz: ทดสอบความเข้าใจ
+            </h2>
+            
+            <div class="space-y-6" id="quiz-area">
+                </div>
         </div>
-        <p>คำเหล่านี้ <strong>ไม่มีผล</strong> ต่อการผันกริยา: <em>together with, along with, accompanied by, as well as, including, in addition to</em></p>
 
-        <div class="example">
-            The teacher, <em>along with his students</em>, ____ in the room.
-            <br><br>
-            <span class="wrong">are</span> 
-            <span class="correct">✅ is</span>
-            <br><small>(ประธานคือ The teacher คนเดียว ส่วน along with... คือส่วนขยาย ให้ตัดทิ้งไปเลย)</small>
-        </div>
-    </div>
-
-    <div class="rule-box">
-        <h2>3. คำสรรพนามไม่ชี้เฉพาะ (Indefinite Pronouns)</h2>
-        <p>คำกลุ่มนี้ดูเหมือนเยอะ แต่ในทางไวยากรณ์ถือเป็น <strong>"เอกพจน์ (Singular)"</strong> เสมอ</p>
-        <ul>
-            <li>Everyone, Everybody, Everything</li>
-            <li>Someone, Somebody, Something</li>
-            <li>Anyone, Anybody, Anything</li>
-            <li>No one, Nobody, Nothing</li>
-            <li>Each, Every</li>
-        </ul>
-
-        <div class="example">
-            <span class="wrong">Everyone have a book.</span>
-            <span class="correct">✅ Everyone <span class="highlight">has</span> a book.</span>
-        </div>
-    </div>
-
-    <div class="rule-box">
-        <h2>4. โครงสร้าง There is / There are</h2>
-        <p>ในประโยคที่ขึ้นต้นด้วย There... ประธานตัวจริงจะอยู่ <strong>"หลังกริยา"</strong></p>
-        
-        <div class="example">
-            There <span class="highlight">is</span> a <strong>cat</strong> on the roof. <small>(cat ตัวเดียว ใช้ is)</small><br>
-            There <span class="highlight">are</span> many <strong>cats</strong> on the roof. <small>(cats หลายตัว ใช้ are)</small>
-        </div>
-    </div>
-
-    <div class="quiz-container">
-        <h2>📝 Mini Quiz: ทดสอบความเข้าใจ</h2>
-        
-        <div class="question">
-            <p><strong>1. The box of apples ______ on the table.</strong></p>
-            <div class="options">
-                <label><input type="radio" name="q1" value="wrong" onclick="checkAns(1, false)"> A) are</label>
-                <label><input type="radio" name="q1" value="correct" onclick="checkAns(1, true)"> B) is</label>
+        <div class="bg-slate-50 p-6 text-center border-t border-slate-200">
+            <div class="inline-flex items-center gap-2 bg-white px-4 py-1 rounded-full border border-slate-200 shadow-sm text-sm text-slate-600 mb-3">
+                <i class="ph-fill ph-sparkle text-yellow-500"></i>
+                เรียบเรียงโดย Gemini AI & ตรวจสอบโดย PLS-C
             </div>
-            <div id="feedback-1" class="feedback"></div>
-        </div>
-
-        <div class="question">
-            <p><strong>2. Everyone in the class ______ to pass the exam.</strong></p>
-            <div class="options">
-                <label><input type="radio" name="q2" value="wrong" onclick="checkAns(2, false)"> A) want</label>
-                <label><input type="radio" name="q2" value="correct" onclick="checkAns(2, true)"> B) wants</label>
-            </div>
-            <div id="feedback-2" class="feedback"></div>
-        </div>
-
-        <div class="question">
-            <p><strong>3. The manager, as well as his assistants, ______ attending the meeting.</strong></p>
-            <div class="options">
-                <label><input type="radio" name="q3" value="correct" onclick="checkAns(3, true)"> A) is</label>
-                <label><input type="radio" name="q3" value="wrong" onclick="checkAns(3, false)"> B) are</label>
-            </div>
-            <div id="feedback-3" class="feedback"></div>
+            <p class="text-xs text-slate-400">
+                &copy; 2026 PLS-C English Quiz. All rights reserved.
+            </p>
         </div>
 
     </div>
 
     <script>
-        function checkAns(qId, isCorrect) {
-            const feedbackEl = document.getElementById(`feedback-${qId}`);
-            if (isCorrect) {
-                feedbackEl.textContent = "✅ ถูกต้อง! เก่งมาก";
-                feedbackEl.className = "feedback show-correct";
-            } else {
-                feedbackEl.textContent = "❌ ยังไม่ถูก ลองดูประธานใหม่อีกทีนะ";
-                feedbackEl.className = "feedback show-wrong";
+        // Quiz Data
+        const questions = [
+            {
+                id: 1,
+                text: "The box of apples ______ on the table.",
+                options: [
+                    { label: "A) are", isCorrect: false, feedback: "ผิดครับ! ประธานคือ 'The box' (กล่องเดียว) ไม่ใช่ apples" },
+                    { label: "B) is", isCorrect: true, feedback: "ถูกต้อง! ประธานหลักคือ 'The box' เป็นเอกพจน์" }
+                ]
+            },
+            {
+                id: 2,
+                text: "Everyone in the class ______ to pass the exam.",
+                options: [
+                    { label: "A) want", isCorrect: false, feedback: "ผิดครับ! Everyone ถือเป็นเอกพจน์ กริยาต้องเติม s" },
+                    { label: "B) wants", isCorrect: true, feedback: "ถูกต้อง! Everyone เป็นเอกพจน์เสมอ (Singular)" }
+                ]
+            },
+            {
+                id: 3,
+                text: "The manager, as well as his assistants, ______ attending.",
+                options: [
+                    { label: "A) is", isCorrect: true, feedback: "ถูกต้อง! ประธานคือ The manager คนเดียว (ส่วนหลัง as well as ให้ตัดทิ้ง)" },
+                    { label: "B) are", isCorrect: false, feedback: "ผิดครับ! อย่าโดน assistants หลอก ประธานตัวจริงอยู่หน้าสุด" }
+                ]
             }
-        }
+        ];
+
+        // Render Quiz
+        const quizArea = document.getElementById('quiz-area');
+        
+        questions.forEach((q, index) => {
+            const qDiv = document.createElement('div');
+            qDiv.className = "bg-white p-5 rounded-xl border border-teal-100 shadow-sm";
+            
+            let optionsHtml = "";
+            q.options.forEach((opt, optIndex) => {
+                optionsHtml += `
+                    <button onclick="checkAnswer(${index}, ${optIndex}, this)" 
+                            class="w-full text-left p-3 rounded-lg border border-slate-200 hover:bg-teal-50 hover:border-teal-300 transition mb-2 flex items-center justify-between group">
+                        <span>${opt.label}</span>
+                        <i class="ph-bold ph-circle text-slate-300 group-hover:text-teal-400"></i>
+                    </button>
+                `;
+            });
+
+            qDiv.innerHTML = `
+                <p class="font-bold text-gray-800 mb-3">${index + 1}. ${q.text}</p>
+                <div class="space-y-1">${optionsHtml}</div>
+                <div id="feedback-${index}" class="hidden mt-3 p-3 rounded-lg text-sm font-medium"></div>
+            `;
+            quizArea.appendChild(qDiv);
+        });
+
+        // Check Answer Function
+        window.checkAnswer = function(qIndex, optIndex, btnElement) {
+            const question = questions[qIndex];
+            const option = question.options[optIndex];
+            const feedbackEl = document.getElementById(`feedback-${qIndex}`);
+            
+            // Disable all buttons in this question
+            const allBtns = btnElement.parentElement.querySelectorAll('button');
+            allBtns.forEach(btn => {
+                btn.disabled = true;
+                btn.classList.add('opacity-50', 'cursor-not-allowed');
+            });
+
+            // Show Feedback
+            feedbackEl.classList.remove('hidden');
+            if (option.isCorrect) {
+                btnElement.classList.remove('opacity-50', 'border-slate-200');
+                btnElement.classList.add('bg-green-50', 'border-green-500', 'text-green-800');
+                btnElement.querySelector('i').className = "ph-fill ph-check-circle text-green-500 text-xl";
+                
+                feedbackEl.className = "mt-3 p-3 rounded-lg text-sm font-medium bg-green-100 text-green-800 border border-green-200";
+                feedbackEl.innerHTML = `<i class="ph-bold ph-check"></i> ${option.feedback}`;
+            } else {
+                btnElement.classList.remove('opacity-50', 'border-slate-200');
+                btnElement.classList.add('bg-red-50', 'border-red-500', 'text-red-800');
+                btnElement.querySelector('i').className = "ph-fill ph-x-circle text-red-500 text-xl";
+
+                feedbackEl.className = "mt-3 p-3 rounded-lg text-sm font-medium bg-red-100 text-red-800 border border-red-200";
+                feedbackEl.innerHTML = `<i class="ph-bold ph-x"></i> ${option.feedback}`;
+            }
+        };
     </script>
-
-    <div class="footer">
-        <div class="ai-badge">
-            <span class="ai-icon">✨</span> เนื้อหาเรียบเรียงโดย Gemini AI & ตรวจสอบโดย PLS-C
-        </div>
-        <p>
-            <strong>Disclaimer:</strong> เนื้อหาในเว็บไซต์นี้จัดทำขึ้นเพื่อวัตถุประสงค์ทางการศึกษา (Educational Purpose Only) <br>
-            ผู้จัดทำพยายามตรวจสอบความถูกต้องอย่างดีที่สุด แต่อาจมีข้อจำกัดทางเทคนิคของ AI ผู้เรียนควรตรวจสอบกับตำราหลักเพื่อการอ้างอิงทางวิชาการ
-        </p>
-        <p style="margin-top: 10px; font-size: 0.9em; opacity: 0.7;">
-            &copy; 2026 PLS-C English Quiz. All rights reserved.
-        </p>
-    </div>
-
 </body>
 </html>

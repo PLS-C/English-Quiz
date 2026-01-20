@@ -31,6 +31,11 @@
                    class="inline-flex items-center text-blue-100 hover:text-white mb-3 text-sm font-medium transition-colors">
                     <i class="ph-bold ph-arrow-left mr-1"></i> กลับหน้าหลัก
                 </a>
+                <a href="javascript:void(0)" 
+                onclick="handleNextQuizClick(event)"
+                class="inline-flex items-center text-blue-100 hover:text-white mb-3 text-sm font-medium transition-colors">
+                    <i class="ph-bold ph-arrow-right mr-1"></i> แบบฝึกถัดไป
+                </a>
 
                 <div class="flex justify-between items-center">
                     <div>
@@ -290,6 +295,115 @@
                 ]
             }
         ];
+                /**
+         * ฟังก์ชันหลักสำหรับหาชื่อไฟล์แบบฝึกหัดถัดไป
+         * 1. ตรวจสอบหมายเลขชุดปัจจุบันจากชื่อไฟล์
+         * 2. ดึงรายชื่อไฟล์ทั้งหมดจาก GitHub Repository
+         * 3. หาไฟล์ลำดับถัดไปจาก Array
+         */
+        async function getNextQuizFile() {
+            // --- ส่วนที่ 1: ดึงชื่อไฟล์ปัจจุบันและหมายเลขชุด ---
+            const path = window.location.pathname;
+            const currentFilename = path.substring(path.lastIndexOf('/') + 1);
+            
+            // ใช้ Regex ค้นหาตัวเลข 3 หลักหลังคำว่า Test-
+            const currentMatch = currentFilename.match(/Test-(\d{3})/i);
+            const current_number_set = currentMatch ? parseInt(currentMatch[1], 10) : null;
+
+            console.log("Current Filename:", currentFilename);
+            console.log("Current Set Number:", current_number_set);
+
+            if (!current_number_set) {
+                console.error("ไม่สามารถระบุหมายเลขชุดจากชื่อไฟล์ได้");
+                return null;
+            }
+
+            // --- ส่วนที่ 2: ค้นหารายชื่อไฟล์จาก GitHub ---
+            const user = 'pls-c';
+            const repo = 'English-Quiz';
+            const folderPath = 'TOEFL_ITP_Section2-Structure';
+            const apiUrl = `https://api.github.com/repos/${user}/${repo}/contents/${folderPath}`;
+
+            try {
+                const response = await fetch(apiUrl);
+                if (!response.ok) throw new Error('การเชื่อมต่อ GitHub API ล้มเหลว');
+                
+                const data = await response.json();
+
+                // กรองเฉพาะไฟล์ .html ที่ขึ้นต้นด้วย "Test-" และเก็บลง Array
+                let filesArray = data
+                    .filter(file => file.name.toLowerCase().startsWith('test-') && file.name.endsWith('.html'))
+                    .map(file => file.name);
+
+                // เรียงลำดับชื่อไฟล์ (เพื่อให้แน่ใจว่า 001 มาก่อน 002)
+                filesArray.sort((a, b) => a.localeCompare(b, undefined, { numeric: true, sensitivity: 'base' }));
+
+                console.log("รายการไฟล์ที่พบในระบบ:", filesArray);
+
+                // --- ส่วนที่ 3: ตรวจสอบ Index ปัจจุบันและหาไฟล์ถัดไป ---
+                const currentIndex = filesArray.indexOf(currentFilename);
+                let next_file_name_set = null;
+
+                if (currentIndex !== -1 && currentIndex < filesArray.length - 1) {
+                    // เลือกชื่อไฟล์ที่อยู่ index ถัดไป
+                    next_file_name_set = filesArray[currentIndex + 1];
+                    console.log("ตรวจพบไฟล์ลำดับถัดไป:", next_file_name_set);
+                } else {
+                    console.log("ไม่มีไฟล์ถัดไป (ชุดนี้เป็นชุดสุดท้ายในรายการ)");
+                }
+
+                return next_file_name_set;
+
+            } catch (error) {
+                console.error("เกิดข้อผิดพลาดในการดึงข้อมูล:", error);
+                return null;
+            }
+        }
+
+        /**
+         * ฟังก์ชันสำหรับจัดการการคลิกปุ่ม "แบบฝึกถัดไป"
+         * ทำหน้าที่รันกระบวนการค้นหา แต่ยังไม่เปลี่ยนหน้า (Link) จริง
+         */
+        async function handleNextQuizClick(event) {
+            // หยุดการทำงานปกติของลิงก์ (ป้องกันการไปตาม href)
+            if (event) event.preventDefault();
+
+            console.log("--- เริ่มรันฟังก์ชันค้นหาไฟล์ (ยังไม่เปลี่ยนหน้า) ---");
+            
+            const nextFile = await getNextQuizFile();
+
+            if (nextFile) {
+                // แสดงผลลัพธ์ผ่าน Console เพื่อตรวจสอบ
+                console.log("%cสำเร็จ!", "color: green; font-weight: bold;");
+                console.log("ชื่อไฟล์ที่ต้องไปคือ: " + nextFile);
+                
+                // ตรงนี้คุณสามารถเพิ่ม Logic เช่น แสดง Modal แจ้งเตือนชื่อไฟล์ก่อนไปจริงได้
+            } else {
+                console.log("%cไม่พบไฟล์ถัดไป", "color: red;");
+            }
+        }
+
+        /**
+         * ตัวอย่างการนำไปใช้งานเพื่ออัปเดตปุ่มใน Result View
+         */
+        async function updateNextButton() {
+            const nextFileName = await getNextQuizFile();
+            const nextBtn = document.getElementById('next-quiz-link'); 
+
+            if (nextFileName && nextBtn) {
+                nextBtn.href = nextFileName;
+                nextBtn.classList.remove('hidden');
+                
+                const nextNumMatch = nextFileName.match(/Test-(\d{3})/i);
+                if (nextNumMatch) {
+                    nextBtn.innerHTML = `แบบฝึกหัดถัดไป (${parseInt(nextNumMatch[1], 10)}) <i class="ph-bold ph-arrow-right"></i>`;
+                }
+            }
+        }
+
+        // เรียกใช้งานเมื่อโหลดหน้าเสร็จ
+        document.addEventListener('DOMContentLoaded', updateNextButton);
+
 
         // Function to shuffle array
         function shuffleArray(array) {

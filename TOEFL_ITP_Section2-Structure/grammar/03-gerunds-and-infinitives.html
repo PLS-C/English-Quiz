@@ -154,14 +154,6 @@
 
             <div class="card-body p-4 p-md-5">
 
-                <div class="alert alert-info border-info-subtle bg-info-subtle text-info-emphasis d-flex align-items-center gap-3">
-                    <i class="ph-fill ph-graduation-cap fs-3"></i>
-                    <div>
-                        <strong>มันคืออะไร?</strong>
-                        <div class="small">Gerunds (V.ing) และ Infinitives (to V.1) คือคำกริยาที่แปลงร่างมาทำหน้าที่เป็น <strong>"คำนาม (Noun)"</strong> ครับ ใช้เป็นประธานหรือกรรมของประโยคได้</div>
-                    </div>
-                </div>
-
                 <div class="alert alert-warning border-warning d-flex flex-column gap-3">
                     <div class="d-flex align-items-start gap-3">
                         <i class="ph-fill ph-warning fs-4 text-warning-emphasis"></i>
@@ -195,7 +187,7 @@
                         </table>
                     </div>
 
-                    <a href="participles.html" class="btn btn-sm btn-outline-warning text-dark fw-bold align-self-start">
+                    <a href="04-participles.html" class="btn btn-sm btn-outline-warning text-dark fw-bold align-self-start">
                         👉 อ่านละเอียด: วิธีแยก V.ing แบบเจาะลึก
                     </a>
                 </div>
@@ -308,11 +300,63 @@
                     </div>
                 </section>
 
+                <section>
+                    <h2 class="section-title">4. กลลวงที่ TOEFL ชอบออก (TOEFL Traps)</h2>
+                    <p class="text-muted small mb-3">นอกจากกฎหลักแล้ว นี่คือ 2 รูปแบบประโยคที่มักทำให้นักเรียนสับสนครับ:</p>
+
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <div class="card h-100 border-0 shadow-sm">
+                                <div class="card-body bg-light border rounded-3">
+                                    <h6 class="fw-bold text-dark"><i class="ph-fill ph-user-focus text-primary me-1"></i> กฎ "บังคับคนอื่น" (Force)</h6>
+                                    <p class="small text-muted mb-2">
+                                        กริยากลุ่ม "สั่ง/ขอ/อนุญาต/กระตุ้น" ถ้ามีกรรม (Object) มารับ ต้องตามด้วย <strong>to V.1</strong> เสมอ
+                                    </p>
+                                    <div class="small bg-white p-2 rounded border mb-2">
+                                        V. + Object + <strong>to V.1</strong>
+                                    </div>
+                                    <div class="d-flex flex-wrap gap-1 mb-2">
+                                        <span class="badge bg-white text-secondary border">allow</span>
+                                        <span class="badge bg-white text-secondary border">force</span>
+                                        <span class="badge bg-white text-secondary border">encourage</span>
+                                        <span class="badge bg-white text-secondary border">convince</span>
+                                    </div>
+                                    <div class="small text-success fw-bold">
+                                        ✅ He allowed me <u>to go</u>.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="card h-100 border-0 shadow-sm">
+                                <div class="card-body bg-light border rounded-3">
+                                    <h6 class="fw-bold text-dark"><i class="ph-fill ph-link text-primary me-1"></i> กฎ "Adj + Prep"</h6>
+                                    <p class="small text-muted mb-2">
+                                        คำคุณศัพท์ (Adjective) หลายคำมักมาคู่กับ Preposition เสมอ และแน่นอนว่าหลัง Prep ต้องเป็น <strong>V.ing</strong>
+                                    </p>
+                                    <div class="small bg-white p-2 rounded border mb-2">
+                                        Adj. + Prep + <strong>V.ing</strong>
+                                    </div>
+                                    <div class="small">
+                                        <div class="mb-1"><strong>capable of</strong> (สามารถ)</div>
+                                        <div class="mb-1"><strong>interested in</strong> (สนใจ)</div>
+                                        <div class="mb-1"><strong>afraid of</strong> (กลัว)</div>
+                                    </div>
+                                    <div class="small text-success fw-bold mt-2">
+                                        ✅ She is capable <u>of doing</u> it.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
             </div>
 
             <div class="card-footer bg-light p-4 p-md-5 border-top">
                 <h3 class="h4 fw-bold text-dark mb-4 d-flex align-items-center gap-2">
-                    <i class="ph-duotone ph-pencil-simple text-primary"></i> Mini Quiz: ทดสอบความเข้าใจ
+                    <i class="ph-duotone ph-pencil-simple text-primary"></i> Mini Quiz: ทดสอบความเข้าใจ (10 ข้อ)
                 </h3>
                 
                 <div id="quiz-area" class="d-flex flex-column gap-4">
@@ -335,41 +379,89 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
     <script>
-        // --- Data Source ---
-        const quizData = [
+        // Quiz Data (10 Questions)
+        const questions = [
+            // --- Level 1: Basic Rules ---
             {
-                question: "1. We plan ______ to Japan next year.",
+                id: 1,
+                text: "I really enjoy ______ books on the weekend.",
                 options: [
-                    { text: "A) going", correct: false, rationale: "หลัง plan ต้องใช้ to go (Infinitive) ครับ" },
-                    { text: "B) to go", correct: true, rationale: "ถูกต้อง! Plan + to V.1 ครับ" }
+                    { label: "A) read", isCorrect: false, feedback: "ผิดครับ! Enjoy ต้องตามด้วย V.ing เสมอ" },
+                    { label: "B) reading", isCorrect: true, feedback: "ถูกต้อง! Enjoy + V.ing (Gerund) <br><span class='text-muted fst-italic'>แปล: ฉันสนุกกับการอ่านหนังสือในวันหยุดสุดสัปดาห์จริงๆ</span>" }
                 ]
             },
             {
-                question: "2. Would you mind ______ the window?",
+                id: 2,
+                text: "We decided ______ our house.",
                 options: [
-                    { text: "A) closing", correct: true, rationale: "ถูกต้อง! หลัง mind ต้องใช้ V.ing เสมอครับ" },
-                    { text: "B) to close", correct: false, rationale: "ผิดครับ Mind ห้ามตามด้วย to V.1" }
+                    { label: "A) selling", isCorrect: false, feedback: "ผิดครับ! Decide (ตัดสินใจ) เป็นเรื่องของแผนการในอนาคต ต้องใช้ to V.1" },
+                    { label: "B) to sell", isCorrect: true, feedback: "ถูกต้อง! Decide + to V.1 (Infinitive) <br><span class='text-muted fst-italic'>แปล: พวกเราตัดสินใจที่จะขายบ้าน</span>" }
                 ]
             },
             {
-                question: "3. I look forward to ______ you again.",
+                id: 3,
+                text: "He left without ______ goodbye.",
                 options: [
-                    { text: "A) seeing", correct: true, rationale: "ถูกต้อง! นี่คือข้อยกเว้น To ตัวนี้เป็น Preposition ต้องตามด้วย V.ing" },
-                    { text: "B) see", correct: false, rationale: "ผิดครับ! Look forward to ต้องตามด้วย V.ing ห้ามใช้ V.1" }
+                    { label: "A) saying", isCorrect: true, feedback: "ถูกต้อง! Without เป็น Preposition ต้องตามด้วย V.ing <br><span class='text-muted fst-italic'>แปล: เขาจากไปโดยไม่กล่าวคำอำลา</span>" },
+                    { label: "B) to say", isCorrect: false, feedback: "ผิดครับ! หลัง Preposition (without) ห้ามใช้ to V.1" }
                 ]
             },
             {
-                question: "4. She suggested ______ to the beach.",
+                id: 4,
+                text: "She promised ______ me with the homework.",
                 options: [
-                    { text: "A) going", correct: true, rationale: "ถูกต้อง! หลัง suggest ต้องใช้ V.ing ครับ" },
-                    { text: "B) to go", correct: false, rationale: "ผิดครับ Suggest ไม่ตามด้วย to V.1" }
+                    { label: "A) helping", isCorrect: false, feedback: "ผิดครับ! Promise (สัญญา) เป็นเรื่องอนาคต ใช้ to V.1" },
+                    { label: "B) to help", isCorrect: true, feedback: "ถูกต้อง! Promise + to V.1 <br><span class='text-muted fst-italic'>แปล: เธอสัญญาว่าจะช่วยฉันทำการบ้าน</span>" }
                 ]
             },
             {
-                question: "5. He admitted ______ the money.",
+                id: 5,
+                text: "Have you finished ______ the report yet?",
                 options: [
-                    { text: "A) stealing", correct: true, rationale: "ถูกต้อง! หลัง admit ต้องใช้ V.ing ครับ" },
-                    { text: "B) to steal", correct: false, rationale: "ผิดครับ Admit ไม่ตามด้วย to V.1 (ถ้าใช้ to จะเป็น to stealing ในบางบริบท แต่ admit + V.ing ปลอดภัยสุด)" }
+                    { label: "A) writing", isCorrect: true, feedback: "ถูกต้อง! Finish อยู่ในกลุ่ม Stop/Delay ต้องตามด้วย V.ing <br><span class='text-muted fst-italic'>แปล: คุณเขียนรายงานเสร็จหรือยัง?</span>" },
+                    { label: "B) to write", isCorrect: false, feedback: "ผิดครับ! Finish ห้ามตามด้วย to V.1" }
+                ]
+            },
+
+            // --- Level 2: TOEFL Traps (Academic Vocab) ---
+            {
+                id: 6,
+                text: "The committee decided to postpone ______ the proposal until next month.",
+                options: [
+                    { label: "A) reviewing", isCorrect: true, feedback: "ถูกต้อง! Postpone (เลื่อน) อยู่ในกลุ่ม Delay ต้องตามด้วย V.ing <br><span class='text-muted fst-italic'>แปล: คณะกรรมการตัดสินใจเลื่อนการพิจารณาข้อเสนอออกไปจนถึงเดือนหน้า</span>" },
+                    { label: "B) to review", isCorrect: false, feedback: "ผิดครับ! Postpone ต้องตามด้วย Gerund (V.ing) เท่านั้น" }
+                ]
+            },
+            {
+                id: 7,
+                text: "We look forward to ______ you at the annual conference.",
+                options: [
+                    { label: "A) see", isCorrect: false, feedback: "โดนหลอกแล้ว! Look forward to เป็นข้อยกเว้น 'to' ตัวนี้เป็น Prep ต้องตามด้วย V.ing" },
+                    { label: "B) seeing", isCorrect: true, feedback: "ถูกต้อง! สำนวน Look forward to + V.ing เสมอ <br><span class='text-muted fst-italic'>แปล: เราตั้งตารอที่จะได้พบคุณที่งานประชุมประจำปี</span>" }
+                ]
+            },
+            {
+                id: 8,
+                text: "The government encourages citizens ______ public transportation.",
+                options: [
+                    { label: "A) using", isCorrect: false, feedback: "ผิดครับ! Encourage มีกรรมมารับ (citizens) ต้องใช้แพทเทิร์น Encourage + Obj + to V.1" },
+                    { label: "B) to use", isCorrect: true, feedback: "ถูกต้อง! เข้ากฎ 'Verb + Object + to V.1' (กระตุ้นให้ใครทำอะไร) <br><span class='text-muted fst-italic'>แปล: รัฐบาลสนับสนุนให้ประชาชนใช้ระบบขนส่งสาธารณะ</span>" }
+                ]
+            },
+            {
+                id: 9,
+                text: "This new software is capable of ______ complex calculations in seconds.",
+                options: [
+                    { label: "A) performing", isCorrect: true, feedback: "ถูกต้อง! Capable เป็น Adjective ที่ต้องคู่กับ 'of' (Prep) ดังนั้นกริยาตามหลังต้องเป็น V.ing <br><span class='text-muted fst-italic'>แปล: ซอฟต์แวร์ใหม่นี้สามารถคำนวณที่ซับซ้อนได้ในไม่กี่วินาที</span>" },
+                    { label: "B) to perform", isCorrect: false, feedback: "ผิดครับ! Capable ใช้คู่กับ of ไม่ใช่ to" }
+                ]
+            },
+            {
+                id: 10,
+                text: "The board is considering ______ the merger with the competitor.",
+                options: [
+                    { label: "A) approving", isCorrect: true, feedback: "ถูกต้อง! Consider (พิจารณา) ต้องตามด้วย V.ing (Gerund) เสมอ ห้ามใช้ to <br><span class='text-muted fst-italic'>แปล: บอร์ดบริหารกำลังพิจารณาอนุมัติการควบรวมกิจการกับคู่แข่ง</span>" },
+                    { label: "B) to approve", isCorrect: false, feedback: "ผิดครับ! Consider ห้ามตามด้วย to V.1" }
                 ]
             }
         ];
@@ -377,27 +469,30 @@
         // --- Render Quiz Function ---
         const quizArea = document.getElementById('quiz-area');
 
-        quizData.forEach((item, index) => {
-            // Create Card
+        questions.forEach((q, index) => {
             const qDiv = document.createElement('div');
             qDiv.className = "bg-white p-4 rounded-3 border shadow-sm";
 
-            // Create Options HTML
+            // Add Level Header
+            let headerHtml = "";
+            if (index === 0) headerHtml = `<div class="mb-3 text-success fw-bold"><i class="ph-fill ph-smiley me-1"></i> Level 1: Basic Concepts</div>`;
+            if (index === 5) headerHtml = `<div class="mb-3 mt-2 text-danger fw-bold border-top pt-3"><i class="ph-fill ph-skull me-1"></i> Level 2: TOEFL Traps</div>`;
+
             let optionsHtml = "";
-            item.options.forEach((opt, optIndex) => {
+            q.options.forEach((opt, optIndex) => {
                 optionsHtml += `
                     <button onclick="checkAnswer(${index}, ${optIndex}, this)" 
                             class="btn btn-quiz-option">
-                        <span>${opt.text}</span>
+                        <span>${opt.label}</span>
                         <i class="ph-bold ph-circle text-secondary"></i>
                     </button>
                 `;
             });
 
-            // Assemble HTML
             qDiv.innerHTML = `
-                <p class="fw-bold text-dark mb-3">${index + 1}. ${item.question}</p>
-                <div>${optionsHtml}</div>
+                ${headerHtml}
+                <p class="fw-bold text-dark mb-3">${index + 1}. ${q.text}</p>
+                <div class="d-grid gap-2">${optionsHtml}</div>
                 <div id="feedback-${index}" class="mt-3 p-3 rounded-3 small fw-bold d-none"></div>
             `;
             quizArea.appendChild(qDiv);
@@ -405,33 +500,33 @@
 
         // --- Check Answer Function ---
         window.checkAnswer = function(qIndex, optIndex, btnElement) {
-            const question = quizData[qIndex];
+            const question = questions[qIndex];
             const option = question.options[optIndex];
             const feedbackEl = document.getElementById(`feedback-${qIndex}`);
             
-            // Disable all buttons in this question
+            // Disable buttons
             const allBtns = btnElement.parentElement.querySelectorAll('button');
             allBtns.forEach(btn => {
                 btn.disabled = true;
+                btn.classList.add('opacity-50');
             });
+            btnElement.classList.remove('opacity-50');
 
-            // Show Feedback & Change Styles
+            // Show Feedback
             feedbackEl.classList.remove('d-none');
             
-            if (option.correct) {
-                // Correct Style
+            if (option.isCorrect) {
                 btnElement.classList.add('btn-success-custom');
                 btnElement.querySelector('i').className = "ph-fill ph-check-circle text-success fs-5";
                 
                 feedbackEl.className = "mt-3 p-3 rounded-3 small fw-bold alert alert-success border-success";
-                feedbackEl.innerHTML = `<i class="ph-bold ph-check me-2"></i> ${option.rationale}`;
+                feedbackEl.innerHTML = `<div class="d-flex align-items-start gap-2"><i class="ph-bold ph-check mt-1"></i> <div>${option.feedback}</div></div>`;
             } else {
-                // Wrong Style
                 btnElement.classList.add('btn-danger-custom');
                 btnElement.querySelector('i').className = "ph-fill ph-x-circle text-danger fs-5";
 
                 feedbackEl.className = "mt-3 p-3 rounded-3 small fw-bold alert alert-danger border-danger";
-                feedbackEl.innerHTML = `<i class="ph-bold ph-x me-2"></i> ${option.rationale}`;
+                feedbackEl.innerHTML = `<div class="d-flex align-items-start gap-2"><i class="ph-bold ph-x mt-1"></i> <div>${option.feedback}</div></div>`;
             }
         };
     </script>

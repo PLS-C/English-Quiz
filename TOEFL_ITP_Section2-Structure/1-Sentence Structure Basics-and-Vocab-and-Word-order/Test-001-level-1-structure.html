@@ -361,7 +361,7 @@
             const nav = await getQuizNavigation();
             if (nav.prev) {
                 console.log("ไปที่ไฟล์ก่อนหน้า:", nav.prev);
-                // window.location.href = nav.prev; // เปิดบรรทัดนี้เมื่อต้องการให้เปลี่ยนหน้าจริง
+                window.location.href = nav.prev; // เปิดบรรทัดนี้เมื่อต้องการให้เปลี่ยนหน้าจริง
             }
         }
 
@@ -373,7 +373,7 @@
             const nav = await getQuizNavigation();
             if (nav.next) {
                 console.log("ไปที่ไฟล์ถัดไป:", nav.next);
-                // window.location.href = nav.next; // เปิดบรรทัดนี้เมื่อต้องการให้เปลี่ยนหน้าจริง
+                window.location.href = nav.next; // เปิดบรรทัดนี้เมื่อต้องการให้เปลี่ยนหน้าจริง
             }
         }
 

@@ -26,11 +26,35 @@
         <!-- Header -->
         <div class="bg-blue-700 p-5 text-white flex-none relative overflow-hidden">
             <div class="relative z-10">
-                <!-- ปุ่มกลับหน้าหลัก -->
-                <a href="https://pls-c.github.io/English-Quiz/TOEFL_ITP_Section2-Structure/index.html" 
-                   class="inline-flex items-center text-blue-100 hover:text-white mb-3 text-sm font-medium transition-colors">
-                    <i class="ph-bold ph-arrow-left mr-1"></i> กลับหน้าหลัก
-                </a>
+                
+                <div class="flex justify-between items-center w-full mb-4 border-b border-white/20 pb-3">
+                    <!-- ส่วนที่ 1: ชิดซ้าย (ก่อนหน้า) -->
+                    <div class="w-1/3 text-left">
+                        <a id="prev-quiz-link" href="javascript:void(0)" 
+                        onclick="handlePrevQuizClick(event)"
+                        class="hidden inline-flex items-center text-blue-100 hover:text-white text-sm font-medium transition-colors">
+                            <i class="ph-bold ph-arrow-left mr-1"></i> ชุดก่อนหน้า
+                        </a>
+                    </div>
+
+                    <!-- ส่วนที่ 2: ตรงกลาง (Home) -->
+                    <div class="w-1/3 text-center">
+                        <a href="https://pls-c.github.io/English-Quiz/TOEFL_ITP_Section2-Structure/index.html" 
+                        class="inline-flex items-center text-blue-100 hover:text-white text-sm font-medium transition-colors">
+                            <i class="ph-bold ph-house mr-1"></i> หน้าหลัก
+                        </a>
+                    </div>
+
+                    <!-- ส่วนที่ 3: ชิดขวา (ถัดไป) -->
+                    <div class="w-1/3 text-right">
+                        <a id="next-quiz-link" href="javascript:void(0)" 
+                        onclick="handleNextQuizClick(event)"
+                        class="hidden inline-flex items-center text-blue-100 hover:text-white text-sm font-medium transition-colors">
+                            ชุดถัดไป <i class="ph-bold ph-arrow-right ml-1"></i>
+                        </a>
+                    </div>
+                </div>
+
 
                 <div class="flex justify-between items-center">
                     <div>
@@ -301,6 +325,100 @@
             }
         }
 
+                /**
+         * ฟังก์ชันหลักสำหรับหาชื่อไฟล์แบบฝึกหัดถัดไป
+         * 1. ตรวจสอบหมายเลขชุดปัจจุบันจากชื่อไฟล์
+         * 2. ดึงรายชื่อไฟล์ทั้งหมดจาก GitHub Repository
+         * 3. หาไฟล์ลำดับถัดไปจาก Array
+         */
+        async function getQuizNavigation() {
+            const path = window.location.pathname;
+            const pathParts = path.split('/').filter(p => p);
+            const currentFilename = decodeURIComponent(pathParts[pathParts.length - 1]);
+            
+            const user = 'pls-c';
+            const repo = 'English-Quiz';
+            const internalPath = pathParts.slice(1, -1).join('/'); 
+            const apiUrl = `https://api.github.com/repos/${user}/${repo}/contents/${internalPath}`;
+
+            try {
+                const response = await fetch(apiUrl);
+                if (!response.ok) throw new Error('GitHub API Connection Failed');
+                
+                const data = await response.json();
+
+                // กรองและจัดเรียงไฟล์ .html ที่ขึ้นต้นด้วย "Test-"
+                let filesArray = data
+                    .filter(file => file.type === 'file' && file.name.toLowerCase().startsWith('test-') && file.name.endsWith('.html'))
+                    .map(file => file.name);
+
+                filesArray.sort((a, b) => a.localeCompare(b, undefined, { numeric: true, sensitivity: 'base' }));
+
+                const currentIndex = filesArray.indexOf(currentFilename);
+                
+                return {
+                    prev: currentIndex > 0 ? filesArray[currentIndex - 1] : null,
+                    next: (currentIndex !== -1 && currentIndex < filesArray.length - 1) ? filesArray[currentIndex + 1] : null
+                };
+
+            } catch (error) {
+                console.error("Navigation Error:", error);
+                return { prev: null, next: null };
+            }
+        }
+
+        /**
+         * ฟังก์ชันจัดการการคลิกปุ่ม "ก่อนหน้า"
+         */
+        async function handlePrevQuizClick(event) {
+            if (event) event.preventDefault();
+            const nav = await getQuizNavigation();
+            if (nav.prev) {
+                console.log("ไปที่ไฟล์ก่อนหน้า:", nav.prev);
+                window.location.href = nav.prev; // เปิดบรรทัดนี้เมื่อต้องการให้เปลี่ยนหน้าจริง
+            }
+        }
+
+        /**
+         * ฟังก์ชันจัดการการคลิกปุ่ม "แบบฝึกถัดไป"
+         */
+        async function handleNextQuizClick(event) {
+            if (event) event.preventDefault();
+            const nav = await getQuizNavigation();
+            if (nav.next) {
+                console.log("ไปที่ไฟล์ถัดไป:", nav.next);
+                window.location.href = nav.next; // เปิดบรรทัดนี้เมื่อต้องการให้เปลี่ยนหน้าจริง
+            }
+        }
+
+        /**
+         * อัปเดตปุ่มในเมนูนำทางเมื่อโหลดหน้า
+         */
+        async function updateNavigationButtons() {
+            const nav = await getQuizNavigation();
+            const prevBtn = document.getElementById('prev-quiz-link');
+            const nextBtn = document.getElementById('next-quiz-link');
+
+            // จัดการปุ่มก่อนหน้า
+            if (nav.prev && prevBtn) {
+                prevBtn.href = nav.prev;
+                prevBtn.classList.remove('hidden');
+            }
+
+            // จัดการปุ่มถัดไป
+            if (nav.next && nextBtn) {
+                nextBtn.href = nav.next;
+                nextBtn.classList.remove('hidden');
+                
+                const nextNumMatch = nav.next.match(/Test-(\d+)/i);
+                if (nextNumMatch) {
+                    nextBtn.innerHTML = `ชุดถัดไป (${parseInt(nextNumMatch[1], 10)}) <i class="ph-bold ph-arrow-right ml-1"></i>`;
+                }
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', updateNavigationButtons);
+        
         // Shuffle options for each question
         quizData.forEach(question => {
             shuffleArray(question.options);

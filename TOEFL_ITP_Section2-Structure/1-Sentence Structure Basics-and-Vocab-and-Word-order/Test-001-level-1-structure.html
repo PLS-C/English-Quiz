@@ -3,17 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TOEFL ITP Structure: Set 1 (Revised)</title>
+    <title>TOEFL ITP Structure Practice (Set 1)</title>
+    <!-- ใช้ Tailwind CSS สำหรับตกแต่งหน้าตา -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Noto Sans Thai -->
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@300;400;600&family=Sarabun:wght@400;600&display=swap" rel="stylesheet">
-    <!-- Phosphor Icons -->
-    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         body { font-family: 'Sarabun', 'Noto Sans Thai', sans-serif; }
         .option-btn { transition: all 0.2s; }
-        .fade-in { animation: fadeIn 0.3s ease-out; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
+        .fade-in { animation: fadeIn 0.5s ease-in; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
         
+        /* Scrollbar styling for rationale */
         .rationale-scroll::-webkit-scrollbar { width: 6px; }
         .rationale-scroll::-webkit-scrollbar-track { background: #f1f1f1; }
         .rationale-scroll::-webkit-scrollbar-thumb { background: #93c5fd; border-radius: 3px; }
@@ -24,19 +27,29 @@
     <div class="bg-white rounded-2xl shadow-xl w-full max-w-2xl overflow-hidden border border-slate-200 flex flex-col max-h-[95vh]" id="app-container">
         
         <!-- Header -->
-        <div class="bg-blue-700 p-5 text-white flex-none relative overflow-hidden">
-            <div class="relative z-10 flex justify-between items-center">
-                <div>
-                    <h1 class="text-xl font-bold flex items-center gap-2">
-                        <i class="ph ph-cube text-2xl"></i> TOEFL Structure (Basic)
-                    </h1>
-                    <p class="text-blue-200 text-xs mt-1">Set 1: Basics, S-V Agreement, Gerunds & Infinitives</p>
-                </div>
-                <div class="text-right">
-                    <div class="text-xs text-blue-200 uppercase tracking-wide">Score</div>
-                    <div class="text-2xl font-bold" id="score-display">0</div>
+        <div class="bg-blue-700 p-6 text-white flex-none relative overflow-hidden">
+            <div class="relative z-10">
+                <!-- ปุ่มกลับหน้าหลัก -->
+                <a href="https://pls-c.github.io/English-Quiz/TOEFL_ITP_Section2-Structure/index.html" 
+                   class="inline-flex items-center text-blue-100 hover:text-white mb-4 text-sm font-medium transition-colors hover:bg-blue-600/50 px-3 py-1.5 rounded-lg -ml-3">
+                    <i class="fas fa-arrow-left mr-2"></i>
+                    กลับหน้าหลัก
+                </a>
+                
+                <div class="flex justify-between items-end">
+                    <div>
+                        <h1 class="text-xl font-bold flex items-center gap-2">
+                            <i class="fas fa-layer-group text-2xl"></i> TOEFL Structure
+                        </h1>
+                        <p class="text-blue-200 text-xs mt-1">Set 1: Basics, S-V Agreement, Gerunds & Infinitives</p>
+                    </div>
+                    <div class="text-right">
+                        <div class="text-xs text-blue-200 uppercase tracking-wide font-semibold">Score</div>
+                        <div class="text-3xl font-bold" id="score-display">0</div>
+                    </div>
                 </div>
             </div>
+            <!-- Decorative circle -->
             <div class="absolute -bottom-8 -right-8 w-32 h-32 bg-blue-500 rounded-full opacity-30 blur-xl"></div>
         </div>
 
@@ -51,7 +64,7 @@
             <!-- Question View -->
             <div id="question-view" class="fade-in">
                 <div class="flex justify-between items-center mb-4">
-                    <span class="px-3 py-1 bg-gray-100 text-gray-600 rounded-full text-xs font-bold tracking-wide" id="question-count">QUESTION 1/10</span>
+                    <span class="px-3 py-1 bg-gray-100 text-gray-600 rounded-full text-xs font-bold tracking-wide border border-gray-200" id="question-count">QUESTION 1/10</span>
                 </div>
 
                 <!-- Question Text -->
@@ -60,7 +73,7 @@
                         Loading...
                     </h2>
                     <!-- Thai Translation (Hidden by default) -->
-                    <p class="hidden text-blue-700 text-sm italic font-medium bg-blue-50 inline-block px-3 py-1 rounded-lg border border-blue-100 fade-in" id="question-translation">
+                    <p class="hidden text-blue-700 text-sm italic font-medium bg-blue-50 inline-block px-3 py-2 rounded-lg border border-blue-100 fade-in" id="question-translation">
                         Loading...
                     </p>
                 </div>
@@ -70,7 +83,7 @@
                 </div>
 
                 <!-- Feedback Area -->
-                <div id="feedback-area" class="hidden mt-6 rounded-xl border overflow-hidden fade-in shadow-sm">
+                <div id="feedback-area" class="hidden mt-6 rounded-xl border overflow-hidden fade-in shadow-sm bg-white">
                     <div class="p-4" id="feedback-header">
                         <div class="flex items-center gap-2 font-bold text-lg" id="feedback-title"></div>
                     </div>
@@ -82,7 +95,7 @@
                     <!-- Vocabulary Section -->
                     <div class="bg-yellow-50 p-4 border-t border-yellow-100 text-sm text-gray-800">
                         <div class="font-bold text-yellow-800 flex items-center gap-2 mb-2">
-                            <i class="ph-fill ph-lightbulb"></i> คำศัพท์น่ารู้ (Vocabulary Boost)
+                            <i class="fas fa-lightbulb text-yellow-500"></i> คำศัพท์น่ารู้ (Vocabulary Boost)
                         </div>
                         <div id="vocab-content" class="space-y-2 pl-6">
                             <!-- Vocab injected via JS -->
@@ -93,8 +106,8 @@
 
             <!-- Result View -->
             <div id="result-view" class="hidden text-center py-8 fade-in h-full flex flex-col justify-center">
-                <div class="mb-6 inline-block p-4 rounded-full bg-blue-50 text-blue-600">
-                    <i class="ph ph-trophy text-6xl"></i>
+                <div class="mb-6 inline-block p-5 rounded-full bg-blue-50 text-blue-600">
+                    <i class="fas fa-trophy text-6xl"></i>
                 </div>
                 <h2 class="text-2xl font-bold text-gray-800 mb-2">Quiz Completed!</h2>
                 <p class="text-gray-500 mb-8">คะแนนรวมของคุณ</p>
@@ -109,13 +122,18 @@
                     </div>
                 </div>
                 
-                <div class="flex gap-3 justify-center">
-                    <button onclick="reviewAnswers()" class="px-6 py-2.5 rounded-lg border border-gray-300 text-gray-700 hover:bg-gray-50 font-medium transition flex items-center gap-2">
-                        <i class="ph ph-eye"></i> Review Answers
-                    </button>
-                    <button onclick="restartQuiz()" class="px-6 py-2.5 rounded-lg bg-blue-600 text-white hover:bg-blue-700 font-medium transition shadow-md hover:shadow-lg flex items-center gap-2">
-                        <i class="ph ph-arrow-counter-clockwise"></i> Try Again
-                    </button>
+                <div class="flex flex-col gap-3 justify-center items-center w-full">
+                    <div class="flex gap-3 w-full justify-center">
+                        <button onclick="reviewAnswers()" class="px-6 py-2.5 rounded-lg border border-gray-300 text-gray-700 hover:bg-gray-50 font-medium transition flex items-center gap-2">
+                            <i class="fas fa-eye"></i> Review Answers
+                        </button>
+                        <button onclick="restartQuiz()" class="px-6 py-2.5 rounded-lg bg-blue-600 text-white hover:bg-blue-700 font-medium transition shadow-md hover:shadow-lg flex items-center gap-2">
+                            <i class="fas fa-redo"></i> Try Again
+                        </button>
+                    </div>
+                    <a href="https://pls-c.github.io/English-Quiz/TOEFL_ITP_Section2-Structure/index.html" class="text-blue-500 hover:text-blue-700 text-sm font-medium mt-4 flex items-center gap-1 transition-colors">
+                        <i class="fas fa-home"></i> กลับหน้าหลัก
+                    </a>
                 </div>
             </div>
 
@@ -123,12 +141,12 @@
 
         <!-- Footer / Navigation Controls -->
         <div class="bg-gray-50 p-4 border-t border-gray-200 flex justify-between items-center flex-none" id="footer-controls">
-            <button id="prev-btn" onclick="prevQuestion()" class="hidden px-4 py-2 rounded-lg text-gray-600 hover:bg-gray-200 hover:text-gray-800 transition font-medium text-sm flex items-center gap-2 disabled:opacity-50">
-                <i class="ph ph-arrow-left"></i> Back
+            <button id="prev-btn" onclick="prevQuestion()" class="hidden px-4 py-2 rounded-lg text-gray-500 hover:bg-gray-200 hover:text-gray-800 transition font-medium text-sm flex items-center gap-2 disabled:opacity-50">
+                <i class="fas fa-arrow-left"></i> Back
             </button>
             <div id="spacer" class="hidden"></div>
             <button id="next-btn" onclick="nextQuestion()" class="hidden bg-gray-800 text-white px-6 py-2.5 rounded-lg hover:bg-gray-900 transition font-medium text-sm flex items-center gap-2 shadow-sm">
-                Next <i class="ph ph-arrow-right"></i>
+                Next <i class="fas fa-arrow-right"></i>
             </button>
         </div>
     </div>
@@ -314,7 +332,7 @@
             
             // Handle Translation Visibility
             const translationEl = document.getElementById('question-translation');
-            translationEl.innerHTML = `<i class="ph-bold ph-translate"></i> ` + data.translation;
+            translationEl.innerHTML = `<i class="fas fa-language mr-1"></i> ${data.translation}`;
             
             if (answered) {
                 translationEl.classList.remove('hidden');
@@ -340,10 +358,10 @@
                     btn.disabled = true;
                     if (option.correct) {
                         btn.className = `w-full text-left p-4 rounded-xl border-2 border-green-500 bg-green-50 text-green-800 font-medium flex items-start gap-3 shadow-sm`;
-                        btn.innerHTML = `<i class="ph-fill ph-check-circle text-2xl text-green-500 flex-shrink-0"></i> <span class="leading-relaxed">${option.text}</span>`;
+                        btn.innerHTML = `<i class="fas fa-check-circle text-2xl text-green-500 flex-shrink-0"></i> <span class="leading-relaxed">${option.text}</span>`;
                     } else if (idx === userChoice && !option.correct) {
                         btn.className = `w-full text-left p-4 rounded-xl border-2 border-red-400 bg-red-50 text-red-800 font-medium flex items-start gap-3 opacity-90`;
-                        btn.innerHTML = `<i class="ph-fill ph-x-circle text-2xl text-red-500 flex-shrink-0"></i> <span class="leading-relaxed">${option.text}</span>`;
+                        btn.innerHTML = `<i class="fas fa-times-circle text-2xl text-red-500 flex-shrink-0"></i> <span class="leading-relaxed">${option.text}</span>`;
                     } else {
                         btn.className += ' opacity-50 grayscale';
                     }
@@ -367,15 +385,15 @@
                 const isCorrect = quizData[currentQuestion].options[userChoice].correct;
                 
                 // Vocab Section
-                vocabContent.innerHTML = data.vocab.map(v => `<div class="flex items-start gap-2"><i class="ph-bold ph-dot text-yellow-600 mt-1"></i><span>${v}</span></div>`).join('');
+                vocabContent.innerHTML = data.vocab.map(v => `<div class="flex items-start gap-2"><i class="fas fa-circle text-yellow-500 text-xs mt-1.5"></i><span>${v}</span></div>`).join('');
 
                 if (isCorrect) {
                     feedbackHeader.className = "p-4 bg-green-100 text-green-800 border-b border-green-200";
-                    feedbackTitle.innerHTML = '<i class="ph-fill ph-check-circle"></i> ถูกต้อง! (Correct)';
+                    feedbackTitle.innerHTML = '<i class="fas fa-check-circle"></i> ถูกต้อง! (Correct)';
                     feedbackContent.innerHTML = quizData[currentQuestion].options[userChoice].rationale;
                 } else {
                     feedbackHeader.className = "p-4 bg-red-100 text-red-800 border-b border-red-200";
-                    feedbackTitle.innerHTML = '<i class="ph-fill ph-warning-circle"></i> ไม่ถูกต้อง (Incorrect)';
+                    feedbackTitle.innerHTML = '<i class="fas fa-exclamation-circle"></i> ไม่ถูกต้อง (Incorrect)';
                     
                     const correctOptionIndex = quizData[currentQuestion].options.findIndex(o => o.correct);
                     const correctRationale = quizData[currentQuestion].options[correctOptionIndex].rationale;
@@ -384,7 +402,7 @@
                     feedbackContent.innerHTML = `
                         <div class="mb-3 pb-3 border-b border-gray-200">
                              <div class="text-red-700 font-semibold mb-1">สิ่งที่คุณเลือกผิดเพราะ:</div>
-                             <div class="text-gray-600">${wrongRationale}</div>
+                             <div class="text-gray-600">${wrongRationale.replace(/<b>.*?<\/b>/, '')}</div>
                         </div>
                         <div>
                             <span class="font-bold text-green-700">คำตอบที่ถูกคือข้อ ${String.fromCharCode(65+correctOptionIndex)}</span> เพราะ ${correctRationale}
@@ -408,9 +426,9 @@
             if (answered) {
                 nextBtn.classList.remove('hidden');
                 if (currentQuestion === quizData.length - 1) {
-                    nextBtn.innerHTML = 'See Results <i class="ph-bold ph-chart-bar"></i>';
+                    nextBtn.innerHTML = 'See Results <i class="fas fa-chart-bar"></i>';
                 } else {
-                    nextBtn.innerHTML = 'Next <i class="ph-bold ph-arrow-right"></i>';
+                    nextBtn.innerHTML = 'Next <i class="fas fa-arrow-right"></i>';
                 }
             } else {
                 nextBtn.classList.add('hidden');

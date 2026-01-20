@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TOEFL ITP Structure: Set 9 (Level 2)</title>
+    <title>TOEFL ITP Structure: Set 6 (Level 1)</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@300;400;600&family=Sarabun:wght@400;600&display=swap" rel="stylesheet">
     <!-- Phosphor Icons -->
@@ -16,40 +16,40 @@
         
         .rationale-scroll::-webkit-scrollbar { width: 6px; }
         .rationale-scroll::-webkit-scrollbar-track { background: #f1f1f1; }
-        .rationale-scroll::-webkit-scrollbar-thumb { background: #fcd34d; border-radius: 3px; }
+        .rationale-scroll::-webkit-scrollbar-thumb { background: #86efac; border-radius: 3px; }
     </style>
 </head>
 <body class="bg-slate-100 min-h-screen flex items-center justify-center p-4">
 
     <div class="bg-white rounded-2xl shadow-xl w-full max-w-2xl overflow-hidden border border-slate-200 flex flex-col max-h-[95vh]" id="app-container">
         
-        <!-- Header: Yellow Theme for Level 2 -->
-        <div class="bg-yellow-600 p-5 text-white flex-none relative overflow-hidden">
+        <!-- Header: Green Theme for Level 1 -->
+        <div class="bg-green-700 p-5 text-white flex-none relative overflow-hidden">
             <div class="relative z-10">
                 <a href="https://pls-c.github.io/English-Quiz/TOEFL_ITP_Section2-Structure/index.html" 
-                   class="inline-flex items-center text-yellow-50 hover:text-white mb-3 text-sm font-medium transition-colors">
+                   class="inline-flex items-center text-green-100 hover:text-white mb-3 text-sm font-medium transition-colors">
                     <i class="ph-bold ph-arrow-left mr-1"></i> กลับหน้าหลัก
                 </a>
 
                 <div class="flex justify-between items-center">
                     <div>
                         <h1 class="text-xl font-bold flex items-center gap-2">
-                            <i class="ph ph-tree-structure text-2xl"></i> TOEFL Structure
+                            <i class="ph ph-plant text-2xl"></i> TOEFL Structure (Basic)
                         </h1>
-                        <p class="text-yellow-100 text-xs mt-1">Set 9: Intermediate Structure & Word Order (Level 2)</p>
+                        <p class="text-green-200 text-xs mt-1">Set 6: Longer Context, Basics, S-V Agreement, Gerunds</p>
                     </div>
                     <div class="text-right">
-                        <div class="text-xs text-yellow-100 uppercase tracking-wide">Score</div>
+                        <div class="text-xs text-green-200 uppercase tracking-wide">Score</div>
                         <div class="text-2xl font-bold" id="score-display">0</div>
                     </div>
                 </div>
             </div>
-            <div class="absolute -bottom-8 -right-8 w-32 h-32 bg-yellow-500 rounded-full opacity-30 blur-xl"></div>
+            <div class="absolute -bottom-8 -right-8 w-32 h-32 bg-green-500 rounded-full opacity-30 blur-xl"></div>
         </div>
 
         <!-- Progress Bar -->
         <div class="w-full bg-gray-100 h-1.5 flex-none">
-            <div class="bg-yellow-400 h-1.5 transition-all duration-300 ease-out" style="width: 0%" id="progress-bar"></div>
+            <div class="bg-green-500 h-1.5 transition-all duration-300 ease-out" style="width: 0%" id="progress-bar"></div>
         </div>
 
         <!-- Scrollable Content Area -->
@@ -67,7 +67,7 @@
                         Loading...
                     </h2>
                     <!-- Thai Translation (Hidden by default) -->
-                    <p class="hidden text-yellow-700 text-sm italic font-medium bg-yellow-50 inline-block px-3 py-1 rounded-lg border border-yellow-200 fade-in" id="question-translation">
+                    <p class="hidden text-green-700 text-sm italic font-medium bg-green-50 inline-block px-3 py-1 rounded-lg border border-green-100 fade-in" id="question-translation">
                         Loading...
                     </p>
                 </div>
@@ -89,7 +89,7 @@
                     <!-- Vocabulary Section -->
                     <div class="bg-yellow-50 p-4 border-t border-yellow-100 text-sm text-gray-800">
                         <div class="font-bold text-yellow-800 flex items-center gap-2 mb-2">
-                            <i class="ph-fill ph-lightbulb text-yellow-600"></i> คำศัพท์น่ารู้ (Vocabulary Boost)
+                            <i class="ph-fill ph-lightbulb"></i> คำศัพท์น่ารู้ (Vocabulary Boost)
                         </div>
                         <div id="vocab-content" class="space-y-2 pl-6">
                             <!-- Vocab injected via JS -->
@@ -100,8 +100,8 @@
 
             <!-- Result View -->
             <div id="result-view" class="hidden text-center py-8 fade-in h-full flex flex-col justify-center">
-                <div class="mb-6 inline-block p-4 rounded-full bg-yellow-100 text-yellow-600">
-                    <i class="ph ph-medal text-6xl"></i>
+                <div class="mb-6 inline-block p-4 rounded-full bg-green-50 text-green-600">
+                    <i class="ph ph-trophy text-6xl"></i>
                 </div>
                 <h2 class="text-2xl font-bold text-gray-800 mb-2">Quiz Completed!</h2>
                 <p class="text-gray-500 mb-8">คะแนนรวมของคุณ</p>
@@ -110,7 +110,7 @@
                     <div class="bg-white px-10 py-6 rounded-2xl border border-gray-200 shadow-sm">
                         <span class="block text-gray-400 text-xs uppercase tracking-wider font-bold mb-1">Total Score</span>
                         <div class="flex items-baseline gap-1">
-                            <span id="final-score" class="text-5xl font-bold text-yellow-600"></span>
+                            <span id="final-score" class="text-5xl font-bold text-green-600"></span>
                             <span class="text-gray-400 text-2xl font-medium">/ 10</span>
                         </div>
                     </div>
@@ -121,11 +121,11 @@
                         <button onclick="reviewAnswers()" class="px-6 py-2.5 rounded-lg border border-gray-300 text-gray-700 hover:bg-gray-50 font-medium transition flex items-center gap-2">
                             <i class="ph ph-eye"></i> Review Answers
                         </button>
-                        <button onclick="restartQuiz()" class="px-6 py-2.5 rounded-lg bg-yellow-600 text-white hover:bg-yellow-700 font-medium transition shadow-md hover:shadow-lg flex items-center gap-2">
+                        <button onclick="restartQuiz()" class="px-6 py-2.5 rounded-lg bg-green-600 text-white hover:bg-green-700 font-medium transition shadow-md hover:shadow-lg flex items-center gap-2">
                             <i class="ph ph-arrow-counter-clockwise"></i> Try Again
                         </button>
                     </div>
-                    <a href="https://pls-c.github.io/English-Quiz/TOEFL_ITP_Section2-Structure/index.html" class="text-yellow-600 hover:text-yellow-800 text-sm font-medium mt-2 flex items-center gap-1 transition-colors">
+                    <a href="https://pls-c.github.io/English-Quiz/TOEFL_ITP_Section2-Structure/index.html" class="text-green-500 hover:text-green-700 text-sm font-medium mt-2 flex items-center gap-1 transition-colors">
                         <i class="ph-bold ph-house"></i> กลับหน้าหลัก
                     </a>
                 </div>
@@ -146,146 +146,146 @@
     </div>
 
     <script>
-        // Data Set: Set 9 (Level 2) - Structure & Word Order
+        // Data Set: Set 6 (Level 1) - Longer Context, Basics, S-V Agreement, Gerunds
         const quizData = [
             {
-                question: "The cost of living in these urban areas __________ high.",
-                translation: "ค่าครองชีพในพื้นที่เมืองเหล่านี้ ______ สูง",
+                question: "The large stack of important documents sitting on the director's desk __________ immediate attention.",
+                translation: "กองเอกสารสำคัญขนาดใหญ่ที่วางอยู่บนโต๊ะผู้อำนวยการ ______ ความสนใจในทันที",
                 vocab: [
-                    "<b>Cost</b> (N): ราคา, ค่าใช้จ่าย",
-                    "<b>Urban</b> (Adj): ในเมือง"
+                    "<b>Immediate</b> (Adj): ทันทีทันใด",
+                    "<b>Attention</b> (N): ความสนใจ"
                 ],
                 options: [
-                    { text: "is", correct: true, rationale: "ประธานหลักคือ <b>The cost</b> (เอกพจน์) ไม่ใช่ <i>areas</i> (ซึ่งอยู่ในบุพบทวลี) ดังนั้นกริยาต้องเป็นเอกพจน์คือ <b>is</b> ครับ" },
-                    { text: "are", correct: false, rationale: "<b>ผิดพจน์ (Agreement Error):</b> หลงกลคำว่า <i>areas</i> (พหูพจน์) ที่อยู่ข้างหน้า แต่ประธานจริงๆ คือ <i>The cost</i> ครับ" },
-                    { text: "being", correct: false, rationale: "<b>กริยาไม่แท้:</b> <i>Being</i> ลอยๆ ไม่สามารถเป็นกริยาหลัก (Main Verb) ของประโยคได้ครับ" },
-                    { text: "to be", correct: false, rationale: "<b>กริยาไม่แท้:</b> Infinitive (to be) ไม่สามารถทำหน้าที่เป็นกริยาหลักได้ครับ" }
+                    { text: "requires", correct: true, rationale: "<b>Subject-Verb Agreement:</b> ประธานหลักคือ <b>The large stack</b> (เอกพจน์) ส่วนที่เหลือเป็นส่วนขยาย ดังนั้นกริยาต้องเติม s คือ <b>requires</b>" },
+                    { text: "require", correct: false, rationale: "<b>ผิดพจน์:</b> require ใช้กับประธานพหูพจน์ (หลงกลคำว่า documents ที่อยู่ในส่วนขยายไม่ได้นะครับ)" },
+                    { text: "requiring", correct: false, rationale: "<b>กริยาไม่แท้:</b> V-ing ลอยๆ ไม่สามารถเป็นกริยาหลัก (Main Verb) ได้" },
+                    { text: "to require", correct: false, rationale: "<b>กริยาไม่แท้:</b> Infinitive ไม่สามารถเป็นกริยาหลักของประโยคได้" }
                 ]
             },
             {
-                question: "__________, the largest planet in our solar system, is composed mostly of gas.",
-                translation: "______, ดาวเคราะห์ที่ใหญ่ที่สุดในระบบสุริยะของเรา ประกอบด้วยก๊าซเป็นส่วนใหญ่",
+                question: "__________ regular exercise is considered one of the best ways to improve overall health.",
+                translation: "______ การออกกำลังกายสม่ำเสมอถือเป็นหนึ่งในวิธีที่ดีที่สุดในการปรับปรุงสุขภาพโดยรวม",
                 vocab: [
-                    "<b>Planet</b> (N): ดาวเคราะห์",
-                    "<b>Compose</b> (V): ประกอบด้วย (be composed of)"
+                    "<b>Consider</b> (V): พิจารณา, ถือว่า",
+                    "<b>Improve</b> (V): ปรับปรุง, ทำให้ดีขึ้น"
                 ],
                 options: [
-                    { text: "Jupiter", correct: true, rationale: "ประโยคนี้ขาด <b>ประธาน (Subject)</b> ครับ โดยมีส่วนขยาย (Appositive) อยู่ด้านหลัง คือ 'the largest planet...'" },
-                    { text: "It is Jupiter", correct: false, rationale: "<b>Comma Splice:</b> การเอาประโยคเต็ม (It is...) มาวางหน้าประโยคหลักแล้วคั่นด้วยคอมม่าเฉยๆ ผิดไวยากรณ์ครับ" },
-                    { text: "Jupiter is", correct: false, rationale: "<b>กริยาซ้อน:</b> ถ้าเลือกข้อนี้ จะมีกริยา <i>is</i> สองตัวชนกันโดยไม่มีคำเชื่อมครับ" },
-                    { text: "Although Jupiter", correct: false, rationale: "<b>ผิดโครงสร้าง:</b> <i>Although</i> ต้องตามด้วยประโยค (Clause) แต่ส่วนหลังเป็นแค่นามวลีครับ" }
+                    { text: "Taking", correct: true, rationale: "<b>Gerund as Subject:</b> ประโยคต้องการประธาน <b>Taking</b> (การทำ...) เป็น Gerund (V-ing) ทำหน้าที่เป็นคำนามเอกพจน์ได้" },
+                    { text: "Take", correct: false, rationale: "<b>ผิดหน้าที่คำ:</b> V.1 (Base form) วางต้นประโยคเป็นประธานไม่ได้ (ยกเว้นประโยคคำสั่ง)" },
+                    { text: "Taken", correct: false, rationale: "<b>ผิดหน้าที่คำ:</b> V.3 ทำหน้าที่เป็นประธานไม่ได้" },
+                    { text: "Took", correct: false, rationale: "<b>ผิดหน้าที่คำ:</b> V.2 (อดีต) ทำหน้าที่เป็นประธานไม่ได้" }
                 ]
             },
             {
-                question: "The man __________ the report is my colleague.",
-                translation: "ผู้ชายที่ ______ รายงานอยู่คือเพื่อนร่วมงานของฉัน",
+                question: "The professor gave a __________ to the students in the auditorium.",
+                translation: "ศาสตราจารย์ได้บรรยาย ______ ให้กับนักเรียนในหอประชุม",
                 vocab: [
-                    "<b>Colleague</b> (N): เพื่อนร่วมงาน",
-                    "<b>Write</b> (V): เขียน"
+                    "<b>Lecture</b> (N): การบรรยาย",
+                    "<b>Auditorium</b> (N): หอประชุม"
                 ],
                 options: [
-                    { text: "writing", correct: true, rationale: "นี่คือ <b>Present Participle</b> (V-ing) ลดรูปมาจาก 'who is writing' ขยาย The man ในฐานะผู้กระทำ (Active Voice)" },
-                    { text: "writes", correct: false, rationale: "<b>กริยาซ้อน:</b> ถ้าใส่ <i>writes</i> จะชนกับกริยาแท้ <i>is</i> ของประโยคหลักครับ" },
-                    { text: "written", correct: false, rationale: "<b>ผิดความหมาย:</b> <i>Written</i> (V3) แปลว่า 'ถูกเขียน' (Passive) ผู้ชายถูกเขียนไม่ได้ครับ" },
-                    { text: "is writing", correct: false, rationale: "<b>กริยาซ้อน:</b> จะทำให้มีกริยาแท้ 2 ตัวโดยไม่มีคำเชื่อม Relative Pronoun (who) ครับ" }
+                    { text: "very interesting lecture", correct: true, rationale: "<b>Word Order:</b> ลำดับคำที่ถูกต้องคือ <b>Adverb (very) + Adjective (interesting) + Noun (lecture)</b>" },
+                    { text: "lecture very interesting", correct: false, rationale: "<b>ผิดลำดับ:</b> คำนาม (lecture) ต้องอยู่หลังสุดของกลุ่มคำขยาย" },
+                    { text: "interesting very lecture", correct: false, rationale: "<b>ผิดลำดับ:</b> Adverb (very) ต้องนำหน้า Adjective (interesting)" },
+                    { text: "very lecture interesting", correct: false, rationale: "<b>ผิดลำดับ:</b> Adjective ต้องอยู่หน้า Noun" }
                 ]
             },
             {
-                question: "The results __________ in the study were conclusive.",
-                translation: "ผลลัพธ์ที่ ______ ในการศึกษานั้นเป็นที่สิ้นสุด (เชื่อถือได้)",
+                question: "The marketing team plans __________ a new advertising campaign next month.",
+                translation: "ทีมการตลาดวางแผนที่จะ ______ แคมเปญโฆษณาใหม่ในเดือนหน้า",
                 vocab: [
-                    "<b>Result</b> (N): ผลลัพธ์",
-                    "<b>Publish</b> (V): ตีพิมพ์"
+                    "<b>Launch</b> (V): เปิดตัว, ปล่อย",
+                    "<b>Campaign</b> (N): แคมเปญ, การรณรงค์"
                 ],
                 options: [
-                    { text: "published", correct: true, rationale: "นี่คือ <b>Past Participle</b> (V3) ลดรูปมาจาก 'which were published' ขยาย The results ในฐานะผู้ถูกกระทำ (Passive Voice)" },
-                    { text: "publishing", correct: false, rationale: "<b>ผิดความหมาย:</b> ผลลัพธ์ไม่สามารถ 'ตีพิมพ์' ตัวเองได้ครับ ต้อง 'ถูกตีพิมพ์'" },
-                    { text: "were published", correct: false, rationale: "<b>กริยาซ้อน:</b> ถ้าใส่ <i>were</i> จะชนกับกริยาแท้ <i>were conclusive</i> ด้านหลังครับ" },
-                    { text: "publish", correct: false, rationale: "<b>ผิดหน้าที่คำ:</b> เป็นกริยาช่อง 1 วางตรงนี้ไม่ได้ครับ" }
+                    { text: "to launch", correct: true, rationale: "<b>Infinitive after Verb:</b> กริยา <i>plan</i> ต้องตามด้วย Infinitive with to (plan to do something)" },
+                    { text: "launching", correct: false, rationale: "<b>ผิดรูปแบบ:</b> <i>plan</i> ไม่ตามด้วย Gerund (V-ing)" },
+                    { text: "launch", correct: false, rationale: "<b>ผิดรูปแบบ:</b> กริยาแท้ 2 ตัวชนกันไม่ได้ (plans launch)" },
+                    { text: "launched", correct: false, rationale: "<b>ผิด Tense:</b> หลังกริยาหลัก plan ไม่ใช้ V.2 หรือ V.3" }
                 ]
             },
             {
-                question: "They reached a __________ agreement.",
-                translation: "พวกเขาบรรลุข้อตกลง ______",
+                question: "There __________ several reasons why the company decided to expand into the Asian market.",
+                translation: "มี ______ หลายเหตุผลที่บริษัทตัดสินใจขยายเข้าสู่ตลาดเอเชีย",
                 vocab: [
-                    "<b>Agreement</b> (N): ข้อตกลง",
-                    "<b>Beneficial</b> (Adj): เป็นประโยชน์"
+                    "<b>Expand</b> (V): ขยาย",
+                    "<b>Market</b> (N): ตลาด"
                 ],
                 options: [
-                    { text: "mutually beneficial", correct: true, rationale: "ลำดับคำที่ถูกต้อง: <b>Adverb (mutually) + Adjective (beneficial) + Noun (agreement)</b>" },
-                    { text: "beneficial mutually", correct: false, rationale: "<b>ผิดลำดับ:</b> Adverb ต้องวางหน้า Adjective ที่มันขยายครับ" },
-                    { text: "mutual beneficial", correct: false, rationale: "<b>ผิดหน้าที่คำ:</b> <i>Mutual</i> เป็น Adjective ไม่ควรขยาย Adjective ด้วยกันเอง (ต้องใช้ Adverb)" },
-                    { text: "benefit mutual", correct: false, rationale: "<b>ผิดโครงสร้าง:</b> ใช้คำนาม (benefit) มาขยายในตำแหน่งนี้ไม่เหมาะสมครับ" }
+                    { text: "are", correct: true, rationale: "<b>S-V Agreement (There is/are):</b> กริยาผันตามคำนามที่ตามหลัง คือ <i>several reasons</i> (พหูพจน์) ดังนั้นต้องใช้ <b>are</b>" },
+                    { text: "is", correct: false, rationale: "<b>ผิดพจน์:</b> <i>is</i> ใช้กับคำนามเอกพจน์" },
+                    { text: "was", correct: false, rationale: "<b>ผิดพจน์:</b> <i>was</i> ใช้กับคำนามเอกพจน์ (อดีต)" },
+                    { text: "have", correct: false, rationale: "<b>ผิดโครงสร้าง:</b> โครงสร้าง 'มี' ใช้ There + be (is/are) ไม่ใช้ There + have" }
                 ]
             },
             {
-                question: "__________ the traffic, we arrived on time.",
-                translation: "______ การจราจร (ที่ติดขัด) พวกเราก็มาถึงตรงเวลา",
+                question: "__________ the severe weather conditions, the flight to London was delayed by three hours.",
+                translation: "______ สภาพอากาศที่รุนแรง เที่ยวบินไปลอนดอนจึงล่าช้าไปสามชั่วโมง",
                 vocab: [
-                    "<b>Traffic</b> (N): การจราจร",
-                    "<b>Arrive</b> (V): มาถึง"
+                    "<b>Severe</b> (Adj): รุนแรง",
+                    "<b>Delay</b> (V): ล่าช้า, เลื่อน"
                 ],
                 options: [
-                    { text: "Despite", correct: true, rationale: "ต้องการ <b>Preposition</b> ที่แสดงความขัดแย้ง เพื่อนำหน้า Noun Phrase (the traffic)" },
-                    { text: "Although", correct: false, rationale: "<b>ผิดไวยากรณ์:</b> <i>Although</i> ต้องตามด้วยประโยค (S + V) ครับ" },
-                    { text: "However", correct: false, rationale: "<b>ผิดไวยากรณ์:</b> <i>However</i> เป็นคำเชื่อมประโยค (Adverb) ไม่ใช้วางหน้านามแบบนี้ครับ" },
-                    { text: "Because", correct: false, rationale: "<b>ผิดความหมาย:</b> <i>Because</i> บอกเหตุผล (เพราะรถติดจึงมาทัน? ไม่สมเหตุสมผล) และต้องตามด้วย S+V" }
+                    { text: "Because of", correct: true, rationale: "<b>Connector (Preposition):</b> ตามด้วย Noun Phrase (the severe weather conditions) ต้องใช้ <b>Because of</b> (เพราะว่า/เนื่องจาก)" },
+                    { text: "Because", correct: false, rationale: "<b>ผิดโครงสร้าง:</b> <i>Because</i> ต้องตามด้วยประโยค (S+V) เช่น Because the weather was severe..." },
+                    { text: "Although", correct: false, rationale: "<b>ผิดความหมาย:</b> Although (แม้ว่า) ใช้แสดงความขัดแย้ง แต่ประโยคนี้เป็นเหตุเป็นผลกัน" },
+                    { text: "However", correct: false, rationale: "<b>ผิดหน้าที่คำ:</b> However เป็นคำเชื่อมประโยค (Adverb) ใช้วางหน้า Noun Phrase ไม่ได้" }
                 ]
             },
             {
-                question: "The manager did not explain __________.",
-                translation: "ผู้จัดการไม่ได้อธิบาย ______",
+                question: "The __________ report provided detailed information about the market trends.",
+                translation: "รายงาน ______ ให้ข้อมูลโดยละเอียดเกี่ยวกับแนวโน้มของตลาด",
                 vocab: [
-                    "<b>Explain</b> (V): อธิบาย",
-                    "<b>Leave</b> (V): จากไป, ทิ้ง"
+                    "<b>Attached</b> (Adj): ที่แนบมา",
+                    "<b>Trend</b> (N): แนวโน้ม"
                 ],
                 options: [
-                    { text: "why he left", correct: true, rationale: "นี่คือ <b>Noun Clause</b> ทำหน้าที่เป็นกรรมของ explain ลำดับคำต้องเป็น <b>Connector (why) + Subject (he) + Verb (left)</b>" },
-                    { text: "why did he leave", correct: false, rationale: "<b>ผิดลำดับ:</b> นี่คือรูปประโยคคำถาม (Question word order) ใน Noun Clause ต้องเรียงแบบบอกเล่าครับ" },
-                    { text: "he left why", correct: false, rationale: "<b>ผิดลำดับ:</b> ตัวเชื่อม (Connector) ต้องอยู่ข้างหน้าครับ" },
-                    { text: "why left he", correct: false, rationale: "<b>ผิดลำดับ:</b> ประธานต้องมาก่อนกริยาใน Noun Clause ครับ" }
+                    { text: "attached", correct: true, rationale: "<b>Participle as Adjective:</b> <i>attached</i> (ที่ถูกแนบมา) เป็น Past Participle ทำหน้าที่ขยายคำนาม report" },
+                    { text: "attach", correct: false, rationale: "<b>ผิดหน้าที่คำ:</b> V.1 ขยายคำนามไม่ได้" },
+                    { text: "attaching", correct: false, rationale: "<b>ผิดความหมาย:</b> <i>attaching</i> แปลว่า 'ที่กำลังแนบ' (Active) แต่รายงานต้อง 'ถูกแนบ' (Passive)" },
+                    { text: "attachment", correct: false, rationale: "<b>ผิดหน้าที่คำ:</b> Noun ขยาย Noun (attachment report) ไม่เป็นที่นิยมในบริบทนี้" }
                 ]
             },
             {
-                question: "The seminar was informative, engaging, and __________.",
-                translation: "งานสัมมนานั้นให้ข้อมูลดี, น่าสนใจ, และ ______",
+                question: "Many employees are interested in __________ new skills to advance their careers.",
+                translation: "พนักงานจำนวนมากสนใจใน ______ ทักษะใหม่ๆ เพื่อก้าวหน้าในอาชีพ",
                 vocab: [
-                    "<b>Seminar</b> (N): งานสัมมนา",
-                    "<b>Enjoy</b> (V): เพลิดเพลิน"
+                    "<b>Career</b> (N): อาชีพ",
+                    "<b>Advance</b> (V): ก้าวหน้า, พัฒนา"
                 ],
                 options: [
-                    { text: "enjoyable", correct: true, rationale: "<b>Parallel Structure (โครงสร้างขนาน):</b> คำก่อนหน้าเป็น Adjective (informative, engaging) คำนี้ก็ต้องเป็น <b>Adjective</b> ครับ" },
-                    { text: "enjoy", correct: false, rationale: "<b>ผิดหน้าที่คำ:</b> เป็น Verb ครับ" },
-                    { text: "enjoyment", correct: false, rationale: "<b>ผิดหน้าที่คำ:</b> เป็น Noun ครับ" },
-                    { text: "enjoyably", correct: false, rationale: "<b>ผิดหน้าที่คำ:</b> เป็น Adverb ครับ" }
+                    { text: "learning", correct: true, rationale: "<b>Gerund after Preposition:</b> หลังคำบุพบท (in) ต้องตามด้วย Gerund (V-ing) เสมอครับ -> in <b>learning</b>" },
+                    { text: "learn", correct: false, rationale: "<b>ผิดรูปแบบ:</b> หลัง Preposition ไม่ใช้ V.1" },
+                    { text: "to learn", correct: false, rationale: "<b>ผิดรูปแบบ:</b> หลัง Preposition (in) ไม่ใช้ Infinitive with to" },
+                    { text: "learned", correct: false, rationale: "<b>ผิดรูปแบบ:</b> หลัง Preposition ไม่ใช้ V.2/V.3" }
                 ]
             },
             {
-                question: "She bought a __________ vase.",
-                translation: "เธอซื้อแจกัน ______",
+                question: "__________ effectively is a crucial skill for any successful manager.",
+                translation: "______ อย่างมีประสิทธิภาพเป็นทักษะสำคัญสำหรับผู้จัดการที่ประสบความสำเร็จทุกคน",
                 vocab: [
-                    "<b>Vase</b> (N): แจกัน",
-                    "<b>Antique</b> (Adj/N): โบราณ, วัตถุโบราณ"
+                    "<b>Crucial</b> (Adj): สำคัญมาก",
+                    "<b>Effectively</b> (Adv): อย่างมีประสิทธิภาพ"
                 ],
                 options: [
-                    { text: "beautiful antique", correct: true, rationale: "ลำดับ Adjective: <b>Opinion (beautiful) + Age/Type (antique) + Noun (vase)</b>" },
-                    { text: "antique beautiful", correct: false, rationale: "<b>ผิดลำดับ:</b> ความเห็น (Opinion) ต้องมาก่อนข้อเท็จจริง/อายุ (Fact/Age) ครับ" },
-                    { text: "beauty antique", correct: false, rationale: "<b>ผิดหน้าที่คำ:</b> <i>Beauty</i> เป็น Noun ครับ" },
-                    { text: "beautifully antique", correct: false, rationale: "<b>ความหมายเปลี่ยน:</b> แปลว่า 'โบราณอย่างสวยงาม' ซึ่งปกติเราจะขยายแจกันว่า 'สวยและโบราณ' มากกว่าครับ" }
+                    { text: "Communicating", correct: true, rationale: "<b>Gerund as Subject:</b> ต้องการประธานของประโยค. <i>Communicating</i> (การสื่อสาร) เป็น Gerund ทำหน้าที่เป็นประธานได้" },
+                    { text: "Communicate", correct: false, rationale: "<b>ผิดหน้าที่คำ:</b> V.1 เป็นประธานไม่ได้" },
+                    { text: "Communicated", correct: false, rationale: "<b>ผิดหน้าที่คำ:</b> V.2/V.3 เป็นประธานไม่ได้" },
+                    { text: "To communicating", correct: false, rationale: "<b>ผิดรูปแบบ:</b> Infinitive ต้องเป็น To communicate (ไม่มี ing)" }
                 ]
             },
             {
-                question: "__________ several reasons for his decision.",
-                translation: "______ หลายเหตุผลสำหรับการตัดสินใจของเขา",
+                question: "The scientists made an __________ discovery during their expedition.",
+                translation: "นักวิทยาศาสตร์ได้ค้นพบ ______ ในระหว่างการเดินทางสำรวจ",
                 vocab: [
-                    "<b>Reason</b> (N): เหตุผล",
-                    "<b>Decision</b> (N): การตัดสินใจ"
+                    "<b>Discovery</b> (N): การค้นพบ",
+                    "<b>Expedition</b> (N): การเดินทางสำรวจ"
                 ],
                 options: [
-                    { text: "There are", correct: true, rationale: "ประโยคนี้ต้องการโครงสร้าง <b>There + be</b> (มี) และประธานคือ <i>reasons</i> (พหูพจน์) จึงต้องใช้ <b>There are</b>" },
-                    { text: "There is", correct: false, rationale: "<b>ผิดพจน์:</b> ใช้กับคำนามเอกพจน์ครับ" },
-                    { text: "They are", correct: false, rationale: "<b>ผิดความหมาย:</b> <i>They are</i> แปลว่า 'พวกมันคือ' แต่บริบทนี้ต้องการบอกว่า 'มี' (Existence)" },
-                    { text: "Are there", correct: false, rationale: "<b>ผิดรูปประโยค:</b> นี่คือรูปประโยคคำถามครับ" }
+                    { text: "incredibly important", correct: true, rationale: "<b>Word Order:</b> โครงสร้าง Article (an) + <b>Adverb (incredibly) + Adjective (important)</b> + Noun (discovery)" },
+                    { text: "important incredibly", correct: false, rationale: "<b>ผิดลำดับ:</b> Adverb ต้องวางหน้า Adjective ที่มันขยาย" },
+                    { text: "incredible important", correct: false, rationale: "<b>ผิดหน้าที่คำ:</b> Adjective (incredible) ไม่ควรขยาย Adjective (important) ด้วยกันเอง" },
+                    { text: "importance incredible", correct: false, rationale: "<b>ผิดหน้าที่คำ:</b> Noun (importance) วางตรงนี้ผิดโครงสร้าง" }
                 ]
             }
         ];
@@ -351,15 +351,15 @@
             
             data.options.forEach((option, idx) => {
                 const btn = document.createElement('button');
-                btn.className = `option-btn w-full text-left p-4 rounded-xl border border-gray-200 focus:outline-none mb-1 bg-white text-gray-700 font-medium flex items-start gap-3 hover:bg-yellow-50 hover:border-yellow-300`;
+                btn.className = `option-btn w-full text-left p-4 rounded-xl border border-gray-200 focus:outline-none mb-1 bg-white text-gray-700 font-medium flex items-start gap-3 hover:bg-green-50 hover:border-green-300`;
                 
-                const marker = `<span class="inline-flex items-center justify-center w-6 h-6 rounded-full bg-yellow-50 text-yellow-700 text-xs font-bold flex-shrink-0 mt-0.5">${String.fromCharCode(65 + idx)}</span>`;
+                const marker = `<span class="inline-flex items-center justify-center w-6 h-6 rounded-full bg-green-50 text-green-600 text-xs font-bold flex-shrink-0 mt-0.5">${String.fromCharCode(65 + idx)}</span>`;
                 btn.innerHTML = `${marker} <span class="leading-relaxed">${option.text}</span>`;
                 btn.onclick = () => handleAnswer(idx);
 
                 if (answered) {
                     btn.disabled = true;
-                    btn.classList.remove('hover:bg-yellow-50', 'hover:border-yellow-300');
+                    btn.classList.remove('hover:bg-green-50', 'hover:border-green-300');
                     if (option.correct) {
                         btn.className = `w-full text-left p-4 rounded-xl border-2 border-green-500 bg-green-50 text-green-800 font-medium flex items-start gap-3 shadow-sm`;
                         btn.innerHTML = `<i class="ph-fill ph-check-circle text-2xl text-green-500 flex-shrink-0"></i> <span class="leading-relaxed">${option.text}</span>`;
@@ -369,8 +369,6 @@
                     } else {
                         btn.className += ' opacity-50 grayscale';
                     }
-                } else {
-                    btn.classList.add('hover:bg-yellow-50', 'hover:border-yellow-300');
                 }
                 optionsContainer.appendChild(btn);
             });

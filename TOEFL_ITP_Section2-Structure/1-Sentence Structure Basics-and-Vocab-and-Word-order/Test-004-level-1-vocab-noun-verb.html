@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TOEFL ITP Basics: Level 1 (Vocab Booster Set 4)</title>
+    <title>TOEFL ITP Structure: Set 4</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@300;400;600&family=Sarabun:wght@400;600&display=swap" rel="stylesheet">
     <!-- Phosphor Icons -->
@@ -11,12 +11,12 @@
     <style>
         body { font-family: 'Sarabun', 'Noto Sans Thai', sans-serif; }
         .option-btn { transition: all 0.2s; }
-        .fade-in { animation: fadeIn 0.3s ease-out; }
+        .fade-in { animation: fadeIn 0.3s ease-in; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
         
         .rationale-scroll::-webkit-scrollbar { width: 6px; }
         .rationale-scroll::-webkit-scrollbar-track { background: #f1f1f1; }
-        .rationale-scroll::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 3px; }
+        .rationale-scroll::-webkit-scrollbar-thumb { background: #93c5fd; border-radius: 3px; }
     </style>
 </head>
 <body class="bg-slate-100 min-h-screen flex items-center justify-center p-4">
@@ -24,25 +24,33 @@
     <div class="bg-white rounded-2xl shadow-xl w-full max-w-2xl overflow-hidden border border-slate-200 flex flex-col max-h-[95vh]" id="app-container">
         
         <!-- Header -->
-        <div class="bg-emerald-700 p-5 text-white flex-none relative overflow-hidden">
-            <div class="relative z-10 flex justify-between items-center">
-                <div>
-                    <h1 class="text-xl font-bold flex items-center gap-2">
-                        <i class="ph ph-book-open-text text-2xl"></i> TOEFL Structure & Vocab
-                    </h1>
-                    <p class="text-emerald-200 text-xs mt-1">Set 4: Noun/Verb Homonyms Focus</p>
-                </div>
-                <div class="text-right">
-                    <div class="text-xs text-emerald-200 uppercase tracking-wide">Score</div>
-                    <div class="text-2xl font-bold" id="score-display">0</div>
+        <div class="bg-blue-700 p-5 text-white flex-none relative overflow-hidden">
+            <div class="relative z-10">
+                <!-- ปุ่มกลับหน้าหลัก -->
+                <a href="https://pls-c.github.io/English-Quiz/TOEFL_ITP_Section2-Structure/index.html" 
+                   class="inline-flex items-center text-blue-100 hover:text-white mb-3 text-sm font-medium transition-colors">
+                    <i class="ph-bold ph-arrow-left mr-1"></i> กลับหน้าหลัก
+                </a>
+
+                <div class="flex justify-between items-center">
+                    <div>
+                        <h1 class="text-xl font-bold flex items-center gap-2">
+                            <i class="ph ph-cube text-2xl"></i> TOEFL Structure (Basic)
+                        </h1>
+                        <p class="text-blue-200 text-xs mt-1">Set 4: S-V Agreement & Noun-Verb Homonyms</p>
+                    </div>
+                    <div class="text-right">
+                        <div class="text-xs text-blue-200 uppercase tracking-wide">Score</div>
+                        <div class="text-2xl font-bold" id="score-display">0</div>
+                    </div>
                 </div>
             </div>
-            <div class="absolute -bottom-8 -right-8 w-32 h-32 bg-emerald-500 rounded-full opacity-30 blur-xl"></div>
+            <div class="absolute -bottom-8 -right-8 w-32 h-32 bg-blue-500 rounded-full opacity-30 blur-xl"></div>
         </div>
 
         <!-- Progress Bar -->
         <div class="w-full bg-gray-100 h-1.5 flex-none">
-            <div class="bg-emerald-400 h-1.5 transition-all duration-300 ease-out" style="width: 0%" id="progress-bar"></div>
+            <div class="bg-blue-500 h-1.5 transition-all duration-300 ease-out" style="width: 0%" id="progress-bar"></div>
         </div>
 
         <!-- Scrollable Content Area -->
@@ -60,7 +68,7 @@
                         Loading...
                     </h2>
                     <!-- Thai Translation (Hidden by default) -->
-                    <p class="hidden text-emerald-700 text-sm italic font-medium bg-emerald-50 inline-block px-3 py-1 rounded-lg border border-emerald-100 fade-in" id="question-translation">
+                    <p class="hidden text-blue-700 text-sm italic font-medium bg-blue-50 inline-block px-3 py-1 rounded-lg border border-blue-100 fade-in" id="question-translation">
                         Loading...
                     </p>
                 </div>
@@ -93,8 +101,8 @@
 
             <!-- Result View -->
             <div id="result-view" class="hidden text-center py-8 fade-in h-full flex flex-col justify-center">
-                <div class="mb-6 inline-block p-4 rounded-full bg-emerald-50 text-emerald-600">
-                    <i class="ph ph-medal text-6xl"></i>
+                <div class="mb-6 inline-block p-4 rounded-full bg-blue-50 text-blue-600">
+                    <i class="ph ph-trophy text-6xl"></i>
                 </div>
                 <h2 class="text-2xl font-bold text-gray-800 mb-2">Quiz Completed!</h2>
                 <p class="text-gray-500 mb-8">คะแนนรวมของคุณ</p>
@@ -103,19 +111,24 @@
                     <div class="bg-white px-10 py-6 rounded-2xl border border-gray-200 shadow-sm">
                         <span class="block text-gray-400 text-xs uppercase tracking-wider font-bold mb-1">Total Score</span>
                         <div class="flex items-baseline gap-1">
-                            <span id="final-score" class="text-5xl font-bold text-emerald-600"></span>
+                            <span id="final-score" class="text-5xl font-bold text-blue-600"></span>
                             <span class="text-gray-400 text-2xl font-medium">/ 10</span>
                         </div>
                     </div>
                 </div>
                 
-                <div class="flex gap-3 justify-center">
-                    <button onclick="reviewAnswers()" class="px-6 py-2.5 rounded-lg border border-gray-300 text-gray-700 hover:bg-gray-50 font-medium transition flex items-center gap-2">
-                        <i class="ph ph-eye"></i> Review Answers
-                    </button>
-                    <button onclick="restartQuiz()" class="px-6 py-2.5 rounded-lg bg-emerald-600 text-white hover:bg-emerald-700 font-medium transition shadow-md hover:shadow-lg flex items-center gap-2">
-                        <i class="ph ph-arrow-counter-clockwise"></i> Try Again
-                    </button>
+                <div class="flex flex-col gap-3 justify-center items-center w-full">
+                    <div class="flex gap-3 w-full justify-center">
+                        <button onclick="reviewAnswers()" class="px-6 py-2.5 rounded-lg border border-gray-300 text-gray-700 hover:bg-gray-50 font-medium transition flex items-center gap-2">
+                            <i class="ph ph-eye"></i> Review Answers
+                        </button>
+                        <button onclick="restartQuiz()" class="px-6 py-2.5 rounded-lg bg-blue-600 text-white hover:bg-blue-700 font-medium transition shadow-md hover:shadow-lg flex items-center gap-2">
+                            <i class="ph ph-arrow-counter-clockwise"></i> Try Again
+                        </button>
+                    </div>
+                    <a href="https://pls-c.github.io/English-Quiz/TOEFL_ITP_Section2-Structure/index.html" class="text-blue-500 hover:text-blue-700 text-sm font-medium mt-4 flex items-center gap-1 transition-colors">
+                        <i class="ph-bold ph-house"></i> กลับหน้าหลัก
+                    </a>
                 </div>
             </div>
 
@@ -134,7 +147,7 @@
     </div>
 
     <script>
-        // Data Set: Level 1 (Set 3) with Noun/Verb Focus
+        // Data Set: Set 4 - S-V Agreement & Noun-Verb Homonyms
         const quizData = [
             {
                 question: "Farmers must __________ the crops regularly.",
@@ -332,7 +345,7 @@
                 const btn = document.createElement('button');
                 btn.className = `option-btn w-full text-left p-4 rounded-xl border border-gray-200 focus:outline-none mb-1 bg-white text-gray-700 font-medium flex items-start gap-3`;
                 
-                const marker = `<span class="inline-flex items-center justify-center w-6 h-6 rounded-full bg-emerald-50 text-emerald-600 text-xs font-bold flex-shrink-0 mt-0.5">${String.fromCharCode(65 + idx)}</span>`;
+                const marker = `<span class="inline-flex items-center justify-center w-6 h-6 rounded-full bg-blue-50 text-blue-600 text-xs font-bold flex-shrink-0 mt-0.5">${String.fromCharCode(65 + idx)}</span>`;
                 btn.innerHTML = `${marker} <span class="leading-relaxed">${option.text}</span>`;
                 btn.onclick = () => handleAnswer(idx);
 
@@ -348,7 +361,7 @@
                         btn.className += ' opacity-50 grayscale';
                     }
                 } else {
-                    btn.classList.add('hover:bg-emerald-50', 'hover:border-emerald-300');
+                    btn.classList.add('hover:bg-blue-50', 'hover:border-blue-300');
                 }
                 optionsContainer.appendChild(btn);
             });
@@ -379,8 +392,13 @@
                     
                     const correctOptionIndex = quizData[currentQuestion].options.findIndex(o => o.correct);
                     const correctRationale = quizData[currentQuestion].options[correctOptionIndex].rationale;
+                    const wrongRationale = quizData[currentQuestion].options[userChoice].rationale;
                     
                     feedbackContent.innerHTML = `
+                        <div class="mb-3 pb-3 border-b border-gray-200">
+                             <div class="text-red-700 font-semibold mb-1">สิ่งที่คุณเลือกผิดเพราะ:</div>
+                             <div class="text-gray-600">${wrongRationale.replace(/<b>.*?<\/b>/, '')}</div>
+                        </div>
                         <div>
                             <span class="font-bold text-green-700">คำตอบที่ถูกคือข้อ ${String.fromCharCode(65+correctOptionIndex)}</span> เพราะ ${correctRationale}
                         </div>

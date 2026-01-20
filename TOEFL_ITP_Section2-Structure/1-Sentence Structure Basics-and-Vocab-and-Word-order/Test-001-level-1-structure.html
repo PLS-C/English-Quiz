@@ -364,7 +364,26 @@
                 return null;
             }
         }
+        /**
+         * ฟังก์ชันสำหรับจัดการการคลิกปุ่ม "แบบฝึกถัดไป"
+         */
+        async function handleNextQuizClick(event) {
+            if (event) event.preventDefault();
 
+            console.log("--- เริ่มรันฟังก์ชันค้นหาไฟล์ ---");
+            
+            const nextFile = await getNextQuizFile();
+
+            if (nextFile) {
+                console.log("%cสำเร็จ!", "color: green; font-weight: bold;");
+                console.log("ไฟล์ถัดไปคือ: " + nextFile);
+                
+                // ถ้าต้องการให้ Link ไปจริงเมื่อเจอไฟล์ ให้เปิดคอมเมนต์บรรทัดข้างล่างนี้:
+                // window.location.href = nextFile;
+            } else {
+                console.log("%cไม่พบไฟล์ถัดไปในสารบบ", "color: red;");
+            }
+        }
 
         // Function to shuffle array
         function shuffleArray(array) {

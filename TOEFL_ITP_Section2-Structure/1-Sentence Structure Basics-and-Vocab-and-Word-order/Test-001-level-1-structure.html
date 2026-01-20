@@ -323,7 +323,7 @@
             const repo = 'English-Quiz';
             const folderPath = 'TOEFL_ITP_Section2-Structure';
             const apiUrl = `https://api.github.com/repos/${user}/${repo}/contents/${folderPath}`;
-
+            console.log(apiUrl);
             try {
                 const response = await fetch(apiUrl);
                 if (!response.ok) throw new Error('การเชื่อมต่อ GitHub API ล้มเหลว');

@@ -36,6 +36,33 @@
                 class="inline-flex items-center text-blue-100 hover:text-white mb-3 text-sm font-medium transition-colors">
                     <i class="ph-bold ph-arrow-right mr-1"></i> แบบฝึกถัดไป
                 </a>
+                <div class="flex justify-between items-center w-full mb-4 border-b border-white/20 pb-3">
+                <!-- ส่วนที่ 1: ชิดซ้าย (ก่อนหน้า) -->
+                <div class="w-1/3 text-left">
+                    <a id="prev-quiz-link" href="javascript:void(0)" 
+                    onclick="handlePrevQuizClick(event)"
+                    class="hidden inline-flex items-center text-blue-100 hover:text-white text-sm font-medium transition-colors">
+                        <i class="ph-bold ph-arrow-left mr-1"></i> ชุดก่อนหน้า
+                    </a>
+                </div>
+
+                <!-- ส่วนที่ 2: ตรงกลาง (Home) -->
+                <div class="w-1/3 text-center">
+                    <a href="https://pls-c.github.io/English-Quiz/TOEFL_ITP_Section2-Structure/index.html" 
+                    class="inline-flex items-center text-blue-100 hover:text-white text-sm font-medium transition-colors">
+                        <i class="ph-bold ph-house mr-1"></i> หน้าหลัก
+                    </a>
+                </div>
+
+                <!-- ส่วนที่ 3: ชิดขวา (ถัดไป) -->
+                <div class="w-1/3 text-right">
+                    <a id="next-quiz-link" href="javascript:void(0)" 
+                    onclick="handleNextQuizClick(event)"
+                    class="hidden inline-flex items-center text-blue-100 hover:text-white text-sm font-medium transition-colors">
+                        ชุดถัดไป <i class="ph-bold ph-arrow-right ml-1"></i>
+                    </a>
+                </div>
+            </div>
 
                 <div class="flex justify-between items-center">
                     <div>
@@ -301,89 +328,93 @@
          * 2. ดึงรายชื่อไฟล์ทั้งหมดจาก GitHub Repository
          * 3. หาไฟล์ลำดับถัดไปจาก Array
          */
-        async function getNextQuizFile() {
-            // --- ส่วนที่ 1: ดึงชื่อไฟล์ปัจจุบันและวิเคราะห์เส้นทาง (Path) ---
+        async function getQuizNavigation() {
             const path = window.location.pathname;
             const pathParts = path.split('/').filter(p => p);
-            const currentFilename = pathParts[pathParts.length - 1]; // เช่น Test-010-advanced.html
+            const currentFilename = decodeURIComponent(pathParts[pathParts.length - 1]);
             
-            // ดึงตัวเลขชุดปัจจุบัน (รองรับ Test-010 หรือ Test-10)
-            const currentMatch = currentFilename.match(/Test-(\d+)/i);
-            const current_number_set = currentMatch ? parseInt(currentMatch[1], 10) : null;
-
-            if (!current_number_set) {
-                console.error("ไม่สามารถระบุหมายเลขชุดจากชื่อไฟล์ได้:", currentFilename);
-                return null;
-            }
-
-            // --- ส่วนที่ 2: สร้าง API URL ให้ตรงกับโฟลเดอร์ที่ไฟล์อยู่จริง ---
-            const user = 'PLS-C';
+            const user = 'pls-c';
             const repo = 'English-Quiz';
-            
-            // สำหรับ GitHub Pages เส้นทางใน URL มักจะเป็น /repo-name/folder/sub-folder/file.html
-            // เราจะตัด repo-name (index 0) และ filename ออก เพื่อเหลือแค่ path ของโฟลเดอร์
             const internalPath = pathParts.slice(1, -1).join('/'); 
             const apiUrl = `https://api.github.com/repos/${user}/${repo}/contents/${internalPath}`;
 
-            console.log("Fetching from API Folder Path:", internalPath);
-
             try {
                 const response = await fetch(apiUrl);
-                if (!response.ok) throw new Error('การเชื่อมต่อ GitHub API ล้มเหลว');
+                if (!response.ok) throw new Error('GitHub API Connection Failed');
                 
                 const data = await response.json();
 
-                // กรองเฉพาะไฟล์ .html ที่มีรูปแบบชื่อ "Test-เลข-ชื่อ.html"
+                // กรองและจัดเรียงไฟล์ .html ที่ขึ้นต้นด้วย "Test-"
                 let filesArray = data
                     .filter(file => file.type === 'file' && file.name.toLowerCase().startsWith('test-') && file.name.endsWith('.html'))
                     .map(file => file.name);
 
-                // เรียงลำดับชื่อไฟล์ตามตัวเลข (Natural Sort)
                 filesArray.sort((a, b) => a.localeCompare(b, undefined, { numeric: true, sensitivity: 'base' }));
 
-                console.log("รายการไฟล์ที่ตรวจพบในโฟลเดอร์นี้:", filesArray);
-
-                // --- ส่วนที่ 3: หา Index และระบุไฟล์ถัดไป ---
-                // ใช้ decodeURIComponent เพื่อรองรับชื่อไฟล์ที่มีช่องว่างหรืออักขระพิเศษ (%20)
-                const decodedCurrentFile = decodeURIComponent(currentFilename);
-                const currentIndex = filesArray.indexOf(decodedCurrentFile);
+                const currentIndex = filesArray.indexOf(currentFilename);
                 
-                let next_file_name_set = null;
-
-                if (currentIndex !== -1 && currentIndex < filesArray.length - 1) {
-                    next_file_name_set = filesArray[currentIndex + 1];
-                    console.log("ตรวจพบไฟล์ลำดับถัดไป:", next_file_name_set);
-                } else {
-                    console.log("ไม่พบไฟล์ถัดไป หรือเป็นไฟล์ลำดับสุดท้ายแล้ว");
-                }
-
-                return next_file_name_set;
+                return {
+                    prev: currentIndex > 0 ? filesArray[currentIndex - 1] : null,
+                    next: (currentIndex !== -1 && currentIndex < filesArray.length - 1) ? filesArray[currentIndex + 1] : null
+                };
 
             } catch (error) {
-                console.error("เกิดข้อผิดพลาด:", error);
-                return null;
+                console.error("Navigation Error:", error);
+                return { prev: null, next: null };
             }
         }
+
         /**
-         * ฟังก์ชันสำหรับจัดการการคลิกปุ่ม "แบบฝึกถัดไป"
+         * ฟังก์ชันจัดการการคลิกปุ่ม "ก่อนหน้า"
+         */
+        async function handlePrevQuizClick(event) {
+            if (event) event.preventDefault();
+            const nav = await getQuizNavigation();
+            if (nav.prev) {
+                console.log("ไปที่ไฟล์ก่อนหน้า:", nav.prev);
+                // window.location.href = nav.prev; // เปิดบรรทัดนี้เมื่อต้องการให้เปลี่ยนหน้าจริง
+            }
+        }
+
+        /**
+         * ฟังก์ชันจัดการการคลิกปุ่ม "แบบฝึกถัดไป"
          */
         async function handleNextQuizClick(event) {
             if (event) event.preventDefault();
-
-            console.log("--- เริ่มรันฟังก์ชันค้นหาไฟล์ ---");
-            
-            const nextFile = await getNextQuizFile();
-
-            if (nextFile) {
-                console.log("%cสำเร็จ!", "color: green; font-weight: bold;");
-                console.log("ไฟล์ถัดไปคือ: " + nextFile);
-                
-                // ถ้าต้องการให้ Link ไปจริงเมื่อเจอไฟล์ ให้เปิดคอมเมนต์บรรทัดข้างล่างนี้:
-                 window.location.href = nextFile;
-            } else {
-                console.log("%cไม่พบไฟล์ถัดไปในสารบบ", "color: red;");
+            const nav = await getQuizNavigation();
+            if (nav.next) {
+                console.log("ไปที่ไฟล์ถัดไป:", nav.next);
+                // window.location.href = nav.next; // เปิดบรรทัดนี้เมื่อต้องการให้เปลี่ยนหน้าจริง
             }
         }
+
+        /**
+         * อัปเดตปุ่มในเมนูนำทางเมื่อโหลดหน้า
+         */
+        async function updateNavigationButtons() {
+            const nav = await getQuizNavigation();
+            const prevBtn = document.getElementById('prev-quiz-link');
+            const nextBtn = document.getElementById('next-quiz-link');
+
+            // จัดการปุ่มก่อนหน้า
+            if (nav.prev && prevBtn) {
+                prevBtn.href = nav.prev;
+                prevBtn.classList.remove('hidden');
+            }
+
+            // จัดการปุ่มถัดไป
+            if (nav.next && nextBtn) {
+                nextBtn.href = nav.next;
+                nextBtn.classList.remove('hidden');
+                
+                const nextNumMatch = nav.next.match(/Test-(\d+)/i);
+                if (nextNumMatch) {
+                    nextBtn.innerHTML = `ชุดถัดไป (${parseInt(nextNumMatch[1], 10)}) <i class="ph-bold ph-arrow-right ml-1"></i>`;
+                }
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', updateNavigationButtons);
 
         // Function to shuffle array
         function shuffleArray(array) {

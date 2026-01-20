@@ -26,30 +26,32 @@
         <!-- Header -->
         <div class="bg-blue-700 p-5 text-white flex-none relative overflow-hidden">
             <div class="relative z-10">
-                <!-- ส่วนที่ 1: ชิดซ้าย (ก่อนหน้า) -->
-                <div class="w-1/3 text-left">
-                    <a id="prev-quiz-link" href="javascript:void(0)" 
-                    onclick="handlePrevQuizClick(event)"
-                    class="hidden inline-flex items-center text-blue-100 hover:text-white text-sm font-medium transition-colors">
-                        <i class="ph-bold ph-arrow-left mr-1"></i> ชุดก่อนหน้า
-                    </a>
-                </div>
+                <div class="flex justify-between items-center w-full mb-4 border-b border-white/20 pb-3">
+                    <!-- ส่วนที่ 1: ชิดซ้าย (ก่อนหน้า) -->
+                    <div class="w-1/3 text-left">
+                        <a id="prev-quiz-link" href="javascript:void(0)" 
+                        onclick="handlePrevQuizClick(event)"
+                        class="hidden inline-flex items-center text-blue-100 hover:text-white text-sm font-medium transition-colors">
+                            <i class="ph-bold ph-arrow-left mr-1"></i> ชุดก่อนหน้า
+                        </a>
+                    </div>
 
-                <!-- ส่วนที่ 2: ตรงกลาง (Home) -->
-                <div class="w-1/3 text-center">
-                    <a href="https://pls-c.github.io/English-Quiz/TOEFL_ITP_Section2-Structure/index.html" 
-                    class="inline-flex items-center text-blue-100 hover:text-white text-sm font-medium transition-colors">
-                        <i class="ph-bold ph-house mr-1"></i> หน้าหลัก
-                    </a>
-                </div>
+                    <!-- ส่วนที่ 2: ตรงกลาง (Home) -->
+                    <div class="w-1/3 text-center">
+                        <a href="https://pls-c.github.io/English-Quiz/TOEFL_ITP_Section2-Structure/index.html" 
+                        class="inline-flex items-center text-blue-100 hover:text-white text-sm font-medium transition-colors">
+                            <i class="ph-bold ph-house mr-1"></i> หน้าหลัก
+                        </a>
+                    </div>
 
-                <!-- ส่วนที่ 3: ชิดขวา (ถัดไป) -->
-                <div class="w-1/3 text-right">
-                    <a id="next-quiz-link" href="javascript:void(0)" 
-                    onclick="handleNextQuizClick(event)"
-                    class="hidden inline-flex items-center text-blue-100 hover:text-white text-sm font-medium transition-colors">
-                        ชุดถัดไป <i class="ph-bold ph-arrow-right ml-1"></i>
-                    </a>
+                    <!-- ส่วนที่ 3: ชิดขวา (ถัดไป) -->
+                    <div class="w-1/3 text-right">
+                        <a id="next-quiz-link" href="javascript:void(0)" 
+                        onclick="handleNextQuizClick(event)"
+                        class="hidden inline-flex items-center text-blue-100 hover:text-white text-sm font-medium transition-colors">
+                            ชุดถัดไป <i class="ph-bold ph-arrow-right ml-1"></i>
+                        </a>
+                    </div>
                 </div>
             </div>
 

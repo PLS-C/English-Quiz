@@ -4,6 +4,88 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TOEFL ITP Structure: Set 2</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@300;400;600&family=Sarabun:wght@400;600&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body class="bg-slate-100 min-h-screen flex items-center justify-center p-4">
+
+    <div class="bg-white rounded-2xl shadow-xl w-full max-w-2xl overflow-hidden border border-slate-200 flex flex-col max-h-[95vh]" id="app-container">
+        
+        <div id="header-slot"></div>
+
+        <div class="w-full bg-gray-100 h-1.5 flex-none">
+            <div class="bg-blue-500 h-1.5 transition-all duration-300 ease-out" style="width: 0%" id="progress-bar"></div>
+        </div>
+
+        <div class="p-6 overflow-y-auto flex-grow rationale-scroll" id="content-area">
+            <div id="quiz-content-placeholder" class="text-center text-gray-400 py-10">Loading Quiz...</div>
+        </div>
+
+        <div id="footer-slot"></div>
+    </div>
+
+    <script>
+        // 1. ตั้งค่าหัวข้อและสี (ปรับตามความยากง่ายตรงนี้)
+        const quizConfig = {
+            title: "TOEFL Structure (Basic)",
+            subtitle: "Set 1: Basics, S-V Agreement, Gerunds & Infinitives",
+            
+            // สีพื้นหลัง (เช่น bg-blue-700, bg-green-700, bg-red-700)
+            headerColorClass: "bg-blue-700", 
+            
+            // สีของตกแต่งอื่นๆ
+            accentColorClass: "text-blue-200", 
+            scoreTitleClass: "text-blue-200"
+        };
+
+        // 2. ข้อมูลคำถาม (Copy ชุดเก่ามาวางที่นี่)
+        const quizData = [
+            {
+                question: "The stack of library books __________ on the table.",
+                translation: "กองหนังสือห้องสมุด ______ อยู่บนโต๊ะ",
+                vocab: ["<b>Stack</b> (N): กอง, ปึก", "<b>Library</b> (N): ห้องสมุด"],
+                options: [
+                    { text: "are", correct: false, rationale: "<b>ผิดพจน์:</b> หลงกลคำว่า <i>books</i>..." },
+                    { text: "is", correct: true, rationale: "<b>Subject-Verb Agreement:</b> ประธานหลักคือ <i>The stack</i>..." },
+                    { text: "being", correct: false, rationale: "<b>กริยาไม่แท้:</b> Being ลอยๆ เป็นกริยาหลักไม่ได้" },
+                    { text: "to be", correct: false, rationale: "<b>กริยาไม่แท้:</b> Infinitive เป็นกริยาหลักไม่ได้" }
+                ]
+            },
+            // ... ใส่ข้ออื่นๆ ต่อตรงนี้ ...
+            {
+                question: "__________ extensive research before starting the project is necessary.",
+                translation: "______ การวิจัยที่ครอบคลุมก่อนเริ่มโครงการเป็นสิ่งจำเป็น",
+                vocab: ["<b>Extensive</b> (Adj): กว้างขวาง", "<b>Necessary</b> (Adj): จำเป็น"],
+                options: [
+                    { text: "Conduct", correct: false, rationale: "<b>ผิดหน้าที่คำ:</b> Conduct เป็น V.1 เป็นประธานไม่ได้" },
+                    { text: "To conducting", correct: false, rationale: "<b>ผิดรูปแบบ:</b> To ต้องตามด้วย V.1" },
+                    { text: "Conducting", correct: true, rationale: "<b>Gerund as Subject:</b> ใช้ V-ing เป็นประธาน" },
+                    { text: "Conducted", correct: false, rationale: "<b>ผิดหน้าที่คำ:</b> V.2/V.3 เป็นประธานไม่ได้" }
+                ]
+            }
+        ];
+    </script>
+
+    <script src="assets/js/script.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TOEFL ITP Structure: Set 2</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@300;400;600&family=Sarabun:wght@400;600&display=swap" rel="stylesheet">
     <!-- Phosphor Icons -->

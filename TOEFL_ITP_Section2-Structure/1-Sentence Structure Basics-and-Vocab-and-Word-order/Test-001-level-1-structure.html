@@ -42,29 +42,147 @@
             scoreTitleClass: "text-blue-200"
         };
 
-        // 2. ข้อมูลคำถาม (Copy ชุดเก่ามาวางที่นี่)
+        // 2. ข้อมูลคำถาม
+        // Data Set: Set 1 (Revised) - Basic Structure, Word Order, S-V Agreement, Gerunds & Infinitives
         const quizData = [
             {
                 question: "The stack of library books __________ on the table.",
                 translation: "กองหนังสือห้องสมุด ______ อยู่บนโต๊ะ",
-                vocab: ["<b>Stack</b> (N): กอง, ปึก", "<b>Library</b> (N): ห้องสมุด"],
+                vocab: [
+                    "<b>Stack</b> (N): กอง, ปึก",
+                    "<b>Library</b> (N): ห้องสมุด"
+                ],
                 options: [
-                    { text: "are", correct: false, rationale: "<b>ผิดพจน์:</b> หลงกลคำว่า <i>books</i>..." },
-                    { text: "is", correct: true, rationale: "<b>Subject-Verb Agreement:</b> ประธานหลักคือ <i>The stack</i>..." },
-                    { text: "being", correct: false, rationale: "<b>กริยาไม่แท้:</b> Being ลอยๆ เป็นกริยาหลักไม่ได้" },
-                    { text: "to be", correct: false, rationale: "<b>กริยาไม่แท้:</b> Infinitive เป็นกริยาหลักไม่ได้" }
+                    { text: "are", correct: false, rationale: "<b>ผิดพจน์:</b> หลงกลคำว่า <i>books</i> (พหูพจน์) ที่อยู่ในบุพบทวลีครับ" },
+                    { text: "is", correct: true, rationale: "<b>Subject-Verb Agreement:</b> ประธานหลักคือ <i>The stack</i> (กองเดียว - เอกพจน์) ส่วน 'of library books' เป็นแค่ส่วนขยาย ดังนั้นกริยาต้องใช้ <b>is</b>" },
+                    { text: "being", correct: false, rationale: "<b>กริยาไม่แท้:</b> <i>Being</i> ลอยๆ ไม่สามารถเป็นกริยาหลัก (Main Verb) ของประโยคได้" },
+                    { text: "to be", correct: false, rationale: "<b>กริยาไม่แท้:</b> Infinitive (to be) ไม่สามารถเป็นกริยาหลักได้" }
                 ]
             },
-            // ... ใส่ข้ออื่นๆ ต่อตรงนี้ ...
             {
                 question: "__________ extensive research before starting the project is necessary.",
                 translation: "______ การวิจัยที่ครอบคลุมก่อนเริ่มโครงการเป็นสิ่งจำเป็น",
-                vocab: ["<b>Extensive</b> (Adj): กว้างขวาง", "<b>Necessary</b> (Adj): จำเป็น"],
+                vocab: [
+                    "<b>Extensive</b> (Adj): กว้างขวาง, ครอบคลุม",
+                    "<b>Necessary</b> (Adj): จำเป็น"
+                ],
                 options: [
-                    { text: "Conduct", correct: false, rationale: "<b>ผิดหน้าที่คำ:</b> Conduct เป็น V.1 เป็นประธานไม่ได้" },
-                    { text: "To conducting", correct: false, rationale: "<b>ผิดรูปแบบ:</b> To ต้องตามด้วย V.1" },
-                    { text: "Conducting", correct: true, rationale: "<b>Gerund as Subject:</b> ใช้ V-ing เป็นประธาน" },
-                    { text: "Conducted", correct: false, rationale: "<b>ผิดหน้าที่คำ:</b> V.2/V.3 เป็นประธานไม่ได้" }
+                    { text: "Conduct", correct: false, rationale: "<b>ผิดหน้าที่คำ:</b> <i>Conduct</i> เป็นกริยาช่อง 1 (Base form) ไม่สามารถวางต้นประโยคเป็นประธานได้" },
+                    { text: "To conducting", correct: false, rationale: "<b>ผิดรูปแบบ:</b> <i>To</i> ต้องตามด้วย Infinitive (V.1) ไม่ใช่ V-ing" },
+                    { text: "Conducting", correct: true, rationale: "<b>Gerund as Subject:</b> ตำแหน่งประธานต้องการคำนาม การใช้ <i>Conducting</i> (การดำเนินการ) เป็น Gerund (V-ing) ทำหน้าที่เป็นประธานเอกพจน์ได้ถูกต้อง" },
+                    { text: "Conducted", correct: false, rationale: "<b>ผิดหน้าที่คำ:</b> <i>Conducted</i> (V.2/V.3) ทำหน้าที่เป็นประธานไม่ได้" }
+                ]
+            },
+            {
+                question: "The company plans __________ its operations next year.",
+                translation: "บริษัทวางแผนที่จะ ______ การดำเนินงานในปีหน้า",
+                vocab: [
+                    "<b>Expand</b> (V): ขยาย",
+                    "<b>Operation</b> (N): การดำเนินงาน"
+                ],
+                options: [
+                    { text: "to expand", correct: true, rationale: "<b>Infinitive after Verb:</b> กริยา <i>plan</i> ต้องตามด้วย Infinitive with to (plan to do something)" },
+                    { text: "expanding", correct: false, rationale: "<b>ผิดรูปแบบ:</b> <i>plan</i> ไม่ตามด้วย Gerund (V-ing)" },
+                    { text: "expand", correct: false, rationale: "<b>ผิดรูปแบบ:</b> กริยาแท้ 2 ตัวชนกันไม่ได้ (plans expand)" },
+                    { text: "expansion", correct: false, rationale: "<b>ผิดหน้าที่คำ:</b> หลัง plans ต้องการกริยาเพื่อบอกการกระทำ" }
+                ]
+            },
+            {
+                question: "The new software includes a __________ feature.",
+                translation: "ซอฟต์แวร์ใหม่ประกอบด้วยฟีเจอร์ ______",
+                vocab: [
+                    "<b>Security</b> (N): ความปลอดภัย",
+                    "<b>Reliable</b> (Adj): เชื่อถือได้"
+                ],
+                options: [
+                    { text: "security reliable", correct: false, rationale: "<b>ผิดลำดับ:</b> Adjective ต้องวางหน้า Noun ที่มันขยาย" },
+                    { text: "reliably security", correct: false, rationale: "<b>ผิดหน้าที่คำ:</b> <i>Reliably</i> เป็น Adverb ขยาย Noun ไม่ได้" },
+                    { text: "reliance security", correct: false, rationale: "<b>ผิดหน้าที่คำ:</b> <i>Reliance</i> เป็น Noun (ความเชื่อมั่น) ไม่ใช่นำมาขยายแบบ Adjective ในบริบทนี้" },
+                    { text: "reliable security", correct: true, rationale: "<b>Word Order:</b> ลำดับคำที่ถูกต้องคือ <b>Adjective (reliable) + Noun (security)</b> เพื่อขยายคำว่า feature" }
+                ]
+            },
+            {
+                question: "Neither the manager nor the employees __________ with the decision.",
+                translation: "ทั้งผู้จัดการและพนักงานต่างก็ไม่ ______ กับการตัดสินใจนั้น",
+                vocab: [
+                    "<b>Agree</b> (V): เห็นด้วย",
+                    "<b>Decision</b> (N): การตัดสินใจ"
+                ],
+                options: [
+                    { text: "agrees", correct: false, rationale: "<b>ผิดพจน์:</b> <i>agrees</i> ใช้กับประธานเอกพจน์" },
+                    { text: "agree", correct: true, rationale: "<b>S-V Agreement (Correlative):</b> ในโครงสร้าง <i>Neither...nor...</i> กริยาจะผันตามประธานตัวหลัง (the employees - พหูพจน์) ดังนั้นใช้ <b>agree</b> (ไม่เติม s)" },
+                    { text: "agreeing", correct: false, rationale: "<b>กริยาไม่แท้:</b> V-ing ต้องมี V.to be นำหน้า" },
+                    { text: "to agree", correct: false, rationale: "<b>กริยาไม่แท้:</b> Infinitive เป็นกริยาหลักไม่ได้" }
+                ]
+            },
+            {
+                question: "We avoided __________ through the heavy traffic.",
+                translation: "พวกเราหลีกเลี่ยงการ ______ ฝ่าการจราจรที่ติดขัด",
+                vocab: [
+                    "<b>Avoid</b> (V): หลีกเลี่ยง",
+                    "<b>Drive</b> (V): ขับรถ"
+                ],
+                options: [
+                    { text: "to drive", correct: false, rationale: "<b>ผิดรูปแบบ:</b> <i>avoid</i> ไม่ตามด้วย Infinitive" },
+                    { text: "drive", correct: false, rationale: "<b>ผิดรูปแบบ:</b> กริยาชนกันไม่ได้" },
+                    { text: "driving", correct: true, rationale: "<b>Gerund after Verb:</b> กริยา <i>avoid</i> ต้องตามด้วย Gerund (V-ing) เสมอ (avoid doing something)" },
+                    { text: "drove", correct: false, rationale: "<b>ผิด Tense/รูปแบบ:</b> หลังกริยาหลัก ไม่ใช้ V.2" }
+                ]
+            },
+            {
+                question: "__________ extremely difficult to maintain.",
+                translation: "______ ยากมากที่จะรักษาไว้",
+                vocab: [
+                    "<b>Maintain</b> (V): รักษา, คงไว้",
+                    "<b>Difficult</b> (Adj): ยาก"
+                ],
+                options: [
+                    { text: "It is", correct: true, rationale: "<b>Sentence Structure:</b> ประโยคขาดทั้ง <b>Subject</b> และ <b>Verb</b>. <i>It is</i> + Adjective + to do... เป็นโครงสร้างมาตรฐาน" },
+                    { text: "Is", correct: false, rationale: "<b>ขาดประธาน:</b> มีแต่กริยา (Is) ขาดประธาน (It)" },
+                    { text: "The", correct: false, rationale: "<b>ไม่สมบูรณ์:</b> <i>The</i> เป็นแค่ Article ไม่ใช่ประธานและกริยา" },
+                    { text: "That", correct: false, rationale: "<b>ขาดกริยา:</b> ถ้า That เป็นประธาน ก็ยังขาด verb" }
+                ]
+            },
+            {
+                question: "The scientist used a __________ method.",
+                translation: "นักวิทยาศาสตร์ใช้วิธีการ ______",
+                vocab: [
+                    "<b>Method</b> (N): วิธีการ",
+                    "<b>Complete</b> (Adj): สมบูรณ์, ทั้งหมด"
+                ],
+                options: [
+                    { text: "complete new", correct: false, rationale: "<b>ผิดหน้าที่คำ:</b> Adjective (complete) ไม่ควรขยาย Adjective (new) ต้องใช้ Adverb" },
+                    { text: "completely new", correct: true, rationale: "<b>Word Order:</b> ต้องการส่วนขยาย Noun (method). ลำดับคือ <b>Adverb (completely) + Adjective (new) + Noun (method)</b>" },
+                    { text: "newly complete", correct: false, rationale: "<b>ความหมายแปลก:</b> ปกติเราพูดว่า 'ใหม่ถอดด้าม' (completely new) ไม่ใช่ 'สมบูรณ์แบบใหม่อย่างสดๆ ร้อนๆ' ในบริบทวิธีวิจัย" },
+                    { text: "new complete", correct: false, rationale: "<b>ผิดลำดับ/หน้าที่:</b> ขาด Adverb มาขยายดีกรี" }
+                ]
+            },
+            {
+                question: "__________ creates opportunities for everyone.",
+                translation: "______ สร้างโอกาสสำหรับทุกคน",
+                vocab: [
+                    "<b>Create</b> (V): สร้าง",
+                    "<b>Opportunity</b> (N): โอกาส"
+                ],
+                options: [
+                    { text: "Learn", correct: false, rationale: "<b>ผิดหน้าที่คำ:</b> V.1 เป็นประธานไม่ได้" },
+                    { text: "Learns", correct: false, rationale: "<b>ผิดหน้าที่คำ:</b> กริยาเติม s เป็นประธานไม่ได้" },
+                    { text: "To learning", correct: false, rationale: "<b>ผิดรูปแบบ:</b> Infinitive ต้องเป็น To learn" },
+                    { text: "Learning", correct: true, rationale: "<b>Gerund as Subject:</b> ต้องการประธานของประโยค. <i>Learning</i> (การเรียนรู้) ทำหน้าที่เป็นนามและประธานเอกพจน์ สอดคล้องกับ creates (เติม s)" }
+                ]
+            },
+            {
+                question: "She decided __________ a new car.",
+                translation: "เธอตัดสินใจที่จะ ______ รถคันใหม่",
+                vocab: [
+                    "<b>Decide</b> (V): ตัดสินใจ",
+                    "<b>Buy</b> (V): ซื้อ"
+                ],
+                options: [
+                    { text: "buying", correct: false, rationale: "<b>ผิดรูปแบบ:</b> <i>decide</i> ไม่ตามด้วย Gerund (V-ing)" },
+                    { text: "buy", correct: false, rationale: "<b>ผิดรูปแบบ:</b> กริยาแท้ 2 ตัว (decided buy) ชนกันไม่ได้" },
+                    { text: "to buy", correct: true, rationale: "<b>Infinitive after Verb:</b> กริยา <i>decide</i> ต้องตามด้วย Infinitive with to (decide to do something) เสมอ" },
+                    { text: "bought", correct: false, rationale: "<b>ผิด Tense:</b> หลังกริยาหลัก ไม่ใช้ V.2 หรือ V.3 ซ้อนกันแบบนี้" }
                 ]
             }
         ];

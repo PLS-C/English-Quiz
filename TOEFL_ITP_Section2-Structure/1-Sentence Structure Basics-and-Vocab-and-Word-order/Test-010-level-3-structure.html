@@ -3,6 +3,178 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TOEFL ITP Structure: Set 10</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@300;400;600&family=Sarabun:wght@400;600&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body class="bg-slate-100 min-h-screen flex items-center justify-center p-4">
+
+    <div class="bg-white rounded-2xl shadow-xl w-full max-w-2xl overflow-hidden border border-slate-200 flex flex-col max-h-[95vh]" id="app-container">
+        
+        <div id="header-slot"></div>
+
+        <div class="w-full bg-gray-100 h-1.5 flex-none">
+            <div class="bg-blue-500 h-1.5 transition-all duration-300 ease-out" style="width: 0%" id="progress-bar"></div>
+        </div>
+
+        <div class="p-6 overflow-y-auto flex-grow rationale-scroll" id="content-area">
+            <div id="quiz-content-placeholder" class="text-center text-gray-400 py-10">Loading Quiz...</div>
+        </div>
+
+        <div id="footer-slot"></div>
+    </div>
+
+    <script>
+        // 1. ตั้งค่าหัวข้อและสี (ปรับตามความยากง่ายตรงนี้)
+        const quizConfig = {
+            title: "TOEFL Structure (Advanced)",
+            subtitle: "Set 10: Inversion, Subjunctive, Advanced S-V (Level 3)",
+            
+            // สีพื้นหลัง (เช่น bg-blue-700, bg-yellow-600, bg-red-700)
+            headerColorClass: "bg-red-700", 
+            
+            // สีของตกแต่งอื่นๆ
+            accentColorClass: "text-red-200", 
+            scoreTitleClass: "text-red-100"
+        };
+
+        // 2. ข้อมูลคำถาม
+        // Data Set: Set 10 (Level 3) - Advanced Structure
+        const quizData = [
+            {
+                question: "Rarely __________ such a profound impact on society.",
+                translation: "น้อยครั้งนักที่เหตุการณ์หนึ่งจะมีผลกระทบอย่างลึกซึ้งต่อสังคมเช่นนี้",
+                vocab: ["Profound (Adj): ลึกซึ้ง", "Impact (N): ผลกระทบ"],
+                options: [
+                    { text: "does an event have", correct: true, rationale: "<b>Inversion:</b> ขึ้นต้นด้วย Negative Adverb (Rarely) ต้องกลับประโยคเอา V.ช่วย (does) มาหน้าประธาน" },
+                    { text: "an event has", correct: false, rationale: "<b>ผิดกฎ Inversion:</b> เรียงแบบบอกเล่าไม่ได้" },
+                    { text: "has an event", correct: false, rationale: "<b>ผิดโครงสร้าง:</b> ต้องใช้ V.ช่วย do/does ใน Present Simple" },
+                    { text: "an event having", correct: false, rationale: "<b>ไม่มีกริยาแท้:</b> having เป็น Participle" }
+                ]
+            },
+            {
+                question: "It is essential that the CEO __________ the meeting in person.",
+                translation: "จำเป็นอย่างยิ่งที่ CEO ต้องเข้าร่วมการประชุมด้วยตนเอง",
+                vocab: ["Essential (Adj): จำเป็น", "Attend (V): เข้าร่วม"],
+                options: [
+                    { text: "attend", correct: true, rationale: "<b>Subjunctive Mood:</b> หลัง essential that... กริยาต้องเป็น Base form (ไม่เติม s)" },
+                    { text: "attends", correct: false, rationale: "<b>ผิดกฎ Subjunctive:</b> ห้ามเติม s แม้ประธานเอกพจน์" },
+                    { text: "attending", correct: false, rationale: "<b>กริยาไม่แท้:</b> ใช้ไม่ได้ใน Subjunctive clause" },
+                    { text: "to attend", correct: false, rationale: "<b>ผิดรูปแบบ:</b> ใน that clause ต้องเป็น Subject + Verb" }
+                ]
+            },
+            {
+                question: "Not only __________ the deadline, but they also exceeded expectations.",
+                translation: "ไม่เพียงแต่พวกเขาจะทันกำหนดเวลาเท่านั้น แต่ยังทำได้เกินความคาดหมายอีกด้วย",
+                vocab: ["Exceed (V): เกินกว่า", "Deadline (N): กำหนดเวลา"],
+                options: [
+                    { text: "did they meet", correct: true, rationale: "<b>Inversion (Not only):</b> ต้องกลับประโยคโดยใช้ V.ช่วย (did) นำหน้าประธาน" },
+                    { text: "they met", correct: false, rationale: "<b>ผิดกฎ Inversion:</b> เรียงแบบปกติไม่ได้" },
+                    { text: "they did meet", correct: false, rationale: "<b>ผิดลำดับ:</b> did ต้องอยู่หน้า they" },
+                    { text: "met they", correct: false, rationale: "<b>ผิดโครงสร้าง:</b> ย้ายกริยาแท้มาข้างหน้าไม่ได้" }
+                ]
+            },
+            {
+                question: "The number of students enrolled in the course __________ steadily.",
+                translation: "จำนวนนักเรียนที่ลงทะเบียนในรายวิชานี้เพิ่มขึ้นอย่างต่อเนื่อง",
+                vocab: ["Enroll (V): ลงทะเบียน", "Steadily (Adv): อย่างต่อเนื่อง"],
+                options: [
+                    { text: "has increased", correct: true, rationale: "<b>S-V Agreement:</b> 'The number of' (จำนวนของ) ถือเป็นเอกพจน์เสมอ จึงใช้ has" },
+                    { text: "have increased", correct: false, rationale: "<b>ผิดพจน์:</b> 'A number of' ถึงจะเป็นพหูพจน์" },
+                    { text: "increasing", correct: false, rationale: "<b>กริยาไม่แท้:</b> ขาด V.to be" },
+                    { text: "increase", correct: false, rationale: "<b>ผิดพจน์:</b> ถ้าเป็น Present ต้องเติม s (increases)" }
+                ]
+            },
+            {
+                question: "Had the team been better prepared, they __________ the championship.",
+                translation: "หากทีมเตรียมตัวมาดีกว่านี้ พวกเขาคงจะชนะการแข่งขันไปแล้ว",
+                vocab: [
+                    "<b>Prepare</b> (V): เตรียมตัว",
+                    "<b>Championship</b> (N): การแข่งขันชิงแชมป์"
+                ],
+                options: [
+                    { text: "would have won", correct: true, rationale: "<b>Inverted Conditional (Type 3):</b> Had... (If...had...) คู่กับ would have + V3" },
+                    { text: "will win", correct: false, rationale: "<b>ผิด Tense:</b> Type 3 เป็นอดีตสมมติ" },
+                    { text: "would win", correct: false, rationale: "<b>ผิด Tense:</b> นี่เป็น Type 2 (ปัจจุบันสมมติ)" },
+                    { text: "won", correct: false, rationale: "<b>ผิดโครงสร้าง:</b> ขาด Modal verb" }
+                ]
+            },
+            {
+                question: "__________ that the problem was solved, he went home.",
+                translation: "เมื่อมั่นใจว่าปัญหาได้รับการแก้ไขแล้ว เขาจึงกลับบ้าน",
+                vocab: [
+                    "<b>Satisfied</b> (Adj/Participle): พอใจ, มั่นใจ",
+                    "<b>Solve</b> (V): แก้ปัญหา"
+                ],
+                options: [
+                    { text: "Satisfied", correct: true, rationale: "<b>Past Participle Phrase:</b> ลดรูปจาก 'Because he was satisfied...' (ประธานรู้สึกพอใจเอง)" },
+                    { text: "Satisfying", correct: false, rationale: "<b>ความหมายผิด:</b> แปลว่า 'น่าพอใจ' (เขาเป็นคนน่าพอใจ? ไม่ใช่)" },
+                    { text: "To satisfy", correct: false, rationale: "<b>ผิดความหมาย:</b> เพื่อที่จะทำให้พอใจ (บอกวัตถุประสงค์) ไม่เข้ากับบริบท" },
+                    { text: "Satisfaction", correct: false, rationale: "<b>ผิดหน้าที่คำ:</b> Noun phrase ลอยๆ ไม่สื่อความหมายการกระทำ" }
+                ]
+            },
+            {
+                question: "Physics __________ a difficult subject for many students.",
+                translation: "ฟิสิกส์เป็นวิชาที่ยากสำหรับนักเรียนหลายคน",
+                vocab: ["Physics (N): วิชาฟิสิกส์", "Subject (N): วิชา"],
+                options: [
+                    { text: "is", correct: true, rationale: "<b>S-V Agreement:</b> ชื่อวิชาที่ลงท้ายด้วย s (Physics, Mathematics) ถือเป็นเอกพจน์" },
+                    { text: "are", correct: false, rationale: "<b>ผิดพจน์:</b> ชื่อวิชาเป็นเอกพจน์เสมอ" },
+                    { text: "being", correct: false, rationale: "<b>กริยาไม่แท้:</b> เป็นกริยาหลักไม่ได้" },
+                    { text: "to be", correct: false, rationale: "<b>กริยาไม่แท้:</b> เป็นกริยาหลักไม่ได้" }
+                ]
+            },
+            {
+                question: "The jury __________ reached a verdict.",
+                translation: "คณะลูกขุนได้ข้อสรุปคำตัดสินแล้ว",
+                vocab: ["Jury (N): คณะลูกขุน", "Verdict (N): คำตัดสิน"],
+                options: [
+                    { text: "has", correct: true, rationale: "<b>Collective Noun:</b> Jury ในที่นี้มองเป็นกลุ่มก้อนเดียว (เอกพจน์) ที่เห็นพ้องต้องกัน" },
+                    { text: "have", correct: false, rationale: "<b>บริบท:</b> จะใช้ have ถ้าสมาชิกในกลุ่มมีความเห็นขัดแย้งกัน" },
+                    { text: "having", correct: false, rationale: "<b>กริยาไม่แท้:</b> ขาด V.to be" },
+                    { text: "to have", correct: false, rationale: "<b>กริยาไม่แท้:</b> เป็นกริยาหลักไม่ได้" }
+                ]
+            },
+            {
+                question: "Mr. Smith, along with his two sons, __________ arriving tonight.",
+                translation: "คุณสมิธ พร้อมด้วยลูกชายสองคน กำลังจะมาถึงคืนนี้",
+                vocab: ["Arrive (V): มาถึง", "Tonight (Adv): คืนนี้"],
+                options: [
+                    { text: "is", correct: true, rationale: "<b>S-V Agreement:</b> ประธานหลักคือ Mr. Smith (เอกพจน์) วลี 'along with...' ไม่เปลี่ยนพจน์ประธาน" },
+                    { text: "are", correct: false, rationale: "<b>ผิดพจน์:</b> หลงกล sons ในส่วนขยาย" },
+                    { text: "were", correct: false, rationale: "<b>ผิด Tense:</b> tonight เป็นอนาคตใกล้ๆ ใช้ Present Continuous ได้ แต่ were เป็นอดีต" },
+                    { text: "be", correct: false, rationale: "<b>กริยาไม่ผัน:</b> ใช้เป็นกริยาหลักไม่ได้" }
+                ]
+            },
+            {
+                question: "__________ by the noise, she closed the window.",
+                translation: "เพราะถูกรบกวนด้วยเสียงดัง เธอจึงปิดหน้าต่าง",
+                vocab: ["Disturb (V): รบกวน", "Noise (N): เสียงดัง"],
+                options: [
+                    { text: "Disturbed", correct: true, rationale: "<b>Passive Participle:</b> ลดรูปจาก 'Because she was disturbed...' (ประธานถูกกระทำ)" },
+                    { text: "Disturbing", correct: false, rationale: "<b>Active Participle:</b> แปลว่า 'เธอกำลังรบกวนคนอื่น' ซึ่งผิดบริบท" },
+                    { text: "Disturb", correct: false, rationale: "<b>ผิดหน้าที่คำ:</b> V.1 ขึ้นต้นประโยคไม่ได้ (ยกเว้นคำสั่ง)" },
+                    { text: "To disturb", correct: false, rationale: "<b>ผิดความหมาย:</b> เพื่อที่จะรบกวน (บอกวัตถุประสงค์)" }
+                ]
+            }
+        ];
+    </script>
+
+    <script src="assets/js/script.js"></script>
+</body>
+</html>
+
+
+
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TOEFL ITP Structure: Set 10 (Level 3)</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@300;400;600&family=Sarabun:wght@400;600&display=swap" rel="stylesheet">

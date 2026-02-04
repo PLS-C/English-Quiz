@@ -3,24 +3,123 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Deep Dive: Usage of 'To' | TOEFL ITP</title>
+    <title>Usage of 'To' | TOEFL ITP</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@300;400;600&family=Sarabun:wght@400;600;700&display=swap" rel="stylesheet">
     
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://unpkg.com/@phosphor-icons/web"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sarabun:wght@400;500;700&display=swap" rel="stylesheet">
     
-    <link rel="stylesheet" href="css/quiz-style.css">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
 
     <style>
-        body { font-family: 'Inter', 'Sarabun', sans-serif; background-color: #f8fafc; }
+        :root {
+            --theme-primary: #0f766e; /* Teal-700 */
+            --theme-light: #f0fdfa;   /* Teal-50 */
+            --theme-border: #ccfbf1;  /* Teal-200 */
+        }
+        
+        body { 
+            font-family: 'Sarabun', 'Noto Sans Thai', sans-serif; 
+            background-color: #f8f9fa;
+        }
+
+        /* Main Card */
+        .main-card {
+            border: none;
+            border-radius: 16px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            overflow: hidden;
+            max-width: 800px;
+            margin: 40px auto;
+        }
+
+        /* Header */
+        .header-bg {
+            background-color: var(--theme-primary);
+            color: white;
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+        .header-decoration {
+            position: absolute;
+            bottom: -50px;
+            right: -50px;
+            width: 150px;
+            height: 150px;
+            background-color: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            filter: blur(40px);
+        }
+
+        /* Content Styling */
+        .section-title {
+            color: #115e59;
+            border-left: 5px solid #14b8a6;
+            padding-left: 15px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            margin-top: 30px;
+        }
+
+        .example-box {
+            background-color: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        /* Quiz Buttons */
+        .btn-quiz-option {
+            text-align: left;
+            border: 1px solid #dee2e6;
+            background-color: white;
+            color: #495057;
+            border-radius: 10px;
+            padding: 15px;
+            width: 100%;
+            margin-bottom: 10px;
+            transition: all 0.2s;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .btn-quiz-option:hover:not(:disabled) {
+            background-color: var(--theme-light);
+            border-color: #99f6e4;
+            color: var(--theme-primary);
+        }
+        .btn-quiz-option:disabled { opacity: 0.7; }
+
+        /* Quiz States */
+        .btn-success-custom {
+            background-color: #d1fae5 !important;
+            border-color: #10b981 !important;
+            color: #065f46 !important;
+        }
+        .btn-danger-custom {
+            background-color: #fee2e2 !important;
+            border-color: #ef4444 !important;
+            color: #991b1b !important;
+        }
+
+        .back-link {
+            color: #ccfbf1;
+            text-decoration: none;
+            font-size: 0.9em;
+            display: inline-flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        .back-link:hover { color: white; }
     </style>
 </head>
 <body>
 
-    <div id="global-header"></div>
-
     <div class="container">
-        
         <div class="card main-card">
             
             <div class="header-bg">
@@ -575,13 +674,108 @@
                     </div>
             </div>
 
-            <div id="global-footer"></div>
-
+            <div class="p-4 text-center border-top">
+                <div class="d-inline-flex align-items-center gap-2 bg-white px-3 py-1 rounded-pill border shadow-sm small text-muted mb-2">
+                    <i class="ph-fill ph-sparkle text-warning"></i>
+                    เรียบเรียงโดย Gemini AI & ตรวจสอบโดย PLS-C
+                </div>
+                <div class="text-muted small" style="font-size: 0.8rem;">
+                    &copy; 2026 PLS-C English Quiz. All rights reserved.
+                </div>
+            </div>
 
         </div>
-
     </div>
-    <script src="js/quiz-engine.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        // --- Data Source ---
+        const quizData = [
+            {
+                question: "1. We look forward to ______ from you soon.",
+                options: [
+                    { text: "A) hear", correct: false, rationale: "Look forward to เป็นข้อยกเว้น ต้องตามด้วย V.ing ครับ" },
+                    { text: "B) hearing", correct: true, rationale: "ถูกต้อง! Look forward to + V.ing เสมอ" }
+                ]
+            },
+            {
+                question: "2. ______ fit, you should exercise regularly.",
+                options: [
+                    { text: "A) Keeping", correct: false, rationale: "ขึ้นต้นประโยคเพื่อบอกจุดประสงค์ ต้องใช้ To + V.1 ครับ" },
+                    { text: "B) To keep", correct: true, rationale: "ถูกต้อง! To keep fit = เพื่อที่จะรักษารูปร่าง (Infinitive of Purpose)" }
+                ]
+            },
+            {
+                question: "3. She objects to ______ on weekends.",
+                options: [
+                    { text: "A) working", correct: true, rationale: "ถูกต้อง! Object to (คัดค้าน) เป็นข้อยกเว้น ต้องตามด้วย V.ing ครับ" },
+                    { text: "B) work", correct: false, rationale: "ผิดครับ Object to ต้องตามด้วย Gerund (V.ing)" }
+                ]
+            }
+        ];
+
+        // --- Render Quiz Function ---
+        const quizArea = document.getElementById('quiz-area');
+
+        quizData.forEach((item, index) => {
+            // Create Card
+            const qDiv = document.createElement('div');
+            qDiv.className = "bg-white p-4 rounded-3 border shadow-sm";
+
+            // Create Options HTML
+            let optionsHtml = "";
+            item.options.forEach((opt, optIndex) => {
+                optionsHtml += `
+                    <button onclick="checkAnswer(${index}, ${optIndex}, this)" 
+                            class="btn btn-quiz-option">
+                        <span>${opt.text}</span>
+                        <i class="ph-bold ph-circle text-secondary"></i>
+                    </button>
+                `;
+            });
+
+            // Assemble HTML
+            qDiv.innerHTML = `
+                <p class="fw-bold text-dark mb-3">${index + 1}. ${item.question}</p>
+                <div>${optionsHtml}</div>
+                <div id="feedback-${index}" class="mt-3 p-3 rounded-3 small fw-bold d-none"></div>
+            `;
+            quizArea.appendChild(qDiv);
+        });
+
+        // --- Check Answer Function ---
+        window.checkAnswer = function(qIndex, optIndex, btnElement) {
+            const question = quizData[qIndex];
+            const option = question.options[optIndex];
+            const feedbackEl = document.getElementById(`feedback-${qIndex}`);
+            
+            // Disable all buttons in this question
+            const allBtns = btnElement.parentElement.querySelectorAll('button');
+            allBtns.forEach(btn => {
+                btn.disabled = true;
+            });
+
+            // Show Feedback & Change Styles
+            feedbackEl.classList.remove('d-none');
+            
+            if (option.correct) {
+                // Correct Style
+                btnElement.classList.add('btn-success-custom');
+                btnElement.querySelector('i').className = "ph-fill ph-check-circle text-success fs-5";
+                
+                feedbackEl.className = "mt-3 p-3 rounded-3 small fw-bold alert alert-success border-success";
+                feedbackEl.innerHTML = `<i class="ph-bold ph-check me-2"></i> ${option.rationale}`;
+            } else {
+                // Wrong Style
+                btnElement.classList.add('btn-danger-custom');
+                btnElement.querySelector('i').className = "ph-fill ph-x-circle text-danger fs-5";
+
+                feedbackEl.className = "mt-3 p-3 rounded-3 small fw-bold alert alert-danger border-danger";
+                feedbackEl.innerHTML = `<i class="ph-bold ph-x me-2"></i> ${option.rationale}`;
+            }
+        };
+    </script>
 
 </body>
 </html>

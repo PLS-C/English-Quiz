@@ -1,0 +1,102 @@
+/* css/usage-style.css */
+:root {
+    --theme-primary: #0f766e; /* Teal-700 */
+    --theme-light: #f0fdfa;   /* Teal-50 */
+    --theme-border: #ccfbf1;  /* Teal-200 */
+}
+
+body { 
+    font-family: 'Sarabun', 'Noto Sans Thai', sans-serif; 
+    background-color: #f8f9fa;
+}
+
+/* Main Card */
+.main-card {
+    border: none;
+    border-radius: 16px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+    overflow: hidden;
+    max-width: 800px;
+    margin: 40px auto;
+}
+
+/* Header */
+.header-bg {
+    background-color: var(--theme-primary);
+    color: white;
+    padding: 2rem;
+    position: relative;
+    overflow: hidden;
+}
+.header-decoration {
+    position: absolute;
+    bottom: -50px;
+    right: -50px;
+    width: 150px;
+    height: 150px;
+    background-color: rgba(255,255,255,0.1);
+    border-radius: 50%;
+    filter: blur(40px);
+}
+
+/* Content Styling */
+.section-title {
+    color: #115e59;
+    border-left: 5px solid #14b8a6;
+    padding-left: 15px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    margin-top: 30px;
+}
+
+.example-box {
+    background-color: #f8f9fa;
+    border: 1px solid #e9ecef;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+/* Quiz Buttons */
+.btn-quiz-option {
+    text-align: left;
+    border: 1px solid #dee2e6;
+    background-color: white;
+    color: #495057;
+    border-radius: 10px;
+    padding: 15px;
+    width: 100%;
+    margin-bottom: 10px;
+    transition: all 0.2s;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.btn-quiz-option:hover:not(:disabled) {
+    background-color: var(--theme-light);
+    border-color: #99f6e4;
+    color: var(--theme-primary);
+}
+.btn-quiz-option:disabled { opacity: 0.7; }
+
+/* Quiz States */
+.btn-success-custom {
+    background-color: #d1fae5 !important;
+    border-color: #10b981 !important;
+    color: #065f46 !important;
+}
+.btn-danger-custom {
+    background-color: #fee2e2 !important;
+    border-color: #ef4444 !important;
+    color: #991b1b !important;
+}
+
+.back-link {
+    color: #ccfbf1;
+    text-decoration: none;
+    font-size: 0.9em;
+    display: inline-flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+.back-link:hover { color: white; }

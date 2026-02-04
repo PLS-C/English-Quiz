@@ -4,6 +4,11 @@ This directory contains interactive HTML-based grammar lessons and quizzes desig
 
 Each file is a standalone module covering specific grammatical rules, common TOEFL traps, and practice questions with instant feedback mechanisms.
 
+# TOEFL ITP Section 2: Structure
+
+[👉 Click here to practice online (Web Version)](https://pls-c.github.io/English-Quiz/TOEFL_ITP_Section2-Structure/)
+
+
 ## 🤖 AI-Augmented Development
 
 This project utilizes the power of **Generative AI (Gemini)** to assist in the content creation process. The AI is used to draft lesson content, generate diverse practice sentences, and formulate detailed explanations.
@@ -38,6 +43,9 @@ This project utilizes the power of **Generative AI (Gemini)** to assist in the c
 # 🇹🇭 สรุปไวยากรณ์และโครงสร้างประโยค TOEFL ITP (ภาษาไทย)
 
 ในโฟลเดอร์นี้รวบรวมบทเรียนไวยากรณ์และแบบฝึกหัดโต้ตอบ (Interactive Quizzes) ที่ออกแบบมาสำหรับเตรียมสอบ **TOEFL ITP Section 2 (Structure and Written Expression)** โดยเฉพาะ
+
+# TOEFL ITP Section 2: Structure
+[👉 คลิกเพื่อทำแบบฝึกหัดผ่านเว็บ (Web Version)](https://pls-c.github.io/English-Quiz/TOEFL_ITP_Section2-Structure/)
 
 ## 🤖 การพัฒนาด้วยเทคโนโลยี AI
 

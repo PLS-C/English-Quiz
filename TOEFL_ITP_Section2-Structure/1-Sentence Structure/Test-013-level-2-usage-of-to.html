@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TOEFL ITP Structure: Set 13</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@300;400;600&family=Sarabun:wght@400;600&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body class="bg-slate-100 min-h-screen flex items-center justify-center p-4">
+
+    <div class="bg-white rounded-2xl shadow-xl w-full max-w-2xl overflow-hidden border border-slate-200 flex flex-col max-h-[95vh]" id="app-container">
+        
+        <div id="header-slot"></div>
+
+        <div class="w-full bg-gray-100 h-1.5 flex-none">
+            <div class="bg-indigo-600 h-1.5 transition-all duration-300 ease-out" style="width: 0%" id="progress-bar"></div>
+        </div>
+
+        <div class="p-6 overflow-y-auto flex-grow rationale-scroll" id="content-area">
+            <div id="quiz-content-placeholder" class="text-center text-gray-400 py-10">Loading Quiz...</div>
+        </div>
+
+        <div id="footer-slot"></div>
+    </div>
+
+    <script>
+        // 1. ตั้งค่าหัวข้อและสี (Theme: Indigo - Academic/Advanced)
+        const quizConfig = {
+            title: "TOEFL Structure (Expert)",
+            subtitle: "Set 13: Advanced Usage of 'To'",
+            
+            // สีพื้นหลังหัวข้อ
+            headerColorClass: "bg-indigo-700", 
+            
+            // สีตัวอักษรตกแต่ง
+            accentColorClass: "text-indigo-200", 
+            scoreTitleClass: "text-indigo-600"
+        };
+
+        // 2. ข้อมูลคำถาม Set 13: Mixed Infinitive & Prepositional To
+        const quizData = [
+            {
+                question: "Despite the budget cuts, the faculty objected __________ the research grants.",
+                translation: "แม้ว่าจะมีการตัดงบประมาณ แต่คณะอาจารย์ก็คัดค้านการ ______ ทุนวิจัย",
+                vocab: [
+                    "<b>Object</b> (V): คัดค้าน",
+                    "<b>Grant</b> (N): เงินทุน"
+                ],
+                options: [
+                    { text: "to reduce", correct: false, rationale: "<b>กับดัก:</b> Object to ห้ามตามด้วย V.1 (Infinitive) ครับ" },
+                    { text: "to reducing", correct: true, rationale: "<b>Must-Know List:</b> <i>Object to</i> (คัดค้านต่อ...) คำว่า To เป็น Preposition ต้องตามด้วย <b>V.ing</b> ครับ" },
+                    { text: "reducing", correct: false, rationale: "<b>ขาด To:</b> กริยา Object ต้องรับด้วย To เสมอ" },
+                    { text: "of reducing", correct: false, rationale: "<b>ผิดบุพบท:</b> Object ใช้คู่กับ To ไม่ใช่ Of" }
+                ]
+            },
+            {
+                question: "The board of directors hesitated __________ the merger due to financial risks.",
+                translation: "คณะกรรมการบริษัทลังเลที่จะ ______ การควบรวมกิจการเนื่องจากความเสี่ยงทางการเงิน",
+                vocab: [
+                    "<b>Hesitate</b> (V): ลังเล",
+                    "<b>Approve</b> (V): อนุมัติ"
+                ],
+                options: [
+                    { text: "to approving", correct: false, rationale: "<b>ระแวงเกินไป:</b> Hesitate ไม่ใช่อยู่ในกลุ่มข้อยกเว้นครับ" },
+                    { text: "approving", correct: false, rationale: "<b>ผิดรูปแบบ:</b> Hesitate ไม่ตามด้วย Gerund" },
+                    { text: "to approve", correct: true, rationale: "<b>General Infinitive:</b> <i>Hesitate</i> (ลังเลที่จะทำ...) เป็นกริยาปกติที่ต้องตามด้วย <b>To + V.1</b> ครับ" },
+                    { text: "from approving", correct: false, rationale: "<b>ผิด Collocation:</b> Hesitate ไม่ใช้คู่กับ from" }
+                ]
+            },
+            {
+                question: "New international students often find it difficult to get accustomed __________ in a humid climate.",
+                translation: "นักเรียนต่างชาติใหม่ๆ มักพบว่าเป็นเรื่องยากที่จะคุ้นเคยกับการ ______ ในสภาพอากาศชื้น",
+                vocab: [
+                    "<b>Be accustomed to</b> (Adj): คุ้นเคย",
+                    "<b>Humid</b> (Adj): ชื้น"
+                ],
+                options: [
+                    { text: "to live", correct: false, rationale: "<b>กับดักความคุ้นเคย:</b> ถ้าเป็น Used to (เคยทำ) จะใช้ V.1 แต่บริบทนี้คือ 'ความคุ้นชิน'" },
+                    { text: "to living", correct: true, rationale: "<b>Must-Know List:</b> <i>Get accustomed to</i> (คุ้นเคยกับ...) อยู่ในกลุ่มเดียวกับ Be used to ซึ่ง To เป็น Preposition ต้องตามด้วย <b>V.ing</b>" },
+                    { text: "living", correct: false, rationale: "<b>ขาด To:</b> สำนวนนี้ต้องมี To เสมอ" },
+                    { text: "for living", correct: false, rationale: "<b>ผิดบุพบท:</b> Accustomed ใช้คู่กับ To" }
+                ]
+            },
+            {
+                question: "The pharmaceutical company strives __________ effective treatments for rare diseases.",
+                translation: "บริษัทยาพยายามอย่างหนักที่จะ ______ การรักษาที่มีประสิทธิภาพสำหรับโรคหายาก",
+                vocab: [
+                    "<b>Strive</b> (V): พยายามอย่างหนัก/ดิ้นรน",
+                    "<b>Develop</b> (V): พัฒนา"
+                ],
+                options: [
+                    { text: "to developing", correct: false, rationale: "<b>ผิดกลุ่ม:</b> Strive ไม่ได้อยู่ในกลุ่ม Prepositional To ครับ" },
+                    { text: "developing", correct: false, rationale: "<b>ผิดรูปแบบ:</b> Strive ไม่ตามด้วย Gerund" },
+                    { text: "to develop", correct: true, rationale: "<b>General Infinitive:</b> <i>Strive</i> (พยายามที่จะ...) ใช้โครงสร้างเดียวกับ Try to หรือ Attempt to คือตามด้วย <b>To + V.1</b>" },
+                    { text: "develop", correct: false, rationale: "<b>กริยาชนกัน:</b> Strives develop ผิดหลักไวยากรณ์" }
+                ]
+            },
+            {
+                question: "The editorial team looks forward __________ your manuscript in the next issue.",
+                translation: "ทีมบรรณาธิการตั้งตารอที่จะ ______ ต้นฉบับของคุณในฉบับหน้า",
+                vocab: [
+                    "<b>Look forward to</b>: ตั้งตารอ",
+                    "<b>Manuscript</b> (N): ต้นฉบับ"
+                ],
+                options: [
+                    { text: "to publish", correct: false, rationale: "<b>กับดักอันดับ 1:</b> Look forward to ห้ามตามด้วย V.1 เด็ดขาดครับ" },
+                    { text: "publishing", correct: false, rationale: "<b>ขาด To:</b> Look forward ต้องมี To" },
+                    { text: "to publishing", correct: true, rationale: "<b>Must-Know List:</b> <i>Look forward to</i> เป็นราชาแห่งข้อยกเว้น ต้องตามด้วย <b>V.ing</b> เสมอ" },
+                    { text: "publish", correct: false, rationale: "<b>ผิดไวยากรณ์:</b> ตำแหน่งนี้ต้องการกรรมของ Preposition" }
+                ]
+            },
+            {
+                question: "During the interrogation, the accountant admitted __________ company funds.",
+                translation: "ในระหว่างการสอบสวน นักบัญชียอมรับว่าได้ ______ เงินกองทุนของบริษัท",
+                vocab: [
+                    "<b>Admit</b> (V): ยอมรับ/สารภาพ",
+                    "<b>Embezzle</b> (V): ยักยอก"
+                ],
+                options: [
+                    { text: "to embezzle", correct: false, rationale: "<b>ผิด:</b> Admit to ห้ามตามด้วย V.1" },
+                    { text: "embezzle", correct: false, rationale: "<b>ผิด:</b> Admit หากไม่มี to ต้องตามด้วย V.ing เลย (Admit embezzling) หรือมี that clause" },
+                    { text: "to embezzling", correct: true, rationale: "<b>Must-Know List:</b> <i>Admit to</i> (สารภาพต่อการกระทำ) เป็นกลุ่มเดียวกับ Confess to ต้องตามด้วย <b>V.ing</b> ครับ" },
+                    { text: "of embezzling", correct: false, rationale: "<b>ผิดบุพบท:</b> Admit ไม่ใช้คู่กับ Of (ถ้า Accuse ถึงจะใช้ of)" }
+                ]
+            },
+            {
+                question: "The thesis proposal is well-written and deserves __________ by the committee.",
+                translation: "โครงร่างวิทยานิพนธ์เขียนมาดีและสมควรได้รับ ______ โดยคณะกรรมการ",
+                vocab: [
+                    "<b>Deserve</b> (V): สมควรได้รับ",
+                    "<b>Consider</b> (V): พิจารณา"
+                ],
+                options: [
+                    { text: "to considering", correct: false, rationale: "<b>ผิด:</b> Deserve ไม่ใช่กลุ่ม Prepositional To" },
+                    { text: "considering", correct: false, rationale: "<b>ผิดความหมาย:</b> Deserves considering (Active) แปลว่าตัวเล่มวิทยานิพนธ์เป็นคนพิจารณาเอง ซึ่งผิด" },
+                    { text: "to be considered", correct: true, rationale: "<b>Passive Infinitive:</b> <i>Deserve + To be V.3</i> แปลว่า 'สมควรที่จะได้รับการพิจารณา' (ถูกกระทำ) เป็นโครงสร้างที่ถูกต้อง" },
+                    { text: "to consider", correct: false, rationale: "<b>ผิดความหมาย:</b> Active Voice (สมควรที่จะไปพิจารณาคนอื่น) ไม่ตรงกับบริบท" }
+                ]
+            },
+            {
+                question: "Dr. Evans has dedicated his entire professional life __________ a cure for Alzheimer's.",
+                translation: "ดร.อีแวนส์ได้อุทิศชีวิตการทำงานทั้งหมดเพื่อ ______ วิธีรักษาโรคอัลไซเมอร์",
+                vocab: [
+                    "<b>Dedicate</b> (V): อุทิศ",
+                    "<b>Cure</b> (N): การรักษา"
+                ],
+                options: [
+                    { text: "to find", correct: false, rationale: "<b>กับดัก:</b> Dedicate...to ห้ามตามด้วย V.1" },
+                    { text: "find", correct: false, rationale: "<b>ผิดไวยากรณ์:</b> ขาดคำเชื่อม" },
+                    { text: "to finding", correct: true, rationale: "<b>Must-Know List:</b> <i>Dedicate to</i> (อุทิศให้แก่...) To เป็น Preposition ต้องตามด้วย <b>V.ing</b> ครับ" },
+                    { text: "for finding", correct: false, rationale: "<b>ไม่นิยม:</b> Dedicate คู่กับ To เป็น Collocation ที่ถูกต้องที่สุด" }
+                ]
+            },
+            {
+                question: "Economic indicators suggest that the market tends __________ slowly after a recession.",
+                translation: "ดัชนีชี้วัดทางเศรษฐกิจบ่งชี้ว่าตลาดมีแนวโน้มที่จะ ______ อย่างช้าๆ หลังภาวะถดถอย",
+                vocab: [
+                    "<b>Tend</b> (V): มีแนวโน้ม",
+                    "<b>Recover</b> (V): ฟื้นตัว"
+                ],
+                options: [
+                    { text: "to recovering", correct: false, rationale: "<b>ระแวงเกินไป:</b> Tend ไม่ใช่คำยกเว้นครับ" },
+                    { text: "recovering", correct: false, rationale: "<b>ผิดรูปแบบ:</b> Tend ไม่ตามด้วย Gerund" },
+                    { text: "to recover", correct: true, rationale: "<b>General Infinitive:</b> <i>Tend</i> (มีแนวโน้มที่จะ...) ตามด้วย <b>To + V.1</b> เป็นปกติครับ" },
+                    { text: "recover", correct: false, rationale: "<b>กริยาชนกัน:</b> Tends recover ผิด" }
+                ]
+            },
+            {
+                question: "The diplomat visited the region with a view __________ a peace treaty.",
+                translation: "นักการทูตเยือนภูมิภาคนี้ด้วยความตั้งใจที่จะ ______ สนธิสัญญาสันติภาพ",
+                vocab: [
+                    "<b>With a view to</b> (Idiom): ด้วยความตั้งใจที่จะ...",
+                    "<b>Establish</b> (V): ก่อตั้ง/สร้าง"
+                ],
+                options: [
+                    { text: "to establish", correct: false, rationale: "<b>กับดักตัวยาก:</b> สำนวนนี้แปลว่า 'เพื่อที่จะ' เหมือน in order to แต่ไวยากรณ์บังคับต่างกัน" },
+                    { text: "establishing", correct: false, rationale: "<b>ขาด To:</b> สำนวนนี้ต้องมาครบชุด 'with a view TO'" },
+                    { text: "to establishing", correct: true, rationale: "<b>Advanced Vocabulary:</b> <i>With a view to</i> เป็นสำนวนตายตัวที่ต้องตามด้วย <b>V.ing</b> เท่านั้นครับ (เหมือน Look forward to)" },
+                    { text: "establish", correct: false, rationale: "<b>ผิดไวยากรณ์:</b> ขาดคำเชื่อม" }
+                ]
+            }
+        ];
+    </script>
+
+    <script src="assets/js/script.js"></script>
+</body>
+</html>

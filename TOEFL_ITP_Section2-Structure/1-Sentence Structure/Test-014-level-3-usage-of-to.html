@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TOEFL ITP Structure: Set 14</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@300;400;600&family=Sarabun:wght@400;600&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body class="bg-slate-100 min-h-screen flex items-center justify-center p-4">
+
+    <div class="bg-white rounded-2xl shadow-xl w-full max-w-2xl overflow-hidden border border-slate-200 flex flex-col max-h-[95vh]" id="app-container">
+        
+        <div id="header-slot"></div>
+
+        <div class="w-full bg-gray-100 h-1.5 flex-none">
+            <div class="bg-rose-600 h-1.5 transition-all duration-300 ease-out" style="width: 0%" id="progress-bar"></div>
+        </div>
+
+        <div class="p-6 overflow-y-auto flex-grow rationale-scroll" id="content-area">
+            <div id="quiz-content-placeholder" class="text-center text-gray-400 py-10">Loading Quiz...</div>
+        </div>
+
+        <div id="footer-slot"></div>
+    </div>
+
+    <script>
+        // 1. ตั้งค่าหัวข้อและสี (Theme: Rose - Expert/Final Boss)
+        const quizConfig = {
+            title: "TOEFL Structure (Master)",
+            subtitle: "Set 14: Complex 'To' at Start & Noun Phrases",
+            
+            // สีพื้นหลังหัวข้อ
+            headerColorClass: "bg-rose-700", 
+            
+            // สีตัวอักษรตกแต่ง
+            accentColorClass: "text-rose-200", 
+            scoreTitleClass: "text-rose-600"
+        };
+
+        // 2. ข้อมูลคำถาม Set 14: Focus on Start of Sentence & Noun + To
+        const quizData = [
+            {
+                question: "__________ the exact cause of the malfunction, the engineers performed a series of diagnostic tests.",
+                translation: "______ สาเหตุที่แน่ชัดของการทำงานผิดพลาด วิศวกรจึงได้ทำการทดสอบวินิจฉัยหลายชุด",
+                vocab: [
+                    "<b>Determine</b> (V): ระบุ/ค้นหาความจริง",
+                    "<b>Malfunction</b> (N): การทำงานผิดปกติ"
+                ],
+                options: [
+                    { text: "Determining", correct: false, rationale: "<b>Wrong Function:</b> ถ้าใช้ Determining (Gerund) มันจะเป็นประธาน แต่ประโยคนี้มีประธานคือ 'the engineers' แล้ว และมีเครื่องหมาย comma คั่น จึงต้องเป็นส่วนขยายบอกวัตถุประสงค์" },
+                    { text: "To determine", correct: true, rationale: "<b>Infinitive of Purpose:</b> การขึ้นต้นประโยคด้วย <i>To + V.1</i> แปลว่า 'เพื่อที่จะ...' (To determine... = In order to determine...)" },
+                    { text: "To determining", correct: false, rationale: "<b>Grammar Error:</b> โครงสร้างบอกวัตถุประสงค์ต้องใช้ To + V.1 เสมอ" },
+                    { text: "For determine", correct: false, rationale: "<b>Grammar Error:</b> ภาษาอังกฤษไม่ใช้ For + V.1 เพื่อบอกจุดประสงค์ที่ต้นประโยค" }
+                ]
+            },
+            {
+                question: "__________ organizing the annual conference, Ms. Lawrence is also responsible for budget management.",
+                translation: "______ การจัดงานประชุมประจำปี คุณลอว์เรนซ์ยังรับผิดชอบด้านการบริหารงบประมาณด้วย",
+                vocab: [
+                    "<b>In addition to</b> (Prep): นอกเหนือจาก...",
+                    "<b>Organize</b> (V): จัดงาน/จัดการ"
+                ],
+                options: [
+                    { text: "To organize", correct: false, rationale: "<b>Context Clue:</b> บริบทคือ 'ทำอย่างหนึ่ง และทำอีกอย่างหนึ่งด้วย' (also) ไม่ใช่การบอกจุดประสงค์" },
+                    { text: "In addition to", correct: true, rationale: "<b>Prepositional Phrase:</b> <i>In addition to</i> (นอกจาก...) เป็นบุพบทวลีที่ขึ้นต้นประโยคได้ และต้องตามด้วย <b>V.ing</b> (organizing) ครับ" },
+                    { text: "In addition organize", correct: false, rationale: "<b>Missing Preposition:</b> ขาด 'to' และรูปกริยาผิด" },
+                    { text: "To organizing", correct: false, rationale: "<b>Grammar Error:</b> To organizing ลอยๆ ขึ้นต้นประโยคไม่ได้ (ยกเว้นจะเป็นสำนวนเฉพาะ ซึ่งบริบทนี้ไม่ใช่)" }
+                ]
+            },
+            {
+                question: "The government's __________ renewable energy has been praised by environmentalists.",
+                translation: "______ ของรัฐบาลต่อพลังงานหมุนเวียน ได้รับการยกย่องจากนักสิ่งแวดล้อม",
+                vocab: [
+                    "<b>Commitment</b> (N): ความมุ่งมั่น/พันธะสัญญา",
+                    "<b>Prioritize</b> (V): จัดลำดับความสำคัญ"
+                ],
+                options: [
+                    { text: "commitment to prioritize", correct: false, rationale: "<b>Common Mistake:</b> คำว่า <i>Commitment to</i> (นาม) ใช้กฎเดียวกับ Committed to (Adj) คือต้องตามด้วย Gerund" },
+                    { text: "commitment to prioritizing", correct: true, rationale: "<b>Noun + Prepositional To:</b> คำนาม <i>Commitment to</i> (ความมุ่งมั่นต่อ...) เป็นกลุ่มที่ To คือบุพบท ต้องตามด้วย <b>V.ing</b> ครับ" },
+                    { text: "commitment prioritize", correct: false, rationale: "<b>Grammar Error:</b> ขาด To" },
+                    { text: "commitment prioritizing", correct: false, rationale: "<b>Grammar Error:</b> ขาด To" }
+                ]
+            },
+            {
+                question: "__________ effective leadership skills, one must practice active listening.",
+                translation: "______ ทักษะความเป็นผู้นำที่มีประสิทธิภาพ บุคคลนั้นต้องฝึกฝนการฟังอย่างตั้งใจ",
+                vocab: [
+                    "<b>Develop</b> (V): พัฒนา",
+                    "<b>Active listening</b> (N): การฟังเชิงรุก"
+                ],
+                options: [
+                    { text: "Developing", correct: false, rationale: "<b>Subject Trap:</b> ถ้าใช้ Developing จะแปลว่า 'การพัฒนา... คือสิ่งที่ต้องทำ' แต่ประโยคหลักคือ 'one must practice...' ดังนั้นส่วนหน้าต้องเป็นส่วนขยายบอกวัตถุประสงค์" },
+                    { text: "To developing", correct: false, rationale: "<b>Grammar Error:</b> บอกจุดประสงค์ห้ามใช้ V.ing" },
+                    { text: "To develop", correct: true, rationale: "<b>Infinitive of Purpose:</b> ขึ้นต้นด้วย <i>To + V.1</i> เพื่อบอกว่า 'เพื่อที่จะพัฒนา...' (เงื่อนไข)" },
+                    { text: "For developing", correct: false, rationale: "<b>Grammar Error:</b> ไม่ใช้ For + Ving ขึ้นต้นประโยคเพื่อบอกจุดประสงค์ (For developing มักใช้บอกหน้าที่ของสิ่งของ)" }
+                ]
+            },
+            {
+                question: "His strong __________ public speaking prevented him from accepting the promotion.",
+                translation: "______ อย่างรุนแรงของเขาต่อการพูดในที่สาธารณะ ขัดขวางเขาจากการรับตำแหน่งที่สูงขึ้น",
+                vocab: [
+                    "<b>Aversion</b> (N): ความเกลียดชัง/ไม่ชอบอย่างรุนแรง",
+                    "<b>Prevent</b> (V): ขัดขวาง/ป้องกัน"
+                ],
+                options: [
+                    { text: "aversion to", correct: false, rationale: "<b>Incomplete:</b> ข้อนี้ตัวเลือกหลอกต้องดูข้างหลัง 'public speaking' ซึ่งเป็น Noun/Gerund Phrase" },
+                    { text: "aversion to performing", correct: true, rationale: "<b>Noun + Prepositional To:</b> <i>Aversion to</i> (ความรังเกียจต่อ...) เป็นกลุ่มคำนามที่ต้องตามด้วย <b>V.ing</b> หรือ Noun (ในที่นี้คือ performing public speaking)" },
+                    { text: "aversion to perform", correct: false, rationale: "<b>Grammar Error:</b> Aversion to ไม่ตามด้วย Infinitive" },
+                    { text: "aversion performing", correct: false, rationale: "<b>Missing Preposition:</b> ขาด To" }
+                ]
+            },
+            {
+                question: "__________ clarity in the contract, the lawyer revised the ambiguous clauses.",
+                translation: "______ ความชัดเจนในสัญญา ทนายความจึงแก้ไขข้อความที่กำกวม",
+                vocab: [
+                    "<b>Ensure</b> (V): รับรอง/ทำให้มั่นใจ",
+                    "<b>Ambiguous</b> (Adj): กำกวม"
+                ],
+                options: [
+                    { text: "To ensuring", correct: false, rationale: "<b>Grammar Error:</b> ผิดรูปแบบ" },
+                    { text: "Ensuring", correct: false, rationale: "<b>Participle Mismatch:</b> ถ้าใช้ Ensuring (Participle Clause) จะแปลว่า 'ในขณะที่กำลังรับรอง...' ซึ่งความหมายไม่ได้เน้นที่จุดประสงค์เท่า To + V.1" },
+                    { text: "To ensure", correct: true, rationale: "<b>Infinitive of Purpose:</b> ใช้ <i>To + V.1</i> ขึ้นต้นประโยค เพื่อบอกเป้าหมายของการกระทำ (ทนายแก้สัญญาเพื่ออะไร? -> เพื่อ Ensure)" },
+                    { text: "For ensure", correct: false, rationale: "<b>Grammar Error:</b> For ห้ามตามด้วย V.1" }
+                ]
+            },
+            {
+                question: "The scientist's __________ understanding the genetic code was recognized worldwide.",
+                translation: "______ ของนักวิทยาศาสตร์ต่อการทำความเข้าใจรหัสพันธุกรรม ได้รับการยอมรับไปทั่วโลก",
+                vocab: [
+                    "<b>Contribution</b> (N): การมีส่วนร่วม/ผลงาน",
+                    "<b>Recognize</b> (V): ยอมรับ"
+                ],
+                options: [
+                    { text: "contribution to", correct: true, rationale: "<b>Noun + Prepositional To:</b> คำว่า <i>Contribution to</i> (คุณูปการต่อ...) คำว่า To คือบุพบท ดังนั้นคำกริยาที่ตามมา (understanding) จึงต้องเป็น <b>V.ing</b> ซึ่งโจทย์ให้มาแล้ว" },
+                    { text: "contribution for", correct: false, rationale: "<b>Wrong Collocation:</b> Contribution ใช้คู่กับ to" },
+                    { text: "contribution of", correct: false, rationale: "<b>Wrong Collocation:</b> ไม่ใช้ of ในบริบทนี้" },
+                    { text: "contribution in", correct: false, rationale: "<b>Wrong Collocation:</b> ไม่ใช้ in" }
+                ]
+            },
+            {
+                question: "There is no limit __________ what can be achieved with determination.",
+                translation: "ไม่มีขีดจำกัด ______ สิ่งที่สามารถบรรลุได้ด้วยความมุ่งมั่น",
+                vocab: [
+                    "<b>Limit</b> (N): ขีดจำกัด",
+                    "<b>Achieve</b> (V): บรรลุผลสำเร็จ"
+                ],
+                options: [
+                    { text: "to", correct: true, rationale: "<b>Noun + Prepositional To:</b> คำว่า <i>Limit to</i> (ขีดจำกัดต่อ...) ใช้ To เป็นบุพบท เชื่อมกับ Noun Clause (what can be achieved)" },
+                    { text: "for", correct: false, rationale: "<b>Wrong Preposition:</b> Limit ไม่ใช้คู่กับ for" },
+                    { text: "on", correct: false, rationale: "<b>Possible but less precise:</b> Limit on มักใช้กับกฎระเบียบ (Limit on spending) แต่ในเชิงนามธรรมนิยมใช้ Limit to" },
+                    { text: "in", correct: false, rationale: "<b>Wrong Preposition:</b>" }
+                ]
+            },
+            {
+                question: "__________ the heavy traffic, we decided to take the subway.",
+                translation: "______ การจราจรที่ติดขัด เราจึงตัดสินใจนั่งรถไฟใต้ดิน",
+                vocab: [
+                    "<b>Owing to</b> (Prep): เนื่องจาก",
+                    "<b>Traffic</b> (N): การจราจร"
+                ],
+                options: [
+                    { text: "Owing to", correct: true, rationale: "<b>Prepositional Phrase:</b> <i>Owing to</i> = Because of ต้องตามด้วย Noun (the heavy traffic) สามารถวางต้นประโยคได้" },
+                    { text: "To owe", correct: false, rationale: "<b>Wrong Meaning:</b> To owe แปลว่า 'เพื่อที่จะติดหนี้' ไม่สมเหตุสมผล" },
+                    { text: "Owing", correct: false, rationale: "<b>Incomplete:</b> Owing เฉยๆ ไม่มีความหมายเชื่อมโยง ต้องมี to" },
+                    { text: "For owing", correct: false, rationale: "<b>Grammar Error:</b> ผิดไวยากรณ์" }
+                ]
+            },
+            {
+                question: "Her __________ help the team improve was evident in her extra hours of work.",
+                translation: "______ ของเธอที่จะช่วยให้ทีมพัฒนา ปรากฏชัดในการทำงานล่วงเวลาของเธอ",
+                vocab: [
+                    "<b>Willingness</b> (N): ความเต็มใจ",
+                    "<b>Evident</b> (Adj): ชัดเจน"
+                ],
+                options: [
+                    { text: "willingness to", correct: true, rationale: "<b>Noun + Infinitive:</b> ข้อนี้ยาก! คำว่า <i>Willingness</i> (ความเต็มใจที่จะทำ) เป็นกลุ่ม Noun ที่ต้องตามด้วย <b>Infinitive (To + V.1)</b> ครับ (สังเกตคำว่า help เป็น V.1)" },
+                    { text: "willingness of", correct: false, rationale: "<b>Grammar Error:</b> Willingness ไม่ใช้ of + V.1" },
+                    { text: "willingness for", correct: false, rationale: "<b>Grammar Error:</b>" },
+                    { text: "willingness in", correct: false, rationale: "<b>Grammar Error:</b>" }
+                ]
+            }
+        ];
+    </script>
+
+    <script src="assets/js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TOEFL ITP Structure: Set 11</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@300;400;600&family=Sarabun:wght@400;600&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body class="bg-slate-100 min-h-screen flex items-center justify-center p-4">
+
+    <div class="bg-white rounded-2xl shadow-xl w-full max-w-2xl overflow-hidden border border-slate-200 flex flex-col max-h-[95vh]" id="app-container">
+        
+        <div id="header-slot"></div>
+
+        <div class="w-full bg-gray-100 h-1.5 flex-none">
+            <div class="bg-teal-500 h-1.5 transition-all duration-300 ease-out" style="width: 0%" id="progress-bar"></div>
+        </div>
+
+        <div class="p-6 overflow-y-auto flex-grow rationale-scroll" id="content-area">
+            <div id="quiz-content-placeholder" class="text-center text-gray-400 py-10">Loading Quiz...</div>
+        </div>
+
+        <div id="footer-slot"></div>
+    </div>
+
+    <script>
+        // 1. ตั้งค่าหัวข้อและสี (ปรับเป็นธีมสีเขียวอมฟ้า เพื่อให้ดูใหม่ขึ้น)
+        const quizConfig = {
+            title: "TOEFL Structure (Usage of To)",
+            subtitle: "Set 11: To Infinitive vs. To Preposition",
+            
+            // สีพื้นหลัง (Theme: Teal)
+            headerColorClass: "bg-teal-700", 
+            
+            // สีของตกแต่งอื่นๆ
+            accentColorClass: "text-teal-200", 
+            scoreTitleClass: "text-teal-200"
+        };
+
+        // 2. ข้อมูลคำถาม Set 11: Usage of To
+        const quizData = [
+            {
+                question: "We look forward to __________ you at the conference next month.",
+                translation: "พวกเราตั้งตารอที่จะ ______ คุณที่งานประชุมเดือนหน้า",
+                vocab: [
+                    "<b>Look forward to</b> (Phrasal verb): ตั้งตารอ",
+                    "<b>Conference</b> (N): การประชุม"
+                ],
+                options: [
+                    { text: "see", correct: false, rationale: "<b>กับดัก:</b> หลายคนเห็น <i>to</i> แล้วรีบตอบ V.1 แต่คำนี้เป็นข้อยกเว้นครับ" },
+                    { text: "to see", correct: false, rationale: "<b>ผิดรูปแบบ:</b> <i>Look forward to</i> ไม่ตามด้วย Infinitive (to see) ซ้อนกัน" },
+                    { text: "seeing", correct: true, rationale: "<b>To as Preposition:</b> <i>Look forward to</i> เป็นสำนวนที่ 'to' ทำหน้าที่เป็นบุพบท (Preposition) ดังนั้นต้องตามด้วย <b>V-ing (Gerund)</b> เสมอครับ" },
+                    { text: "seen", correct: false, rationale: "<b>ผิด Grammar:</b> ใช้ V.3 หลัง to ไม่ได้ในบริบทนี้" }
+                ]
+            },
+            {
+                question: "It is important __________ the instructions carefully.",
+                translation: "มันเป็นเรื่องสำคัญที่จะ ______ คำแนะนำอย่างระมัดระวัง",
+                vocab: [
+                    "<b>Instruction</b> (N): คำแนะนำ",
+                    "<b>Carefully</b> (Adv): อย่างระมัดระวัง"
+                ],
+                options: [
+                    { text: "reading", correct: false, rationale: "<b>ผิดรูปแบบ:</b> โครงสร้าง It is + Adjective ต้องตามด้วย To V.1 ครับ" },
+                    { text: "to read", correct: true, rationale: "<b>Infinitive after Adjective:</b> ตามกฎโครงสร้าง <i>It is + Adjective (important) + to V.1</i> เพื่อบอกว่า 'การทำสิ่งนั้น' เป็นอย่างไร" },
+                    { text: "read", correct: false, rationale: "<b>ขาด to:</b> กริยาหลักของประโยคคือ is แล้ว จะใส่ read ลอยๆ ไม่ได้" },
+                    { text: "for reading", correct: false, rationale: "<b>ไม่เป็นธรรมชาติ:</b> ปกติเราใช้ for reading กับคำนาม (e.g., glasses for reading) ไม่ใช่กับประโยคแบบนี้" }
+                ]
+            },
+            {
+                question: "She is not used to __________ in such hot weather.",
+                translation: "เธอไม่ชินกับการ ______ ในอากาศร้อนขนาดนี้",
+                vocab: [
+                    "<b>Be used to</b> (Adj phrase): เคยชิน",
+                    "<b>Weather</b> (N): สภาพอากาศ"
+                ],
+                options: [
+                    { text: "drive", correct: false, rationale: "<b>กับดักความจำ:</b> ถ้า <i>used to</i> เฉยๆ ตามด้วย V.1 (แปลว่าเคยทำ) แต่ข้อนี้มี <b>is</b> ข้างหน้าครับ" },
+                    { text: "driving", correct: true, rationale: "<b>To as Preposition:</b> โครงสร้าง <i>V.to be + used to</i> แปลว่า 'คุ้นชิน' ซึ่ง to ตัวนี้เป็นบุพบท ต้องตามด้วย <b>V-ing</b> ครับ" },
+                    { text: "drove", correct: false, rationale: "<b>ผิด Tense:</b> หลัง to ไม่ใช้ V.2" },
+                    { text: "to drive", correct: false, rationale: "<b>ซ้ำซ้อน:</b> มี to อยู่แล้ว ไม่ต้องใส่ to เพิ่ม" }
+                ]
+            },
+            {
+                question: "The manager decided __________ the project deadline.",
+                translation: "ผู้จัดการตัดสินใจที่จะ ______ กำหนดส่งโครงการ",
+                vocab: [
+                    "<b>Decide</b> (V): ตัดสินใจ",
+                    "<b>Extend</b> (V): ขยายเวลา"
+                ],
+                options: [
+                    { text: "extending", correct: false, rationale: "<b>ผิดกลุ่มกริยา:</b> <i>decide</i> ไม่อยู่ในกลุ่มที่ตามด้วย Gerund (V-ing)" },
+                    { text: "extend", correct: false, rationale: "<b>กริยาชนกัน:</b> decided extend ไม่ถูกต้อง ต้องมีตัวเชื่อม" },
+                    { text: "to extend", correct: true, rationale: "<b>Infinitive after Verb:</b> กริยา <i>decide</i> เป็นกลุ่มที่ต้องตามด้วย <b>to + V.1</b> (Infinitive) เสมอครับ" },
+                    { text: "extension", correct: false, rationale: "<b>ผิดหน้าที่คำ:</b> หลัง decide ต้องการบอก 'การกระทำ' จึงควรใช้ Infinitive มากกว่า Noun ในบริบทนี้" }
+                ]
+            },
+            {
+                question: "The residents objected to __________ a new factory near their homes.",
+                translation: "ชาวบ้านคัดค้านการ ______ โรงงานแห่งใหม่ใกล้บ้านของพวกเขา",
+                vocab: [
+                    "<b>Object to</b> (Phrasal verb): คัดค้าน",
+                    "<b>Factory</b> (N): โรงงาน"
+                ],
+                options: [
+                    { text: "build", correct: false, rationale: "<b>กับดัก:</b> Object to เป็นกลุ่มยกเว้น ห้ามตามด้วย V.1 ครับ" },
+                    { text: "building", correct: true, rationale: "<b>To as Preposition:</b> <i>Object to</i> แปลว่า 'คัดค้านต่อ...' (Preposition) ดังนั้นต้องตามด้วย <b>V-ing</b> (คัดค้านการสร้าง)" },
+                    { text: "to build", correct: false, rationale: "<b>ผิดรูปแบบ:</b> <i>Object to</i> ไม่ตามด้วย Infinitive" },
+                    { text: "built", correct: false, rationale: "<b>ผิด Tense:</b> ไม่ใช้ V.2/V.3 หลัง to" }
+                ]
+            },
+            {
+                question: "He went to the library __________ some books.",
+                translation: "เขาไปห้องสมุด ______ หนังสือบางเล่ม",
+                vocab: [
+                    "<b>Borrow</b> (V): ยืม",
+                    "<b>Library</b> (N): ห้องสมุด"
+                ],
+                options: [
+                    { text: "for borrow", correct: false, rationale: "<b>ผิด Grammar:</b> <i>for</i> ตามด้วย V.1 ไม่ได้ (ถ้าจะใช้ต้อง for borrowing แต่นิยมใช้น้อยกว่า to)" },
+                    { text: "borrowing", correct: false, rationale: "<b>ขาดตัวเชื่อม:</b> ถ้าวางหลังประโยคแบบนี้เพื่อบอกวัตถุประสงค์ ควรใช้ to" },
+                    { text: "to borrow", correct: true, rationale: "<b>Infinitive of Purpose:</b> ใช้ <i>to + V.1</i> เพื่อบอกวัตถุประสงค์ (ไปเพื่อที่จะ...)" },
+                    { text: "borrow", correct: false, rationale: "<b>กริยาชนกัน:</b> went borrow ไม่ถูกต้อง" }
+                ]
+            },
+            {
+                question: "The suspect confessed to __________ the money.",
+                translation: "ผู้ต้องสงสัยสารภาพว่าได้ ______ เงินไป",
+                vocab: [
+                    "<b>Confess</b> (V): สารภาพ",
+                    "<b>Steal</b> (V): ขโมย"
+                ],
+                options: [
+                    { text: "steal", correct: false, rationale: "<b>กับดัก:</b> <i>Confess to</i> เป็นกลุ่มคำยกเว้น ห้ามตามด้วย V.1" },
+                    { text: "stealing", correct: true, rationale: "<b>To as Preposition:</b> <i>Confess to</i> (สารภาพต่อ...) จัดอยู่ในกลุ่มเดียวกับ Admit to ซึ่ง to เป็นบุพบท ต้องตามด้วย <b>V-ing</b> ครับ" },
+                    { text: "stolen", correct: false, rationale: "<b>ผิดรูปแบบ:</b> ใช้ V.3 ไม่ได้" },
+                    { text: "to steal", correct: false, rationale: "<b>ซ้ำซ้อน/ผิด:</b> Confess to to steal ผิดหลักไวยากรณ์" }
+                ]
+            },
+            {
+                question: "I would like __________ a reservation for two people.",
+                translation: "ฉันต้องการ ______ การจองสำหรับสองที่",
+                vocab: [
+                    "<b>Reservation</b> (N): การจอง",
+                    "<b>Would like</b> (Phrase): ต้องการ (สุภาพกว่า want)"
+                ],
+                options: [
+                    { text: "making", correct: false, rationale: "<b>ผิดรูปแบบ:</b> <i>would like</i> ไม่ตามด้วย Gerund" },
+                    { text: "make", correct: false, rationale: "<b>ขาด to:</b> would like ต้องคู่กับ to เสมอ" },
+                    { text: "to make", correct: true, rationale: "<b>Infinitive after 'Would like':</b> คำว่า <i>would like</i> มีค่าเท่ากับ want ซึ่งต้องตามด้วย <b>to + V.1</b> ครับ" },
+                    { text: "made", correct: false, rationale: "<b>ผิด Tense:</b> ไม่ใช้ V.2" }
+                ]
+            },
+            {
+                question: "She dedicated her life to __________ the poor.",
+                translation: "เธออุทิศชีวิตของเธอเพื่อ ______ คนยากจน",
+                vocab: [
+                    "<b>Dedicate</b> (V): อุทิศ",
+                    "<b>The poor</b> (N phrase): คนยากจน"
+                ],
+                options: [
+                    { text: "help", correct: false, rationale: "<b>กับดักตัวใหญ่:</b> <i>Dedicate to</i> ห้ามตามด้วย V.1 เด็ดขาด" },
+                    { text: "helping", correct: true, rationale: "<b>To as Preposition:</b> <i>Dedicate to</i> (อุทิศให้แก่...) อยู่ในกลุ่ม 'การอุทิศตน' ซึ่ง to เป็นบุพบท ต้องตามด้วย <b>V-ing</b> ครับ" },
+                    { text: "to help", correct: false, rationale: "<b>ผิดรูปแบบ:</b> Dedicate to ไม่ตามด้วย Infinitive" },
+                    { text: "helped", correct: false, rationale: "<b>ผิด Tense:</b> ไม่ใช้ V.2" }
+                ]
+            },
+            {
+                question: "They refused __________ the contract.",
+                translation: "พวกเขาปฏิเสธที่จะ ______ สัญญา",
+                vocab: [
+                    "<b>Refuse</b> (V): ปฏิเสธ",
+                    "<b>Contract</b> (N): สัญญา"
+                ],
+                options: [
+                    { text: "sign", correct: false, rationale: "<b>กริยาชนกัน:</b> refused sign ผิด" },
+                    { text: "signing", correct: false, rationale: "<b>ผิดกลุ่มกริยา:</b> <i>refuse</i> ไม่ตามด้วย Gerund (ต่างจาก avoid ที่ตามด้วย V-ing)" },
+                    { text: "to sign", correct: true, rationale: "<b>Infinitive after Verb:</b> <i>Refuse</i> (ปฏิเสธ) อยู่ในกลุ่มกริยาที่ต้องตามด้วย <b>to + V.1</b> (Infinitive) ครับ" },
+                    { text: "signed", correct: false, rationale: "<b>ผิด Tense:</b> หลังกริยาหลักไม่ใช้ V.2" }
+                ]
+            }
+        ];
+    </script>
+
+    <script src="assets/js/script.js"></script>
+</body>
+</html>

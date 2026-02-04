@@ -29,160 +29,160 @@
     </div>
 
     <script>
-        // 1. ตั้งค่าหัวข้อและสี (Theme: Amber/Yellow - Warning/Caution)
+        // 1. ตั้งค่าหัวข้อและสี (Theme: Amber/Caution)
         const quizConfig = {
             title: "TOEFL Structure (Advanced)",
-            subtitle: "Set 12: The 'Must-Know' Exceptions",
+            subtitle: "Set 12: Infinitive vs. Prepositional To",
             
-            // สีพื้นหลังหัวข้อ (เหลืองเข้ม/ส้ม)
-            headerColorClass: "bg-amber-600", 
+            // สีพื้นหลังหัวข้อ
+            headerColorClass: "bg-amber-700", 
             
             // สีตัวอักษรตกแต่ง
-            accentColorClass: "text-amber-100", 
+            accentColorClass: "text-amber-200", 
             scoreTitleClass: "text-amber-600"
         };
 
-        // 2. ข้อมูลคำถาม Set 12: Focus on 'To' Preposition Exceptions
-        // โจทย์ทุกข้อ Choice จะนำหน้าด้วย "to" เพื่อวัดความแม่นยำ
+        // 2. ข้อมูลคำถาม Set 12: Advanced Level
+        // ผสมผสานระหว่างกลุ่มที่ต้องใช้ V.1 และ V.ing เพื่อวัดความแม่นยำของ Keyword
         const quizData = [
             {
-                question: "I am definitely looking forward __________ from you soon.",
-                translation: "ฉันตั้งตารอที่จะ ______ ข่าวจากคุณเร็วๆ นี้อย่างแน่นอน",
+                question: "Despite the attractive salary, Mr. Harrison refused __________ the offer from the rival company.",
+                translation: "แม้จะมีเงินเดือนที่น่าดึงดูด แต่นายแฮร์ริสันก็ปฏิเสธที่จะ ______ ข้อเสนอจากบริษัทคู่แข่ง",
                 vocab: [
-                    "<b>Look forward to</b>: ตั้งตารอ (Group: อุทิศ/มุ่งหวัง)",
-                    "<b>Definitely</b>: อย่างแน่นอน"
+                    "<b>Refuse</b> (V): ปฏิเสธ",
+                    "<b>Rival</b> (Adj): คู่แข่ง"
                 ],
                 options: [
-                    { text: "to hear", correct: false, rationale: "<b>ผิด:</b> <i>Look forward to</i> เป็นข้อยกเว้น ห้ามตามด้วย V.1" },
-                    { text: "to hearing", correct: true, rationale: "<b>ถูกต้อง:</b> <i>Look forward to</i> คือกลุ่มที่ <b>To เป็น Preposition</b> ต้องตามด้วย <b>V.ing</b> เสมอ" },
-                    { text: "to be heard", correct: false, rationale: "<b>ผิด:</b> Passive Voice ไม่ตรงกับบริบท (รอที่จะได้ยินเอง ไม่ใช่ถูกได้ยิน)" },
-                    { text: "to the hearing", correct: false, rationale: "<b>ไม่เหมาะสม:</b> hearing ในที่นี้เป็น Noun แปลว่า 'การพิจารณาคดี' ซึ่งความหมายเพี้ยนไปจาก 'ได้ยินข่าว'" }
+                    { text: "to accepting", correct: false, rationale: "<b>หลอกด้วยความคุ้นเคย:</b> <i>Refuse</i> เป็นกริยาทั่วไปที่ไม่ได้อยู่ในกลุ่มข้อยกเว้นครับ" },
+                    { text: "to accept", correct: true, rationale: "<b>General Infinitive:</b> คำว่า <i>Refuse</i> (ปฏิเสธที่จะทำ) ต้องตามด้วย <b>To + V.1</b> (Infinitive) เสมอครับ ข้อนี้วัดว่าคุณแยก Refuse ออกจากกลุ่ม Object to ได้ไหม" },
+                    { text: "accepting", correct: false, rationale: "<b>ผิดรูปแบบ:</b> Refuse ไม่ตามด้วย Gerund ตรงๆ (ต่างจาก deny accepting)" },
+                    { text: "from accepting", correct: false, rationale: "<b>ผิดบุพบท:</b> Refuse ไม่ใช้คู่กับ from" }
                 ]
             },
             {
-                question: "The residents are strongly opposed __________ a new shopping mall here.",
-                translation: "ชาวบ้านคัดค้านอย่างหนักที่จะ ______ ห้างสรรพสินค้าแห่งใหม่ที่นี่",
+                question: "The conservation committee is dedicated __________ the endangered species in this region.",
+                translation: "คณะกรรมการอนุรักษ์อุทิศตนเพื่อ ______ สายพันธุ์ที่ใกล้สูญพันธุ์ในภูมิภาคนี้",
                 vocab: [
-                    "<b>Opposed to</b>: คัดค้าน/ตรงข้าม (Group: คัดค้าน)",
-                    "<b>Shopping mall</b>: ห้างสรรพสินค้า"
+                    "<b>Dedicate</b> (V): อุทิศ",
+                    "<b>Endangered</b> (Adj): ใกล้สูญพันธุ์"
                 ],
                 options: [
-                    { text: "to build", correct: false, rationale: "<b>ผิด:</b> <i>Opposed to</i> ห้ามตามด้วย V.1 (Infinitive)" },
-                    { text: "to building", correct: true, rationale: "<b>ถูกต้อง:</b> <i>Be opposed to</i> อยู่ในกลุ่ม 'คัดค้าน' ซึ่ง <b>To เป็น Preposition</b> ต้องตามด้วย <b>V.ing</b>" },
-                    { text: "to be built", correct: false, rationale: "<b>ผิด:</b> Residents (ชาวบ้าน) เป็นผู้คัดค้านการกระทำ (Active) ไม่ใช่ Passive" },
-                    { text: "to build up", correct: false, rationale: "<b>ผิด:</b> ยังคงเป็น V.1 ซึ่งผิดกฎของคำนี้" }
+                    { text: "to preserve", correct: false, rationale: "<b>กับดัก Must-Know:</b> เห็น <i>Dedicated</i> ต้องระวัง! คำนี้ To เป็น Preposition ห้ามตามด้วย V.1" },
+                    { text: "preserve", correct: false, rationale: "<b>ผิดไวยากรณ์:</b> ขาดคำเชื่อม (To)" },
+                    { text: "to preserving", correct: true, rationale: "<b>Must-Know List:</b> <i>Be dedicated to</i> (อุทิศตนให้แก่...) เป็นกลุ่มที่ To ทำหน้าที่เป็นบุพบท ต้องตามด้วย <b>V.ing</b> ครับ" },
+                    { text: "for preserving", correct: false, rationale: "<b>ผิด Collocation:</b> Dedicated ต้องคู่กับ To เสมอ" }
                 ]
             },
             {
-                question: "She finally confessed __________ the confidential files.",
-                translation: "ในที่สุดเธอก็สารภาพว่า ______ ไฟล์ลับเหล่านั้น",
+                question: "The research team attempted __________ the source of the contamination but failed.",
+                translation: "ทีมวิจัยพยายามที่จะ ______ แหล่งที่มาของการปนเปื้อนแต่ล้มเหลว",
                 vocab: [
-                    "<b>Confess to</b>: สารภาพ (Group: สารภาพ/ยอมรับ)",
-                    "<b>Confidential</b>: ที่เป็นความลับ"
+                    "<b>Attempt</b> (V): พยายาม",
+                    "<b>Contamination</b> (N): การปนเปื้อน"
                 ],
                 options: [
-                    { text: "to steal", correct: false, rationale: "<b>ผิด:</b> <i>Confess to</i> ห้ามใช้กับ V.1" },
-                    { text: "to stealing", correct: true, rationale: "<b>ถูกต้อง:</b> <i>Confess to</i> อยู่ในกลุ่ม 'สารภาพ' (เหมือน Admit to) ต้องตามด้วย <b>V.ing</b> (สารภาพต่อการขโมย)" },
-                    { text: "to stole", correct: false, rationale: "<b>ผิดไวยากรณ์:</b> หลัง to ไม่ใช้ V.2" },
-                    { text: "to be stolen", correct: false, rationale: "<b>ผิดความหมาย:</b> เธอขโมยเอง ไม่ใช่ถูกขโมย" }
+                    { text: "identify", correct: false, rationale: "<b>กริยาชนกัน:</b> Attempt identify ผิดหลักไวยากรณ์" },
+                    { text: "to identifying", correct: false, rationale: "<b>ใช้ผิดกลุ่ม:</b> <i>Attempt</i> ไม่ใช่กลุ่มข้อยกเว้น (Prepositional To) ครับ" },
+                    { text: "identifying", correct: false, rationale: "<b>ผิดรูปแบบ:</b> Attempt ไม่ตามด้วย Gerund (V-ing)" },
+                    { text: "to identify", correct: true, rationale: "<b>General Infinitive:</b> <i>Attempt</i> (พยายามที่จะ...) เป็นกริยาปกติที่ต้องตามด้วย <b>To + V.1</b> ครับ (เหมือน try to)" }
                 ]
             },
             {
-                question: "We are fully committed __________ excellent service to our customers.",
-                translation: "เรามุ่งมั่นอย่างเต็มที่ที่จะ ______ บริการที่เป็นเลิศแก่ลูกค้าของเรา",
+                question: "Many employees voiced their concerns and objected __________ overtime without extra pay.",
+                translation: "พนักงานหลายคนแสดงความกังวลและคัดค้านการ ______ ล่วงเวลาโดยไม่มีค่าตอบแทนพิเศษ",
                 vocab: [
-                    "<b>Committed to</b>: มุ่งมั่น/ผูกมัด (Group: อุทิศตน)",
-                    "<b>Excellent</b>: ยอดเยี่ยม"
+                    "<b>Object</b> (V): คัดค้าน",
+                    "<b>Overtime</b> (N): การทำงานล่วงเวลา"
                 ],
                 options: [
-                    { text: "to provide", correct: false, rationale: "<b>ตัวหลอกยอดฮิต:</b> <i>Committed to</i> ดูเหมือนจะตามด้วย V.1 ได้ แต่จริงๆ แล้วผิดครับ" },
-                    { text: "to providing", correct: true, rationale: "<b>ถูกต้อง:</b> <i>Committed to</i> แปลว่า 'มุ่งมั่นต่อ...' (Preposition) ต้องตามด้วย <b>V.ing</b>" },
-                    { text: "to provision", correct: false, rationale: "<b>เกือบถูก:</b> เป็น Noun ใช้ได้ แต่ในบริบทนี้ต้องการกริยา (provide what? -> service) การใช้ Gerund (providing) จึงลื่นไหลกว่า" },
-                    { text: "to provider", correct: false, rationale: "<b>ผิดความหมาย:</b> provider คือผู้ให้บริการ (คน)" }
+                    { text: "to work", correct: false, rationale: "<b>กับดัก Must-Know:</b> <i>Object</i> เป็นคำปราบเซียน ห้ามตามด้วย V.1 เด็ดขาด" },
+                    { text: "to working", correct: true, rationale: "<b>Must-Know List:</b> <i>Object to</i> (คัดค้านต่อ...) คำว่า To ในที่นี้เป็น Preposition จึงต้องตามด้วย <b>V.ing</b> เสมอ" },
+                    { text: "working", correct: false, rationale: "<b>ขาด To:</b> Object ต้องมี To มารับเสมอ (Object to something)" },
+                    { text: "work", correct: false, rationale: "<b>ผิดไวยากรณ์:</b> กริยาซ้อนกันไม่ได้" }
                 ]
             },
             {
-                question: "It took him a while to get used __________ on the left side of the road.",
-                translation: "เขาใช้เวลาสักพักกว่าจะชินกับการ ______ เลนซ้ายของถนน",
+                question: "The government has finally consented __________ the new trade agreement.",
+                translation: "ในที่สุดรัฐบาลก็ได้ยินยอมที่จะ ______ ข้อตกลงทางการค้าฉบับใหม่",
                 vocab: [
-                    "<b>Get used to</b>: ปรับตัวจนชิน (Group: ความคุ้นเคย)",
-                    "<b>A while</b>: สักพักหนึ่ง"
+                    "<b>Consent</b> (V): ยินยอม/อนุญาต",
+                    "<b>Agreement</b> (N): ข้อตกลง"
                 ],
                 options: [
-                    { text: "to drive", correct: false, rationale: "<b>ผิด:</b> <i>Get used to</i> ห้ามตามด้วย V.1 (ถ้า Used to เฉยๆ ถึงจะใช่)" },
-                    { text: "to driving", correct: true, rationale: "<b>ถูกต้อง:</b> <i>Get used to</i> (ชินกับ...) ต้องตามด้วย <b>V.ing</b> เสมอ" },
-                    { text: "to drove", correct: false, rationale: "<b>ผิดไวยากรณ์:</b> V.2 ห้ามตามหลัง to" },
-                    { text: "to the drive", correct: false, rationale: "<b>ไม่สมบูรณ์:</b> ถ้าใช้ Noun (the drive) ความหมายจะแคบกว่าการกระทำ (driving)" }
+                    { text: "signing", correct: false, rationale: "<b>ผิดรูปแบบ:</b> Consent ไม่ตามด้วย Gerund" },
+                    { text: "to sign", correct: true, rationale: "<b>General Infinitive:</b> <i>Consent</i> (ยอมที่จะ...) ต้องตามด้วย <b>To + V.1</b> ครับ ข้อนี้วัดว่าคุณจะเผลอเหมา Consent ไปรวมกับกลุ่ม Confess to หรือไม่" },
+                    { text: "to signing", correct: false, rationale: "<b>จำสลับกัน:</b> Consent ใช้ To + V.1 แต่ถ้าเป็น Confess (สารภาพ) ถึงจะใช้ To + V.ing" },
+                    { text: "sign", correct: false, rationale: "<b>ผิดไวยากรณ์:</b> ขาด To" }
                 ]
             },
             {
-                question: "He dedicated his entire career __________ the mystery of the universe.",
-                translation: "เขาอุทิศตลอดชีวิตการทำงานเพื่อ ______ ความลึกลับของจักรวาล",
+                question: "After living in London for five years, he finally got used __________ on the left.",
+                translation: "หลังจากอาศัยในลอนดอนมา 5 ปี ในที่สุดเขาก็เริ่มชินกับการ ______ ทางซ้าย",
                 vocab: [
-                    "<b>Dedicate to</b>: อุทิศให้ (Group: อุทิศตน)",
-                    "<b>Mystery</b>: ความลึกลับ"
+                    "<b>Get used to</b> (Phrase): เริ่มคุ้นชิน (Process)",
+                    "<b>Drive</b> (V): ขับรถ"
                 ],
                 options: [
-                    { text: "to solve", correct: false, rationale: "<b>ผิด:</b> Dedicate...to ห้ามตามด้วย V.1" },
-                    { text: "to solving", correct: true, rationale: "<b>ถูกต้อง:</b> <i>Dedicate to</i> อยู่ในกลุ่ม 'อุทิศตน' ต้องตามด้วย <b>V.ing</b> (อุทิศตนต่อการแก้ปริศนา)" },
-                    { text: "to solution", correct: false, rationale: "<b>ผิดรูปประโยค:</b> solution เป็น Noun แต่ solution 'ของ' อะไร? รูปประโยคนี้ Gerund (solving) เชื่อมกับ object (the mystery) ได้ดีกว่า" },
-                    { text: "to be solved", correct: false, rationale: "<b>ผิดความหมาย:</b> เขาเป็นคนแก้ปริศนา (Active)" }
+                    { text: "to drive", correct: false, rationale: "<b>กับดัก Used to:</b> ถ้า Used to เฉยๆ แปลว่า 'เคยทำ' (To+V.1) แต่ข้อนี้มี <b>got</b> นำหน้าครับ" },
+                    { text: "drive", correct: false, rationale: "<b>ผิดไวยากรณ์:</b> ขาด To" },
+                    { text: "driving", correct: false, rationale: "<b>ขาด To:</b> สำนวนคือ Get used TO something" },
+                    { text: "to driving", correct: true, rationale: "<b>Must-Know List:</b> โครงสร้าง <i>Get used to</i> (ปรับตัวจนชิน) ต้องตามด้วย <b>V.ing</b> หรือ Noun เสมอ" }
                 ]
             },
             {
-                question: "I object __________ like a child.",
-                translation: "ฉันคัดค้านการ ______ เหมือนเด็ก",
+                question: "The manager threatened __________ the staff if sales did not improve.",
+                translation: "ผู้จัดการขู่ที่จะ ______ พนักงานหากยอดขายไม่ดีขึ้น",
                 vocab: [
-                    "<b>Object to</b>: คัดค้าน (Group: คัดค้าน)",
-                    "<b>Treat</b>: ปฏิบัติ"
+                    "<b>Threaten</b> (V): ข่มขู่",
+                    "<b>Dismiss</b> (V): ไล่ออก"
                 ],
                 options: [
-                    { text: "to treat", correct: false, rationale: "<b>ผิด:</b> Object to ห้ามตามด้วย V.1" },
-                    { text: "to treating", correct: false, rationale: "<b>ผิดความหมาย:</b> Treating คือเราไปปฏิบัติกับคนอื่น แต่ประโยคนี้คือ 'ฉันไม่อยากถูกปฏิบัติ'" },
-                    { text: "to be treated", correct: false, rationale: "<b>ผิด:</b> แม้จะเป็น Passive แต่หลัง Object to ต้องเป็น Gerund (Being treated)" },
-                    { text: "to being treated", correct: true, rationale: "<b>ถูกต้อง:</b> 1. ต้องใช้ V.ing (เพราะ Object to) -> Being <br> 2. ต้องเป็น Passive (ถูกกระทำ) -> Being treated" }
+                    { text: "to dismiss", correct: true, rationale: "<b>General Infinitive:</b> <i>Threaten</i> (ขู่ที่จะทำ...) ตามด้วย <b>To + V.1</b> ครับ ไม่ใช่ข้อยกเว้น" },
+                    { text: "to dismissing", correct: false, rationale: "<b>ระแวงเกินไป:</b> คำว่า Threaten ไม่ได้อยู่ในกลุ่ม Prepositional To ครับ" },
+                    { text: "dismissing", correct: false, rationale: "<b>ผิดรูปแบบ:</b> Threaten ไม่ตามด้วย Gerund" },
+                    { text: "dismiss", correct: false, rationale: "<b>กริยาชนกัน:</b> threatened dismiss ผิด" }
                 ]
             },
             {
-                question: "When will you get around __________ the fence?",
-                translation: "เมื่อไหร่คุณถึงจะหาเวลามา ______ รั้วสักที?",
+                question: "The witness confessed __________ false evidence during the trial.",
+                translation: "พยานสารภาพว่าได้ ______ หลักฐานเท็จระหว่างการพิจารณาคดี",
                 vocab: [
-                    "<b>Get around to</b> (Phrasal verb): หาเวลามาทำสิ่งที่ผลัดผ่อนไว้",
-                    "<b>Fence</b>: รั้ว"
+                    "<b>Confess</b> (V): สารภาพ",
+                    "<b>Provide</b> (V): ให้/จัดหา"
                 ],
                 options: [
-                    { text: "to paint", correct: false, rationale: "<b>ผิด:</b> <i>Get around to</i> เป็นสำนวนพิเศษที่ to เป็น Preposition" },
-                    { text: "to painting", correct: true, rationale: "<b>ถูกต้อง:</b> <i>Get around to</i> ต้องตามด้วย <b>V.ing</b> เสมอ (หาเวลามา 'ต่อ' การทาสี)" },
-                    { text: "to painted", correct: false, rationale: "<b>ผิดไวยากรณ์:</b> V.3/V.2" },
-                    { text: "to be paint", correct: false, rationale: "<b>ผิดไวยากรณ์:</b> Be + V.1 ไม่ได้" }
+                    { text: "to provide", correct: false, rationale: "<b>กับดัก Must-Know:</b> Confess to ห้ามตามด้วย V.1" },
+                    { text: "provide", correct: false, rationale: "<b>ขาด To:</b> Confess ต้องคู่กับ To (สารภาพต่อ...)" },
+                    { text: "to providing", correct: true, rationale: "<b>Must-Know List:</b> <i>Confess to</i> (สารภาพต่อการกระทำ) อยู่ในกลุ่มเดียวกับ Admit to ต้องตามด้วย <b>V.ing</b> ครับ" },
+                    { text: "providing", correct: false, rationale: "<b>ไม่สมบูรณ์:</b> ปกติต้องมี To (American English บางครั้งอาจละ To ได้ แต่ใน TOEFL ITP ยึดตามหลัก Confess to + Gerund จะปลอดภัยกว่า)" }
                 ]
             },
             {
-                question: "Many workers are not accustomed __________ heavy machinery.",
-                translation: "คนงานหลายคนไม่คุ้นชินกับการ ______ เครื่องจักรหนัก",
+                question: "It is essential __________ the safety protocols strictly.",
+                translation: "มันเป็นเรื่องจำเป็นอย่างยิ่งที่จะ ______ มาตรการความปลอดภัยอย่างเคร่งครัด",
                 vocab: [
-                    "<b>Accustomed to</b>: คุ้นเคย (Group: ความคุ้นเคย)",
-                    "<b>Machinery</b>: เครื่องจักร"
+                    "<b>Essential</b> (Adj): จำเป็นอย่างยิ่ง",
+                    "<b>Follow</b> (V): ปฏิบัติตาม"
                 ],
                 options: [
-                    { text: "to operate", correct: false, rationale: "<b>ผิด:</b> Accustomed to ห้ามตามด้วย V.1" },
-                    { text: "to operating", correct: true, rationale: "<b>ถูกต้อง:</b> <i>Accustomed to</i> (คุ้นเคยกับ...) ต้องตามด้วย <b>V.ing</b>" },
-                    { text: "to operation", correct: false, rationale: "<b>ไม่ลื่นไหล:</b> Noun ใช้ได้ แต่ operating (Gerund) สื่อถึง 'การกระทำ' ได้ชัดเจนกว่าในบริบทนี้" },
-                    { text: "to operator", correct: false, rationale: "<b>ผิด:</b> Operator คือคน" }
+                    { text: "to following", correct: false, rationale: "<b>ผิดโครงสร้าง:</b> It is + Adj ไม่ใช่กลุ่มข้อยกเว้น Prepositional To" },
+                    { text: "following", correct: false, rationale: "<b>ขาด To:</b> โครงสร้างประโยคไม่สมบูรณ์" },
+                    { text: "follow", correct: false, rationale: "<b>กริยาหลุดมาลอยๆ:</b> ไม่มีตัวเชื่อม" },
+                    { text: "to follow", correct: true, rationale: "<b>General Infinitive:</b> โครงสร้างพื้นฐาน <i>It is + Adjective + To V.1</i> (มันเป็นเรื่อง... ที่จะ...)" }
                 ]
             },
             {
-                question: "With a view __________ the market share, they lowered the price.",
-                translation: "ด้วยความมุ่งหวังที่จะ ______ ส่วนแบ่งตลาด พวกเขาจึงลดราคา",
+                question: "We look forward __________ our business relationship in the near future.",
+                translation: "เราตั้งตารอที่จะ ______ ความสัมพันธ์ทางธุรกิจของเราในอนาคตอันใกล้นี้",
                 vocab: [
-                    "<b>With a view to</b> (Idiom): ด้วยความตั้งใจ/มุ่งหวังที่จะ...",
-                    "<b>Market share</b>: ส่วนแบ่งตลาด"
+                    "<b>Expand</b> (V): ขยาย",
+                    "<b>Relationship</b> (N): ความสัมพันธ์"
                 ],
                 options: [
-                    { text: "to increase", correct: false, rationale: "<b>ข้อยกเว้นยาก:</b> สำนวนนี้คนมักผิดเยอะ เพราะแปลว่า 'เพื่อที่จะ' เหมือน in order to แต่แกรมม่าบังคับต่างกัน" },
-                    { text: "to increasing", correct: true, rationale: "<b>ถูกต้อง:</b> <i>With a view to</i> เป็นสำนวนตายตัวที่ต้องตามด้วย <b>V.ing</b> เท่านั้น" },
-                    { text: "to increases", correct: false, rationale: "<b>ผิด:</b> V.เติม s" },
-                    { text: "to increased", correct: false, rationale: "<b>ผิด:</b> V.2" }
+                    { text: "to expand", correct: false, rationale: "<b>ข้อสอบปราบเซียน:</b> Look forward to ห้ามตามด้วย V.1 เด็ดขาด (เจอบ่อยที่สุดในข้อสอบ Error)" },
+                    { text: "expanding", correct: false, rationale: "<b>ขาด To:</b> Look forward ต้องมี to เสมอ" },
+                    { text: "to expanding", correct: true, rationale: "<b>Must-Know List:</b> <i>Look forward to</i> คือราชาแห่งข้อยกเว้น ต้องตามด้วย <b>V.ing</b> เสมอครับ" },
+                    { text: "expand", correct: false, rationale: "<b>ผิดไวยากรณ์:</b> ผิดทั้งตำแหน่งและหน้าที่คำ" }
                 ]
             }
         ];

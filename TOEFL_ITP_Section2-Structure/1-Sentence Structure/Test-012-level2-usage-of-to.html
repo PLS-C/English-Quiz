@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TOEFL ITP Structure: Set 12</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@300;400;600&family=Sarabun:wght@400;600&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body class="bg-slate-100 min-h-screen flex items-center justify-center p-4">
+
+    <div class="bg-white rounded-2xl shadow-xl w-full max-w-2xl overflow-hidden border border-slate-200 flex flex-col max-h-[95vh]" id="app-container">
+        
+        <div id="header-slot"></div>
+
+        <div class="w-full bg-gray-100 h-1.5 flex-none">
+            <div class="bg-amber-500 h-1.5 transition-all duration-300 ease-out" style="width: 0%" id="progress-bar"></div>
+        </div>
+
+        <div class="p-6 overflow-y-auto flex-grow rationale-scroll" id="content-area">
+            <div id="quiz-content-placeholder" class="text-center text-gray-400 py-10">Loading Quiz...</div>
+        </div>
+
+        <div id="footer-slot"></div>
+    </div>
+
+    <script>
+        // 1. ตั้งค่าหัวข้อและสี (Theme: Amber/Yellow - Warning/Caution)
+        const quizConfig = {
+            title: "TOEFL Structure (Advanced)",
+            subtitle: "Set 12: The 'Must-Know' Exceptions",
+            
+            // สีพื้นหลังหัวข้อ (เหลืองเข้ม/ส้ม)
+            headerColorClass: "bg-amber-600", 
+            
+            // สีตัวอักษรตกแต่ง
+            accentColorClass: "text-amber-100", 
+            scoreTitleClass: "text-amber-600"
+        };
+
+        // 2. ข้อมูลคำถาม Set 12: Focus on 'To' Preposition Exceptions
+        // โจทย์ทุกข้อ Choice จะนำหน้าด้วย "to" เพื่อวัดความแม่นยำ
+        const quizData = [
+            {
+                question: "I am definitely looking forward __________ from you soon.",
+                translation: "ฉันตั้งตารอที่จะ ______ ข่าวจากคุณเร็วๆ นี้อย่างแน่นอน",
+                vocab: [
+                    "<b>Look forward to</b>: ตั้งตารอ (Group: อุทิศ/มุ่งหวัง)",
+                    "<b>Definitely</b>: อย่างแน่นอน"
+                ],
+                options: [
+                    { text: "to hear", correct: false, rationale: "<b>ผิด:</b> <i>Look forward to</i> เป็นข้อยกเว้น ห้ามตามด้วย V.1" },
+                    { text: "to hearing", correct: true, rationale: "<b>ถูกต้อง:</b> <i>Look forward to</i> คือกลุ่มที่ <b>To เป็น Preposition</b> ต้องตามด้วย <b>V.ing</b> เสมอ" },
+                    { text: "to be heard", correct: false, rationale: "<b>ผิด:</b> Passive Voice ไม่ตรงกับบริบท (รอที่จะได้ยินเอง ไม่ใช่ถูกได้ยิน)" },
+                    { text: "to the hearing", correct: false, rationale: "<b>ไม่เหมาะสม:</b> hearing ในที่นี้เป็น Noun แปลว่า 'การพิจารณาคดี' ซึ่งความหมายเพี้ยนไปจาก 'ได้ยินข่าว'" }
+                ]
+            },
+            {
+                question: "The residents are strongly opposed __________ a new shopping mall here.",
+                translation: "ชาวบ้านคัดค้านอย่างหนักที่จะ ______ ห้างสรรพสินค้าแห่งใหม่ที่นี่",
+                vocab: [
+                    "<b>Opposed to</b>: คัดค้าน/ตรงข้าม (Group: คัดค้าน)",
+                    "<b>Shopping mall</b>: ห้างสรรพสินค้า"
+                ],
+                options: [
+                    { text: "to build", correct: false, rationale: "<b>ผิด:</b> <i>Opposed to</i> ห้ามตามด้วย V.1 (Infinitive)" },
+                    { text: "to building", correct: true, rationale: "<b>ถูกต้อง:</b> <i>Be opposed to</i> อยู่ในกลุ่ม 'คัดค้าน' ซึ่ง <b>To เป็น Preposition</b> ต้องตามด้วย <b>V.ing</b>" },
+                    { text: "to be built", correct: false, rationale: "<b>ผิด:</b> Residents (ชาวบ้าน) เป็นผู้คัดค้านการกระทำ (Active) ไม่ใช่ Passive" },
+                    { text: "to build up", correct: false, rationale: "<b>ผิด:</b> ยังคงเป็น V.1 ซึ่งผิดกฎของคำนี้" }
+                ]
+            },
+            {
+                question: "She finally confessed __________ the confidential files.",
+                translation: "ในที่สุดเธอก็สารภาพว่า ______ ไฟล์ลับเหล่านั้น",
+                vocab: [
+                    "<b>Confess to</b>: สารภาพ (Group: สารภาพ/ยอมรับ)",
+                    "<b>Confidential</b>: ที่เป็นความลับ"
+                ],
+                options: [
+                    { text: "to steal", correct: false, rationale: "<b>ผิด:</b> <i>Confess to</i> ห้ามใช้กับ V.1" },
+                    { text: "to stealing", correct: true, rationale: "<b>ถูกต้อง:</b> <i>Confess to</i> อยู่ในกลุ่ม 'สารภาพ' (เหมือน Admit to) ต้องตามด้วย <b>V.ing</b> (สารภาพต่อการขโมย)" },
+                    { text: "to stole", correct: false, rationale: "<b>ผิดไวยากรณ์:</b> หลัง to ไม่ใช้ V.2" },
+                    { text: "to be stolen", correct: false, rationale: "<b>ผิดความหมาย:</b> เธอขโมยเอง ไม่ใช่ถูกขโมย" }
+                ]
+            },
+            {
+                question: "We are fully committed __________ excellent service to our customers.",
+                translation: "เรามุ่งมั่นอย่างเต็มที่ที่จะ ______ บริการที่เป็นเลิศแก่ลูกค้าของเรา",
+                vocab: [
+                    "<b>Committed to</b>: มุ่งมั่น/ผูกมัด (Group: อุทิศตน)",
+                    "<b>Excellent</b>: ยอดเยี่ยม"
+                ],
+                options: [
+                    { text: "to provide", correct: false, rationale: "<b>ตัวหลอกยอดฮิต:</b> <i>Committed to</i> ดูเหมือนจะตามด้วย V.1 ได้ แต่จริงๆ แล้วผิดครับ" },
+                    { text: "to providing", correct: true, rationale: "<b>ถูกต้อง:</b> <i>Committed to</i> แปลว่า 'มุ่งมั่นต่อ...' (Preposition) ต้องตามด้วย <b>V.ing</b>" },
+                    { text: "to provision", correct: false, rationale: "<b>เกือบถูก:</b> เป็น Noun ใช้ได้ แต่ในบริบทนี้ต้องการกริยา (provide what? -> service) การใช้ Gerund (providing) จึงลื่นไหลกว่า" },
+                    { text: "to provider", correct: false, rationale: "<b>ผิดความหมาย:</b> provider คือผู้ให้บริการ (คน)" }
+                ]
+            },
+            {
+                question: "It took him a while to get used __________ on the left side of the road.",
+                translation: "เขาใช้เวลาสักพักกว่าจะชินกับการ ______ เลนซ้ายของถนน",
+                vocab: [
+                    "<b>Get used to</b>: ปรับตัวจนชิน (Group: ความคุ้นเคย)",
+                    "<b>A while</b>: สักพักหนึ่ง"
+                ],
+                options: [
+                    { text: "to drive", correct: false, rationale: "<b>ผิด:</b> <i>Get used to</i> ห้ามตามด้วย V.1 (ถ้า Used to เฉยๆ ถึงจะใช่)" },
+                    { text: "to driving", correct: true, rationale: "<b>ถูกต้อง:</b> <i>Get used to</i> (ชินกับ...) ต้องตามด้วย <b>V.ing</b> เสมอ" },
+                    { text: "to drove", correct: false, rationale: "<b>ผิดไวยากรณ์:</b> V.2 ห้ามตามหลัง to" },
+                    { text: "to the drive", correct: false, rationale: "<b>ไม่สมบูรณ์:</b> ถ้าใช้ Noun (the drive) ความหมายจะแคบกว่าการกระทำ (driving)" }
+                ]
+            },
+            {
+                question: "He dedicated his entire career __________ the mystery of the universe.",
+                translation: "เขาอุทิศตลอดชีวิตการทำงานเพื่อ ______ ความลึกลับของจักรวาล",
+                vocab: [
+                    "<b>Dedicate to</b>: อุทิศให้ (Group: อุทิศตน)",
+                    "<b>Mystery</b>: ความลึกลับ"
+                ],
+                options: [
+                    { text: "to solve", correct: false, rationale: "<b>ผิด:</b> Dedicate...to ห้ามตามด้วย V.1" },
+                    { text: "to solving", correct: true, rationale: "<b>ถูกต้อง:</b> <i>Dedicate to</i> อยู่ในกลุ่ม 'อุทิศตน' ต้องตามด้วย <b>V.ing</b> (อุทิศตนต่อการแก้ปริศนา)" },
+                    { text: "to solution", correct: false, rationale: "<b>ผิดรูปประโยค:</b> solution เป็น Noun แต่ solution 'ของ' อะไร? รูปประโยคนี้ Gerund (solving) เชื่อมกับ object (the mystery) ได้ดีกว่า" },
+                    { text: "to be solved", correct: false, rationale: "<b>ผิดความหมาย:</b> เขาเป็นคนแก้ปริศนา (Active)" }
+                ]
+            },
+            {
+                question: "I object __________ like a child.",
+                translation: "ฉันคัดค้านการ ______ เหมือนเด็ก",
+                vocab: [
+                    "<b>Object to</b>: คัดค้าน (Group: คัดค้าน)",
+                    "<b>Treat</b>: ปฏิบัติ"
+                ],
+                options: [
+                    { text: "to treat", correct: false, rationale: "<b>ผิด:</b> Object to ห้ามตามด้วย V.1" },
+                    { text: "to treating", correct: false, rationale: "<b>ผิดความหมาย:</b> Treating คือเราไปปฏิบัติกับคนอื่น แต่ประโยคนี้คือ 'ฉันไม่อยากถูกปฏิบัติ'" },
+                    { text: "to be treated", correct: false, rationale: "<b>ผิด:</b> แม้จะเป็น Passive แต่หลัง Object to ต้องเป็น Gerund (Being treated)" },
+                    { text: "to being treated", correct: true, rationale: "<b>ถูกต้อง:</b> 1. ต้องใช้ V.ing (เพราะ Object to) -> Being <br> 2. ต้องเป็น Passive (ถูกกระทำ) -> Being treated" }
+                ]
+            },
+            {
+                question: "When will you get around __________ the fence?",
+                translation: "เมื่อไหร่คุณถึงจะหาเวลามา ______ รั้วสักที?",
+                vocab: [
+                    "<b>Get around to</b> (Phrasal verb): หาเวลามาทำสิ่งที่ผลัดผ่อนไว้",
+                    "<b>Fence</b>: รั้ว"
+                ],
+                options: [
+                    { text: "to paint", correct: false, rationale: "<b>ผิด:</b> <i>Get around to</i> เป็นสำนวนพิเศษที่ to เป็น Preposition" },
+                    { text: "to painting", correct: true, rationale: "<b>ถูกต้อง:</b> <i>Get around to</i> ต้องตามด้วย <b>V.ing</b> เสมอ (หาเวลามา 'ต่อ' การทาสี)" },
+                    { text: "to painted", correct: false, rationale: "<b>ผิดไวยากรณ์:</b> V.3/V.2" },
+                    { text: "to be paint", correct: false, rationale: "<b>ผิดไวยากรณ์:</b> Be + V.1 ไม่ได้" }
+                ]
+            },
+            {
+                question: "Many workers are not accustomed __________ heavy machinery.",
+                translation: "คนงานหลายคนไม่คุ้นชินกับการ ______ เครื่องจักรหนัก",
+                vocab: [
+                    "<b>Accustomed to</b>: คุ้นเคย (Group: ความคุ้นเคย)",
+                    "<b>Machinery</b>: เครื่องจักร"
+                ],
+                options: [
+                    { text: "to operate", correct: false, rationale: "<b>ผิด:</b> Accustomed to ห้ามตามด้วย V.1" },
+                    { text: "to operating", correct: true, rationale: "<b>ถูกต้อง:</b> <i>Accustomed to</i> (คุ้นเคยกับ...) ต้องตามด้วย <b>V.ing</b>" },
+                    { text: "to operation", correct: false, rationale: "<b>ไม่ลื่นไหล:</b> Noun ใช้ได้ แต่ operating (Gerund) สื่อถึง 'การกระทำ' ได้ชัดเจนกว่าในบริบทนี้" },
+                    { text: "to operator", correct: false, rationale: "<b>ผิด:</b> Operator คือคน" }
+                ]
+            },
+            {
+                question: "With a view __________ the market share, they lowered the price.",
+                translation: "ด้วยความมุ่งหวังที่จะ ______ ส่วนแบ่งตลาด พวกเขาจึงลดราคา",
+                vocab: [
+                    "<b>With a view to</b> (Idiom): ด้วยความตั้งใจ/มุ่งหวังที่จะ...",
+                    "<b>Market share</b>: ส่วนแบ่งตลาด"
+                ],
+                options: [
+                    { text: "to increase", correct: false, rationale: "<b>ข้อยกเว้นยาก:</b> สำนวนนี้คนมักผิดเยอะ เพราะแปลว่า 'เพื่อที่จะ' เหมือน in order to แต่แกรมม่าบังคับต่างกัน" },
+                    { text: "to increasing", correct: true, rationale: "<b>ถูกต้อง:</b> <i>With a view to</i> เป็นสำนวนตายตัวที่ต้องตามด้วย <b>V.ing</b> เท่านั้น" },
+                    { text: "to increases", correct: false, rationale: "<b>ผิด:</b> V.เติม s" },
+                    { text: "to increased", correct: false, rationale: "<b>ผิด:</b> V.2" }
+                ]
+            }
+        ];
+    </script>
+
+    <script src="assets/js/script.js"></script>
+</body>
+</html>

@@ -5,777 +5,84 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Deep Dive: Usage of 'To' | TOEFL ITP</title>
     
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@300;400;600&family=Sarabun:wght@400;600;700&display=swap" rel="stylesheet">
-    
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    
+    <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sarabun:wght@400;500;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="css/quiz-style.css">
 
     <style>
-        :root {
-            --theme-primary: #0f766e; /* Teal-700 */
-            --theme-light: #f0fdfa;   /* Teal-50 */
-            --theme-border: #ccfbf1;  /* Teal-200 */
-        }
-        
-        body { 
-            font-family: 'Sarabun', 'Noto Sans Thai', sans-serif; 
-            background-color: #f8f9fa;
-        }
-
-        /* Main Card */
-        .main-card {
-            border: none;
-            border-radius: 16px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
-            overflow: hidden;
-            max-width: 800px;
-            margin: 40px auto;
-        }
-
-        /* Header */
-        .header-bg {
-            background-color: var(--theme-primary);
-            color: white;
-            padding: 2rem;
-            position: relative;
-            overflow: hidden;
-        }
-        .header-decoration {
-            position: absolute;
-            bottom: -50px;
-            right: -50px;
-            width: 150px;
-            height: 150px;
-            background-color: rgba(255,255,255,0.1);
-            border-radius: 50%;
-            filter: blur(40px);
-        }
-
-        /* Content Styling */
-        .section-title {
-            color: #115e59;
-            border-left: 5px solid #14b8a6;
-            padding-left: 15px;
-            font-weight: bold;
-            margin-bottom: 20px;
-            margin-top: 30px;
-        }
-
-        .example-box {
-            background-color: #f8f9fa;
-            border: 1px solid #e9ecef;
-            border-radius: 12px;
-            padding: 20px;
-            margin-bottom: 20px;
-        }
-
-        /* Quiz Buttons */
-        .btn-quiz-option {
-            text-align: left;
-            border: 1px solid #dee2e6;
-            background-color: white;
-            color: #495057;
-            border-radius: 10px;
-            padding: 15px;
-            width: 100%;
-            margin-bottom: 10px;
-            transition: all 0.2s;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .btn-quiz-option:hover:not(:disabled) {
-            background-color: var(--theme-light);
-            border-color: #99f6e4;
-            color: var(--theme-primary);
-        }
-        .btn-quiz-option:disabled { opacity: 0.7; }
-
-        /* Quiz States */
-        .btn-success-custom {
-            background-color: #d1fae5 !important;
-            border-color: #10b981 !important;
-            color: #065f46 !important;
-        }
-        .btn-danger-custom {
-            background-color: #fee2e2 !important;
-            border-color: #ef4444 !important;
-            color: #991b1b !important;
-        }
-
-        .back-link {
-            color: #ccfbf1;
-            text-decoration: none;
-            font-size: 0.9em;
-            display: inline-flex;
-            align-items: center;
-            margin-bottom: 10px;
-        }
-        .back-link:hover { color: white; }
+        body { font-family: 'Inter', 'Sarabun', sans-serif; background-color: #f8fafc; }
     </style>
 </head>
-<body>
+<body class="bg-slate-100 min-h-screen flex flex-col text-slate-800">
 
-    <div class="container">
-        <div class="card main-card">
-            
-            <div class="header-bg">
-                <a href="gerunds-and-infinitives.html" class="back-link">
-                    <i class="ph-bold ph-arrow-left me-1"></i> กลับหน้า Gerunds
-                </a>
-                <h1 class="h2 fw-bold d-flex align-items-center gap-2">
-                    <i class="ph-duotone ph-magnifying-glass"></i> The Many Faces of "To"
-                </h1>
-                <p class="mb-0 opacity-75">เจาะลึกการใช้ To: เมื่อไหร่ตามด้วย V.1 และเมื่อไหร่ตามด้วย V.ing?</p>
-                <div class="header-decoration"></div>
-            </div>
+    <div id="global-header"></div>
 
-            <div class="card-body p-4 p-md-5">
-
-                <section>
-                    <h2 class="section-title">ภาพรวม: To มี 2 หน้าที่ (The Two Faces)</h2>
-                    <p class="text-muted small mb-3">ในภาษาอังกฤษ คำว่า "To" เป็นได้ 2 อย่าง ซึ่งส่งผลต่อคำที่ตามหลังมันอย่างสิ้นเชิง:</p>
-                    
-                    <div class="table-responsive rounded-3 border">
-                        <table class="table mb-0 align-middle">
-                            <thead class="table-light">
-                                <tr>
-                                    <th class="text-nowrap">หน้าที่ (Function)</th>
-                                    <th>ตามด้วย (Followed by)</th>
-                                    <th>ตัวอย่าง</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td><strong class="text-primary">1. To Infinitive</strong><br><small class="text-muted">(ตัวบอกกริยาไม่แท้)</small></td>
-                                    <td><span class="badge bg-primary-subtle text-primary-emphasis border border-primary-subtle">V.1 (Base Form)</span><br><small class="text-muted">ห้ามเติม s, es, ed, ing</small></td>
-                                    <td>I want <strong>to go</strong>.<br>It is easy <strong>to learn</strong>.</td>
-                                </tr>
-                                <tr>
-                                    <td><strong class="text-danger">2. To Preposition</strong><br><small class="text-muted">(คำบุพบท)</small></td>
-                                    <td><span class="badge bg-danger-subtle text-danger-emphasis border border-danger-subtle">Noun / V.ing</span><br><small class="text-muted">ห้ามใช้ V.1 เด็ดขาด</small></td>
-                                    <td>Go <strong>to school</strong>.<br>Look forward <strong>to seeing</strong> you.</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </section>
-
-                <section>
-                    <h2 class="section-title">1. To Infinitive (ตามด้วย V.1)</h2>
-                    <p class="text-muted small">ใช้ในกรณีต่อไปนี้:</p>
-                    
-                    <div class="mb-4">
-                        <h6 class="fw-bold text-dark">A. บอกจุดประสงค์ (Infinitive of Purpose)</h6>
-                        <p class="small text-muted mb-2">วางไว้หน้าประโยค หรือหลังประโยค เพื่อบอกว่า "ทำไปเพื่ออะไร"</p>
-                        <div class="example-box py-2 mb-2">
-                            <i class="ph-fill ph-check-circle text-success me-1"></i> <strong>To pass</strong> the test, you must study.
-                        </div>
-                    </div>
-
-                    <div class="mb-4">
-                        <h6 class="fw-bold text-dark">B. ตามหลัง Adjective (It is... to...)</h6>
-                        <div class="example-box py-3">
-                            <div class="mb-1">It is important <strong>to practice</strong> every day.</div>
-                            <div>It is dangerous <strong>to swim</strong> here.</div>
-                        </div>
-                    </div>
-
-                    <div class="mb-4">
-                        <h6 class="fw-bold text-dark">C. ตามหลังกริยาบางตัว (Verbs of Desire/Plan)</h6>
-                        <p class="small text-muted mb-2">เช่น: <em>want, hope, decide, plan, promise, agree</em></p>
-                        <div class="example-box py-2">
-                            She decided <strong>to buy</strong> a new car.
-                        </div>
-                    </div>
-                </section>
-
-                <section>
-                    <h2 class="section-title">2. To Preposition (ตามด้วย V.ing/Noun)</h2>
-                    <p class="text-muted small">อันนี้คือจุดที่ <strong>"ยากและออกสอบบ่อยที่สุด"</strong> เพราะ To ในที่นี้ทำหน้าที่เป็นคำบุพบท ไม่ใช่ตัวเชื่อมกริยาครับ</p>
-
-                    <div class="alert alert-info border-info mb-4">
-                        <div class="d-flex align-items-center gap-2 mb-2">
-                            <i class="ph-fill ph-lightbulb text-info fs-4"></i>
-                            <strong class="text-info">💡 เทคนิคการทดสอบด้วยกฎ "Something"</strong>
-                        </div>
-                        <p class="small mb-0">ลองแทนที่คำหลัง <strong>To</strong> ด้วยคำว่า <strong>"Something"</strong> หรือ <strong>"It"</strong> ถ้าประโยคยังฟังดูสมเหตุสมผล แสดงว่า To นั้นคือ Preposition ต้องตามด้วย <strong>V.ing หรือ Noun</strong></p>
-                        <div class="bg-white rounded-3 p-2 mt-2 border-info border-start border-4 small">
-                            <em>Example: I am looking forward to... <strong>(Something)</strong>.</em> → ฟังดูดี = ต้องใช้ <strong>V.ing</strong>
-                        </div>
-                    </div>
-
-                    <div class="alert alert-danger border-danger d-flex flex-column gap-3">
-                        <div class="d-flex align-items-center gap-2">
-                            <i class="ph-fill ph-fire text-danger fs-4"></i>
-                            <strong class="text-danger">🔥 Must-Know List (แบ่งตามกลุ่มอารมณ์) คำหลัง to ของกลุ่มนี้ตามด้วย Noun หรือ V เติม ing</strong>
-                        </div>
-                        
-                        <div class="row g-3">
-                            <div class="col-md-12">
-                                <div class="bg-white h-100 rounded-3 p-3 border">
-                                    <h6 class="fw-bold text-dark border-bottom pb-2">กลุ่ม A: ความรู้สึก / การตั้งตารอ / การคัดค้าน</h6>
-                                    <ul class="mb-0 small ps-3">
-                                        <li>Look forward to + V.ing (ตั้งตารอคอย)</li>
-                                        <li>Object to + V.ing (คัดค้าน / ไม่เห็นด้วย)</li>
-                                        <li>Oppose to + V.ing (ต่อต้าน)</li>
-                                        <li>Confess to + V.ing (สารภาพต่อการกระทำ...)</li>
-               
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="col-md-12">
-                                <div class="bg-white h-100 rounded-3 p-3 border">
-                                    <h6 class="fw-bold text-dark border-bottom pb-2">กลุ่ม B: ความคุ้นชิน (ระวัง! อย่าสับสนกับ Used to ที่แปลว่าเคย)</h6>
-                                    <ul class="mb-0 small ps-3">
-                                        <li>Get/Be used to + V.ing (คุ้นเคยกับ...) <-- ตัวนี้ออกสอบบ่อยที่สุด!</li>
-                                        <li>Dedicate / Devote to (อุทิศตนให้แก่...)</li>
-                                        <li>Get/Be accustomed to + V.ing (คุ้นเคยกับ...)</li>
-                        
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="col-md-12">
-                                <div class="bg-white h-100 rounded-3 p-3 border">
-                                    <h6 class="fw-bold text-dark border-bottom pb-2">กลุ่ม C: การอุทิศตัว</h6>
-                                    <ul class="mb-0 small ps-3">
-                                        <li>Dedicate (something) to + V.ing (อุทิศ...ให้กับ)</li>
-                                        <li>Devote (something) to + V.ing (อุทิศ...ให้กับ)</li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="col-md-12">
-                                <div class="bg-white h-100 rounded-3 p-3 border">
-                                    <h6 class="fw-bold text-dark border-bottom pb-2">กลุ่ม D: เหตุผล / เพิ่มเติม</h6>
-                                    <ul class="mb-0 small ps-3">
-                                        <li>In addition to + V.ing (นอกจาก...)</li>
-                                        <li>Owing to + V.ing / Noun (เนื่องจาก...)</li>
-                                        <li>Due to + V.ing / Noun (เนื่องจาก...)</li>
-                                        <li>Thanks to + V.ing / Noun (ขอบคุณ / เนื่องมาจาก...)</li>
-                                        <li>With a view to + V.ing (ด้วยจุดประสงค์เพื่อที่จะ...)</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <h5 class="fw-bold mt-4 mb-3"><i class="ph-bold ph-equals me-1"></i> ตารางสรุปเปรียบเทียบ</h5>
-                    <div class="table-responsive rounded-3 border mb-4">
-                        <table class="table mb-0 align-middle small">
-                            <thead class="table-dark">
-                                <tr>
-                                    <th>โครงสร้าง</th>
-                                    <th>หน้าที่ของ To</th>
-                                    <th>ตามด้วย</th>
-                                    <th>ตัวอย่าง</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td><strong>Infinitive</strong></td>
-                                    <td>ตัวเชื่อมกริยา</td>
-                                    <td><span class="text-primary fw-bold">V.1</span></td>
-                                    <td>I hope <strong>to pass</strong>.</td>
-                                </tr>
-                                <tr>
-                                    <td><strong>Preposition</strong></td>
-                                    <td>ระบุเป้าหมาย</td>
-                                    <td><span class="text-danger fw-bold">V.ing / Noun</span></td>
-                                    <td>I am close <strong>to passing</strong>.</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </section>
-
-                <section class="mt-5">
-                    <div class="d-flex align-items-center gap-2 mb-3">
-                        <div class="bg-warning text-white rounded p-1 d-flex align-items-center justify-content-center" style="width: 32px; height: 32px;">
-                            <i class="ph-bold ph-star"></i>
-                        </div>
-                        <h2 class="h5 fw-bold text-dark mb-0">คลังศัพท์เพิ่มเติม (Advanced Focus)</h2>
-                    </div>
-                    
-                    <div class="card border-warning border-opacity-25 shadow-sm bg-warning-subtle mb-4">
-                        <div class="card-body p-4">
-                            <p class="small text-dark mb-4">
-                                <i class="ph-fill ph-info text-warning me-1"></i> 
-                                กลุ่มคำศัพท์ระดับสูงที่ออกสอบ TOEFL บ่อย แต่คนมักหลุดสำรวจ <strong>(ต้องตามด้วย V.ing เสมอ)</strong>
-                            </p>
-
-                            <div class="row g-3">
-                                
-                                <div class="col-md-4">
-                                    <div class="bg-white rounded-3 p-3 h-100 border shadow-sm position-relative overflow-hidden">
-                                        <div class="d-flex align-items-center gap-2 mb-2 text-warning">
-                                            <i class="ph-fill ph-clock-clockwise fs-5"></i>
-                                            <h6 class="fw-bold text-dark mb-0">Get around to</h6>
-                                        </div>
-                                        <p class="small mb-2"><strong>แปลว่า:</strong> หาเวลามาทำ (สิ่งที่ค้างคาไว้)</p>
-                                        <div class="bg-light p-2 rounded mb-2 border small fst-italic text-muted">
-                                            "I haven't <strong class="text-dark">got around to fixing</strong> the roof yet."
-                                        </div>
-                                        <div class="d-flex gap-1 align-items-start small text-secondary">
-                                            <i class="ph-bold ph-lightbulb mt-1 text-warning"></i>
-                                            <span><strong>จำ:</strong> เป็น Phrasal Verb ที่ to คือบุพบท</span>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-md-4">
-                                    <div class="bg-white rounded-3 p-3 h-100 border shadow-sm">
-                                        <div class="d-flex align-items-center gap-2 mb-2 text-warning">
-                                            <i class="ph-fill ph-users-three fs-5"></i>
-                                            <h6 class="fw-bold text-dark mb-0">Be accustomed to</h6>
-                                        </div>
-                                        <p class="small mb-2"><strong>แปลว่า:</strong> คุ้นเคยกับ... (ความหมายเดียวกับ Be used to)</p>
-                                        <div class="bg-light p-2 rounded mb-2 border small fst-italic text-muted">
-                                            "She is <strong class="text-dark">accustomed to living</strong> alone."
-                                        </div>
-                                        <div class="d-flex gap-1 align-items-start small text-secondary">
-                                            <i class="ph-bold ph-lightbulb mt-1 text-warning"></i>
-                                            <span><strong>จำ:</strong> อยู่แก๊งเดียวกับ Used to (Group A)</span>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-md-4">
-                                    <div class="bg-white rounded-3 p-3 h-100 border shadow-sm">
-                                        <div class="d-flex align-items-center gap-2 mb-2 text-warning">
-                                            <i class="ph-fill ph-target fs-5"></i>
-                                            <h6 class="fw-bold text-dark mb-0">With a view to</h6>
-                                        </div>
-                                        <p class="small mb-2"><strong>แปลว่า:</strong> ด้วยความตั้งใจที่จะ... / เพื่อที่จะ... (ทางการ)</p>
-                                        <div class="bg-light p-2 rounded mb-2 border small fst-italic text-muted">
-                                            "He bought the land <strong class="text-dark">with a view to building</strong> a hotel."
-                                        </div>
-                                        <div class="d-flex gap-1 align-items-start small text-danger">
-                                            <i class="ph-bold ph-warning-circle mt-1"></i>
-                                            <span><strong>ระวัง:</strong> ความหมายเหมือน in order to แต่ไวยากรณ์บังคับใช้ <u>V.ing</u> ครับ!</span>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-                <section class="mt-5">
-                    <div class="d-flex align-items-center gap-2 mb-3">
-                        <div class="bg-danger text-white rounded p-1 d-flex align-items-center justify-content-center" style="width: 32px; height: 32px;">
-                            <i class="ph-bold ph-traffic-signal"></i>
-                        </div>
-                        <h2 class="h5 fw-bold text-dark mb-0">เจาะลึก: เมื่อ "To" อยู่หน้าประโยค (Start of Sentence)</h2>
-                    </div>
-
-                    <div class="card border-0 shadow-sm overflow-hidden">
-                        <div class="card-body p-4">
-                            
-                            <div class="mb-4">
-                                <h6 class="fw-bold text-primary d-flex align-items-center gap-2">
-                                    <span class="badge bg-primary rounded-pill">1</span>
-                                    แบบที่เจอบ่อยที่สุด: To + V.1 (บอกจุดประสงค์)
-                                </h6>
-                                <div class="ps-4 ms-2 border-start border-2 border-primary-subtle">
-                                    <p class="small text-muted mb-2">ถ้าเห็น <strong>To</strong> ตัวเดียวโดดๆ ขึ้นต้นประโยค แล้วตามด้วยเครื่องหมาย <strong>Comma (,)</strong> คั่นกลางประโยค เกือบ 100% คือ Infinitive of Purpose ครับ</p>
-                                    
-                                    <div class="bg-light p-3 rounded-3 mb-2 small">
-                                        <div class="d-flex gap-2 mb-1">
-                                            <strong class="text-dark">สูตร:</strong>
-                                            <span class="text-primary font-monospace">To + V.1 ..., (Subject + Verb) ...</span>
-                                        </div>
-                                        <div class="d-flex gap-2 mb-1">
-                                            <strong class="text-dark">ความหมาย:</strong>
-                                            <span>"เพื่อที่จะ..." (ย่อมาจาก In order to)</span>
-                                        </div>
-                                    </div>
-                                    
-                                    <p class="small mb-0">
-                                        <i class="ph-fill ph-check-circle text-success me-1"></i>
-                                        <em>To <strong class="text-primary">pass</strong> the TOEFL, you need to practice.</em> (เพื่อที่จะสอบผ่าน... คุณต้องฝึกฝน)<br>
-                                        <i class="ph-fill ph-x-circle text-danger me-1"></i>
-                                        <em class="text-decoration-line-through text-muted">To passing...</em> (ผิดทันที)
-                                    </p>
-                                </div>
-                            </div>
-
-                            <hr class="border-secondary opacity-10 my-4">
-
-                            <div class="mb-4">
-                                <h6 class="fw-bold text-info d-flex align-items-center gap-2">
-                                    <span class="badge bg-info text-dark rounded-pill">2</span>
-                                    แบบที่เป็นประธาน: To + V.1 (ทำหน้าที่เป็น Noun)
-                                </h6>
-                                <div class="ps-4 ms-2 border-start border-2 border-info-subtle">
-                                    <p class="small text-muted mb-2">สามารถใช้ <strong>To + V.1</strong> เป็นประธานของประโยคได้</p>
-                                    
-                                    <div class="bg-light p-3 rounded-3 mb-2 small">
-                                        <div class="d-flex gap-2 mb-1">
-                                            <strong class="text-dark">สูตร:</strong>
-                                            <span class="text-info-emphasis font-monospace">To + V.1 + Verb หลัก ...</span>
-                                        </div>
-                                        <div class="d-flex gap-2 mb-1">
-                                            <strong class="text-dark">ความหมาย:</strong>
-                                            <span>"การทำ..."</span>
-                                        </div>
-                                    </div>
-                                    
-                                    <p class="small mb-0">
-                                        <i class="ph-fill ph-check-circle text-success me-1"></i>
-                                        <em>To <strong class="text-info">err</strong> is human.</em> 
-                                        <span class="text-muted">(การทำผิดคือธรรมชาติของมนุษย์)</span><br>
-
-                                        <i class="ph-fill ph-x-circle text-danger me-1"></i>
-                                        <em class="text-decoration-line-through text-muted">To learning English is important.</em> 
-                                        <span class="text-danger fw-bold">(ผิด! ถ้าจะใช้ ing ต้องตัด To ออก)</span><br>
-
-                                        <i class="ph-fill ph-check-circle text-success me-1"></i>
-                                        <strong class="text-dark">Learning English is important.</strong> 
-                                        <span class="text-muted">(การเรียนภาษาอังกฤษเป็นสิ่งสำคัญ, นิยมใช้ทั่วไป/ธรรมชาติ)</span><br>
-
-                                        <i class="ph-fill ph-check-circle text-success me-1"></i>
-                                        <em class="text-dark">To learn English is important.</em> 
-                                        <span class="text-muted">(การเรียนภาษาอังกฤษเป็นสิ่งสำคัญ, ใช้ในงานเขียน/ทางการมาก)</span>
-                                    </p>
-                                </div>
-                            </div>
-
-                            <hr class="border-secondary opacity-10 my-4">
-
-                            <div class="mb-4">
-                                <h6 class="fw-bold text-danger d-flex align-items-center gap-2">
-                                    <span class="badge bg-danger rounded-pill">3</span>
-                                    แบบข้อยกเว้น (ตัวอันตราย!): Phrase ending in "To" + V.ing
-                                </h6>
-                                <div class="ps-4 ms-2 border-start border-2 border-danger-subtle">
-                                    <p class="small text-muted mb-2">
-                                        คำตอบคือ "มี" ที่ขึ้นต้นด้วย To แล้วเป็น V.ing แต่ To ตัวนั้นจะไม่ใช่อยู่โดดๆ มันจะเป็น <strong>"ติ่ง"</strong> ของคำบุพบทวลี (Prepositional Phrase) ครับ
-                                    </p>
-                                    
-                                    <div class="row g-2">
-                                        <div class="col-md-6">
-                                            <div class="border rounded p-2 bg-white small h-100">
-                                                <strong class="text-danger">In addition to + V.ing / Noun</strong><br>
-                                                <span class="text-muted">แปลว่า: นอกจาก...</span><br>
-                                                <em class="d-block mt-1 text-dark">"In addition to <u class="text-danger">studying</u>, she works part-time."</em>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="border rounded p-2 bg-white small h-100">
-                                                <strong class="text-danger">Owing to + Noun / V.ing</strong><br>
-                                                <span class="text-muted">แปลว่า: เนื่องจาก...</span><br>
-                                                <em class="d-block mt-1 text-dark">"Owing to <u class="text-danger">the rain</u>, we stayed home."</em>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="alert alert-warning border-warning d-flex flex-column gap-2 mt-4">
-                                <div class="d-flex align-items-center gap-2">
-                                    <i class="ph-fill ph-eye text-warning fs-5"></i>
-                                    <strong class="text-dark">💡 สรุปเทคนิคการมอง (Visual Guide)</strong>
-                                </div>
-                                <p class="small mb-0 text-muted">เวลาเจอช่องว่างหน้าประโยค <code>__________</code> ให้สังเกตดังนี้:</p>
-                                
-                                <div class="bg-white rounded p-3 border border-warning-subtle small">
-                                    <div class="d-flex align-items-start gap-2 mb-2">
-                                        <i class="ph-bold ph-arrow-right text-primary mt-1"></i>
-                                        <div>
-                                            ถ้าตัวเลือกขึ้นต้นด้วย <strong>"To"</strong> ตัวเดียว <span class="text-muted">(To ...)</span><br>
-                                            👉 ให้เลือก <strong class="text-primary">To + V.1</strong> ไว้ก่อนเลย (99% ถูก)<br>
-                                            <span class="text-muted fst-italic">Ex: To go, To see, To determine</span>
-                                        </div>
-                                    </div>
-                                    <hr class="my-2 opacity-25">
-                                    <div class="d-flex align-items-start gap-2 mb-2">
-                                        <i class="ph-bold ph-arrow-right text-danger mt-1"></i>
-                                        <div>
-                                            ถ้าตัวเลือกขึ้นต้นด้วย <strong>"In addition to"</strong> หรือ <strong>"Owing to"</strong><br>
-                                            👉 ให้เลือก <strong class="text-danger">V.ing</strong> หรือ <strong>Noun</strong><br>
-                                            <span class="text-muted fst-italic">Ex: In addition to working</span>
-                                        </div>
-                                    </div>
-                                    <hr class="my-2 opacity-25">
-                                    <div class="d-flex align-items-center gap-2 text-danger fw-bold">
-                                        <i class="ph-fill ph-prohibit"></i>
-                                        ห้ามเลือก "To + V.ing" (To doing) ขึ้นต้นประโยคเด็ดขาด!
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="mt-4">
-                                <h6 class="fw-bold text-dark mb-3"><i class="ph-bold ph-table me-1"></i> ตารางเปรียบเทียบ (Start of Sentence)</h6>
-                                <div class="table-responsive rounded-3 border">
-                                    <table class="table mb-0 align-middle small text-center">
-                                        <thead class="table-secondary">
-                                            <tr>
-                                                <th class="text-start">ขึ้นต้นประโยคด้วย</th>
-                                                <th>ตามด้วย (Followed by)</th>
-                                                <th>ความหมาย</th>
-                                                <th>ตัวอย่าง</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td class="text-start fw-bold text-primary">To (โดดๆ)</td>
-                                                <td><span class="badge bg-primary-subtle text-primary-emphasis">V.1</span></td>
-                                                <td>เพื่อที่จะ... (บอกจุดประสงค์)</td>
-                                                <td class="text-start"><em>To pass, ...</em></td>
-                                            </tr>
-                                            <tr>
-                                                <td class="text-start fw-bold text-info">To (โดดๆ)</td>
-                                                <td><span class="badge bg-info-subtle text-info-emphasis">V.1</span></td>
-                                                <td>การ... (เป็นประธาน)</td>
-                                                <td class="text-start"><em>To learn is...</em></td>
-                                            </tr>
-                                            <tr>
-                                                <td class="text-start fw-bold text-danger">In addition to</td>
-                                                <td><span class="badge bg-danger-subtle text-danger-emphasis">V.ing / Noun</span></td>
-                                                <td>นอกจาก... (เป็นบุพบท)</td>
-                                                <td class="text-start"><em>In addition to reading, ...</em></td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                    <div class="mt-4">
-                            <div class="card border-primary shadow-sm">
-                                <div class="card-header bg-primary text-white d-flex align-items-center gap-2 py-3">
-                                    <i class="ph-fill ph-magic-wand fs-4"></i>
-                                    <h6 class="mb-0 fw-bold">เทคนิค "The Magic Check" (เช็กยังไงว่า To ตัวไหนตามด้วย V.ing?)</h6>
-                                </div>
-                                
-                                <div class="card-body p-4">
-                                    <p class="text-dark mb-4">
-                                        <i class="ph-fill ph-lightbulb text-warning me-1"></i>
-                                        ถ้าคุณเจอวลีที่ลงท้ายด้วย <strong>To</strong> แล้วไม่แน่ใจ ให้ลอง 
-                                        <span class="badge bg-warning text-dark border border-warning-subtle fs-6">เปลี่ยนคำข้างหลังเป็นคำว่า 'IT' (มัน)</span>
-                                    </p>
-
-                                    <div class="row g-3 mb-4">
-                                        <div class="col-md-6">
-                                            <div class="h-100 p-3 bg-success-subtle border border-success rounded-3 position-relative overflow-hidden">
-                                                <div class="d-flex align-items-center gap-2 mb-2">
-                                                    <i class="ph-fill ph-check-circle text-success fs-4"></i>
-                                                    <strong class="text-success">ฟังรู้เรื่อง = Preposition</strong>
-                                                </div>
-                                                <p class="small text-dark mb-0">
-                                                    ถ้าแทนด้วย IT แล้ว Make Senseแสดงว่าเป็นคำเชื่อม<br>
-                                                    👉 ต้องตามด้วย <strong class="text-success text-decoration-underline">V.ing / Noun</strong>
-                                                </p>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-md-6">
-                                            <div class="h-100 p-3 bg-secondary-subtle border border-secondary rounded-3">
-                                                <div class="d-flex align-items-center gap-2 mb-2">
-                                                    <i class="ph-fill ph-x-circle text-secondary fs-4"></i>
-                                                    <strong class="text-secondary">ฟังดูประหลาด = Infinitive</strong>
-                                                </div>
-                                                <p class="small text-dark mb-0">
-                                                    ถ้าแทนด้วย IT แล้วงงๆ (เช่น I want to it ❌)<br>
-                                                    👉 ต้องตามด้วย <strong class="text-secondary text-decoration-underline">V.1 (Infinitive)</strong>
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <h6 class="fw-bold text-dark mb-3 small text-uppercase text-muted letter-spacing-1">
-                                        <i class="ph-bold ph-test-tube me-1"></i> ลองทดสอบดู (Let's Test)
-                                    </h6>
-                                    
-                                    <div class="table-responsive rounded-3 border">
-                                        <table class="table mb-0 align-middle small">
-                                            <thead class="table-light">
-                                                <tr>
-                                                    <th style="width: 30%;">คำศัพท์ (Phrase)</th>
-                                                    <th style="width: 40%;">ลองแทนค่าด้วย "IT"</th>
-                                                    <th>สรุปผล (Result)</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <td class="fw-bold text-primary">I look forward to...</td>
-                                                    <td>
-                                                        <span class="text-dark">"I look forward to <strong class="text-primary">IT</strong>."</span><br>
-                                                        <span class="text-muted fst-italic">(ฉันตั้งตารอ "มัน")</span> 
-                                                        <i class="ph-bold ph-check text-success ms-1"></i>
-                                                    </td>
-                                                    <td>
-                                                        <span class="badge bg-success-subtle text-success-emphasis border border-success-subtle">V.ing</span><br>
-                                                        <em>...seeing you.</em>
-                                                    </td>
-                                                </tr>
-                                                
-                                                <tr>
-                                                    <td class="fw-bold text-primary">In addition to...</td>
-                                                    <td>
-                                                        <span class="text-dark">"In addition to <strong class="text-primary">IT</strong>..."</span><br>
-                                                        <span class="text-muted fst-italic">(นอกจาก "มัน" แล้ว...)</span>
-                                                        <i class="ph-bold ph-check text-success ms-1"></i>
-                                                    </td>
-                                                    <td>
-                                                        <span class="badge bg-success-subtle text-success-emphasis border border-success-subtle">V.ing</span><br>
-                                                        <em>...studying.</em>
-                                                    </td>
-                                                </tr>
-
-                                                <tr>
-                                                    <td class="fw-bold text-primary">Owing to...</td>
-                                                    <td>
-                                                        <span class="text-dark">"Owing to <strong class="text-primary">IT</strong>..."</span><br>
-                                                        <span class="text-muted fst-italic">(เนื่องจาก "มัน"...)</span>
-                                                        <i class="ph-bold ph-check text-success ms-1"></i>
-                                                    </td>
-                                                    <td>
-                                                        <span class="badge bg-success-subtle text-success-emphasis border border-success-subtle">V.ing / Noun</span><br>
-                                                        <em>...the rain / raining.</em>
-                                                    </td>
-                                                </tr>
-
-                                                <tr class="table-secondary bg-opacity-10">
-                                                    <td class="fw-bold text-secondary">I want to...</td>
-                                                    <td>
-                                                        <span class="text-dark">"I want to <strong class="text-danger">IT</strong>."</span><br>
-                                                        <span class="text-muted fst-italic">(ปกติพูด I want it เลย ไม่พูด to it)</span>
-                                                        <i class="ph-bold ph-x text-danger ms-1"></i>
-                                                    </td>
-                                                    <td>
-                                                        <span class="badge bg-secondary text-white">V.1 (Infinitive)</span><br>
-                                                        <em>...go.</em>
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
-
-                </section>
-
-            </div>
-
-            <div class="card-footer bg-light p-4 p-md-5 border-top">
-                <h3 class="h4 fw-bold text-dark mb-4 d-flex align-items-center gap-2">
-                    <i class="ph-duotone ph-pencil-simple text-primary"></i> Mini Quiz: วัดความแม่นยำเรื่อง To
-                </h3>
-                
-                <div id="quiz-area" class="d-flex flex-column gap-4">
-                    </div>
-            </div>
-
-            <div class="p-4 text-center border-top">
-                <div class="d-inline-flex align-items-center gap-2 bg-white px-3 py-1 rounded-pill border shadow-sm small text-muted mb-2">
-                    <i class="ph-fill ph-sparkle text-warning"></i>
-                    เรียบเรียงโดย Gemini AI & ตรวจสอบโดย PLS-C
-                </div>
-                <div class="text-muted small" style="font-size: 0.8rem;">
-                    &copy; 2026 PLS-C English Quiz. All rights reserved.
-                </div>
-            </div>
-
+    <div class="container mx-auto px-4 py-8 max-w-2xl flex-grow">
+        
+        <div class="mb-6">
+            <a href="03-gerunds-and-infinitives.html" class="inline-flex items-center text-sm text-slate-500 hover:text-indigo-600 mb-3 transition-colors">
+                <i class="ph-bold ph-arrow-left me-1"></i> กลับหน้า Gerunds
+            </a>
+            <h1 class="text-3xl font-bold text-slate-900 mb-2">The Many Faces of "To"</h1>
+            <p class="text-lg text-slate-600">เจาะลึกการใช้ To: เมื่อไหร่ตามด้วย V.1 และเมื่อไหร่ตามด้วย V.ing?</p>
         </div>
+
+        <div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden mb-8">
+            <div class="p-6">
+                <h2 class="text-xl font-bold text-indigo-900 mb-4 flex items-center gap-2">
+                    <i class="ph-fill ph-books text-indigo-500"></i>
+                    ภาพรวม: To มี 2 หน้าที่
+                </h2>
+                </div>
+        </div>
+        
+        
+        <div class="mt-12 mb-8">
+            <h3 class="text-2xl font-bold text-center mb-6 flex items-center justify-center gap-2">
+                <i class="ph-duotone ph-lightning text-yellow-500"></i>
+                Mini Quiz: วัดความแม่นยำเรื่อง To
+            </h3>
+
+            <div class="card border-0 shadow-sm rounded-4 mb-4 overflow-hidden">
+                <div class="card-body p-4">
+                    <div class="d-flex justify-content-between align-items-start mb-3">
+                        <span class="badge bg-indigo-100 text-indigo-700 rounded-pill px-3 py-1">Question 1</span>
+                    </div>
+                    <p class="fs-5 fw-medium text-dark mb-4" style="line-height: 1.6;">
+                        _______ the TOEFL exam, students must dedicate time to studying every day.
+                    </p>
+                    <div class="d-grid gap-2">
+                        <button onclick="checkAnswer(this, true, 'exp-1')" class="btn btn-outline-dark text-start p-3 option-btn rounded-3 border-2">
+                            A. To pass
+                        </button>
+                        <button onclick="checkAnswer(this, false, 'exp-1')" class="btn btn-outline-dark text-start p-3 option-btn rounded-3 border-2">
+                            B. To passing
+                        </button>
+                    </div>
+
+                    <div id="exp-1" class="d-none mt-3 bg-green-50 border border-green-200 rounded-3 p-3">
+                        <div class="d-flex gap-2">
+                            <i class="ph-fill ph-check-circle text-success fs-4 mt-1"></i>
+                            <div>
+                                <strong class="text-success d-block mb-1">Correct! (ถูกต้อง)</strong>
+                                <p class="small text-muted mb-0">
+                                    นี่คือ <strong>Infinitive of Purpose</strong> (บอกจุดประสงค์) ขึ้นต้นประโยค ต้องใช้ <strong>To + V.1</strong> เสมอ
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            </div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <div id="global-footer"></div>
 
-    <script>
-        // --- Data Source ---
-        const quizData = [
-            {
-                question: "1. We look forward to ______ from you soon.",
-                options: [
-                    { text: "A) hear", correct: false, rationale: "Look forward to เป็นข้อยกเว้น ต้องตามด้วย V.ing ครับ" },
-                    { text: "B) hearing", correct: true, rationale: "ถูกต้อง! Look forward to + V.ing เสมอ" }
-                ]
-            },
-            {
-                question: "2. ______ fit, you should exercise regularly.",
-                options: [
-                    { text: "A) Keeping", correct: false, rationale: "ขึ้นต้นประโยคเพื่อบอกจุดประสงค์ ต้องใช้ To + V.1 ครับ" },
-                    { text: "B) To keep", correct: true, rationale: "ถูกต้อง! To keep fit = เพื่อที่จะรักษารูปร่าง (Infinitive of Purpose)" }
-                ]
-            },
-            {
-                question: "3. She objects to ______ on weekends.",
-                options: [
-                    { text: "A) working", correct: true, rationale: "ถูกต้อง! Object to (คัดค้าน) เป็นข้อยกเว้น ต้องตามด้วย V.ing ครับ" },
-                    { text: "B) work", correct: false, rationale: "ผิดครับ Object to ต้องตามด้วย Gerund (V.ing)" }
-                ]
-            }
-        ];
-
-        // --- Render Quiz Function ---
-        const quizArea = document.getElementById('quiz-area');
-
-        quizData.forEach((item, index) => {
-            // Create Card
-            const qDiv = document.createElement('div');
-            qDiv.className = "bg-white p-4 rounded-3 border shadow-sm";
-
-            // Create Options HTML
-            let optionsHtml = "";
-            item.options.forEach((opt, optIndex) => {
-                optionsHtml += `
-                    <button onclick="checkAnswer(${index}, ${optIndex}, this)" 
-                            class="btn btn-quiz-option">
-                        <span>${opt.text}</span>
-                        <i class="ph-bold ph-circle text-secondary"></i>
-                    </button>
-                `;
-            });
-
-            // Assemble HTML
-            qDiv.innerHTML = `
-                <p class="fw-bold text-dark mb-3">${index + 1}. ${item.question}</p>
-                <div>${optionsHtml}</div>
-                <div id="feedback-${index}" class="mt-3 p-3 rounded-3 small fw-bold d-none"></div>
-            `;
-            quizArea.appendChild(qDiv);
-        });
-
-        // --- Check Answer Function ---
-        window.checkAnswer = function(qIndex, optIndex, btnElement) {
-            const question = quizData[qIndex];
-            const option = question.options[optIndex];
-            const feedbackEl = document.getElementById(`feedback-${qIndex}`);
-            
-            // Disable all buttons in this question
-            const allBtns = btnElement.parentElement.querySelectorAll('button');
-            allBtns.forEach(btn => {
-                btn.disabled = true;
-            });
-
-            // Show Feedback & Change Styles
-            feedbackEl.classList.remove('d-none');
-            
-            if (option.correct) {
-                // Correct Style
-                btnElement.classList.add('btn-success-custom');
-                btnElement.querySelector('i').className = "ph-fill ph-check-circle text-success fs-5";
-                
-                feedbackEl.className = "mt-3 p-3 rounded-3 small fw-bold alert alert-success border-success";
-                feedbackEl.innerHTML = `<i class="ph-bold ph-check me-2"></i> ${option.rationale}`;
-            } else {
-                // Wrong Style
-                btnElement.classList.add('btn-danger-custom');
-                btnElement.querySelector('i').className = "ph-fill ph-x-circle text-danger fs-5";
-
-                feedbackEl.className = "mt-3 p-3 rounded-3 small fw-bold alert alert-danger border-danger";
-                feedbackEl.innerHTML = `<i class="ph-bold ph-x me-2"></i> ${option.rationale}`;
-            }
-        };
-    </script>
+    <script src="js/quiz-engine.js"></script>
 
 </body>
 </html>

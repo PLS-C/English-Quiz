@@ -9,123 +9,15 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@300;400;600&family=Sarabun:wght@400;600;700&display=swap" rel="stylesheet">
     
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">    
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
-
-    <style>
-        :root {
-            --theme-primary: #0f766e; /* Teal-700 */
-            --theme-light: #f0fdfa;   /* Teal-50 */
-            --theme-border: #ccfbf1;  /* Teal-200 */
-        }
-        
-        body { 
-            font-family: 'Sarabun', 'Noto Sans Thai', sans-serif; 
-            background-color: #f8f9fa;
-        }
-
-        /* Main Card */
-        .main-card {
-            border: none;
-            border-radius: 16px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
-            overflow: hidden;
-            max-width: 800px;
-            margin: 40px auto;
-        }
-
-        /* Header */
-        .header-bg {
-            background-color: var(--theme-primary);
-            color: white;
-            padding: 2rem;
-            position: relative;
-            overflow: hidden;
-        }
-        .header-decoration {
-            position: absolute;
-            bottom: -50px;
-            right: -50px;
-            width: 150px;
-            height: 150px;
-            background-color: rgba(255,255,255,0.1);
-            border-radius: 50%;
-            filter: blur(40px);
-        }
-
-        /* Content Styling */
-        .section-title {
-            color: #115e59;
-            border-left: 5px solid #14b8a6;
-            padding-left: 15px;
-            font-weight: bold;
-            margin-bottom: 20px;
-            margin-top: 30px;
-        }
-
-        .example-box {
-            background-color: #f8f9fa;
-            border: 1px solid #e9ecef;
-            border-radius: 12px;
-            padding: 20px;
-            margin-bottom: 20px;
-        }
-
-        /* Quiz Buttons */
-        .btn-quiz-option {
-            text-align: left;
-            border: 1px solid #dee2e6;
-            background-color: white;
-            color: #495057;
-            border-radius: 10px;
-            padding: 15px;
-            width: 100%;
-            margin-bottom: 10px;
-            transition: all 0.2s;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .btn-quiz-option:hover:not(:disabled) {
-            background-color: var(--theme-light);
-            border-color: #99f6e4;
-            color: var(--theme-primary);
-        }
-        .btn-quiz-option:disabled { opacity: 0.7; }
-
-        /* Quiz States */
-        .btn-success-custom {
-            background-color: #d1fae5 !important;
-            border-color: #10b981 !important;
-            color: #065f46 !important;
-        }
-        .btn-danger-custom {
-            background-color: #fee2e2 !important;
-            border-color: #ef4444 !important;
-            color: #991b1b !important;
-        }
-
-        .back-link {
-            color: #ccfbf1;
-            text-decoration: none;
-            font-size: 0.9em;
-            display: inline-flex;
-            align-items: center;
-            margin-bottom: 10px;
-        }
-        .back-link:hover { color: white; }
-    </style>
+    <link rel="stylesheet" href="css/usage-style.css">
 </head>
 <body>
-
+    <div id="main-header-placeholder"></div>
     <div class="container">
         <div class="card main-card">
-            
             <div class="header-bg">
-                <a href="../index.html" class="back-link">
-                    <i class="ph-bold ph-arrow-left me-1"></i> กลับหน้าหลัก
-                </a>
                 <h1 class="h2 fw-bold d-flex align-items-center gap-2">
                     <i class="ph-duotone ph-check-square-offset"></i> Subject-Verb Agreement
                 </h1>
@@ -134,6 +26,438 @@
             </div>
 
             <div class="card-body p-4 p-md-5">
+                <section>
+                    <h2 class="section-title text-dark border-0 ps-0 mt-0">
+                        <i class="ph-fill ph-squares-four me-2 text-primary"></i>เลือกหัวข้อเพื่อดูรายละเอียด
+                    </h2>
+                    <div class="row g-3">
+                        <div class="col-6 col-md-3">
+                            <a href="#sec-noun" class="card h-100 border-0 shadow-sm bg-light pos-card">
+                                <div class="card-body text-center p-3">
+                                    <div class="badge bg-primary mb-2">1. Noun</div>
+                                    <div class="fw-bold">คำนาม</div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-6 col-md-3">
+                            <a href="#sec-pronoun" class="card h-100 border-0 shadow-sm bg-light pos-card">
+                                <div class="card-body text-center p-3">
+                                    <div class="badge bg-info text-dark mb-2">2. Pronoun</div>
+                                    <div class="fw-bold">สรรพนาม</div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-6 col-md-3">
+                            <a href="#sec-verb" class="card h-100 border-0 shadow-sm bg-light pos-card">
+                                <div class="card-body text-center p-3">
+                                    <div class="badge bg-danger mb-2">3. Verb</div>
+                                    <div class="fw-bold">กริยา</div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-6 col-md-3">
+                            <a href="#sec-adj" class="card h-100 border-0 shadow-sm bg-light pos-card">
+                                <div class="card-body text-center p-3">
+                                    <div class="badge mb-2" style="background-color: #ec4899;">4. Adjective</div>
+                                    <div class="fw-bold">คุณศัพท์</div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-6 col-md-3">
+                            <a href="#sec-adv" class="card h-100 border-0 shadow-sm bg-light pos-card">
+                                <div class="card-body text-center p-3">
+                                    <div class="badge mb-2" style="background-color: #8b5cf6;">5. Adverb</div>
+                                    <div class="fw-bold">กริยาวิเศษณ์</div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-6 col-md-3">
+                            <a href="#sec-prep" class="card h-100 border-0 shadow-sm bg-light pos-card">
+                                <div class="card-body text-center p-3">
+                                    <div class="badge bg-warning text-dark mb-2">6. Preposition</div>
+                                    <div class="fw-bold">บุพบท</div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-6 col-md-3">
+                            <a href="#sec-conj" class="card h-100 border-0 shadow-sm bg-light pos-card">
+                                <div class="card-body text-center p-3">
+                                    <div class="badge bg-success mb-2">7. Conjunction</div>
+                                    <div class="fw-bold">สันธาน</div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-6 col-md-3">
+                            <a href="#sec-interj" class="card h-100 border-0 shadow-sm bg-light pos-card">
+                                <div class="card-body text-center p-3">
+                                    <div class="badge bg-secondary mb-2">8. Interjection</div>
+                                    <div class="fw-bold">อุทาน</div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </section>
+
+                <hr class="my-5 border-secondary opacity-25">
+
+                <section id="sec-noun">
+                    <h2 class="section-title text-primary">1. Noun (คำนาม)</h2>
+                    <div class="alert alert-primary bg-opacity-10 border-primary">
+                        <strong>คือ:</strong> คำที่ใช้เรียก คน สัตว์ สิ่งของ สถานที่ หรือความคิด (นามธรรม)<br>
+                        <strong>หน้าที่:</strong> เป็น <u>ประธาน (Subject)</u> หรือ <u>กรรม (Object)</u> ของประโยค
+                    </div>
+
+                    <h5 class="fw-bold mt-4 mb-3 text-secondary"><i class="ph-fill ph-magic-wand me-2"></i>Suffix ที่พบบ่อย</h5>
+                    <div class="table-responsive mb-4">
+                        <table class="table table-hover table-bordered suffix-table">
+                            <thead class="table-light"><tr><th>Suffix</th><th>Example</th><th>Thai Meaning</th></tr></thead>
+                            <tbody>
+                                <tr><td>-tion / -sion</td><td>Educa<strong>tion</strong></td><td>การศึกษา</td></tr>
+                                <tr><td>-ment</td><td>Develop<strong>ment</strong></td><td>การพัฒนา</td></tr>
+                                <tr><td>-ness</td><td>Happi<strong>ness</strong></td><td>ความสุข</td></tr>
+                                <tr><td>-ity / -ty</td><td>Abil<strong>ity</strong></td><td>ความสามารถ</td></tr>
+                                <tr><td>-er / -or</td><td>Teach<strong>er</strong></td><td>ครู (ผู้สอน)</td></tr>
+                                <tr><td>-ance / -ence</td><td>Import<strong>ance</strong></td><td>ความสำคัญ</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <h5 class="fw-bold mb-3 text-secondary"><i class="ph-fill ph-map-pin me-2"></i>ตัวอย่างตำแหน่ง (Position)</h5>
+                    <ul class="list-group list-group-flush shadow-sm rounded">
+                        <li class="list-group-item">
+                            <span class="badge bg-success example-badge me-2">Easy</span>
+                            <span class="text-primary fw-bold">Students</span> study hard. 
+                            <span class="text-muted small ms-2">(Subject ต้นประโยค)</span>
+                        </li>
+                        <li class="list-group-item">
+                            <span class="badge bg-warning text-dark example-badge me-2">Medium</span>
+                            The teacher gave <span class="text-primary fw-bold">advice</span>. 
+                            <span class="text-muted small ms-2">(Object หลังกริยา)</span>
+                        </li>
+                        <li class="list-group-item">
+                            <span class="badge bg-danger example-badge me-2">Hard</span>
+                            The rapid <span class="text-primary fw-bold">expansion</span> of the internet changed the world. 
+                            <span class="text-muted small ms-2">(Head Noun ในกลุ่มคำนามประธาน)</span>
+                        </li>
+                    </ul>
+                </section>
+
+                <section id="sec-pronoun">
+                    <h2 class="section-title text-info">2. Pronoun (คำสรรพนาม)</h2>
+                    
+                    <div class="alert alert-info bg-opacity-10 border-info">
+                        <strong>คือ:</strong> คำที่ใช้ "แทน" คำนาม เพื่อไม่ต้องพูดซ้ำ<br>
+                        <strong>หน้าที่:</strong> เหมือน Noun (เป็นประธานหรือกรรม)
+                    </div>
+
+                    <h5 class="fw-bold mt-4 mb-3 text-secondary"><i class="ph-fill ph-list-bullets me-2"></i>ตารางสรุปหน้าที่คำสรรพนาม (Pronoun Table)</h5>
+                    <div class="table-responsive mb-4">
+                        <table class="table table-hover table-bordered table-striped align-middle text-center">
+                            <thead class="table-light">
+                                <tr>
+                                    <th class="text-primary">Subject<br><span class="small text-muted fw-normal">(ประธาน)</span></th>
+                                    <th class="text-primary">Object<br><span class="small text-muted fw-normal">(กรรม)</span></th>
+                                    <th class="text-primary">Possessive<br><span class="small text-muted fw-normal">(แสดงเจ้าของ)</span></th>
+                                    <th class="text-primary">Reflexive<br><span class="small text-muted fw-normal">(ทำด้วยตัวเอง)</span></th>
+                                    <th class="text-success">Meaning<br><span class="small text-muted fw-normal">(คำแปล)</span></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="fw-bold">I</td>
+                                    <td>me</td>
+                                    <td>my</td>
+                                    <td>myself</td>
+                                    <td>ฉัน, ผม</td>
+                                </tr>
+                                <tr>
+                                    <td class="fw-bold">You</td>
+                                    <td>you</td>
+                                    <td>your</td>
+                                    <td>yourself</td>
+                                    <td>คุณ, เธอ</td>
+                                </tr>
+                                <tr>
+                                    <td class="fw-bold">We</td>
+                                    <td>us</td>
+                                    <td>our</td>
+                                    <td>ourselves</td>
+                                    <td>พวกเรา</td>
+                                </tr>
+                                <tr>
+                                    <td class="fw-bold">They</td>
+                                    <td>them</td>
+                                    <td>their</td>
+                                    <td>themselves</td>
+                                    <td>พวกเขา, พวกมัน</td>
+                                </tr>
+                                <tr>
+                                    <td class="fw-bold">He</td>
+                                    <td>him</td>
+                                    <td>his</td>
+                                    <td>himself</td>
+                                    <td>เขา (ผู้ชาย)</td>
+                                </tr>
+                                <tr>
+                                    <td class="fw-bold">She</td>
+                                    <td>her</td>
+                                    <td>her</td>
+                                    <td>herself</td>
+                                    <td>เธอ (ผู้หญิง)</td>
+                                </tr>
+                                <tr>
+                                    <td class="fw-bold">It</td>
+                                    <td>it</td>
+                                    <td>its</td>
+                                    <td>itself</td>
+                                    <td>มัน</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <h5 class="fw-bold mb-3 text-secondary"><i class="ph-fill ph-map-pin me-2"></i>ตัวอย่างตำแหน่ง (Position)</h5>
+                    <ul class="list-group list-group-flush shadow-sm rounded">
+                        <li class="list-group-item">
+                            <span class="badge bg-success example-badge me-2">Subject</span>
+                            <span class="text-info fw-bold">She</span> is beautiful.
+                            <span class="text-muted small ms-2">(วางหน้ากริยา)</span>
+                        </li>
+                        <li class="list-group-item">
+                            <span class="badge bg-warning text-dark example-badge me-2">Object</span>
+                            John told <span class="text-info fw-bold">him</span> the truth.
+                            <span class="text-muted small ms-2">(วางหลังกริยา)</span>
+                        </li>
+                        <li class="list-group-item">
+                            <span class="badge bg-primary example-badge me-2">Possessive</span>
+                            This is <span class="text-info fw-bold">my</span> book.
+                            <span class="text-muted small ms-2">(วางหน้านาม)</span>
+                        </li>
+                        <li class="list-group-item">
+                            <span class="badge bg-danger example-badge me-2">Reflexive</span>
+                            He did it by <span class="text-info fw-bold">himself</span>.
+                            <span class="text-muted small ms-2">(เน้นว่าทำเอง)</span>
+                        </li>
+                    </ul>
+                </section>
+
+                <section id="sec-verb">
+                    <h2 class="section-title text-danger">3. Verb (คำกริยา)</h2>
+
+                    <div class="alert alert-danger bg-opacity-10 border-danger">
+                        <strong>คือ:</strong> คำที่แสดงการกระทำ (Action) หรือสถานะ (State)<br>
+                        <strong>หน้าที่:</strong> เป็นหัวใจของประโยค บอกว่าประธานทำอะไร หรือเป็นอย่างไร
+                    </div>
+
+                    <h5 class="fw-bold mt-4 mb-3 text-secondary"><i class="ph-fill ph-magic-wand me-2"></i>จุดสังเกต (Common Suffixes & Prefixes)</h5>
+                    
+                    <div class="table-responsive mb-4">
+                        <table class="table table-hover table-bordered align-middle">
+                            <thead class="table-light">
+                                <tr>
+                                    <th width="20%">Suffix</th>
+                                    <th width="30%">Example</th>
+                                    <th width="50%">Thai Meaning</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="fw-bold text-danger">-ize / -ise</td>
+                                    <td>Real<span class="text-danger fw-bold">ize</span></td>
+                                    <td>ตระหนัก, เข้าใจ</td>
+                                </tr>
+                                <tr>
+                                    <td class="fw-bold text-danger">-ate</td>
+                                    <td>Communic<span class="text-danger fw-bold">ate</span></td>
+                                    <td>สื่อสาร</td>
+                                </tr>
+                                <tr>
+                                    <td class="fw-bold text-danger">-fy</td>
+                                    <td>Identi<span class="text-danger fw-bold">fy</span></td>
+                                    <td>ระบุ, ชี้ตัว</td>
+                                </tr>
+                                <tr>
+                                    <td class="fw-bold text-danger">-en</td>
+                                    <td>Short<span class="text-danger fw-bold">en</span></td>
+                                    <td>ทำให้สั้นลง</td>
+                                </tr>
+                                <tr>
+                                    <td class="fw-bold text-danger">-ish</td>
+                                    <td>Establ<span class="text-danger fw-bold">ish</span></td>
+                                    <td>ก่อตั้ง, สถาปนา</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="card border-warning mb-3">
+                        <div class="card-body bg-warning bg-opacity-10">
+                            <h6 class="card-title fw-bold text-dark"><i class="ph-fill ph-lightbulb me-2"></i>Pro Tip: อย่าลืมดูคำนำหน้า (Prefix)!</h6>
+                            <p class="card-text small mb-0">
+                                นอกจากคำลงท้าย ให้สังเกตคำที่ขึ้นต้นด้วย <strong class="text-danger">en-</strong> หรือ <strong class="text-danger">em-</strong> มักจะเป็น Verb เช่น 
+                                <span class="fw-bold">En</span>joy (สนุก), 
+                                <span class="fw-bold">En</span>courage (ให้กำลังใจ), 
+                                <span class="fw-bold">Em</span>power (ให้อำนาจ)
+                            </p>
+                        </div>
+                    </div>
+
+                    <h5 class="fw-bold mb-3 mt-4 text-secondary"><i class="ph-fill ph-map-pin me-2"></i>ตำแหน่ง (Position) & กับดัก TOEFL</h5>
+                        <ul class="list-group list-group-flush shadow-sm rounded">
+                            <li class="list-group-item">
+                                <span class="badge bg-success example-badge me-2">Basic</span>
+                                <span class="text-secondary">Subject + </span> <span class="text-danger fw-bold">Verb</span>
+                                <br>
+                                <span class="small text-dark">She <span class="text-danger fw-bold">works</span> hard.</span>
+                                <span class="text-muted small ms-2">(ตามหลังประธาน)</span>
+                            </li>
+
+                            <li class="list-group-item">
+                                <span class="badge bg-primary example-badge me-2">Modal</span>
+                                <span class="text-secondary">Can/Could/Will + </span> <span class="text-danger fw-bold">V.inf</span>
+                                <br>
+                                <span class="small text-dark">He can <span class="text-danger fw-bold">swim</span>.</span>
+                                <span class="text-muted small ms-2">(หลังกริยาช่วย ต้องไม่ผัน)</span>
+                            </li>
+
+                            <li class="list-group-item list-group-item-warning">
+                                <div class="d-flex w-100 justify-content-between align-items-center">
+                                    <span class="badge bg-danger example-badge mb-1">TOEFL Trap 1</span>
+                                    <small class="text-danger fw-bold"><i class="ph-fill ph-warning me-1"></i>ระวัง Subject-Verb Agreement</small>
+                                </div>
+                                <p class="mb-1 text-dark">
+                                    The <u>box</u> <span class="text-muted fst-italic">(of apples)</span> <span class="text-danger fw-bold">is</span> heavy.
+                                </p>
+                                <small class="text-muted d-block">
+                                    <strong>หลอก:</strong> อย่าดูคำว่า apples (พหูพจน์) ให้ดูประธานหลักคือ box (เอกพจน์) ดังนั้นใช้ is
+                                </small>
+                            </li>
+
+                            <li class="list-group-item list-group-item-warning">
+                                <span class="badge bg-danger example-badge mb-1">TOEFL Trap 2</span>
+                                <p class="mb-1 text-dark">
+                                    The man <span class="text-muted fst-italic border-bottom border-secondary">standing</span> there <span class="text-danger fw-bold">is</span> my dad.
+                                </p>
+                                <small class="text-muted d-block">
+                                    <strong>หลอก:</strong> <em>standing</em> ไม่ใช่ Verb แท้ (เป็นแค่ส่วนขยาย) Verb แท้คือ <strong>is</strong>
+                                </small>
+                            </li>
+                        </ul>
+                </section>
+
+                <section id="sec-adj">
+                    <h2 class="section-title" style="color: #ec4899;">4. Adjective (คำคุณศัพท์)</h2>
+                    
+                    <div class="alert bg-opacity-10 border-0" style="background-color: #fce7f3; color: #be185d;">
+                        <strong>คือ:</strong> คำขยายเพื่อบอกลักษณะ (สี, ขนาด, อารมณ์) ของ Noun<br>
+                        <strong>หน้าที่:</strong> ขยาย <u>Noun</u> เท่านั้น (ห้ามขยาย Verb!)
+                    </div>
+
+                    <h5 class="fw-bold mt-4 mb-3 text-secondary"><i class="ph-fill ph-magic-wand me-2"></i>Suffix ที่พบบ่อย (ต้องจำ!)</h5>
+                    <div class="table-responsive mb-4">
+                        <table class="table table-hover table-bordered suffix-table align-middle">
+                            <thead class="table-light">
+                                <tr>
+                                    <th width="25%">Suffix</th>
+                                    <th width="35%">Example</th>
+                                    <th width="40%">Thai Meaning</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>-al</td><td>Nation<strong style="color: #ec4899;">al</strong></td><td>ระดับชาติ</td></tr>
+                                <tr><td>-ive</td><td>Creat<strong style="color: #ec4899;">ive</strong></td><td>มีความคิดสร้างสรรค์</td></tr>
+                                <tr><td>-ous</td><td>Danger<strong style="color: #ec4899;">ous</strong></td><td>อันตราย</td></tr>
+                                <tr><td>-ful</td><td>Use<strong style="color: #ec4899;">ful</strong></td><td>มีประโยชน์</td></tr>
+                                <tr><td>-less</td><td>Hope<strong style="color: #ec4899;">less</strong></td><td>สิ้นหวัง (ไร้ความหวัง)</td></tr>
+                                <tr><td>-able / -ible</td><td>Comfort<strong style="color: #ec4899;">able</strong></td><td>สะดวกสบาย</td></tr>
+                                <tr><td>-ic</td><td>Scientif<strong style="color: #ec4899;">ic</strong></td><td>ทางวิทยาศาสตร์</td></tr>
+                                <tr><td>-ent / -ant</td><td>Differ<strong style="color: #ec4899;">ent</strong></td><td>แตกต่าง</td></tr>
+                                <tr><td>-y</td><td>Wind<strong style="color: #ec4899;">y</strong>, Health<strong style="color: #ec4899;">y</strong></td><td>ลมแรง, สุขภาพดี</td></tr>
+                                <tr><td>-ed / -ing</td><td>Bor<strong style="color: #ec4899;">ed</strong> / Bor<strong style="color: #ec4899;">ing</strong></td><td>รู้สึกเบื่อ / น่าเบื่อ</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <h5 class="fw-bold mb-3 text-secondary"><i class="ph-fill ph-map-pin me-2"></i>ตำแหน่ง & กับดัก TOEFL (Position & Traps)</h5>
+                    <ul class="list-group list-group-flush shadow-sm rounded">
+                        
+                        <li class="list-group-item">
+                            <span class="badge bg-success example-badge me-2">Basic</span>
+                            A <span style="color:#ec4899; font-weight:bold;">red</span> car.
+                            <span class="text-muted small ms-2">(วางหน้า Noun เสมอ)</span>
+                        </li>
+
+                        <li class="list-group-item">
+                            <span class="badge bg-warning text-dark example-badge me-2">Medium</span>
+                            The test was <span style="color:#ec4899; font-weight:bold;">difficult</span>.
+                            <span class="text-muted small ms-2">(วางหลัง is, am, are, was, were)</span>
+                        </li>
+
+                        <li class="list-group-item list-group-item-warning">
+                            <div class="d-flex w-100 justify-content-between align-items-center">
+                                <span class="badge bg-danger example-badge mb-1">TOEFL Trap 1</span>
+                                <small class="text-danger fw-bold"><i class="ph-fill ph-warning me-1"></i>Linking Verbs</small>
+                            </div>
+                            <p class="mb-1 text-dark">
+                                The soup smells <span style="color:#ec4899; font-weight:bold;">good</span>. 
+                                <span class="text-muted text-decoration-line-through small ms-1">(not "well")</span>
+                            </p>
+                            <small class="text-muted d-block">
+                                <strong>ระวัง:</strong> คำกริยาบอกประสาทสัมผัส (Look, Smell, Taste, Feel, Sound, Seem) ต้องตามด้วย <strong>Adj</strong> ไม่ใช่ Adv
+                            </small>
+                        </li>
+
+                        <li class="list-group-item list-group-item-warning">
+                            <span class="badge bg-danger example-badge mb-1">TOEFL Trap 2</span>
+                            <p class="mb-1 text-dark">
+                                A <span style="color:#ec4899; font-weight:bold;">five-year-old</span> boy.
+                                <span class="text-muted text-decoration-line-through small ms-1">(not "five-years-old")</span>
+                            </p>
+                            <small class="text-muted d-block">
+                                <strong>ระวัง:</strong> เมื่อเอาคำนามมาทำเป็น Adj เชื่อมด้วยขีด (-) ห้ามเติม <strong>s</strong> เด็ดขาด
+                            </small>
+                        </li>
+                    </ul>
+                </section>
+
+                <section id="sec-adv">
+                    <h2 class="section-title" style="color: #8b5cf6;">5. Adverb (คำกริยาวิเศษณ์)</h2>
+                    <div class="alert bg-opacity-10 border-0" style="background-color: #ede9fe; color: #6d28d9;">
+                        <strong>คือ:</strong> คำขยายความถี่, วิธีการ, ระดับความเข้มข้น<br>
+                        <strong>หน้าที่:</strong> ขยาย <u>Verb</u>, <u>Adjective</u>, หรือ <u>Adverb</u> ด้วยกันเอง (ห้ามขยาย Noun)
+                    </div>
+
+                    <h5 class="fw-bold mt-4 mb-3 text-secondary"><i class="ph-fill ph-magic-wand me-2"></i>Suffix ที่พบบ่อย</h5>
+                    <div class="table-responsive mb-4">
+                        <table class="table table-hover table-bordered suffix-table">
+                            <thead class="table-light"><tr><th>Suffix</th><th>Example</th><th>Thai Meaning</th></tr></thead>
+                            <tbody>
+                                <tr><td>-ly</td><td>Quick<strong>ly</strong></td><td>อย่างรวดเร็ว</td></tr>
+                                <tr><td>-ward</td><td>For<strong>ward</strong></td><td>ไปข้างหน้า</td></tr>
+                                <tr><td>-wise</td><td>Clock<strong>wise</strong></td><td>ตามเข็มนาฬิกา</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <h5 class="fw-bold mb-3 text-secondary"><i class="ph-fill ph-map-pin me-2"></i>ตัวอย่างตำแหน่ง (Position)</h5>
+                    <ul class="list-group list-group-flush shadow-sm rounded">
+                        <li class="list-group-item">
+                            <span class="badge bg-success example-badge me-2">Easy</span>
+                            He runs <span style="color:#8b5cf6; font-weight:bold;">fast</span>.
+                            <span class="text-muted small ms-2">(ขยาย Verb runs)</span>
+                        </li>
+                        <li class="list-group-item">
+                            <span class="badge bg-warning text-dark example-badge me-2">Medium</span>
+                            She is <span style="color:#8b5cf6; font-weight:bold;">very</span> happy.
+                            <span class="text-muted small ms-2">(ขยาย Adjective happy)</span>
+                        </li>
+                        <li class="list-group-item">
+                            <span class="badge bg-danger example-badge me-2">Hard</span>
+                            The population has increased <span style="color:#8b5cf6; font-weight:bold;">dramatically</span> in recent years.
+                            <span class="text-muted small ms-2">(ขยาย Verb Phrase ทั้งก้อน)</span>
+                        </li>
+                    </ul>
+                </section>
 
                 <section>
                     <h2 class="section-title">1. กฎพื้นฐาน (The Golden Rule)</h2>
@@ -290,182 +614,132 @@
                 </section>
 
             </div>
-
             <div class="card-footer bg-light p-4 p-md-5 border-top">
                 <h3 class="h4 fw-bold text-dark mb-4 d-flex align-items-center gap-2">
-                    <i class="ph-duotone ph-pencil-simple text-primary"></i> Mini Quiz: ทดสอบความเข้าใจ (10 ข้อ)
+                    <i class="ph-duotone ph-pencil-simple text-primary"></i> Mini Quiz:
                 </h3>
                 
                 <div id="quiz-area" class="d-flex flex-column gap-4">
                     </div>
             </div>
-
-            <div class="p-4 text-center border-top">
-                <div class="d-inline-flex align-items-center gap-2 bg-white px-3 py-1 rounded-pill border shadow-sm small text-muted mb-2">
-                    <i class="ph-fill ph-sparkle text-warning"></i>
-                    เรียบเรียงโดย Gemini AI & ตรวจสอบโดย PLS-C
-                </div>
-                <div class="text-muted small" style="font-size: 0.8rem;">
-                    &copy; 2026 PLS-C English Quiz. All rights reserved.
-                </div>
+            <div class="p-4 text-end border-top">
+                <a id="next-quiz-link" href="../1-Sentence%20Structure/Test-001-level-1-structure.html" class="inline-flex items-center hover:text-dark/80 text-sm font-medium transition-colors text-dark">
+                    แบบฝึกหัดถัดไป
+                </a>
             </div>
-
+            <div id="main-footer-placeholder"></div>
         </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-
     <script>
-        // Quiz Data (10 Questions with Full Translations)
-        const questions = [
+        // โค้ดนี้จะไปดึงไฟล์ header.html มาแสดง
+        fetch('components/header.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('main-header-placeholder').innerHTML = data;
+            })
+            .catch(error => console.error('Error loading header:', error));
+        fetch('components/footer.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('main-footer-placeholder').innerHTML = data;
+            })
+            .catch(error => console.error('Error loading header:', error));
+    </script>
+    <script src="js/quiz-core.js"></script>
+    <script>
+        // --- Data Source ---
+        const quizData = [
             // --- Level 1: Basic (Easy) ---
             {
-                id: 1,
-                text: "My sister usually ______ to music in the evening.",
+                question: "Choose the correct verb form:<br>'My sister usually __________ to music in the evening.'",
+                // (แปล: พี่สาวของฉันมักจะ __________ เพลงในตอนเย็น)
                 options: [
-                    { label: "A) listen", isCorrect: false, feedback: "ผิดครับ! ประธาน My sister เป็นเอกพจน์ กริยาต้องเติม s" },
-                    { label: "B) listens", isCorrect: true, feedback: "ถูกต้อง! ประธานเอกพจน์ (คนเดียว) กริยาเติม s <br><span class='text-muted fst-italic'>แปล: พี่สาวของฉันมักจะฟังเพลงในตอนเย็น</span>" }
+                    { text: "listen", correct: false, rationale: "ผิด: ประธาน 'My sister' เป็นเอกพจน์ (คนเดียว) กริยาต้องเติม s" },
+                    { text: "listens", correct: true, rationale: "ถูกต้อง! ประธานเอกพจน์ (My sister) กริยาช่อง 1 ต้องเติม s<br><br><strong>ประโยคสมบูรณ์:</strong> My sister usually <em>listens</em> to music in the evening. (พี่สาวของฉันมักจะฟังเพลงในตอนเย็น)" }
                 ]
             },
             {
-                id: 2,
-                text: "The dogs ______ barking loudly outside.",
+                question: "Select the correct verb:<br>'The dogs __________ barking loudly outside.'",
+                // (แปล: สุนัขเหล่านั้นกำลัง __________ เห่าเสียงดังอยู่ข้างนอก)
                 options: [
-                    { label: "A) are", isCorrect: true, feedback: "ถูกต้อง! The dogs เป็นพหูพจน์ (หลายตัว) ใช้ are <br><span class='text-muted fst-italic'>แปล: สุนัขเหล่านั้นกำลังเห่าเสียงดังอยู่ข้างนอก</span>" },
-                    { label: "B) is", isCorrect: false, feedback: "ผิดครับ! ประธานเติม s (dogs) กริยาห้ามเติม s (is)" }
+                    { text: "are", correct: true, rationale: "ถูกต้อง! ประธาน 'The dogs' เป็นพหูพจน์ (เติม s หลายตัว) ใช้ Verb to be คือ are<br><br><strong>ประโยคสมบูรณ์:</strong> The dogs <em>are</em> barking loudly outside. (สุนัขเหล่านั้นกำลังเห่าเสียงดังอยู่ข้างนอก)" },
+                    { text: "is", correct: false, rationale: "ผิด: is ใช้กับประธานเอกพจน์ แต่ dogs มีหลายตัว" }
                 ]
             },
             {
-                id: 3,
-                text: "Everyone in the room ______ happy.",
+                question: "Fill in the blank:<br>'Everyone in the room __________ happy.'",
+                // (แปล: ทุกคนในห้อง __________ มีความสุข)
                 options: [
-                    { label: "A) look", isCorrect: false, feedback: "ผิดครับ! Everyone เป็นเอกพจน์เสมอ กริยาต้องเติม s" },
-                    { label: "B) looks", isCorrect: true, feedback: "ถูกต้อง! Everyone จัดอยู่ในกลุ่มเอกพจน์เสมอ <br><span class='text-muted fst-italic'>แปล: ทุกคนในห้องดูมีความสุข</span>" }
+                    { text: "look", correct: false, rationale: "ผิด: Everyone จัดเป็นเอกพจน์เสมอ กริยาต้องเติม s" },
+                    { text: "looks", correct: true, rationale: "ถูกต้อง! คำสรรพนาม Everyone (ทุกๆ คน) ถือเป็นเอกพจน์เสมอในทางไวยากรณ์<br><br><strong>ประโยคสมบูรณ์:</strong> Everyone in the room <em>looks</em> happy. (ทุกคนในห้องดูมีความสุข)" }
                 ]
             },
             {
-                id: 4,
-                text: "Tom and Jerry ______ famous cartoon characters.",
+                question: "Choose the correct verb:<br>'Tom and Jerry __________ famous cartoon characters.'",
+                // (แปล: ทอมและเจอร์รี่ __________ ตัวละครการ์ตูนที่มีชื่อเสียง)
                 options: [
-                    { label: "A) is", isCorrect: false, feedback: "ผิดครับ! มี 'and' เชื่อม แสดงว่าเป็นพหูพจน์" },
-                    { label: "B) are", isCorrect: true, feedback: "ถูกต้อง! ประธาน 2 คนเชื่อมด้วย and ถือเป็นพหูพจน์ <br><span class='text-muted fst-italic'>แปล: ทอมและเจอร์รี่เป็นตัวละครการ์ตูนที่มีชื่อเสียง</span>" }
+                    { text: "is", correct: false, rationale: "ผิด: มี 'and' เชื่อมประธาน 2 ตัว ต้องเป็นพหูพจน์" },
+                    { text: "are", correct: true, rationale: "ถูกต้อง! ประธาน 2 คน (Tom, Jerry) เชื่อมด้วย 'and' ถือเป็นพหูพจน์<br><br><strong>ประโยคสมบูรณ์:</strong> Tom and Jerry <em>are</em> famous cartoon characters. (ทอมและเจอร์รี่เป็นตัวละครการ์ตูนที่มีชื่อเสียง)" }
                 ]
             },
             {
-                id: 5,
-                text: "Your car ______ very expensive.",
+                question: "Select the correct form:<br>'Your car __________ very expensive.'",
+                // (แปล: รถของคุณ __________ แพงมาก)
                 options: [
-                    { label: "A) looks", isCorrect: true, feedback: "ถูกต้อง! Car คันเดียว เป็นเอกพจน์ กริยาเติม s <br><span class='text-muted fst-italic'>แปล: รถของคุณดูแพงมาก</span>" },
-                    { label: "B) look", isCorrect: false, feedback: "ผิดครับ! ประธานเอกพจน์ กริยาต้องเติม s" }
+                    { text: "looks", correct: true, rationale: "ถูกต้อง! ประธาน 'Your car' (คันเดียว) เป็นเอกพจน์ กริยาจึงเติม s<br><br><strong>ประโยคสมบูรณ์:</strong> Your car <em>looks</em> very expensive. (รถของคุณดูแพงมาก)" },
+                    { text: "look", correct: false, rationale: "ผิด: look (ไม่เติม s) ใช้กับประธานพหูพจน์" }
                 ]
             },
-            
+
             // --- Level 2: TOEFL Traps (Hard) ---
             {
-                id: 6,
-                text: "The box of chocolates ______ on the table.",
+                question: "Which verb fits correctly?<br>'The box of chocolates __________ on the table.'",
+                // (แปล: กล่องช็อกโกแลต __________ บนโต๊ะ)
                 options: [
-                    { label: "A) are", isCorrect: false, feedback: "โดนหลอกแล้ว! อย่าดูคำว่า chocolates ให้ดูคำหน้า of คือ 'The box' (กล่องเดียว)" },
-                    { label: "B) is", isCorrect: true, feedback: "ถูกต้อง! ประธานตัวจริงคือ 'The box' (เอกพจน์) ส่วน 'of chocolates' ตัดทิ้งได้เลย <br><span class='text-muted fst-italic'>แปล: กล่องช็อกโกแลตวางอยู่บนโต๊ะ</span>" }
+                    { text: "are", correct: false, rationale: "ผิด: โดนหลอกด้วยคำว่า chocolates! ประธานจริงๆ คือคำหน้า of ('The box')" },
+                    { text: "is", correct: true, rationale: "ถูกต้อง! ประธานตัวจริงคือ 'The box' (กล่องเดียว) ส่วน 'of chocolates' เป็นแค่ส่วนขยาย ตัดทิ้งได้<br><br><strong>ประโยคสมบูรณ์:</strong> The box of chocolates <em>is</em> on the table. (กล่องช็อกโกแลตวางอยู่บนโต๊ะ)" }
                 ]
             },
             {
-                id: 7,
-                text: "The manager, along with his assistants, ______ attending the meeting.",
+                question: "Choose the correct verb:<br>'The manager, along with his assistants, __________ attending the meeting.'",
+                // (แปล: ผู้จัดการ พร้อมด้วยผู้ช่วยของเขา __________ เข้าร่วมการประชุม)
                 options: [
-                    { label: "A) is", isCorrect: true, feedback: "ถูกต้อง! ตัดส่วนขยายในคอมม่าทิ้งไป ('along with...') เหลือแค่ The manager (เอกพจน์) <br><span class='text-muted fst-italic'>แปล: ผู้จัดการ (พร้อมด้วยผู้ช่วยของเขา) กำลังเข้าร่วมการประชุม</span>" },
-                    { label: "B) are", isCorrect: false, feedback: "ผิดครับ! 'along with' อยู่ในคอมม่า เป็นส่วนขยาย ไม่ใช่ประธาน" }
+                    { text: "is", correct: true, rationale: "ถูกต้อง! วลี 'along with...' เป็นส่วนขยาย ไม่นับเป็นประธาน ประธานหลักคือ 'The manager' (เอกพจน์)<br><br><strong>ประโยคสมบูรณ์:</strong> The manager... <em>is</em> attending the meeting. (ผู้จัดการ...กำลังเข้าร่วมการประชุม)" },
+                    { text: "are", correct: false, rationale: "ผิด: 'along with' ไม่ใช่ 'and' ดังนั้นประธานยังคงเป็นเอกพจน์ (The manager)" }
                 ]
             },
             {
-                id: 8,
-                text: "One of the most interesting books ______ missing.",
+                question: "Fill in the blank:<br>'One of the most interesting books __________ missing.'",
+                // (แปล: หนึ่งในหนังสือที่น่าสนใจที่สุด __________ หายไป)
                 options: [
-                    { label: "A) is", isCorrect: true, feedback: "ถูกต้อง! ประธานคือ 'One' (หนึ่งเล่ม - กลุ่ม A) ไม่ใช่ books <br><span class='text-muted fst-italic'>แปล: หนึ่งในหนังสือที่น่าสนใจที่สุดหายไป</span>" },
-                    { label: "B) are", isCorrect: false, feedback: "ผิดครับ! อย่าเผลอไปดู books ประธานคือ 'One' (หนึ่งใน...)" }
+                    { text: "is", correct: true, rationale: "ถูกต้อง! ประธานคือคำว่า 'One' (หนึ่งเล่ม) ไม่ใช่ books<br><br><strong>ประโยคสมบูรณ์:</strong> One of the most interesting books <em>is</em> missing. (หนึ่งในหนังสือที่น่าสนใจที่สุดหายไป)" },
+                    { text: "are", correct: false, rationale: "ผิด: ประธานคือ One (เอกพจน์) ไม่ใช่ books (พหูพจน์)" }
                 ]
             },
             {
-                id: 9,
-                text: "There ______ several reasons for the delay.",
+                question: "Select the correct verb:<br>'There __________ several reasons for the delay.'",
+                // (แปล: มีเหตุผลหลายประการสำหรับความล่าช้า)
                 options: [
-                    { label: "A) is", isCorrect: false, feedback: "ผิดครับ! ประโยค There... ให้ดูประธานหลัง Verb ซึ่งคือ 'reasons' (พหูพจน์)" },
-                    { label: "B) are", isCorrect: true, feedback: "ถูกต้อง! หลัง There ต้องผันตามคำนามข้างหลัง (reasons) <br><span class='text-muted fst-italic'>แปล: มีเหตุผลหลายประการสำหรับความล่าช้า</span>" }
+                    { text: "is", correct: false, rationale: "ผิด: หลัง There คือ 'several reasons' (พหูพจน์) ต้องใช้ are" },
+                    { text: "are", correct: true, rationale: "ถูกต้อง! โครงสร้าง There is/are ต้องผันตามคำนามที่ตามหลัง (reasons = พหูพจน์)<br><br><strong>ประโยคสมบูรณ์:</strong> There <em>are</em> several reasons for the delay. (มีเหตุผลหลายประการสำหรับความล่าช้า)" }
                 ]
             },
             {
-                id: 10,
-                text: "The students who play football ______ tired.",
+                question: "Choose the correct word:<br>'The students who play football __________ tired.'",
+                // (แปล: นักเรียนที่เล่นฟุตบอล __________ เหนื่อย)
                 options: [
-                    { label: "A) is", isCorrect: false, feedback: "ผิดครับ! ประธานคือ The students (พหูพจน์) ส่วน 'who play football' เป็นแค่ส่วนขยาย" },
-                    { label: "B) are", isCorrect: true, feedback: "ถูกต้อง! ใช้กฎตัด W-Words: ตัด [who play football] ทิ้ง จะเห็น The students are... <br><span class='text-muted fst-italic'>แปล: นักเรียนที่เล่นฟุตบอลรู้สึกเหนื่อย</span>" }
+                    { text: "is", correct: false, rationale: "ผิด: ประธานคือ 'The students' (พหูพจน์)" },
+                    { text: "are", correct: true, rationale: "ถูกต้อง! ตัดส่วนขยาย [who play football] ออกไป จะเห็นประธานหลักคือ 'The students' (พหูพจน์)<br><br><strong>ประโยคสมบูรณ์:</strong> The students... <em>are</em> tired. (นักเรียน...รู้สึกเหนื่อย)" }
                 ]
             }
         ];
-
-        // 2. Render Quiz
-        const quizArea = document.getElementById('quiz-area');
-
-        questions.forEach((q, index) => {
-            const qDiv = document.createElement('div');
-            qDiv.className = "bg-white p-4 rounded-3 border shadow-sm";
-
-            // Add Level Header
-            let headerHtml = "";
-            if (index === 0) headerHtml = `<div class="mb-3 text-success fw-bold"><i class="ph-fill ph-smiley me-1"></i> Level 1: Basic Concept</div>`;
-            if (index === 5) headerHtml = `<div class="mb-3 mt-2 text-danger fw-bold border-top pt-3"><i class="ph-fill ph-skull me-1"></i> Level 2: TOEFL Traps</div>`;
-
-            let optionsHtml = "";
-            q.options.forEach((opt, optIndex) => {
-                optionsHtml += `
-                    <button onclick="checkAnswer(${index}, ${optIndex}, this)" 
-                            class="btn btn-quiz-option">
-                        <span>${opt.label}</span>
-                        <i class="ph-bold ph-circle text-secondary"></i>
-                    </button>
-                `;
-            });
-
-            qDiv.innerHTML = `
-                ${headerHtml}
-                <p class="fw-bold text-dark mb-3">${index + 1}. ${q.text}</p>
-                <div class="d-grid gap-2">${optionsHtml}</div>
-                <div id="feedback-${index}" class="mt-3 p-3 rounded-3 small fw-bold d-none"></div>
-            `;
-            quizArea.appendChild(qDiv);
+        // --- สั่งให้ Render Quiz ---
+        // เรียกใช้ฟังก์ชันจากไฟล์ js/quiz-core.js
+        document.addEventListener('DOMContentLoaded', () => {
+            renderQuiz(quizData, 'quiz-area');
         });
-
-        // 3. Check Answer Function
-        window.checkAnswer = function(qIndex, optIndex, btnElement) {
-            const question = questions[qIndex];
-            const option = question.options[optIndex];
-            const feedbackEl = document.getElementById(`feedback-${qIndex}`);
-            
-            // Disable buttons
-            const allBtns = btnElement.parentElement.querySelectorAll('button');
-            allBtns.forEach(btn => {
-                btn.disabled = true;
-                btn.classList.add('opacity-50');
-            });
-            btnElement.classList.remove('opacity-50');
-
-            // Show Feedback
-            feedbackEl.classList.remove('d-none');
-            
-            if (option.isCorrect) {
-                btnElement.classList.add('btn-success-custom');
-                btnElement.querySelector('i').className = "ph-fill ph-check-circle text-success fs-5";
-                
-                feedbackEl.className = "mt-3 p-3 rounded-3 small fw-bold alert alert-success border-success";
-                feedbackEl.innerHTML = `<div class="d-flex align-items-start gap-2"><i class="ph-bold ph-check mt-1"></i> <div>${option.feedback}</div></div>`;
-            } else {
-                btnElement.classList.add('btn-danger-custom');
-                btnElement.querySelector('i').className = "ph-fill ph-x-circle text-danger fs-5";
-
-                feedbackEl.className = "mt-3 p-3 rounded-3 small fw-bold alert alert-danger border-danger";
-                feedbackEl.innerHTML = `<div class="d-flex align-items-start gap-2"><i class="ph-bold ph-x mt-1"></i> <div>${option.feedback}</div></div>`;
-            }
-        };
     </script>
 
 </body>

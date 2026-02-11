@@ -899,75 +899,83 @@
         // --- Data Source ---
         const quizData = [
             {
-                question: "What part of speech is the word 'happiness'?",
+                question: "Choose the correct word to complete the sentence:<br>'Her __________ was evident to everyone in the room.'",
+                // (แปล: __________ ของเธอเห็นได้ชัดเจนสำหรับทุกคนในห้อง)
                 options: [
-                    { text: "Verb", correct: false, rationale: "Verb คือการกระทำ แต่ happiness คือความรู้สึก/สภาวะ" },
-                    { text: "Adjective", correct: false, rationale: "Adjective มักขยายคำนาม (เช่น happy)" },
-                    { text: "Noun", correct: true, rationale: "ถูกต้อง! ลงท้ายด้วย -ness เป็นคำนาม (Abstract Noun)" },
-                    { text: "Adverb", correct: false, rationale: "Adverb มักลงท้ายด้วย -ly (เช่น happily)" }
+                    { text: "happy", correct: false, rationale: "ผิด: happy เป็น Adjective (คำคุณศัพท์) แต่นี่อยู่หลัง 'Her' (Possessive Adjective) ต้องการคำนาม" },
+                    { text: "happily", correct: false, rationale: "ผิด: happily เป็น Adverb (กริยาวิเศษณ์) ไม่ใช่วางไว้ตรงนี้" },
+                    { text: "happiness", correct: true, rationale: "ถูกต้อง! หลัง 'Her' (คำแสดงความเป็นเจ้าของ) ต้องตามด้วย Noun (คำนาม) เสมอ<br><br><strong>ประโยคสมบูรณ์:</strong> Her <em>happiness</em> was evident... (ความสุขของเธอเห็นได้ชัด...)" },
+                    { text: "happier", correct: false, rationale: "ผิด: happier เป็น Comparative Adjective (ขั้นกว่า)" }
                 ]
             },
             {
-                question: "Identify the ADJECTIVE in this sentence:<br>'The small cat runs quickly.'",
+                question: "Select the correct word:<br>'The __________ cat runs quickly.'",
+                // (แปล: แมวตัว__________ วิ่งอย่างรวดเร็ว)
                 options: [
-                    { text: "small", correct: true, rationale: "ถูกต้อง! small ขยายคำนาม cat เพื่อบอกขนาด" },
-                    { text: "cat", correct: false, rationale: "cat เป็น Noun (ประธานของประโยค)" },
-                    { text: "runs", correct: false, rationale: "runs เป็น Verb (กริยา)" },
-                    { text: "quickly", correct: false, rationale: "quickly เป็น Adverb ขยาย runs" }
+                    { text: "smallness", correct: false, rationale: "ผิด: smallness เป็น Noun (ความเล็ก) วางหน้า Noun อีกตัว (cat) ไม่ได้ในบริบทนี้" },
+                    { text: "small", correct: true, rationale: "ถูกต้อง! หน้า Noun (cat) ต้องเป็น Adjective (คำคุณศัพท์) เพื่อขยายลักษณะ<br><br><strong>ประโยคสมบูรณ์:</strong> The <em>small</em> cat runs quickly. (แมวตัวเล็กวิ่งอย่างรวดเร็ว)" },
+                    { text: "smallish", correct: false, rationale: "ผิด: smallish (ค่อนข้างเล็ก) ความหมายไม่เป็นทางการและไม่ค่อยใช้ในบริบทนี้เท่า small" },
+                    { text: "smally", correct: false, rationale: "ผิด: ไม่มีคำนี้ในภาษาอังกฤษ (Adverb ของ small คือใช้ small หรือ little)" }
                 ]
             },
             {
-                question: "Which suffix usually indicates a VERB?",
+                question: "Which word best completes the sentence?<br>'They need to __________ a new plan.'",
+                // (แปล: พวกเขาจำเป็นต้อง __________ แผนใหม่)
                 options: [
-                    { text: "-tion", correct: false, rationale: "-tion บอกความเป็น Noun (e.g., station)" },
-                    { text: "-ous", correct: false, rationale: "-ous บอกความเป็น Adjective (e.g., dangerous)" },
-                    { text: "-ate", correct: true, rationale: "ถูกต้อง! -ate เป็น Verb suffix ที่พบบ่อย (e.g., create, communicate)" },
-                    { text: "-ly", correct: false, rationale: "-ly บอกความเป็น Adverb (e.g., slowly)" }
+                    { text: "creation", correct: false, rationale: "ผิด: creation เป็น Noun (การสร้าง)" },
+                    { text: "creative", correct: false, rationale: "ผิด: creative เป็น Adjective (มีความคิดสร้างสรรค์)" },
+                    { text: "create", correct: true, rationale: "ถูกต้อง! หลัง 'to' (Infinitive marker) ต้องตามด้วย Verb ช่อง 1 (Base Form)<br><br><strong>ประโยคสมบูรณ์:</strong> They need to <em>create</em> a new plan. (พวกเขาจำเป็นต้องสร้างแผนใหม่)" },
+                    { text: "creatively", correct: false, rationale: "ผิด: creatively เป็น Adverb" }
                 ]
             },
             {
-                question: "What part of speech is 'under' in the sentence:<br>'The cat is under the table.'",
+                question: "Fill in the blank:<br>'The cat is hiding __________ the table.'",
+                // (แปล: แมวกำลังซ่อนตัวอยู่ __________ โต๊ะ)
                 options: [
-                    { text: "Conjunction", correct: false, rationale: "Conjunction ใช้เชื่อมประโยค" },
-                    { text: "Preposition", correct: true, rationale: "ถูกต้อง! under บอกตำแหน่งของนาม (cat) เทียบกับนามอื่น (table)" },
-                    { text: "Adverb", correct: false, rationale: "ในบริบทนี้มีกรรมมารับ (the table) จึงเป็น Prep ไม่ใช่ Adv" },
-                    { text: "Interjection", correct: false, rationale: "ไม่ใช่คำอุทาน" }
+                    { text: "because", correct: false, rationale: "ผิด: because เป็น Conjunction ใช้เชื่อมประโยคเหตุผล" },
+                    { text: "under", correct: true, rationale: "ถูกต้อง! ต้องการ Preposition (คำบุพบท) เพื่อบอกตำแหน่งสถานที่<br><br><strong>ประโยคสมบูรณ์:</strong> The cat is hiding <em>under</em> the table. (แมวกำลังซ่อนตัวอยู่ใต้โต๊ะ)" },
+                    { text: "careful", correct: false, rationale: "ผิด: careful เป็น Adjective" },
+                    { text: "so", correct: false, rationale: "ผิด: so เป็น Conjunction บอกผลลัพธ์" }
                 ]
             },
             {
-                question: "Identify the ADVERB:<br>'She sings beautifully.'",
+                question: "Choose the correct form:<br>'She sings __________.'",
+                // (แปล: เธอร้องเพลง __________ )
                 options: [
-                    { text: "She", correct: false, rationale: "Pronoun (Subject)" },
-                    { text: "sings", correct: false, rationale: "Verb" },
-                    { text: "beautifully", correct: true, rationale: "ถูกต้อง! ลงท้ายด้วย -ly และขยายกริยา sings" },
-                    { text: "beautiful", correct: false, rationale: "นี่คือรูป Adjective" }
+                    { text: "beauty", correct: false, rationale: "ผิด: beauty เป็น Noun (ความสวยงาม)" },
+                    { text: "beautify", correct: false, rationale: "ผิด: beautify เป็น Verb (ทำให้สวย)" },
+                    { text: "beautifully", correct: true, rationale: "ถูกต้อง! ขยาย Verb 'sings' ต้องใช้ Adverb (ลงท้ายด้วย -ly)<br><br><strong>ประโยคสมบูรณ์:</strong> She sings <em>beautifully</em>. (เธอร้องเพลงได้อย่างไพเราะ)" },
+                    { text: "beautiful", correct: false, rationale: "ผิด: beautiful เป็น Adjective (ขยาย Noun) ไม่ใช่ขยาย Verb" }
                 ]
             },
             {
-                question: "The word 'information' is a(n) __________.",
+                question: "Complete the sentence:<br>'Please send me more __________ about the project.'",
+                // (แปล: กรุณาส่ง __________ เกี่ยวกับโปรเจกต์ให้ฉันเพิ่มเติมหน่อย)
                 options: [
-                    { text: "Noun", correct: true, rationale: "ถูกต้อง! ลงท้ายด้วย -tion เป็นคำนามเสมอ" },
-                    { text: "Verb", correct: false, rationale: "Verb คือ inform" },
-                    { text: "Adjective", correct: false, rationale: "Adjective คือ informative" },
-                    { text: "Adverb", correct: false, rationale: "Adverb คือ informatively" }
+                    { text: "information", correct: true, rationale: "ถูกต้อง! หลัง 'more' (Determiner) ต้องการ Noun (คำนาม)<br><br><strong>ประโยคสมบูรณ์:</strong> Please send me more <em>information</em>... (กรุณาส่งข้อมูลเพิ่มเติมให้ฉัน...)" },
+                    { text: "inform", correct: false, rationale: "ผิด: inform เป็น Verb" },
+                    { text: "informative", correct: false, rationale: "ผิด: informative เป็น Adjective" },
+                    { text: "informatively", correct: false, rationale: "ผิด: informatively เป็น Adverb" }
                 ]
             },
             {
-                question: "Select the correct word form:<br>'This problem is very __________.'",
+                question: "Select the best word:<br>'This chemical is very __________.'",
+                // (แปล: สารเคมีนี้ __________ มาก)
                 options: [
-                    { text: "danger", correct: false, rationale: "danger เป็น Noun" },
-                    { text: "dangerously", correct: false, rationale: "หลัง V.to be ไม่ใช้วาง Adverb ลอยๆ แบบนี้" },
-                    { text: "dangerous", correct: true, rationale: "ถูกต้อง! หลัง V.to be (is) ต้องตามด้วย Adjective" },
-                    { text: "endanger", correct: false, rationale: "endanger เป็น Verb" }
+                    { text: "danger", correct: false, rationale: "ผิด: danger เป็น Noun (ความอันตราย) - ถ้าจะใช้ต้องเป็น 'is a danger'" },
+                    { text: "dangerously", correct: false, rationale: "ผิด: dangerously เป็น Adverb - หลัง V.to be (is) ปกติไม่วาง Adverb ลอยๆ" },
+                    { text: "dangerous", correct: true, rationale: "ถูกต้อง! หลัง V.to be (is) และมี very (Adv) มาขยาย ต้องเป็น Adjective<br><br><strong>ประโยคสมบูรณ์:</strong> This chemical is very <em>dangerous</em>. (สารเคมีนี้อันตรายมาก)" },
+                    { text: "endanger", correct: false, rationale: "ผิด: endanger เป็น Verb (ทำให้เกิดอันตราย)" }
                 ]
             },
             {
-                question: "Which word is a CONJUNCTION?",
+                question: "Choose the correct connector:<br>'__________ it rained, we went to the park.'",
+                // (แปล: __________ ฝนตก พวกเราก็ไปสวนสาธารณะ)
                 options: [
-                    { text: "Running", correct: false, rationale: "Gerund / Participle" },
-                    { text: "Because", correct: true, rationale: "ถูกต้อง! ใช้เชื่อมประโยคบอกเหตุผล" },
-                    { text: "During", correct: false, rationale: "During เป็น Preposition" },
-                    { text: "Often", correct: false, rationale: "Often เป็น Adverb of Frequency" }
+                    { text: "Because", correct: false, rationale: "ผิด: เพราะใจความขัดแย้งกัน (ฝนตกแต่ยังไป) ไม่ใช่เหตุผล" },
+                    { text: "Although", correct: true, rationale: "ถูกต้อง! ใช้เชื่อมประโยคที่มีใจความขัดแย้งกัน (Concession)<br><br><strong>ประโยคสมบูรณ์:</strong> <em>Although</em> it rained, we went... (ถึงแม้ว่าฝนจะตก พวกเราก็ไป...)" },
+                    { text: "During", correct: false, rationale: "ผิด: During ต้องตามด้วย Noun (During the rain) แต่นี่ตามด้วยประโยค (it rained)" },
+                    { text: "And", correct: false, rationale: "ผิด: And ใช้เชื่อมความคล้อยตามกัน" }
                 ]
             }
         ];

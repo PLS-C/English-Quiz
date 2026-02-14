@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TOEFL ITP Structure: Set 14</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@300;400;600&family=Sarabun:wght@400;600&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body class="bg-slate-100 min-h-screen flex items-center justify-center p-4">
+
+    <div class="bg-white rounded-2xl shadow-xl w-full max-w-2xl overflow-hidden border border-slate-200 flex flex-col max-h-[95vh]" id="app-container">
+        
+        <div id="header-slot"></div>
+
+        <div class="w-full bg-gray-100 h-1.5 flex-none">
+            <div class="bg-rose-600 h-1.5 transition-all duration-300 ease-out" style="width: 0%" id="progress-bar"></div>
+        </div>
+
+        <div class="p-6 overflow-y-auto flex-grow rationale-scroll" id="content-area">
+            <div id="quiz-content-placeholder" class="text-center text-gray-400 py-10">Loading Quiz...</div>
+        </div>
+
+        <div id="footer-slot"></div>
+    </div>
+
+    <script>
+        // 1. ตั้งค่าหัวข้อและสี (Theme: Rose - Expert/Final Boss)
+        const quizConfig = {
+            title: "TOEFL Structure (Master)",
+            subtitle: "Set 14: Complex 'To' at Start & Noun Phrases",
+            
+            // สีพื้นหลังหัวข้อ
+            headerColorClass: "bg-rose-700", 
+            
+            // สีตัวอักษรตกแต่ง
+            accentColorClass: "text-rose-200", 
+            scoreTitleClass: "text-rose-600"
+        };
+
+        const quizData = [
+            // --- Group 1: Cause & Effect (บอกสาเหตุ) ---
+            {
+                question: "__________ the heavy fog, all flights were delayed for three hours.",
+                translation: "______ หมอกลงจัด เที่ยวบินทั้งหมดจึงล่าช้าไปสามชั่วโมง",
+                vocab: ["<b>Fog</b> (N): หมอก", "<b>Delay</b> (V): ล่าช้า"],
+                options: [
+                    { text: "Because", correct: false, rationale: "<b>Grammar:</b> Because ต้องตามด้วยประโยค (S+V) แต่ 'the heavy fog' เป็นคำนาม" },
+                    { text: "Because of", correct: true, rationale: "<b>Preposition:</b> Because of แปลว่า 'เนื่องจาก' ใช้ตามด้วย Noun Phrase (the heavy fog)" },
+                    { text: "Since", correct: false, rationale: "<b>Grammar:</b> Since (ในความหมายว่าเพราะว่า) ต้องตามด้วย S+V" },
+                    { text: "For", correct: false, rationale: "<b>Usage:</b> For จะใช้เชื่อมประโยค (Clause) และมักอยู่กลางประโยค ไม่ขึ้นต้นแบบนี้" }
+                ]
+            },
+            {
+                question: "__________ the economy is improving, interest rates remain high.",
+                translation: "______ เศรษฐกิจกำลังดีขึ้น แต่อัตราดอกเบี้ยยังคงสูงอยู่",
+                vocab: ["<b>Improve</b> (V): ปรับปรุง/ดีขึ้น", "<b>Interest rate</b> (N): อัตราดอกเบี้ย"],
+                options: [
+                    { text: "Due to", correct: false, rationale: "<b>Grammar:</b> Due to ต้องตามด้วย Noun แต่โจทย์เป็นประโยค (the economy is improving)" },
+                    { text: "Because of", correct: false, rationale: "<b>Grammar:</b> Because of ต้องตามด้วย Noun" },
+                    { text: "Although", correct: true, rationale: "<b>Conjunction:</b> Although (แม้ว่า) ใช้เชื่อมประโยคที่ขัดแย้งกัน (เศรษฐกิจดี แต่ดอกเบี้ยแพง)" },
+                    { text: "Despite", correct: false, rationale: "<b>Grammar:</b> Despite ต้องตามด้วย Noun" }
+                ]
+            },
+            {
+                question: "The project was cancelled __________ lack of funding.",
+                translation: "โครงการถูกยกเลิก ______ ขาดแคลนเงินทุน",
+                vocab: ["<b>Cancel</b> (V): ยกเลิก", "<b>Funding</b> (N): เงินทุน"],
+                options: [
+                    { text: "because", correct: false, rationale: "<b>Grammar:</b> Because ต้องตามด้วย S+V" },
+                    { text: "due to", correct: true, rationale: "<b>Preposition:</b> Due to + Noun (lack of funding) ใช้บอกสาเหตุได้ดีที่สุดในบริบททางการ" },
+                    { text: "since", correct: false, rationale: "<b>Grammar:</b> Since ต้องตามด้วย S+V" },
+                    { text: "as", correct: false, rationale: "<b>Grammar:</b> As ต้องตามด้วย S+V" }
+                ]
+            },
+            {
+                question: "__________ you are already here, you might as well stay for dinner.",
+                translation: "______ คุณมาถึงที่นี่แล้ว คุณก็น่าจะอยู่ทานมื้อเย็นด้วยกันเลย",
+                vocab: ["<b>Might as well</b> (Idiop): ก็น่าจะ... (ไหนๆ ก็ไหนๆ)", "<b>Stay</b> (V): พำนัก/อยู่"],
+                options: [
+                    { text: "Because of", correct: false, rationale: "<b>Grammar:</b> ตามด้วย Noun เท่านั้น" },
+                    { text: "Since", correct: true, rationale: "<b>Conjunction:</b> Since นอกจากบอกเวลา ยังแปลว่า 'เพราะว่า/ในเมื่อ' ได้ด้วย และตามด้วย S+V (you are...)" },
+                    { text: "Due to", correct: false, rationale: "<b>Grammar:</b> ตามด้วย Noun" },
+                    { text: "Owing to", correct: false, rationale: "<b>Grammar:</b> ตามด้วย Noun" }
+                ]
+            },
+
+            // --- Group 2: Contrast & Concession (บอกความขัดแย้ง) ---
+            {
+                question: "__________ her hard work, she did not get the promotion.",
+                translation: "______ การทำงานหนักของเธอ เธอไม่ได้รับการเลื่อนตำแหน่ง",
+                vocab: ["<b>Promotion</b> (N): การเลื่อนตำแหน่ง", "<b>Hard work</b> (N): การทำงานหนัก"],
+                options: [
+                    { text: "Although", correct: false, rationale: "<b>Grammar:</b> Although ต้องตามด้วย S+V" },
+                    { text: "Despite", correct: true, rationale: "<b>Preposition:</b> Despite + Noun (her hard work) แปลว่า 'ทั้งๆ ที่...'" },
+                    { text: "Even though", correct: false, rationale: "<b>Grammar:</b> Even though ต้องตามด้วย S+V" },
+                    { text: "However", correct: false, rationale: "<b>Grammar:</b> However มักใช้ขึ้นต้นประโยคใหม่ หรือมี comma คั่น (Connector)" }
+                ]
+            },
+            {
+                question: "He decided to go out __________ the rain.",
+                translation: "เขาตัดสินใจออกไปข้างนอก ______ ฝน",
+                vocab: ["<b>Decide</b> (V): ตัดสินใจ"],
+                options: [
+                    { text: "in spite", correct: false, rationale: "<b>Incomplete:</b> ต้องมี 'of' เสมอ (In spite of)" },
+                    { text: "despite of", correct: false, rationale: "<b>Error:</b> Despite ห้ามมี 'of' เด็ดขาด" },
+                    { text: "in spite of", correct: true, rationale: "<b>Correct Form:</b> In spite of + Noun (the rain) ถูกต้องทั้งความหมายและไวยากรณ์" },
+                    { text: "although", correct: false, rationale: "<b>Grammar:</b> Although ต้องตามด้วย S+V" }
+                ]
+            },
+            {
+                question: "__________ the car is old, it runs very well.",
+                translation: "______ รถจะเก่า แต่มันวิ่งได้ดีมาก",
+                vocab: ["<b>Run</b> (V): วิ่ง/ทำงาน(เครื่องจักร)", "<b>Well</b> (Adv): อย่างดี"],
+                options: [
+                    { text: "In spite of", correct: false, rationale: "<b>Grammar:</b> ตามด้วย Noun แต่โจทย์เป็น S+V (the car is)" },
+                    { text: "Despite", correct: false, rationale: "<b>Grammar:</b> ตามด้วย Noun" },
+                    { text: "Even though", correct: true, rationale: "<b>Conjunction:</b> Even though + S+V ใช้เชื่อมประโยคขัดแย้ง" },
+                    { text: "Nevertheless", correct: false, rationale: "<b>Usage:</b> เป็น Adverb มักอยู่ต้นประโยค หรือหลังเครื่องหมาย ;" }
+                ]
+            },
+            {
+                question: "Some people prefer coffee, __________ others prefer tea.",
+                translation: "บางคนชอบกาแฟ ______ คนอื่นชอบชา",
+                vocab: ["<b>Prefer</b> (V): ชอบมากกว่า"],
+                options: [
+                    { text: "while", correct: true, rationale: "<b>Contrast:</b> While (ในขณะที่) ใช้แสดงความขัดแย้งหรือเปรียบเทียบระหว่างสองสิ่ง" },
+                    { text: "during", correct: false, rationale: "<b>Grammar:</b> During ต้องตามด้วย Noun (บอกช่วงเวลา)" },
+                    { text: "despite", correct: false, rationale: "<b>Grammar:</b> Despite ตามด้วย Noun (บอกความขัดแย้งแบบยอมรับ)" },
+                    { text: "because", correct: false, rationale: "<b>Meaning:</b> ความหมายไม่สมเหตุสมผล" }
+                ]
+            },
+
+            // --- Group 3: Time (บอกเวลา) ---
+            {
+                question: "__________ the presentation, please turn off your mobile phones.",
+                translation: "______ การนำเสนอ กรุณาปิดโทรศัพท์มือถือ",
+                vocab: ["<b>Presentation</b> (N): การนำเสนอ", "<b>Turn off</b> (V): ปิด"],
+                options: [
+                    { text: "While", correct: false, rationale: "<b>Grammar:</b> While ต้องตามด้วย S+V หรือ V-ing" },
+                    { text: "During", correct: true, rationale: "<b>Preposition:</b> During + Noun (the presentation) บอกช่วงเวลา" },
+                    { text: "When", correct: false, rationale: "<b>Grammar:</b> When ต้องตามด้วย S+V" },
+                    { text: "As", correct: false, rationale: "<b>Grammar:</b> As ต้องตามด้วย S+V" }
+                ]
+            },
+            {
+                question: "He fell asleep __________ he was reading a book.",
+                translation: "เขาเผลอหลับ ______ เขากำลังอ่านหนังสือ",
+                vocab: ["<b>Fall asleep</b> (V): เผลอหลับ"],
+                options: [
+                    { text: "during", correct: false, rationale: "<b>Grammar:</b> During ต้องตามด้วย Noun" },
+                    { text: "while", correct: true, rationale: "<b>Conjunction:</b> While + S+V (he was reading) บอกเหตุการณ์ที่กำลังดำเนินอยู่" },
+                    { text: "because of", correct: false, rationale: "<b>Meaning:</b> ไม่ได้หลับเพราะหนังสือ แต่หลับ 'ระหว่าง' อ่าน" },
+                    { text: "owing to", correct: false, rationale: "<b>Grammar:</b> ตามด้วย Noun" }
+                ]
+            },
+
+            // --- Group 4: Condition (เงื่อนไข) ---
+            {
+                question: "__________ you study harder, you will not pass the exam.",
+                translation: "______ คุณจะเรียนให้หนักขึ้น คุณจะสอบไม่ผ่าน",
+                vocab: ["<b>Pass</b> (V): สอบผ่าน"],
+                options: [
+                    { text: "If", correct: false, rationale: "<b>Meaning:</b> ถ้าใช้ If จะแปลว่า 'ถ้าขยัน จะสอบตก' (ความหมายผิด)" },
+                    { text: "Unless", correct: true, rationale: "<b>Meaning:</b> Unless = If...not (ถ้าไม่...) แปลว่า 'ถ้าคุณไม่ขยัน คุณจะสอบตก'" },
+                    { text: "When", correct: false, rationale: "<b>Meaning:</b> ไม่ใช่เรื่องของเวลา แต่เป็นเงื่อนไข" },
+                    { text: "As long as", correct: false, rationale: "<b>Meaning:</b> ความหมายเหมือน If (ผิดความหมาย)" }
+                ]
+            },
+            {
+                question: "We will hold the event outdoors, __________ it rains.",
+                translation: "เราจะจัดงานกลางแจ้ง ______ ฝนตก (ถ้าฝนไม่ตก)",
+                vocab: ["<b>Outdoors</b> (Adv): กลางแจ้ง", "<b>Hold</b> (V): จัดงาน"],
+                options: [
+                    { text: "provided that", correct: true, rationale: "<b>Synonym:</b> Provided that แปลว่า 'โดยมีเงื่อนไขว่า/ถ้า' ใช้เหมือน If" },
+                    { text: "unless", correct: false, rationale: "<b>Meaning:</b> ถ้าใช้ Unless จะแปลว่า 'จัดข้างนอก เว้นแต่ฝนไม่ตก' (งง)" },
+                    { text: "in case of", correct: false, rationale: "<b>Grammar:</b> In case of ต้องตามด้วย Noun" },
+                    { text: "so that", correct: false, rationale: "<b>Meaning:</b> So that บอกวัตถุประสงค์ (เพื่อที่ว่า)" }
+                ]
+            },
+            {
+                question: "Please bring an umbrella __________ rain.",
+                translation: "กรุณาพกร่มมาด้วย ______ ฝนตก",
+                vocab: ["<b>Umbrella</b> (N): ร่ม"],
+                options: [
+                    { text: "in case", correct: false, rationale: "<b>Grammar:</b> In case มักตามด้วย S+V (In case it rains)" },
+                    { text: "in case of", correct: true, rationale: "<b>Preposition:</b> In case of + Noun (rain) แปลว่า 'ในกรณีที่...'" },
+                    { text: "if", correct: false, rationale: "<b>Grammar:</b> If ต้องตามด้วย S+V" },
+                    { text: "unless", correct: false, rationale: "<b>Meaning:</b> ผิดความหมาย" }
+                ]
+            },
+
+            // --- Group 5: Purpose (วัตถุประสงค์) ---
+            {
+                question: "She studied hard __________ she could get a scholarship.",
+                translation: "เธอเรียนหนัก ______ เธอจะได้รับทุนการศึกษา",
+                vocab: ["<b>Scholarship</b> (N): ทุนการศึกษา"],
+                options: [
+                    { text: "so that", correct: true, rationale: "<b>Connector:</b> So that + S + V (can/could) ใช้บอกวัตถุประสงค์ 'เพื่อที่ว่า...'" },
+                    { text: "in order to", correct: false, rationale: "<b>Grammar:</b> In order to ต้องตามด้วย V.1 (In order to get)" },
+                    { text: "because of", correct: false, rationale: "<b>Grammar:</b> ตามด้วย Noun" },
+                    { text: "so as to", correct: false, rationale: "<b>Grammar:</b> So as to ต้องตามด้วย V.1" }
+                ]
+            },
+            {
+                question: "He lowered his voice __________ disturb the baby.",
+                translation: "เขาลดเสียงลง ______ รบกวนเด็กทารก",
+                vocab: ["<b>Lower</b> (V): ลดลง", "<b>Disturb</b> (V): รบกวน"],
+                options: [
+                    { text: "in order to", correct: false, rationale: "<b>Meaning:</b> ถ้าใช้จะแปลว่า 'เพื่อที่จะรบกวน' (ความหมายตรงข้าม)" },
+                    { text: "so as not to", correct: true, rationale: "<b>Negative Purpose:</b> So as not to + V.1 แปลว่า 'เพื่อที่จะไม่...'" },
+                    { text: "so that", correct: false, rationale: "<b>Grammar:</b> So that ต้องตามด้วย S+V" },
+                    { text: "for not", correct: false, rationale: "<b>Grammar:</b> ผิดไวยากรณ์" }
+                ]
+            },
+
+            // --- Group 6: Correlative (คำเชื่อมคู่) ---
+            {
+                question: "__________ the manager nor the employees were aware of the change.",
+                translation: "______ ผู้จัดการและพนักงานไม่ทราบถึงการเปลี่ยนแปลง",
+                vocab: ["<b>Aware</b> (Adj): ตระหนัก/รู้"],
+                options: [
+                    { text: "Either", correct: false, rationale: "<b>Pairing:</b> Either คู่กับ Or" },
+                    { text: "Neither", correct: true, rationale: "<b>Pairing:</b> Neither คู่กับ Nor (ไม่ทั้งคู่)" },
+                    { text: "Both", correct: false, rationale: "<b>Pairing:</b> Both คู่กับ And" },
+                    { text: "Not only", correct: false, rationale: "<b>Pairing:</b> Not only คู่กับ But also" }
+                ]
+            },
+            {
+                question: "You can choose __________ the red shirt or the blue one.",
+                translation: "คุณสามารถเลือก ______ เสื้อสีแดง หรือสีน้ำเงิน",
+                vocab: ["<b>Choose</b> (V): เลือก"],
+                options: [
+                    { text: "neither", correct: false, rationale: "<b>Pairing:</b> Neither คู่กับ Nor" },
+                    { text: "both", correct: false, rationale: "<b>Meaning:</b> Both คู่กับ And (และ or ไม่เข้ากัน)" },
+                    { text: "either", correct: true, rationale: "<b>Pairing:</b> Either คู่กับ Or (ให้เลือกอย่างใดอย่างหนึ่ง)" },
+                    { text: "whether", correct: false, rationale: "<b>Usage:</b> Whether...or ใช้กับประโยคบอกเล่า/เงื่อนไขมากกว่าการเลือกของ" }
+                ]
+            },
+            {
+                question: "She is not only intelligent __________ also very kind.",
+                translation: "เธอไม่เพียงแต่ฉลาด ______ ยังใจดีมากอีกด้วย",
+                vocab: ["<b>Intelligent</b> (Adj): ฉลาด", "<b>Kind</b> (Adj): ใจดี"],
+                options: [
+                    { text: "and", correct: false, rationale: "<b>Pairing:</b> Not only... but also" },
+                    { text: "but", correct: true, rationale: "<b>Pairing:</b> Not only... but (also) เป็นสูตรตายตัว" },
+                    { text: "or", correct: false, rationale: "<b>Pairing:</b> ผิดคู่" },
+                    { text: "nor", correct: false, rationale: "<b>Pairing:</b> ผิดคู่" }
+                ]
+            },
+
+            // --- Group 7: Transitions & Logical Connectors (คำเชื่อมความหมาย) ---
+            {
+                question: "The cost of living is high; __________, salaries are low.",
+                translation: "ค่าครองชีพสูง ______ เงินเดือนกลับต่ำ",
+                vocab: ["<b>Salary</b> (N): เงินเดือน", "<b>Cost of living</b> (N): ค่าครองชีพ"],
+                options: [
+                    { text: "therefore", correct: false, rationale: "<b>Meaning:</b> Therefore บอกผลลัพธ์ (ดังนั้น) แต่ข้อนี้เป็นความขัดแย้ง" },
+                    { text: "however", correct: true, rationale: "<b>Transition:</b> However (อย่างไรก็ตาม) ใช้เชื่อมความขัดแย้งระหว่างสองประโยค (มักมี ; นำหน้าและ , ตามหลัง)" },
+                    { text: "moreover", correct: false, rationale: "<b>Meaning:</b> Moreover (ยิ่งไปกว่านั้น) ใช้เสริมความ" },
+                    { text: "consequently", correct: false, rationale: "<b>Meaning:</b> Consequently (ดังนั้น) บอกผลลัพธ์" }
+                ]
+            },
+            {
+                question: "He didn't study for the test. __________, he failed.",
+                translation: "เขาไม่ได้อ่านหนังสือสอบ ______ เขาจึงสอบตก",
+                vocab: ["<b>Fail</b> (V): สอบตก"],
+                options: [
+                    { text: "Nevertheless", correct: false, rationale: "<b>Meaning:</b> แปลว่า 'แต่อย่างไรก็ตาม' (ขัดแย้ง)" },
+                    { text: "Therefore", correct: true, rationale: "<b>Transition:</b> Therefore (ดังนั้น) ใช้บอกผลลัพธ์ของประโยคก่อนหน้า" },
+                    { text: "Otherwise", correct: false, rationale: "<b>Meaning:</b> แปลว่า 'มิฉะนั้น'" },
+                    { text: "On the other hand", correct: false, rationale: "<b>Meaning:</b> แปลว่า 'ในทางกลับกัน'" }
+                ]
+            },
+            {
+                question: "You must pay the bill by tomorrow; __________, your service will be cut off.",
+                translation: "คุณต้องจ่ายบิลภายในพรุ่งนี้ ______ บริการของคุณจะถูกตัด",
+                vocab: ["<b>Cut off</b> (V): ตัด(ไฟ/น้ำ/เน็ต)"],
+                options: [
+                    { text: "furthermore", correct: false, rationale: "<b>Meaning:</b> แปลว่า 'นอกจากนี้' (เสริมความ)" },
+                    { text: "otherwise", correct: true, rationale: "<b>Transition:</b> Otherwise (มิฉะนั้น) ใช้บอกผลลัพธ์ด้านลบที่จะเกิดขึ้นถ้าไม่ทำตามเงื่อนไข" },
+                    { text: "however", correct: false, rationale: "<b>Meaning:</b> ขัดแย้ง" },
+                    { text: "likewise", correct: false, rationale: "<b>Meaning:</b> แปลว่า 'เช่นเดียวกัน'" }
+                ]
+            },
+
+            // --- Group 8: Tricky/Advanced Connectors ---
+            {
+                question: "__________ being a doctor, he is also a talented musician.",
+                translation: "______ เป็นหมอ เขายังเป็นนักดนตรีที่มีพรสวรรค์ด้วย",
+                vocab: ["<b>Talented</b> (Adj): มีพรสวรรค์"],
+                options: [
+                    { text: "In addition to", correct: true, rationale: "<b>Preposition:</b> In addition to + V-ing/Noun แปลว่า 'นอกเหนือจาก... แล้วยัง...'" },
+                    { text: "In addition", correct: false, rationale: "<b>Grammar:</b> In addition มักจบประโยค หรือขึ้นต้นประโยคใหม่แล้วตามด้วย comma ไม่ตามด้วย V-ing" },
+                    { text: "Beside", correct: false, rationale: "<b>Trap:</b> Beside แปลว่า 'ข้างๆ' (สถานที่) ต้องใช้ Besides (มี s) ถึงจะแปลว่า 'นอกจากนี้'" },
+                    { text: "Moreover", correct: false, rationale: "<b>Grammar:</b> Moreover เป็น Transition word ไม่ตามด้วย V-ing" }
+                ]
+            },
+            {
+                question: "It was __________ a hot day that we stayed inside.",
+                translation: "มันเป็นวันที่ร้อนมาก ______ เราเลยอยู่แต่ข้างใน",
+                vocab: ["<b>Inside</b> (Adv): ข้างใน"],
+                options: [
+                    { text: "so", correct: false, rationale: "<b>Structure:</b> So...that ใช้กับ Adj/Adv (So hot that...) ไม่มี Noun" },
+                    { text: "such", correct: true, rationale: "<b>Structure:</b> Such + (a/an) + Adj + Noun + that (Such a hot day that...)" },
+                    { text: "very", correct: false, rationale: "<b>Grammar:</b> Very ไม่ใช้คู่กับ that ในโครงสร้างนี้" },
+                    { text: "too", correct: false, rationale: "<b>Grammar:</b> Too...to (Too hot to go out)" }
+                ]
+            },
+            {
+                question: "__________ tired he was, he continued working.",
+                translation: "______ เขาจะเหนื่อยแค่ไหน เขาก็ยังทำงานต่อ",
+                vocab: ["<b>Continue</b> (V): ทำต่อ"],
+                options: [
+                    { text: "Although", correct: false, rationale: "<b>Grammar:</b> Although he was tired (ตำแหน่ง Adjective ผิด)" },
+                    { text: "However", correct: true, rationale: "<b>Special Structure:</b> However + Adj/Adv + S + V แปลว่า 'ไม่ว่าจะ...แค่ไหนก็ตาม' (However tired he was...)" },
+                    { text: "Because", correct: false, rationale: "<b>Meaning:</b> ผิดความหมาย" },
+                    { text: "Despite", correct: false, rationale: "<b>Grammar:</b> Despite ต้องตามด้วย Noun" }
+                ]
+            },
+            {
+                question: "We should leave now __________ missing the train.",
+                translation: "เราควรไปเดี๋ยวนี้ ______ พลาดรถไฟ",
+                vocab: ["<b>Miss</b> (V): พลาด"],
+                options: [
+                    { text: "for fear of", correct: true, rationale: "<b>Idiom:</b> For fear of + V-ing แปลว่า 'ด้วยความกลัวว่าจะ/เพื่อป้องกันไม่ให้...'" },
+                    { text: "so that", correct: false, rationale: "<b>Grammar:</b> So that + S+V" },
+                    { text: "in order to", correct: false, rationale: "<b>Meaning:</b> ถ้าใช้จะแปลว่า 'เพื่อที่จะพลาดรถไฟ' (ตลก)" },
+                    { text: "because", correct: false, rationale: "<b>Grammar:</b> Because + S+V" }
+                ]
+            },
+            {
+                question: "The new policy will affect __________ the staff and the customers.",
+                translation: "นโยบายใหม่จะส่งผลกระทบต่อ ______ พนักงานและลูกค้า",
+                vocab: ["<b>Policy</b> (N): นโยบาย", "<b>Affect</b> (V): ส่งผลกระทบ"],
+                options: [
+                    { text: "both", correct: true, rationale: "<b>Pairing:</b> Both...and (ทั้ง...และ...)" },
+                    { text: "either", correct: false, rationale: "<b>Pairing:</b> Either...or" },
+                    { text: "neither", correct: false, rationale: "<b>Pairing:</b> Neither...nor" },
+                    { text: "not only", correct: false, rationale: "<b>Pairing:</b> Not only...but also (ต้องมี but also)" }
+                ]
+            },
+            {
+                question: "No sooner had he arrived __________ the phone rang.",
+                translation: "ทันทีที่เขามาถึง ______ โทรศัพท์ก็ดังขึ้น",
+                vocab: ["<b>Ring</b> (V): สั่น/ดัง"],
+                options: [
+                    { text: "when", correct: false, rationale: "<b>Pairing:</b> Hardly/Scarcely คู่กับ When" },
+                    { text: "than", correct: true, rationale: "<b>Pairing:</b> No sooner คู่กับ Than (เสมอ!) จำสูตร: No sooner...than" },
+                    { text: "that", correct: false, rationale: "<b>Pairing:</b> ผิด" },
+                    { text: "after", correct: false, rationale: "<b>Pairing:</b> ผิด" }
+                ]
+            },
+            {
+                question: "He acts __________ he owns the place.",
+                translation: "เขาทำตัว ______ เขาเป็นเจ้าของที่นี่",
+                vocab: ["<b>Own</b> (V): เป็นเจ้าของ", "<b>Act</b> (V): แสดง/ทำตัว"],
+                options: [
+                    { text: "as if", correct: true, rationale: "<b>Connector:</b> As if / As though แปลว่า 'ราวกับว่า' (ตามด้วย S+V)" },
+                    { text: "like", correct: false, rationale: "<b>Usage:</b> ภาษาพูดอาจใช้ Like แต่ใน TOEFL (ภาษาทางการ) Like เป็น Preposition ต้องตามด้วย Noun ห้ามตามด้วยประโยค" },
+                    { text: "as", correct: false, rationale: "<b>Meaning:</b> As เฉยๆ แปลว่า 'ในขณะที่/เพราะว่า'" },
+                    { text: "so that", correct: false, rationale: "<b>Meaning:</b> ผิด" }
+                ]
+            },
+            {
+                question: "__________ I know, the meeting starts at 9.",
+                translation: "______ ที่ฉันรู้ การประชุมเริ่ม 9 โมง",
+                vocab: ["<b>Meeting</b> (N): การประชุม"],
+                options: [
+                    { text: "As far as", correct: true, rationale: "<b>Idiom:</b> As far as I know (เท่าที่ฉันรู้) เป็นสำนวนที่พบบ่อย" },
+                    { text: "As long as", correct: false, rationale: "<b>Meaning:</b> ตราบเท่าที่ (เงื่อนไข)" },
+                    { text: "So far", correct: false, rationale: "<b>Meaning:</b> จนถึงตอนนี้ (บอกเวลา)" },
+                    { text: "Even if", correct: false, rationale: "<b>Meaning:</b> แม้ว่า" }
+                ]
+            },
+            {
+                question: "Whatever you do, __________ give up.",
+                translation: "ไม่ว่าคุณจะทำอะไร ______ ยอมแพ้",
+                vocab: ["<b>Give up</b> (V): ยอมแพ้"],
+                options: [
+                    { text: "don't", correct: true, rationale: "<b>Imperative:</b> ประโยคคำสั่ง/ขอร้องปฏิเสธ ใช้ Don't + V.1 (Don't give up)" },
+                    { text: "not", correct: false, rationale: "<b>Grammar:</b> Not give up ลอยๆ ไม่ได้" },
+                    { text: "no", correct: false, rationale: "<b>Grammar:</b> No ใช้หน้า Noun" },
+                    { text: "never to", correct: false, rationale: "<b>Grammar:</b> Never give up ได้ (ไม่มี to) แต่ Don't เป็นกลางกว่า" }
+                ]
+            }
+        ];
+    
+    </script>
+
+    <script src="assets/js/script.js"></script>
+</body>
+</html>

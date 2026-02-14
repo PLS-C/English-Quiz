@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TOEFL ITP Structure: Set 14</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@300;400;600&family=Sarabun:wght@400;600&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body class="bg-slate-100 min-h-screen flex items-center justify-center p-4">
+
+    <div class="bg-white rounded-2xl shadow-xl w-full max-w-2xl overflow-hidden border border-slate-200 flex flex-col max-h-[95vh]" id="app-container">
+        
+        <div id="header-slot"></div>
+
+        <div class="w-full bg-gray-100 h-1.5 flex-none">
+            <div class="bg-rose-600 h-1.5 transition-all duration-300 ease-out" style="width: 0%" id="progress-bar"></div>
+        </div>
+
+        <div class="p-6 overflow-y-auto flex-grow rationale-scroll" id="content-area">
+            <div id="quiz-content-placeholder" class="text-center text-gray-400 py-10">Loading Quiz...</div>
+        </div>
+
+        <div id="footer-slot"></div>
+    </div>
+
+    <script>
+        // 1. ตั้งค่าหัวข้อและสี (Theme: Rose - Expert/Final Boss)
+        const quizConfig = {
+            title: "TOEFL Structure (Master)",
+            subtitle: "Set 14: Complex 'To' at Start & Noun Phrases",
+            
+            // สีพื้นหลังหัวข้อ
+            headerColorClass: "bg-rose-700", 
+            
+            // สีตัวอักษรตกแต่ง
+            accentColorClass: "text-rose-200", 
+            scoreTitleClass: "text-rose-600"
+        };
+
+        // 2. ข้อมูลคำถาม Set 14: Focus on Start of Sentence & Noun + To
+        const quizData = [
+            // --- Group 1: Connectors (S+V vs. Noun) ---
+            {
+                question: "__________ the heavy rain, the outdoor concert was canceled.",
+                translation: "______ ฝนที่ตกหนัก คอนเสิร์ตกลางแจ้งจึงถูกยกเลิก",
+                vocab: [
+                "<b>Cancel</b> (V): ยกเลิก",
+                "<b>Heavy rain</b> (N): ฝนตกหนัก"
+                ],
+                options: [
+                { text: "Because", correct: false, rationale: "<b>Needs S+V:</b> Because ต้องตามด้วยประโยค แต่ 'the heavy rain' เป็นแค่นามวลี" },
+                { text: "Because of", correct: true, rationale: "<b>Followed by Noun:</b> Because of + Noun (บอกสาเหตุ)" },
+                { text: "Since", correct: false, rationale: "<b>Needs S+V:</b> Since (เพราะว่า) ต้องตามด้วยประโยค" },
+                { text: "As", correct: false, rationale: "<b>Needs S+V:</b> As (เพราะว่า) ต้องตามด้วยประโยค" }
+                ]
+            },
+            {
+                question: "__________ he had studied hard, he failed the exam.",
+                translation: "______ เขาเรียนหนัก แต่เขาก็สอบตก",
+                vocab: [
+                "<b>Fail</b> (V): ล้มเหลว/สอบตก",
+                "<b>Hard</b> (Adv): อย่างหนัก"
+                ],
+                options: [
+                { text: "Despite", correct: false, rationale: "<b>Needs Noun:</b> Despite ต้องตามด้วยคำนาม แต่โจทย์เป็นประโยค (he had studied...)" },
+                { text: "In spite of", correct: false, rationale: "<b>Needs Noun:</b> เหมือน Despite คือต้องตามด้วยคำนาม" },
+                { text: "Although", correct: true, rationale: "<b>Followed by S+V:</b> Although ใช้เชื่อมประโยคขัดแย้ง (แม้ว่า...)" },
+                { text: "Because of", correct: false, rationale: "<b>Wrong Meaning:</b> ความหมายไม่ได้บอกสาเหตุ แต่บอกความขัดแย้ง" }
+                ]
+            },
+            {
+                question: "__________ the flight, the passenger felt sick.",
+                translation: "______ เที่ยวบิน ผู้โดยสารรู้สึกไม่สบาย",
+                vocab: [
+                "<b>Passenger</b> (N): ผู้โดยสาร",
+                "<b>Flight</b> (N): เที่ยวบิน"
+                ],
+                options: [
+                { text: "While", correct: false, rationale: "<b>Needs S+V:</b> While ต้องตามด้วยประโยค (While he was flying)" },
+                { text: "During", correct: true, rationale: "<b>Followed by Noun:</b> During + ช่วงเวลาที่เป็นคำนาม (During the flight)" },
+                { text: "When", correct: false, rationale: "<b>Needs S+V:</b> When ต้องตามด้วยประโยค" },
+                { text: "As", correct: false, rationale: "<b>Needs S+V:</b> As ต้องตามด้วยประโยค" }
+                ]
+            },
+            {
+                question: "The project was successful __________ the team's dedication.",
+                translation: "โปรเจกต์ประสบความสำเร็จ ______ ความทุ่มเทของทีม",
+                vocab: [
+                "<b>Dedication</b> (N): ความทุ่มเท",
+                "<b>Successful</b> (Adj): ประสบความสำเร็จ"
+                ],
+                options: [
+                { text: "due to", correct: true, rationale: "<b>Followed by Noun:</b> Due to = Because of ใช้บอกสาเหตุ ตามด้วยคำนาม" },
+                { text: "because", correct: false, rationale: "<b>Needs S+V:</b> Because ต้องตามด้วยประโยค" },
+                { text: "since", correct: false, rationale: "<b>Needs S+V:</b> Since ต้องตามด้วยประโยค" },
+                { text: "for", correct: false, rationale: "<b>Trap:</b> For สามารถแปลว่าเพราะว่าได้ แต่ต้องเชื่อมประโยค (For + S + V) และมักอยู่กลางประโยค ไม่ใช่วางแบบนี้" }
+                ]
+            },
+            {
+                question: "__________ her experience, she was not hired for the job.",
+                translation: "______ ประสบการณ์ของเธอ เธอไม่ได้รับการว่าจ้าง",
+                vocab: [
+                "<b>Hire</b> (V): จ้างงาน",
+                "<b>Experience</b> (N): ประสบการณ์"
+                ],
+                options: [
+                { text: "Although", correct: false, rationale: "<b>Needs S+V:</b> Although ต้องตามด้วยประโยค" },
+                { text: "Despite of", correct: false, rationale: "<b>Grammar Error:</b> Despite ห้ามมี of เด็ดขาด (จำไว้เลย!)" },
+                { text: "In spite of", correct: true, rationale: "<b>Followed by Noun:</b> In spite of + Noun (ทั้งๆ ที่มีประสบการณ์)" },
+                { text: "Even though", correct: false, rationale: "<b>Needs S+V:</b> Even though ต้องตามด้วยประโยค" }
+                ]
+            },
+
+            // --- Group 2: Inversion (กลับประโยค) ---
+            {
+                question: "Never __________ such a beautiful sunset.",
+                translation: "ไม่เคยเลยที่ฉันจะเห็นพระอาทิตย์ตกที่สวยขนาดนี้",
+                vocab: [
+                "<b>Sunset</b> (N): พระอาทิตย์ตก",
+                "<b>Never</b> (Adv): ไม่เคย (คำปฏิเสธ)"
+                ],
+                options: [
+                { text: "I have seen", correct: false, rationale: "<b>No Inversion:</b> ถ้า Never ขึ้นต้น ต้องกลับประโยค" },
+                { text: "have I seen", correct: true, rationale: "<b>Inversion:</b> Never (คำปฏิเสธ) + V.ช่วย (have) + S (I)" },
+                { text: "did I see", correct: false, rationale: "<b>Wrong Tense:</b> ปกติ seen เป็น V3 ต้องคู่กับ have/had" },
+                { text: "I saw", correct: false, rationale: "<b>No Inversion:</b>" }
+                ]
+            },
+            {
+                question: "Only recently __________ the importance of diet.",
+                translation: "เมื่อไม่นานมานี้เองที่พวกเขาตระหนักถึงความสำคัญของอาหาร",
+                vocab: [
+                "<b>Realize</b> (V): ตระหนัก",
+                "<b>Diet</b> (N): อาหารการกิน"
+                ],
+                options: [
+                { text: "they realized", correct: false, rationale: "<b>No Inversion:</b>" },
+                { text: "did they realize", correct: true, rationale: "<b>Inversion:</b> Only recently + V.ช่วย (did) + S (they) + V.inf" },
+                { text: "they did realize", correct: false, rationale: "<b>No Inversion:</b> เอาประธานขึ้นก่อนไม่ได้" },
+                { text: "realized they", correct: false, rationale: "<b>Wrong Form:</b> ต้องใช้ V.ช่วย (did) มาช่วย ไม่ใช่ย้าย V.แท้" }
+                ]
+            },
+            {
+                question: "Not only __________ smart, but she is also hardworking.",
+                translation: "ไม่เพียงแต่เธอจะฉลาด แต่เธอยังขยันอีกด้วย",
+                vocab: [
+                "<b>Hardworking</b> (Adj): ขยัน",
+                "<b>Smart</b> (Adj): ฉลาด"
+                ],
+                options: [
+                { text: "she is", correct: false, rationale: "<b>No Inversion:</b>" },
+                { text: "is she", correct: true, rationale: "<b>Inversion:</b> Not only + V.ช่วย (is) + S (she)" },
+                { text: "she does", correct: false, rationale: "<b>Wrong Verb:</b> Smart เป็น Adjective ต้องใช้ V.to be" },
+                { text: "does she", correct: false, rationale: "<b>Wrong Verb:</b> Smart เป็น Adjective ต้องใช้ V.to be" }
+                ]
+            },
+            {
+                question: "__________ known the truth, I would have told you.",
+                translation: "ถ้าฉันรู้ความจริง ฉันคงบอกคุณไปแล้ว",
+                vocab: [
+                "<b>Truth</b> (N): ความจริง"
+                ],
+                options: [
+                { text: "If I", correct: false, rationale: "<b>Grammar Error:</b> If I known ผิด (ต้องเป็น If I had known)" },
+                { text: "Had I", correct: true, rationale: "<b>Inversion (If-Type 3):</b> ลดรูป If โดยตัด If ทิ้ง แล้วเอา Had ขึ้นหน้า (Had I known...)" },
+                { text: "I had", correct: false, rationale: "<b>No Inversion:</b> ถ้าไม่มี If ต้องกลับประโยค" },
+                { text: "Have I", correct: false, rationale: "<b>Wrong Tense:</b> Type 3 ต้องใช้ Had (อดีตของอดีต)" }
+                ]
+            },
+            {
+                question: "__________ you need any assistance, please contact us.",
+                translation: "หากคุณต้องการความช่วยเหลือ โปรดติดต่อเรา",
+                vocab: [
+                "<b>Assistance</b> (N): ความช่วยเหลือ",
+                "<b>Contact</b> (V): ติดต่อ"
+                ],
+                options: [
+                { text: "Should", correct: true, rationale: "<b>Inversion (If-Type 1):</b> ใช้ Should แทน If ได้ในประโยคเงื่อนไขแบบสุภาพ (Should you need...)" },
+                { text: "Had", correct: false, rationale: "<b>Wrong Type:</b> Had ใช้กับ V3 (Past Perfect)" },
+                { text: "Were", correct: false, rationale: "<b>Wrong Type:</b> Were ใช้กับ Noun/Adj หรือ to V (Type 2)" },
+                { text: "If", correct: false, rationale: "<b>Trap:</b> ถ้าใช้ If ปกติก็ถูก แต่ในบริบทตัวเลือกนี้ Should เป็นทางการกว่าและนิยมออกสอบในโครงสร้างลดรูป" }
+                ]
+            },
+
+            // --- Group 3: Subject-Verb Agreement ---
+            {
+                question: "The number of students __________ increasing every year.",
+                translation: "จำนวนของนักเรียนเพิ่มขึ้นทุกปี",
+                vocab: [
+                "<b>Increasing</b> (V-ing): เพิ่มขึ้น"
+                ],
+                options: [
+                { text: "are", correct: false, rationale: "<b>Agreement:</b> The number of... ถือเป็นเอกพจน์ (The = ตัวเลขเดียว)" },
+                { text: "is", correct: true, rationale: "<b>Agreement:</b> The number of... ใช้ Verb เอกพจน์เสมอ" },
+                { text: "have", correct: false, rationale: "<b>Grammar:</b> Have increasing ผิดไวยากรณ์ (ต้องเป็น have been)" },
+                { text: "were", correct: false, rationale: "<b>Wrong Tense:</b> Every year บอกถึงปัจจุบัน/กิจวัตร" }
+                ]
+            },
+            {
+                question: "A number of problems __________ been solved.",
+                translation: "ปัญหาจำนวนมากได้รับการแก้ไขแล้ว",
+                vocab: [
+                "<b>Solve</b> (V): แก้ไข"
+                ],
+                options: [
+                { text: "has", correct: false, rationale: "<b>Agreement:</b> A number of... แปลว่า Many (มาก) ถือเป็นพหูพจน์" },
+                { text: "have", correct: true, rationale: "<b>Agreement:</b> A number of... ใช้ Verb พหูพจน์" },
+                { text: "is", correct: false, rationale: "<b>Agreement:</b>" },
+                { text: "was", correct: false, rationale: "<b>Agreement:</b>" }
+                ]
+            },
+            {
+                question: "The teacher, along with his students, __________ going to the museum.",
+                translation: "คุณครู พร้อมด้วยนักเรียนของเขา กำลังไปพิพิธภัณฑ์",
+                vocab: [
+                "<b>Along with</b> (Prep): พร้อมด้วย"
+                ],
+                options: [
+                { text: "are", correct: false, rationale: "<b>Agreement:</b> ประธานคือ The teacher (เอกพจน์) ส่วน along with เป็นแค่ส่วนขยาย ไม่นับรวม" },
+                { text: "is", correct: true, rationale: "<b>Agreement:</b> ผันตามประธานตัวหน้าสุด (The teacher)" },
+                { text: "have", correct: false, rationale: "<b>Grammar:</b> Have going ผิดไวยากรณ์" },
+                { text: "were", correct: false, rationale: "<b>Wrong Number:</b>" }
+                ]
+            },
+
+            // --- Group 4: Tricky Prepositions & Gerunds ---
+            {
+                question: "I look forward to __________ you soon.",
+                translation: "ฉันตั้งตารอที่จะได้พบคุณเร็วๆ นี้",
+                vocab: [
+                "<b>Look forward to</b> (V): ตั้งตารอคอย"
+                ],
+                options: [
+                { text: "see", correct: false, rationale: "<b>Trap:</b> หลัง to ปกติเป็น V1 แต่สำนวน look forward to... ตัว to เป็น Preposition ต้องตามด้วย Noun/V-ing" },
+                { text: "seeing", correct: true, rationale: "<b>Gerund:</b> Look forward to + V-ing เสมอ" },
+                { text: "saw", correct: false, rationale: "<b>Wrong Form:</b>" },
+                { text: "seen", correct: false, rationale: "<b>Wrong Form:</b>" }
+                ]
+            },
+            {
+                question: "She is capable __________ solving complex problems.",
+                translation: "เธอมีความสามารถในการแก้ปัญหาที่ซับซ้อน",
+                vocab: [
+                "<b>Capable</b> (Adj): สามารถ",
+                "<b>Complex</b> (Adj): ซับซ้อน"
+                ],
+                options: [
+                { text: "to", correct: false, rationale: "<b>Wrong Prep:</b> Capable ไม่ใช้ to (ถ้า Able ใช้ to)" },
+                { text: "of", correct: true, rationale: "<b>Collocation:</b> Capable of + V-ing" },
+                { text: "for", correct: false, rationale: "<b>Wrong Prep:</b>" },
+                { text: "in", correct: false, rationale: "<b>Wrong Prep:</b>" }
+                ]
+            },
+            {
+                question: "He is responsible __________ managing the team.",
+                translation: "เขารับผิดชอบในการจัดการทีม",
+                vocab: [
+                "<b>Responsible</b> (Adj): รับผิดชอบ",
+                "<b>Manage</b> (V): จัดการ"
+                ],
+                options: [
+                { text: "to", correct: false, rationale: "<b>Wrong Prep:</b> Responsible to แปลว่า ขึ้นตรงต่อ(บุคคล) แต่ถ้าทำหน้าที่ใช้ for" },
+                { text: "for", correct: true, rationale: "<b>Collocation:</b> Responsible for + V-ing (รับผิดชอบเรื่อง...)" },
+                { text: "with", correct: false, rationale: "<b>Wrong Prep:</b>" },
+                { text: "on", correct: false, rationale: "<b>Wrong Prep:</b>" }
+                ]
+            },
+            {
+                question: "Please refrain __________ smoking in this area.",
+                translation: "กรุณางดสูบบุหรี่ในบริเวณนี้",
+                vocab: [
+                "<b>Refrain</b> (V): ระงับ/ละเว้น"
+                ],
+                options: [
+                { text: "to", correct: false, rationale: "<b>Wrong Prep:</b>" },
+                { text: "from", correct: true, rationale: "<b>Collocation:</b> Refrain from + V-ing" },
+                { text: "of", correct: false, rationale: "<b>Wrong Prep:</b>" },
+                { text: "for", correct: false, rationale: "<b>Wrong Prep:</b>" }
+                ]
+            },
+
+            // --- Group 5: Other Common Traps ---
+            {
+                question: "The director requests that everyone __________ on time.",
+                translation: "ผู้อำนวยการขอให้ทุกคนตรงต่อเวลา",
+                vocab: [
+                "<b>Request</b> (V): ร้องขอ",
+                "<b>On time</b> (Adv): ตรงเวลา"
+                ],
+                options: [
+                { text: "is", correct: false, rationale: "<b>Subjunctive Mood:</b> หลัง V.คำสั่ง/ขอร้อง (suggest, request, insist) + that + S + V.inf (ไม่ผัน)" },
+                { text: "be", correct: true, rationale: "<b>Subjunctive:</b> ต้องใช้ V.ไม่ผัน (be) เสมอ ไม่ว่าประธานจะเป็นอะไร" },
+                { text: "are", correct: false, rationale: "<b>Subjunctive:</b> ห้ามผัน" },
+                { text: "was", correct: false, rationale: "<b>Subjunctive:</b> ห้ามผัน" }
+                ]
+            },
+            {
+                question: "__________ he is rich, he never gives money to charity.",
+                translation: "แม้ว่าเขาจะรวย แต่เขาไม่เคยบริจาคเงินให้การกุศล",
+                vocab: [
+                "<b>Charity</b> (N): การกุศล"
+                ],
+                options: [
+                { text: "Despite", correct: false, rationale: "<b>Needs Noun:</b>" },
+                { text: "In spite of", correct: false, rationale: "<b>Needs Noun:</b>" },
+                { text: "Even though", correct: true, rationale: "<b>Followed by S+V:</b> Even though + S (he) + V (is)" },
+                { text: "However", correct: false, rationale: "<b>Punctuation:</b> However มักมี comma ตามหลังทันที หรืออยู่กลางประโยค" }
+                ]
+            },
+            {
+                question: "We rely __________ computer systems for our daily work.",
+                translation: "เราพึ่งพาระบบคอมพิวเตอร์สำหรับการทำงานประจำวัน",
+                vocab: [
+                "<b>Rely</b> (V): พึ่งพา",
+                "<b>Daily</b> (Adj): ประจำวัน"
+                ],
+                options: [
+                { text: "in", correct: false, rationale: "<b>Wrong Prep:</b>" },
+                { text: "on", correct: true, rationale: "<b>Collocation:</b> Rely on / Depend on (พึ่งพา)" },
+                { text: "at", correct: false, rationale: "<b>Wrong Prep:</b>" },
+                { text: "with", correct: false, rationale: "<b>Wrong Prep:</b>" }
+                ]
+            },
+                {
+                question: "On the table __________ a book and a pen.",
+                translation: "บนโต๊ะมีหนังสือและปากกาวางอยู่",
+                vocab: [
+                "<b>Lie</b> (V): วางอยู่/นอน"
+                ],
+                options: [
+                { text: "is", correct: false, rationale: "<b>Agreement:</b> ประธานคือ a book AND a pen (พหูพจน์) ที่ย้ายไปอยู่หลัง Verb" },
+                { text: "are", correct: true, rationale: "<b>Inversion:</b> ขึ้นต้นด้วยสถานที่ (On the table) กริยาต้องผันตามประธานข้างหลัง (a book and a pen = หลายสิ่ง)" },
+                { text: "lies", correct: false, rationale: "<b>Agreement:</b> Lies เป็นเอกพจน์" },
+                { text: "laying", correct: false, rationale: "<b>Wrong Word:</b> Laying (วางไข่/วางของ) ต้องการกรรม" }
+                ]
+            },
+            {
+                question: "Unless you __________ now, you will be late.",
+                translation: "ถ้าคุณไม่ไปตอนนี้ คุณจะสาย",
+                vocab: [
+                "<b>Unless</b> (Conj): ถ้าไม่... (If...not)"
+                ],
+                options: [
+                { text: "don't leave", correct: false, rationale: "<b>Double Negative:</b> Unless มีความหมายว่า 'ไม่' อยู่แล้ว ห้ามใส่ don't ซ้อนอีก" },
+                { text: "leave", correct: true, rationale: "<b>Structure:</b> Unless + S + V บอกเล่า (ความหมายจะเป็นปฏิเสธเอง)" },
+                { text: "will leave", correct: false, rationale: "<b>If-Clause:</b> หลัง If/Unless ห้ามใช้ Will (Type 1)" },
+                { text: "left", correct: false, rationale: "<b>Wrong Tense:</b> ผลลัพธ์เป็น will (อนาคต) ส่วนเงื่อนไขต้องเป็น Present" }
+                ]
+            },
+            {
+                question: "The team had better __________ the project by Friday.",
+                translation: "ทีมควรจะทำโปรเจกต์ให้เสร็จภายในวันศุกร์",
+                vocab: [
+                "<b>Had better</b> (Modal): ควรจะ (มีความหมายเหมือน Should)"
+                ],
+                options: [
+                { text: "to finish", correct: false, rationale: "<b>Grammar:</b> Had better + V.inf (ไม่ใส่ to)" },
+                { text: "finish", correct: true, rationale: "<b>Modal Verb:</b> Had better + V.inf (V ช่อง 1 ไม่ผัน)" },
+                { text: "finished", correct: false, rationale: "<b>Grammar:</b> ห้ามผัน" },
+                { text: "finishing", correct: false, rationale: "<b>Grammar:</b> ห้ามเติม ing" }
+                ]
+            },
+            {
+                question: "I am used to __________ up early.",
+                translation: "ฉันชินกับการตื่นเช้า",
+                vocab: [
+                "<b>Be used to</b> (Adj): คุ้นชิน"
+                ],
+                options: [
+                { text: "get", correct: false, rationale: "<b>Trap:</b> Used to + V1 แปลว่า 'เคยทำในอดีต' แต่ข้อนี้มี verb to be (am) ข้างหน้า" },
+                { text: "getting", correct: true, rationale: "<b>Structure:</b> V.to be + used to + V-ing (ชินกับการ...)" },
+                { text: "got", correct: false, rationale: "<b>Grammar:</b>" },
+                { text: "have got", correct: false, rationale: "<b>Grammar:</b>" }
+                ]
+            },
+            {
+                question: "It is necessary that he __________ the document immediately.",
+                translation: "มันจำเป็นที่เขาต้องเซ็นเอกสารทันที",
+                vocab: [
+                "<b>Necessary</b> (Adj): จำเป็น",
+                "<b>Sign</b> (V): เซ็นชื่อ"
+                ],
+                options: [
+                { text: "signs", correct: false, rationale: "<b>Subjunctive:</b> หลัง It is necessary that... ต้องใช้ V.inf (ไม่ผัน)" },
+                { text: "sign", correct: true, rationale: "<b>Subjunctive:</b> He sign (ไม่เติม s)" },
+                { text: "signed", correct: false, rationale: "<b>Wrong Tense:</b>" },
+                { text: "will sign", correct: false, rationale: "<b>No Will:</b> Subjunctive ไม่ใช้ will" }
+                ]
+            },
+            {
+                question: "__________ from the university, she applied for a job.",
+                translation: "หลังจากสำเร็จการศึกษาจากมหาวิทยาลัย เธอได้สมัครงาน",
+                vocab: [
+                "<b>Graduate</b> (V): สำเร็จการศึกษา",
+                "<b>Apply</b> (V): สมัคร"
+                ],
+                options: [
+                { text: "Graduating", correct: false, rationale: "<b>Sequence:</b> ใช้ V-ing จะแปลว่า 'ทำไปพร้อมกัน' แต่จบการศึกษาต้องจบก่อนถึงสมัครงานได้" },
+                { text: "Having graduated", correct: true, rationale: "<b>Perfect Participle:</b> Having + V3 ใช้เน้นว่าเหตุการณ์แรกจบลงแล้ว ก่อนเริ่มเหตุการณ์ที่สอง" },
+                { text: "Graduated", correct: false, rationale: "<b>Passive Voice:</b> ถ้าขึ้นต้นด้วย V3 จะแปลว่า 'ถูกกระทำ' (เธอถูกจบการศึกษา -> ผิด)" },
+                { text: "To graduate", correct: false, rationale: "<b>Purpose:</b> แปลว่า 'เพื่อที่จะจบการศึกษา...'" }
+                ]
+            },
+            {
+                question: "Not until next week __________ the results.",
+                translation: "กว่าจะถึงอาทิตย์หน้า เราถึงจะรู้ผลลัพธ์",
+                vocab: [
+                "<b>Result</b> (N): ผลลัพธ์"
+                ],
+                options: [
+                { text: "we know", correct: false, rationale: "<b>No Inversion:</b>" },
+                { text: "will we know", correct: true, rationale: "<b>Inversion:</b> Not until... ถือเป็นคำปฏิเสธขึ้นต้น ต้องกลับประโยค (Aux + S + V)" },
+                { text: "we will know", correct: false, rationale: "<b>No Inversion:</b>" },
+                { text: "do we know", correct: false, rationale: "<b>Wrong Tense:</b> Next week เป็นอนาคต" }
+                ]
+            },
+            {
+                question: "__________ of the students has their own book.",
+                translation: "นักเรียนแต่ละคนมีหนังสือของตัวเอง",
+                vocab: [
+                "<b>Own</b> (Adj): ของตัวเอง"
+                ],
+                options: [
+                { text: "All", correct: false, rationale: "<b>Agreement:</b> All ใช้กับ Verb พหูพจน์ (have) แต่โจทย์ให้ has" },
+                { text: "Each", correct: true, rationale: "<b>Agreement:</b> Each (แต่ละ) เป็นเอกพจน์เสมอ ใช้กับ has" },
+                { text: "Some", correct: false, rationale: "<b>Agreement:</b> Some ใช้กับพหูพจน์" },
+                { text: "Many", correct: false, rationale: "<b>Agreement:</b> Many ใช้กับพหูพจน์" }
+                ]
+            },
+            {
+                question: "The man __________ in the corner is my boss.",
+                translation: "ผู้ชายที่ยืนอยู่ตรงมุมห้องคือเจ้านายของฉัน",
+                vocab: [
+                "<b>Corner</b> (N): มุม",
+                "<b>Boss</b> (N): เจ้านาย"
+                ],
+                options: [
+                { text: "stand", correct: false, rationale: "<b>Grammar:</b> ขาดประธาน/Relative Pronoun" },
+                { text: "standing", correct: true, rationale: "<b>Present Participle:</b> ลดรูปจาก 'who is standing' (กระทำเองใช้ V-ing)" },
+                { text: "stood", correct: false, rationale: "<b>Past Participle:</b> ถ้าใช้ V3 จะแปลว่า 'ถูกยืน' (ผิดความหมาย)" },
+                { text: "stands", correct: false, rationale: "<b>Double Verb:</b> ประโยคมี verb แท้คือ is แล้ว ห้ามใส่ stands อีก" }
+                ]
+            },
+            {
+                question: "This problem is __________ difficult than I thought.",
+                translation: "ปัญหานี้ยากกว่าที่ฉันคิด",
+                vocab: [
+                "<b>Difficult</b> (Adj): ยาก",
+                "<b>Thought</b> (V): คิด (อดีต)"
+                ],
+                options: [
+                { text: "very", correct: false, rationale: "<b>Comparator:</b> Very ใช้ขยาย Adj ปกติ ไม่ใช้เปรียบเทียบ" },
+                { text: "much more", correct: true, rationale: "<b>Comparator:</b> ใช้ much ขยายขั้นกว่า (more difficult) เพื่อบอกว่า 'กว่ามาก'" },
+                { text: "so", correct: false, rationale: "<b>Grammar:</b> So difficult that... (ยากจนกระทั่ง)" },
+                { text: "too", correct: false, rationale: "<b>Grammar:</b> Too difficult to... (ยากเกินกว่าที่จะ)" }
+                ]
+            }
+            ];
+    </script>
+
+    <script src="assets/js/script.js"></script>
+</body>
+</html>

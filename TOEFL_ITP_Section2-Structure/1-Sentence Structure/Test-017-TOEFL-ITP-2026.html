@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TOEFL ITP Structure: Set 14</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@300;400;600&family=Sarabun:wght@400;600&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body class="bg-slate-100 min-h-screen flex items-center justify-center p-4">
+
+    <div class="bg-white rounded-2xl shadow-xl w-full max-w-2xl overflow-hidden border border-slate-200 flex flex-col max-h-[95vh]" id="app-container">
+        
+        <div id="header-slot"></div>
+
+        <div class="w-full bg-gray-100 h-1.5 flex-none">
+            <div class="bg-rose-600 h-1.5 transition-all duration-300 ease-out" style="width: 0%" id="progress-bar"></div>
+        </div>
+
+        <div class="p-6 overflow-y-auto flex-grow rationale-scroll" id="content-area">
+            <div id="quiz-content-placeholder" class="text-center text-gray-400 py-10">Loading Quiz...</div>
+        </div>
+
+        <div id="footer-slot"></div>
+    </div>
+
+    <script>
+        const quizData = [
+            // --- Group 1: Inversion (การสลับตำแหน่ง S กับ V) ---
+            {
+                question: "Not until the new operating system was installed __________ the data accurately.",
+                translation: "ระบบถึงเริ่มประมวลผลข้อมูลได้อย่างแม่นยำ ก็ต่อเมื่อมีการติดตั้งระบบปฏิบัติการใหม่แล้วเท่านั้น",
+                vocab: ["<b>Operating system</b> (N): ระบบปฏิบัติการ", "<b>Accurately</b> (Adv): อย่างแม่นยำ"],
+                options: [
+                    { text: "the system began to process", correct: false, rationale: "<b>Word Order:</b> ประโยคขึ้นต้นด้วย Not (ปฏิเสธ) ต้องมีการสลับกริยาช่วยมาหน้าประธาน" },
+                    { text: "did the system begin to process", correct: true, rationale: "<b>Inversion:</b> เมื่อประโยคขึ้นต้นด้วยกลุ่มคำปฏิเสธ (Not until) ต้องสลับโครงสร้างเป็น V.ช่วย + S + V.แท้ (did + the system + begin)" },
+                    { text: "began the system to process", correct: false, rationale: "<b>Inversion:</b> สลับที่ผิด ต้องใช้กริยาช่วย (did) ไม่ใช่เอากริยาแท้ (began) มาไว้หน้าประธาน" },
+                    { text: "the system did begin processing", correct: false, rationale: "<b>Word Order:</b> ไม่มีการสลับที่กริยาช่วยมาไว้หน้าประธาน" }
+                ]
+            },
+            {
+                question: "So complex __________ that even experienced programmers struggled to optimize it.",
+                translation: "อัลกอริทึมนั้นซับซ้อนมากจนแม้แต่โปรแกรมเมอร์ที่มีประสบการณ์ยังต้องดิ้นรนเพื่อปรับปรุงประสิทธิภาพมัน",
+                vocab: ["<b>Complex</b> (Adj): ซับซ้อน", "<b>Struggle</b> (V): ดิ้นรน/พยายามอย่างหนัก", "<b>Optimize</b> (V): ทำให้มีประสิทธิภาพสูงสุด"],
+                options: [
+                    { text: "the algorithm was", correct: false, rationale: "<b>Word Order:</b> โครงสร้าง So + Adj ขึ้นต้นประโยค ต้องมีการสลับ S กับ V" },
+                    { text: "was the algorithm", correct: true, rationale: "<b>Inversion:</b> โครงสร้างเน้นย้ำ So + Adj. (So complex) ต้องตามด้วย V + S (was the algorithm) เสมอ" },
+                    { text: "it was the algorithm", correct: false, rationale: "<b>Word Order:</b> มีประธานซ้อน (it และ the algorithm) และไม่มีการสลับตำแหน่ง" },
+                    { text: "the algorithm's being", correct: false, rationale: "<b>Grammar:</b> ขาดกริยาแท้ของประโยคหลัก" }
+                ]
+            },
+
+            // --- Group 2: Noun Clauses (ประโยคย่อยที่ทำหน้าที่เป็นคำนาม) ---
+            {
+                question: "__________ remains a mystery to most researchers in the laboratory.",
+                translation: "ไวรัสกลายพันธุ์อย่างรวดเร็วได้อย่างไรยังคงเป็นปริศนาสำหรับนักวิจัยส่วนใหญ่ในห้องปฏิบัติการ",
+                vocab: ["<b>Mutate</b> (V): กลายพันธุ์", "<b>Mystery</b> (N): สิ่งลึกลับ/ปริศนา"],
+                options: [
+                    { text: "How did the virus mutate so quickly", correct: false, rationale: "<b>Word Order:</b> Noun clause ห้ามเรียงประโยคแบบประโยคคำถาม (ห้ามใช้ did นำหน้า)" },
+                    { text: "That how the virus mutated so quickly", correct: false, rationale: "<b>Redundancy:</b> ใช้ Conjunction ซ้อนกันสองตัว (That และ how) ไม่ได้" },
+                    { text: "How the virus mutated so quickly", correct: true, rationale: "<b>Noun Clause:</b> ทำหน้าที่เป็นประธานทั้งก้อน เรียงลำดับแบบประโยคบอกเล่า (Wh-word + S + V)" },
+                    { text: "The virus mutated so quickly how", correct: false, rationale: "<b>Word Order:</b> คำเชื่อม (How) ต้องอยู่หน้า clause เสมอ" }
+                ]
+            },
+            {
+                question: "The developers are trying to determine exactly __________ to fix the persistent bug.",
+                translation: "ทีมนักพัฒนากำลังพยายามระบุให้ชัดเจนว่าอะไรคือสาเหตุที่ทำให้ระบบล้มเหลวเพื่อแก้ไขบั๊กที่เรื้อรัง",
+                vocab: ["<b>Determine</b> (V): ระบุ/ตัดสินใจ", "<b>Persistent</b> (Adj): ดื้อดึง/เรื้อรัง"],
+                options: [
+                    { text: "what caused the system failure", correct: true, rationale: "<b>Noun Clause:</b> what ทำหน้าที่เป็นประธานของ clause ย่อยได้เลย โครงสร้างจึงเป็น what + V + O เรียงถูกต้อง" },
+                    { text: "what did cause the system failure", correct: false, rationale: "<b>Word Order:</b> ไม่จำเป็นต้องใช้กริยาช่วย did ใน Noun clause ที่บอกเล่าเหตุการณ์" },
+                    { text: "what the system failure caused", correct: false, rationale: "<b>Meaning:</b> โครงสร้างถูกไวยากรณ์แต่ผิดความหมาย (แปลว่า 'ระบบล่มไปทำให้เกิดอะไรขึ้น' ไม่ใช่ 'อะไรทำให้ระบบล่ม')" },
+                    { text: "did what cause the system failure", correct: false, rationale: "<b>Word Order:</b> ผิดโครงสร้างประโยคโดยสิ้นเชิง" }
+                ]
+            },
+
+            // --- Group 3: Reduced Clauses (การลดรูปประโยค) ---
+            {
+                question: "__________ in 1995, JavaScript has become the backbone of modern web development.",
+                translation: "ถูกเปิดตัวในปี 1995 ภาษาจาวาสคริปต์ได้กลายมาเป็นแกนหลักของการพัฒนาเว็บสมัยใหม่",
+                vocab: ["<b>Backbone</b> (N): กระดูกสันหลัง/แกนหลัก", "<b>Introduce</b> (V): แนะนำ/เปิดตัว"],
+                options: [
+                    { text: "Introducing", correct: false, rationale: "<b>Active/Passive:</b> V.ing (Active) แปลว่าภาษาจาวาสคริปต์เป็นคนเปิดตัวตัวเอง ซึ่งผิด" },
+                    { text: "Introduced", correct: true, rationale: "<b>Reduced Clause:</b> ลดรูปมาจาก Which was introduced... ใช้ V.3 (Passive) เพื่อบอกว่าถูกเปิดตัว" },
+                    { text: "It was introduced", correct: false, rationale: "<b>Grammar:</b> ถ้าเป็น S+V สมบูรณ์ จะเกิดปัญหาประโยคชนกัน (Run-on sentence) เพราะไม่มีคำเชื่อม" },
+                    { text: "Having introduced", correct: false, rationale: "<b>Active/Passive:</b> เป็นรูป Active Voice แสดงว่าประธานกระทำเอง" }
+                ]
+            },
+            {
+                question: "While __________ the large dataset, the software automatically filters out duplicate entries.",
+                translation: "ในขณะที่ประมวลผลชุดข้อมูลขนาดใหญ่ ซอฟต์แวร์จะกรองข้อมูลที่ซ้ำซ้อนออกโดยอัตโนมัติ",
+                vocab: ["<b>Dataset</b> (N): ชุดข้อมูล", "<b>Duplicate</b> (Adj): ซ้ำซ้อน"],
+                options: [
+                    { text: "it processing", correct: false, rationale: "<b>Grammar:</b> ขาดกริยาช่วย (it is processing) ถึงจะถูก" },
+                    { text: "processes", correct: false, rationale: "<b>Grammar:</b> หลังคำเชื่อม While ถ้าไม่มีประธาน ต้องตามด้วย V.ing เสมอ" },
+                    { text: "processed", correct: false, rationale: "<b>Active/Passive:</b> ใช้ V.3 ไม่ได้เพราะซอฟต์แวร์เป็นผู้กระทำ (ประมวลผลเอง)" },
+                    { text: "processing", correct: true, rationale: "<b>Reduced Clause:</b> ลดรูปมาจาก While it is processing... ตัด it is ทิ้งเหลือแค่ V.ing (Active Voice)" }
+                ]
+            },
+
+            // --- Group 4: Redundancy & Logic (ความฟุ่มเฟือยซ้ำซ้อน) ---
+            {
+                question: "The primary reason the server crashed last night is __________ the sudden spike in user traffic.",
+                translation: "เหตุผลหลักที่เซิร์ฟเวอร์ล่มเมื่อคืนนี้คือปริมาณผู้ใช้งานที่พุ่งสูงขึ้นอย่างกะทันหัน",
+                vocab: ["<b>Primary</b> (Adj): หลัก/สำคัญที่สุด", "<b>Spike</b> (N): การพุ่งสูงขึ้นอย่างรวดเร็ว"],
+                options: [
+                    { text: "because", correct: false, rationale: "<b>Redundancy:</b> ใช้ because คู่กับ The reason ไม่ได้ เพราะความหมายซ้ำซ้อนกัน" },
+                    { text: "due to the fact of", correct: false, rationale: "<b>Redundancy:</b> เป็นวลีที่เยิ่นเย้อเกินไป และผิดหลักไวยากรณ์ (มักใช้ due to the fact that + S + V)" },
+                    { text: "why", correct: false, rationale: "<b>Meaning:</b> ผิดความหมายในบริบทนี้" },
+                    { text: "that", correct: true, rationale: "<b>Grammar:</b> โครงสร้าง The reason... is that... เป็นรูปแบบที่ถูกต้องและเป็นทางการที่สุด" }
+                ]
+            },
+            {
+                question: "Recent updates to the university's network policy indicate that __________ strict bandwidth limits next semester.",
+                translation: "การอัปเดตนโยบายเครือข่ายของมหาวิทยาลัยล่าสุดบ่งชี้ว่า จะมีการจำกัดแบนด์วิดท์อย่างเข้มงวดในเทอมหน้า",
+                vocab: ["<b>Indicate</b> (V): บ่งชี้", "<b>Strict</b> (Adj): เข้มงวด"],
+                options: [
+                    { text: "will be", correct: false, rationale: "<b>Grammar:</b> Noun clause หลัง that ขาดประธาน" },
+                    { text: "it will have", correct: false, rationale: "<b>Word Order/Logic:</b> ภาษาอังกฤษไม่ใช้ it will have ในการบอกว่า 'จะมี...' (ต้องใช้ there will be)" },
+                    { text: "there will be", correct: true, rationale: "<b>Expletive There:</b> ทำหน้าที่เป็นประธานจำลองแปลว่า 'จะมี...' สมบูรณ์ทั้งไวยากรณ์และความหมาย" },
+                    { text: "they will be", correct: false, rationale: "<b>Pronoun Reference:</b> they ไม่มีคำนามอ้างอิงถึงก่อนหน้า" }
+                ]
+            },
+
+            // --- Group 5: Advanced Subordinate Clauses & Appositives ---
+            {
+                question: "The new automation script, __________, can reduce manual entry time by up to 80%.",
+                translation: "สคริปต์อัตโนมัติใหม่ ซึ่งเป็นการอัปเกรดที่สำคัญจากเวอร์ชันก่อนหน้า สามารถลดเวลาการกรอกข้อมูลด้วยมือได้ถึง 80%",
+                vocab: ["<b>Automation</b> (N): ระบบอัตโนมัติ", "<b>Manual</b> (Adj): ที่ทำด้วยมือ"],
+                options: [
+                    { text: "is a major upgrade from the previous version", correct: false, rationale: "<b>Grammar:</b> ประโยคมีกริยาแท้ (can reduce) อยู่แล้ว การเติม is จะทำให้กริยาชนกัน" },
+                    { text: "a major upgrade from the previous version", correct: true, rationale: "<b>Appositive:</b> กลุ่มคำนามที่วางระหว่างเครื่องหมายจุลภาคเพื่อขยายประธาน (The new script) โดยไม่ต้องมีกริยา" },
+                    { text: "which a major upgrade from the previous version", correct: false, rationale: "<b>Relative Clause:</b> ขาดกริยาใน clause (ต้องเป็น which is a...)" },
+                    { text: "it is a major upgrade from the previous version", correct: false, rationale: "<b>Grammar:</b> ทำให้เกิดประโยคซ้อน (Run-on sentence) ผิดไวยากรณ์" }
+                ]
+            },
+            {
+                question: "__________ you need further assistance with the configuration, please do not hesitate to contact the IT support team.",
+                translation: "หากคุณต้องการความช่วยเหลือเพิ่มเติมเกี่ยวกับการตั้งค่า โปรดอย่าลังเลที่จะติดต่อทีมสนับสนุนไอที",
+                vocab: ["<b>Configuration</b> (N): การตั้งค่าโครงสร้าง", "<b>Hesitate</b> (V): ลังเล"],
+                options: [
+                    { text: "If", correct: false, rationale: "<b>Grammar:</b> ถูกไวยากรณ์ แต่ถ้ามีตัวเลือก Should จะถือว่าละรูป If ได้เป็นทางการกว่า (ตัวเลือกนี้มักเป็นตัวหลอกถ้าเทียบกับ Should)" },
+                    { text: "Should", correct: true, rationale: "<b>Inversion (Condition):</b> ละ If แล้วเอา Should ขึ้นต้นประโยคแทน (Should you need... = If you should need...) นิยมมากในข้อสอบและจดหมายทางการ" },
+                    { text: "Unless", correct: false, rationale: "<b>Meaning:</b> แปลว่า 'ถ้าไม่' จะทำให้ความหมายผิดเพี้ยนไป (ถ้าไม่ต้องการความช่วยเหลือ ให้ติดต่อ IT)" },
+                    { text: "Providing", correct: false, rationale: "<b>Meaning:</b> มักแปลว่า 'โดยมีเงื่อนไขว่า' ไม่เหมาะกับบริบทการเสนอความช่วยเหลือ" }
+                ]
+            }
+        ];
+    
+    </script>
+
+    <script src="assets/js/script.js"></script>
+</body>
+</html>
